@@ -17,6 +17,17 @@ def get_all_posts():
     return jsonify(list(post.to_dict() for post in posts))
 
 
+@post_routes.route('/post')
+def get_one_post():
+    """
+    This route will return one post. 
+    """
+    id = request.json["id"]
+    post = Post.query.get(id)
+
+    return jsonify(post.to_dict())
+
+
 @post_routes.route('/new', methods=["POST"])
 def create_post():
     data = request.json
