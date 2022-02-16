@@ -62,11 +62,22 @@ def edit_post():
 
     post = Post.query.get(id) # need the id from one post
 
-    post.userId = data["userId"]
     post.title = data["title"]
+    db.session.commit()
     post.body = data["body"]
+    db.session.commit()
     post.image = data["image"]
-
     db.session.commit()
 
+
     return {"message": "success"}
+
+
+@post_routes.route("/delete", methods=["DELETE"])
+def delete_post():
+    id = request.json["id"]
+    post = Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+
+    return {"message": "success"} 
