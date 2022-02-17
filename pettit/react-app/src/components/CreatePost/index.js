@@ -1,66 +1,128 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { addAPost } from "../../store/posts";
+import "./createPost.css"
 
 const CreatePost = () => {
-    const userId = useSelector(state => state.session.user)
-    const post = useSelector(state => state.post)
-    console.log(post['list'])
-    console.log(userId.id)
 
-    const [title, setTitle] = useState()
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const user = useSelector(state => state.session.user)
+
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const [image, setImage] = useState('');
+    const [showPostForm, setShowPostForm] = useState(true)
+    const [showImgForm, setShowImgForm] = useState(false)
+
+
+    const handlePostSubmit = (e) => {
+        e.preventDefault();
+        const newPost = {
+            "userId": user.id,
+            "title": title,
+            "body": body,
+            "image": image
+        }
+        dispatch(addAPost(newPost));
+        history.push('/posts/main')
+    }
+
+    const handleImgTab = (e) => {
+        e.preventDefault();
+        setShowPostForm(false);
+        setShowImgForm(true)
+    }
+
+    const handlePostTab = (e) => {
+        e.preventDefault();
+        if (showImgForm === true) {
+            setShowImgForm(false);
+        }
+        setShowPostForm(true)
+    }
+
+
+    const handleCancel = (e) => {
+        e.preventDefault()
+    }
 
     return (
-        <div className="editPage">
-            <div className="edit-project-form">
-                    <form>
-                        <div className="label-input-container">
-                            <div className="label-input">
-                                <label>Title:</label>
+        <div className="edit-page">
+            <div className="form-wrapper">
+                <div className="post-container">
+
+                    <div className="create-post-title">
+                        <h3>Create a post</h3>
+                        <button onClick={handleImgTab}>Images</button>
+                        <button onClick={handlePostTab}>Post</button>
+                    </div>
+                    {showPostForm && (
+                        <form onSubmit={handlePostSubmit}>
+                            <div className="title-div">
+                                <div className="title-label">
+                                    {/* <label>Title:</label> */}
+                                </div>
                                 <input
                                     type="text"
                                     name="title"
                                     value={title}
-                                    // onChange={e => setTitle(e.target.value)}
-                                ></input>
+                                    onChange={e => setTitle(e.target.value)}
+                                    placeholder={"Title"}
+                                />
                             </div>
-                            <div id="body" className="label-input">
-                                <label>Body</label>
+                            <div className="body-div">
+                                <div className="body-label">
+                                    <label>Body:</label>
+                                </div>
                                 <textarea
                                     type="text"
                                     name="body"
-                                    value={""}
-                                    // onChange={e => setBody(e.target.value)}
+                                    value={body}
+                                    onChange={e => setBody(e.target.value)}
                                 />
-                            </div>
-                            <div className="label-input">
-                                <label>Image:</label>
-                                <input
-                                    type="text"
-                                    name="titleImage"
-                                    value={""}
-                                    // onChange={e => setTitleImage(e.target.value)}
-                                />
-                            </div>
-                            <div className="label-input">
-                                {/* <select name="category" onChange={e => setCategory(e.target.value)}>
-                                    <option value='Circuits'>Circuits</option>
-                                    <option value='Workshop'>Workshop</option>
-                                    <option value='Craft'>Craft</option>
-                                    <option value='Cooking'>Cooking</option>
-                                    <option value='Living'>Living</option>
-                                    <option value='Outside'>Outside</option>
-                                    <option value='Teachers'>Teachers</option>
-                                </select> */}
                             </div>
                             <div className="btn-div">
-                                <button className="submit-comment" onClick={""}>Edit Supplies</button>
+                                {/* <button onClick={handleCancel}>Cancel</button> */}
+                                <button id="post-btn">Post</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    )}
+                    {showImgForm && (
+                        <form>
+                            <div className="title-div">
+                                <div className="title-label">
+                                    {/* <label>Title:</label> */}
+                                </div>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
+                                    placeholder={"Title"}
+                                />
+                            </div>
+                            <div className="image-div">
+                                <div className="image-label">
+                                    <label>Image:</label>
+                                </div>
+                                <input
+                                    type="text"
+                                    name="image"
+                                    value={image}
+                                    onChange={e => setImage(e.target.value)}
+                                />
+                            </div>
+                        </form>
+                    )}
+                </div>
+            </div>
+            <div className="right-wrapper">
+
             </div>
         </div>
     )
-};
+}
 
 export default CreatePost;

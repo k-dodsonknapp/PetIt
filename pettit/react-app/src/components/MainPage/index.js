@@ -9,22 +9,6 @@ const MainPage = () => {
     const history = useHistory();
     const posts = useSelector(state => state.post)
 
-    const handleDelete = (e) => {
-        e.preventDefault();
-        const id = { "id": +e.target.id }
-        dispatch(deleteAPost(id))
-        dispatch(getAllPosts())
-    }
-
-    const handleEdit = (e) => {
-        history.push("/posts/edit")
-    }
-
-    useEffect(() => {
-        dispatch(deleteAPost())
-    }, [dispatch])
-
-    // console.log(posts)
     useEffect(() => {
         const id = {
             "id": 10,
@@ -35,6 +19,21 @@ const MainPage = () => {
         dispatch(updateAPost(id));
         dispatch(getAllPosts());
     }, [dispatch])
+    
+    useEffect(() => {
+        dispatch(deleteAPost())
+    }, [dispatch])
+    
+    const handleDelete = (e) => {
+        e.preventDefault();
+        const id = { "id": +e.target.id }
+        dispatch(deleteAPost(id))
+        dispatch(getAllPosts())
+    }
+
+    const handleEdit = (e) => {
+        history.push("/posts/edit")
+    }
 
     return (
         <div className="page">
@@ -47,7 +46,7 @@ const MainPage = () => {
                         <div className="right-post">
                             <h2>Hello!</h2>
                             {post.image} <br />
-                            {post.id}
+                            {post.body}
                             <div className="button-div">
                                 <button id={post.id} onClick={handleEdit}>Edit</button>
                                 <button id={post.id} onClick={handleDelete}>Delete</button>

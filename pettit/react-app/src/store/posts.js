@@ -121,11 +121,6 @@ export default function postReducer(state = initialState, action) {
             }
 
         case GET_ONE_POST:
-            // newState = {
-            //     ...state,
-            //     [action.post.id]: action.post,
-            // };
-            // return newState;
             return {
                 ...state,
                 list : [...action.post]
@@ -144,7 +139,6 @@ export default function postReducer(state = initialState, action) {
                     ...state[action.post.id],
                 }
             }
-
             return newState
 
         case DELETE_POST:

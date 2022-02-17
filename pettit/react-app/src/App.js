@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import MainPage from './components/MainPage';
+import UpdatePost from './components/UpdatePost';
 import CreatePost from './components/CreatePost';
 
 function App() {
@@ -39,8 +40,11 @@ function App() {
         {/* <Route path='/posts/' exact={true}>
           <MainPage />
         </Route> */}
-        <ProtectedRoute path='/posts/edit' exact={true} >
+        <ProtectedRoute path='/posts/new' exact={true} >
           <CreatePost />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/edit' exact={true} >
+          <UpdatePost />
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />

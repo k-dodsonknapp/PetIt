@@ -5,7 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
 
 const NavBar = () => {
-  
+
   const [showMenu, setShowMenu] = useState()
 
   const openMenu = () => {
@@ -78,6 +78,11 @@ const NavBar = () => {
               <li>
                 <NavLink to='/users' exact={true} activeClassName='active'>
                   Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/posts/new' exact={true} activeClassName='active'>
+                  New Post
                 </NavLink>
               </li>
               <li>

@@ -1,0 +1,86 @@
+
+
+.edit-page {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    height: 95vh;
+    background-color: rgb(238, 238, 238);
+}
+
+.form-wrapper {
+    border: 1px solid black;
+    width: 35vw;
+    margin: 0px 10px;
+}
+
+.title-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid blue;
+    margin: 10px 0px 10px 0px;
+}
+
+.title-div input {
+    width: 90%;
+}
+
+.body-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid green;
+    margin: 10px 0px;
+}
+
+.body-div textarea {
+    width: 90%;
+    height: 200px;
+    resize: none;
+}
+
+.image-div{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid red;
+    margin: 10px 0px;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+#post-btn {
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 1px rgba(0, 0, 0, 0.493) solid;
+}
+
+.right-wrapper {
+    height: 95vh;
+    border: 1px solid red;
+    width: 15vw;
+}
+
+.create-post-title {
+    border: 1px solid purple;
+    margin: 150px 0px 0px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.create-post-title h3{
+    font-weight: 200;
+    font-size: 14px;
+    /* margin-left: 20px; */
+}
+
+.post-container {
+    background-color: white;
+    height: 336px;
+}
+
