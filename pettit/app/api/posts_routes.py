@@ -7,25 +7,21 @@ from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
 
-@post_routes.route('/')
+@post_routes.route('/main')
 def get_all_posts():
     """
     This route will return all of the posts in the database. 
     """
     posts = Post.query.all()
+    print({'posts': [post.to_dict() for post in posts]})
+    return {'posts': [post.to_dict() for post in posts]}
 
-    return jsonify(list(post.to_dict() for post in posts))
 
-
-@post_routes.route('/post')
-def get_one_post():
-    """
-    This route will return one post. 
-    """
-    id = request.json["id"]
-    post = Post.query.get(id)
-
-    return jsonify(post.to_dict())
+@post_routes.route('/<int:id>')
+def get_one_post(id):
+    post = Post.query.get(id).to_dict()
+    # print("is this working", post)
+    return post.to_dict()
 
 
 @post_routes.route('/new', methods=["POST"])
@@ -56,7 +52,7 @@ def create_post():
 @post_routes.route('/edit', methods=["PUT"])
 def edit_post():
     data = request.json
-    print(data["id"])
+    print("dkafjlsda",data["id"])
     id = data["id"] # make sure to send back the post id from frontend
 
     """
@@ -72,22 +68,24 @@ def edit_post():
     # id = Post.query.filter(Post.id == data.id).first()
 
     post = Post.query.get(id) # need the id from one post
+    print("edited", post.to_dict())
 
     post.title = data["title"]
-    db.session.commit()
+    # db.session.commit()
     post.body = data["body"]
-    db.session.commit()
+    # db.session.commit()
     post.image = data["image"]
     db.session.commit()
 
 
-    return {"message": "success"}
+    return post.to_dict()
 
 
 @post_routes.route("/delete", methods=["DELETE"])
 def delete_post():
-    id = request.json["id"]
-    post = Post.query.get(id)
+    data = request.json
+    id = data["id"]
+    post = Post.query.get((id))
     db.session.delete(post)
     db.session.commit()
 
