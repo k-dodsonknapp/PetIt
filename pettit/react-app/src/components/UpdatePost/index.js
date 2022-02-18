@@ -3,12 +3,19 @@ import { useSelector } from "react-redux";
 
 
 const CreatePost = () => {
-    const userId = useSelector(state => state.session.user)
-    const post = useSelector(state => state.post)
+    const userId = useSelector(state => state.session.user);
+    const post = useSelector(state => state.post);
     console.log(post['list'])
     console.log(userId.id)
 
-    const [title, setTitle] = useState()
+    const [title, setTitle] = useState();
+    const [body, setBody] = useState();
+    const [image, setImage] = useState();
+
+    const handleEdit = (e) => {
+        e.preventDefault();
+        
+    }
 
     return (
         <div className="editPage">
@@ -21,7 +28,7 @@ const CreatePost = () => {
                                     type="text"
                                     name="title"
                                     value={title}
-                                    // onChange={e => setTitle(e.target.value)}
+                                    onChange={e => setTitle(e.target.value)}
                                 ></input>
                             </div>
                             <div id="body" className="label-input">
@@ -29,8 +36,8 @@ const CreatePost = () => {
                                 <textarea
                                     type="text"
                                     name="body"
-                                    value={""}
-                                    // onChange={e => setBody(e.target.value)}
+                                    value={body}
+                                    onChange={e => setBody(e.target.value)}
                                 />
                             </div>
                             <div className="label-input">
@@ -38,8 +45,8 @@ const CreatePost = () => {
                                 <input
                                     type="text"
                                     name="titleImage"
-                                    value={""}
-                                    // onChange={e => setTitleImage(e.target.value)}
+                                    value={image}
+                                    onChange={e => setImage(e.target.value)}
                                 />
                             </div>
                             <div className="label-input">
@@ -54,7 +61,7 @@ const CreatePost = () => {
                                 </select> */}
                             </div>
                             <div className="btn-div">
-                                <button className="submit-comment" onClick={""}>Edit Supplies</button>
+                                <button className="submit-comment" onClick={handleEdit}>Edit Post</button>
                             </div>
                         </div>
                     </form>

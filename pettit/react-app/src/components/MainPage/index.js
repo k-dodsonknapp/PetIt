@@ -32,6 +32,7 @@ const MainPage = () => {
     }
 
     const handleEdit = (e) => {
+        const id = e.target.id
         history.push("/posts/edit")
     }
 
@@ -40,8 +41,7 @@ const MainPage = () => {
             <div className="main-feed-container" >
                 {posts['list']?.map(post => (
                     <div className="post" key={post.id}>
-                        <div className="left-post">
-                            
+                        <div className="left-post">   
                         </div>
                         <div className="right-post">
                             <h2>Hello!</h2>
