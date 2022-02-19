@@ -10,20 +10,20 @@ const MainPage = () => {
     const posts = useSelector(state => state.post)
 
     useEffect(() => {
-        const id = {
-            "id": 10,
-            "title": "What a wonderful title",
-            "body": "A new body",
-            "image": "A wonderful image"
-        }
-        dispatch(updateAPost(id));
+        // const id = {
+        //     "id": 10,
+        //     "title": "What a wonderful title",
+        //     "body": "A new body",
+        //     "image": "A wonderful image"
+        // }
+        // dispatch(updateAPost(id));
         dispatch(getAllPosts());
     }, [dispatch])
-    
-    useEffect(() => {
-        dispatch(deleteAPost())
-    }, [dispatch])
-    
+
+    // useEffect(() => {
+    //     dispatch(deleteAPost())
+    // }, [dispatch])
+
     const handleDelete = (e) => {
         e.preventDefault();
         const id = { "id": +e.target.id }
@@ -41,12 +41,15 @@ const MainPage = () => {
             <div className="main-feed-container" >
                 {posts['list']?.map(post => (
                     <div className="post" key={post.id}>
-                        <div className="left-post">   
+                        <div className="left-post">
                         </div>
                         <div className="right-post">
-                            <h2>Hello!</h2>
-                            {post.image} <br />
-                            {post.body}
+                            <div>
+                                {post.title}
+                            </div>
+                            <div>
+                                {post.image}
+                            </div>
                             <div className="button-div">
                                 <button id={post.id} onClick={handleEdit}>Edit</button>
                                 <button id={post.id} onClick={handleDelete}>Delete</button>

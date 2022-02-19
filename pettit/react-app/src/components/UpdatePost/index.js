@@ -11,28 +11,67 @@ const CreatePost = () => {
     const [title, setTitle] = useState();
     const [body, setBody] = useState();
     const [image, setImage] = useState();
+    const [showPostForm, setShowPostForm] = useState(true)
+    const [showImgForm, setShowImgForm] = useState(false)
 
     const handleEdit = (e) => {
         e.preventDefault();
-        
+
+    }
+
+    // const handlePostSubmit = (e) => {
+    //     e.preventDefault();
+    //     const newPost = {
+    //         "userId": user.id,
+    //         "title": title,
+    //         "body": body,
+    //         "image": image
+    //     }
+    //     dispatch(addAPost(newPost));
+    //     history.push('/posts/main')
+    // }
+
+    const handleImgTab = (e) => {
+        e.preventDefault();
+        setShowPostForm(false);
+        setShowImgForm(true)
+    }
+
+    const handlePostTab = (e) => {
+        e.preventDefault();
+        if (showImgForm === true) {
+            setShowImgForm(false);
+        }
+        setShowPostForm(true)
     }
 
     return (
-        <div className="editPage">
-            <div className="edit-project-form">
-                    <form>
-                        <div className="label-input-container">
-                            <div className="label-input">
-                                <label>Title:</label>
+        <div className="edit-page">
+            <div className="form-wrapper">
+                <div className="post-container">
+                    <div className="create-post-title">
+                        <h3>Create a post</h3>
+                        <button onClick={handleImgTab}>Images</button>
+                        <button onClick={handlePostTab}>Post</button>
+                    </div>
+                    {showPostForm && (
+                        <form onSubmit={""}>
+                            <div className="title-div">
+                                <div className="title-label">
+                                    {/* <label>Title:</label> */}
+                                </div>
                                 <input
                                     type="text"
                                     name="title"
                                     value={title}
                                     onChange={e => setTitle(e.target.value)}
-                                ></input>
+                                    placeholder={"Title"}
+                                />
                             </div>
-                            <div id="body" className="label-input">
-                                <label>Body</label>
+                            <div className="body-div">
+                                <div className="body-label">
+                                    <label>Body:</label>
+                                </div>
                                 <textarea
                                     type="text"
                                     name="body"
@@ -40,31 +79,51 @@ const CreatePost = () => {
                                     onChange={e => setBody(e.target.value)}
                                 />
                             </div>
-                            <div className="label-input">
-                                <label>Image:</label>
+                            <div className="btn-div">
+                                {/* <button onClick={handleCancel}>Cancel</button> */}
+                                <button id="post-btn">Post Edit</button>
+                            </div>
+                        </form>
+                    )}
+                    {showImgForm && (
+                        <form onSubmit={""}>
+                            <div className="title-div">
+                                <div className="title-label">
+                                    {/* <label>Title:</label> */}
+                                </div>
                                 <input
                                     type="text"
-                                    name="titleImage"
+                                    name="title"
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
+                                    placeholder={"Title"}
+                                />
+                            </div>
+                            <div className="image-div">
+                                <div className="image-label">
+                                    <label>Image:</label>
+                                </div>
+                                <input
+                                    type="text"
+                                    name="image"
                                     value={image}
                                     onChange={e => setImage(e.target.value)}
                                 />
                             </div>
-                            <div className="label-input">
-                                {/* <select name="category" onChange={e => setCategory(e.target.value)}>
-                                    <option value='Circuits'>Circuits</option>
-                                    <option value='Workshop'>Workshop</option>
-                                    <option value='Craft'>Craft</option>
-                                    <option value='Cooking'>Cooking</option>
-                                    <option value='Living'>Living</option>
-                                    <option value='Outside'>Outside</option>
-                                    <option value='Teachers'>Teachers</option>
-                                </select> */}
-                            </div>
                             <div className="btn-div">
-                                <button className="submit-comment" onClick={handleEdit}>Edit Post</button>
+                                {/* <button onClick={handleCancel}>Cancel</button> */}
+                                <button id="post-btn">Post Edit</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    )}
+                </div>
+            </div>
+            <div className="right-container">
+                <div className="communities">
+
+                </div>
+
+                <div className="create"></div>
             </div>
         </div>
     )

@@ -32,7 +32,7 @@ const CreatePost = () => {
     const handleImgTab = (e) => {
         e.preventDefault();
         setShowPostForm(false);
-        setShowImgForm(true)
+        setShowImgForm(true);
     }
 
     const handlePostTab = (e) => {
@@ -52,7 +52,6 @@ const CreatePost = () => {
         <div className="edit-page">
             <div className="form-wrapper">
                 <div className="post-container">
-
                     <div className="create-post-title">
                         <h3>Create a post</h3>
                         <button onClick={handleImgTab}>Images</button>
@@ -90,7 +89,7 @@ const CreatePost = () => {
                         </form>
                     )}
                     {showImgForm && (
-                        <form>
+                        <form onSubmit={handlePostSubmit}>
                             <div className="title-div">
                                 <div className="title-label">
                                     {/* <label>Title:</label> */}
@@ -114,12 +113,20 @@ const CreatePost = () => {
                                     onChange={e => setImage(e.target.value)}
                                 />
                             </div>
+                            <div className="btn-div">
+                                {/* <button onClick={handleCancel}>Cancel</button> */}
+                                <button id="post-btn">Post</button>
+                            </div>
                         </form>
                     )}
                 </div>
             </div>
-            <div className="right-wrapper">
+            <div className="right-container">
+                <div className="communities">
 
+                </div>
+
+                <div className="create"></div>
             </div>
         </div>
     )

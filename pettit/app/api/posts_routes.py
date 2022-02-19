@@ -17,8 +17,10 @@ def get_all_posts():
     return {'posts': [post.to_dict() for post in posts]}
 
 
-@post_routes.route('/<int:id>')
-def get_one_post(id):
+@post_routes.route('/')
+def get_one_post():
+    data = request.json
+
     post = Post.query.get(id).to_dict()
     # print("is this working", post)
     return post.to_dict()

@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import MainPage from './components/MainPage';
 import UpdatePost from './components/UpdatePost';
 import CreatePost from './components/CreatePost';
+import OnePost from './components/OnePost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/posts/edit' exact={true} >
           <UpdatePost />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/:title' exact={true} >
+          <OnePost />
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />

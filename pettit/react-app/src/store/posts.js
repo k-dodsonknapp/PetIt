@@ -143,7 +143,10 @@ export default function postReducer(state = initialState, action) {
 
         case DELETE_POST:
             newState = { ...state };
-            delete newState[action.post];
+            let newArr = [...newState.list]
+            let index = newArr.indexOf(action.post)
+            newArr.splice(index, 1)
+            newState.list = newArr
             return newState;
 
         default:
