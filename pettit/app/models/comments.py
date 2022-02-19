@@ -7,6 +7,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     postId = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+    comment_id = db.Column(db.Integer)
     comment = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
@@ -14,6 +15,7 @@ class Comment(db.Model):
     user = db.relationship('User', back_populates='comment')
     post = db.relationship('Post', back_populates='comment')
     vote = db.relationship('Vote', back_populates='comment')
+    
 
     def to_dict(self):
         return {

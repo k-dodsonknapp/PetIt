@@ -33,7 +33,8 @@ const MainPage = () => {
 
     const handleEdit = (e) => {
         const id = e.target.id
-        history.push("/posts/edit")
+        // dispatch(getAPost(id))
+        history.push(`/posts/${id}`)
     }
 
     return (
@@ -48,7 +49,8 @@ const MainPage = () => {
                                 {post.title}
                             </div>
                             <div>
-                                {post.image}
+                                {post.image} <br/>
+                                {post.id}kldsfajlsdkfj
                             </div>
                             <div className="button-div">
                                 <button id={post.id} onClick={handleEdit}>Edit</button>

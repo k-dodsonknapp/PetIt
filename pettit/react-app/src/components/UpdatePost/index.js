@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { updateAPost } from "../../store/posts";
 
-
-const CreatePost = () => {
+const UpdatePost = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const postId = useParams();
+    console.log("postId",postId.postId)
     const userId = useSelector(state => state.session.user);
     const post = useSelector(state => state.post);
-    console.log(post['list'])
-    console.log(userId.id)
 
     const [title, setTitle] = useState();
     const [body, setBody] = useState();
@@ -19,17 +22,18 @@ const CreatePost = () => {
 
     }
 
-    // const handlePostSubmit = (e) => {
-    //     e.preventDefault();
-    //     const newPost = {
-    //         "userId": user.id,
-    //         "title": title,
-    //         "body": body,
-    //         "image": image
-    //     }
-    //     dispatch(addAPost(newPost));
-    //     history.push('/posts/main')
-    // }
+    const handleEditSubmit = (e) => {
+        e.preventDefault();
+        const newPost = {
+            id: postId.postId,
+            "userId": userId.id,
+            "title": title,
+            "body": body,
+            "image": image
+        }
+        dispatch(updateAPost(newPost));
+        history.push('/posts/main')
+    }
 
     const handleImgTab = (e) => {
         e.preventDefault();
@@ -55,7 +59,7 @@ const CreatePost = () => {
                         <button onClick={handlePostTab}>Post</button>
                     </div>
                     {showPostForm && (
-                        <form onSubmit={""}>
+                        <form onSubmit={handleEditSubmit}>
                             <div className="title-div">
                                 <div className="title-label">
                                     {/* <label>Title:</label> */}
@@ -86,7 +90,7 @@ const CreatePost = () => {
                         </form>
                     )}
                     {showImgForm && (
-                        <form onSubmit={""}>
+                        <form onSubmit={handleEditSubmit}>
                             <div className="title-div">
                                 <div className="title-label">
                                     {/* <label>Title:</label> */}
@@ -129,4 +133,4 @@ const CreatePost = () => {
     )
 };
 
-export default CreatePost;
+export default UpdatePost;

@@ -23,7 +23,8 @@ const CreatePost = () => {
             "userId": user.id,
             "title": title,
             "body": body,
-            "image": image
+            "image": image,
+            "updated_at": new Date(), 
         }
         dispatch(addAPost(newPost));
         history.push('/posts/main')

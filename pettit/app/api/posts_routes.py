@@ -17,13 +17,14 @@ def get_all_posts():
     return {'posts': [post.to_dict() for post in posts]}
 
 
-@post_routes.route('/')
-def get_one_post():
-    data = request.json
-
-    post = Post.query.get(id).to_dict()
-    # print("is this working", post)
-    return post.to_dict()
+# @post_routes.route('/<int:id>')
+# def get_one_post(id):
+#     # data = request.json
+#     # print("backend id", id)
+#     post = Post.query.get(id)
+#     # print("is this working", post)
+#     # return post.to_dict()
+#     return post.to_dict()
 
 
 @post_routes.route('/new', methods=["POST"])
@@ -51,11 +52,11 @@ def create_post():
     return new_post.to_dict()
 
 
-@post_routes.route('/edit', methods=["PUT"])
-def edit_post():
+@post_routes.route('/<int:id>', methods=["PUT"])
+def edit_post(id):
     data = request.json
-    print("dkafjlsda",data["id"])
-    id = data["id"] # make sure to send back the post id from frontend
+    # print("dkafjlsda",data["id"])
+    # id = data["id"] # make sure to send back the post id from frontend
 
     """
     data = {
@@ -73,9 +74,7 @@ def edit_post():
     print("edited", post.to_dict())
 
     post.title = data["title"]
-    # db.session.commit()
     post.body = data["body"]
-    # db.session.commit()
     post.image = data["image"]
     db.session.commit()
 
@@ -86,8 +85,12 @@ def edit_post():
 @post_routes.route("/delete", methods=["DELETE"])
 def delete_post():
     data = request.json
+    # print("DATATATATAT", data)
     id = data["id"]
+    print("DATATATATAT", id)
     post = Post.query.get((id))
+    print("DATATATATAT", post)
+
     db.session.delete(post)
     db.session.commit()
 

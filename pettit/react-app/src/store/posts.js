@@ -38,10 +38,10 @@ export const getAllPosts = () => async (dispatch) => {
     };
 };
 
-export const getAPost = () => async (dispatch) => {
-    const res = await fetch('/api/posts/post');
+export const getAPost = (id) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${id}`);
     if (res.ok) {
-        const data = res.json();
+        const data = await res.json();
         if (data.errors) {
             return;
         };
@@ -68,7 +68,7 @@ export const addAPost = (data) => async (dispatch) => {
 
 export const updateAPost = (data) => async (dispatch) => {
     console.log("IDIDIDDD", data)
-    const res = await fetch('/api/posts/edit', {
+    const res = await fetch(`/api/posts/${data.id}`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
@@ -84,7 +84,6 @@ export const updateAPost = (data) => async (dispatch) => {
 };
 
 export const deleteAPost = (data) => async (dispatch) => {
-    // console.log(data['id'])
     const res = await fetch('/api/posts/delete', {
         method: "DELETE",
         headers: {
@@ -95,7 +94,6 @@ export const deleteAPost = (data) => async (dispatch) => {
 
     if (res.ok) {
         const id = await res.json()
-        console.log(id)
         dispatch(deletePost(id));
         return "Post successfully delete"
     };
@@ -122,15 +120,16 @@ export default function postReducer(state = initialState, action) {
 
         case GET_ONE_POST:
             return {
-                ...state,
-                list : [...action.post]
+                // ...state,
+                // list : [...action.post]
             }
         
         case UPDATE_POST:
-            return {
+            newState = {
                 ...state,
                 [action.post.id]: action.post
             }
+            return newState
 
         case ADD_POST:
             newState = {

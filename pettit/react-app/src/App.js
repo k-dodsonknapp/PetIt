@@ -44,10 +44,13 @@ function App() {
         <ProtectedRoute path='/posts/new' exact={true} >
           <CreatePost />
         </ProtectedRoute>
-        <ProtectedRoute path='/posts/edit' exact={true} >
+        <ProtectedRoute path='/posts/main' exact={true} >
+          <MainPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/:postId' exact={true} >
           <UpdatePost />
         </ProtectedRoute>
-        <ProtectedRoute path='/posts/:title' exact={true} >
+        <ProtectedRoute path='/post' exact={true} >
           <OnePost />
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
@@ -55,9 +58,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/posts/main' exact={true} >
-          <MainPage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
