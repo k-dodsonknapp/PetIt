@@ -1,7 +1,7 @@
 from crypt import methods
 from urllib import request
 from flask import Blueprint, jsonify, request
-from app.models import Post, db
+from app.models import Post, Comment, db
 from datetime import datetime
 
 
@@ -13,7 +13,7 @@ def get_all_posts():
     This route will return all of the posts in the database. 
     """
     posts = Post.query.all()
-    print({'posts': [post.to_dict() for post in posts]})
+    # print({'posts': [post.to_dict() for post in posts]})
     return {'posts': [post.to_dict() for post in posts]}
 
 
@@ -52,7 +52,7 @@ def create_post():
     return new_post.to_dict()
 
 
-@post_routes.route('/<int:id>', methods=["PUT"])
+@post_routes.route('/<int:id>/edit', methods=["PUT"])
 def edit_post(id):
     data = request.json
     # print("dkafjlsda",data["id"])
@@ -71,7 +71,7 @@ def edit_post(id):
     # id = Post.query.filter(Post.id == data.id).first()
 
     post = Post.query.get(id) # need the id from one post
-    print("edited", post.to_dict())
+    # print("edited", post.to_dict())
 
     post.title = data["title"]
     post.body = data["body"]
@@ -85,13 +85,15 @@ def edit_post(id):
 @post_routes.route("/delete", methods=["DELETE"])
 def delete_post():
     data = request.json
-    # print("DATATATATAT", data)
     id = data["id"]
-    print("DATATATATAT", id)
     post = Post.query.get((id))
-    print("DATATATATAT", post)
+    print("########", post)
+    post_comments = Comment.query.filter(Comment.postId == id).all()
+    for comment in post_comments:
+        db.session.delete(comment)
 
     db.session.delete(post)
     db.session.commit()
-
-    return {"message": "success"} 
+    posts = Post.query.all()
+    # print({'posts': [post.to_dict() for post in posts]})
+    return {'posts': [post.to_dict() for post in posts]}
