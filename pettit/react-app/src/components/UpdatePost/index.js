@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { updateAPost } from "../../store/posts";
+import { getAllPosts, updateAPost } from "../../store/posts";
 
 const UpdatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const postId = useParams();
-    console.log("postId",postId.postId)
-    const userId = useSelector(state => state.session.user);
-    const post = useSelector(state => state.post);
+    console.log("postId",postId?.postId)
+    const userId = useSelector(state => state?.session?.user);
+    const post = useSelector(state => state?.post);
 
     const [title, setTitle] = useState();
     const [body, setBody] = useState();
@@ -17,10 +17,10 @@ const UpdatePost = () => {
     const [showPostForm, setShowPostForm] = useState(true)
     const [showImgForm, setShowImgForm] = useState(false)
 
-    const handleEdit = (e) => {
-        e.preventDefault();
+    // const handleEdit = (e) => {
+    //     e.preventDefault();
 
-    }
+    // }
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
@@ -31,9 +31,14 @@ const UpdatePost = () => {
             "body": body,
             "image": image
         }
+        dispatch(getAllPosts())
         dispatch(updateAPost(newPost));
         history.push('/posts/main')
     }
+
+    useEffect(() => {
+        dispatch(getAllPosts())
+    }, [dispatch])
 
     const handleImgTab = (e) => {
         e.preventDefault();

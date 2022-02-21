@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addAPost } from "../../store/posts";
+import { addAPost, getAllPosts } from "../../store/posts";
 import "./createPost.css"
 
 const CreatePost = () => {
@@ -27,8 +27,13 @@ const CreatePost = () => {
             "updated_at": new Date(), 
         }
         dispatch(addAPost(newPost));
+        dispatch(getAllPosts())
         history.push('/posts/main')
     }
+
+    useEffect(() => {
+        dispatch(getAllPosts())
+    }, [dispatch])
 
     const handleImgTab = (e) => {
         e.preventDefault();

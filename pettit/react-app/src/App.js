@@ -47,8 +47,11 @@ function App() {
         <ProtectedRoute path='/posts/main' exact={true} >
           <MainPage />
         </ProtectedRoute>
-        <ProtectedRoute path='/posts/:postId' exact={true} >
+        <ProtectedRoute path='/posts/:postId/edit' exact={true} >
           <UpdatePost />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/:postId' exact={true} >
+          <OnePost />
         </ProtectedRoute>
         <ProtectedRoute path='/post' exact={true} >
           <OnePost />

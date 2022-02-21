@@ -1,5 +1,5 @@
 const GET_ALL_POSTS = '/posts/';
-const GET_ONE_POST = '/posts/post';
+const GET_ONE_POST = '/posts/:id';
 const ADD_POST = '/posts/new';
 const UPDATE_POST = '/posts/edit';
 const DELETE_POST = '/posts/delete'
@@ -68,7 +68,7 @@ export const addAPost = (data) => async (dispatch) => {
 
 export const updateAPost = (data) => async (dispatch) => {
     console.log("IDIDIDDD", data)
-    const res = await fetch(`/api/posts/${data.id}`, {
+    const res = await fetch(`/api/posts/${data.id}/edit`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
@@ -99,11 +99,11 @@ export const deleteAPost = (data) => async (dispatch) => {
     };
 };
 
-const initialState = {
-    list: []
-};
+// const initialState = {
+//     list: []
+// };
 
-export default function postReducer(state = initialState, action) {
+export default function postReducer(state = {}, action) {
 
     let newState;
     switch (action.type) {
@@ -113,10 +113,12 @@ export default function postReducer(state = initialState, action) {
             //     ...state,
             //     list: [...action.payload.posts]
             // })
-            return {
-                ...state,
-                list:[...action.payload.posts],
-            }
+            newState = {...state};
+            action.payload.posts.map(post => (
+                newState[post.id] = post
+            ))
+            // console.log("##########",newState)
+            return newState
 
         case GET_ONE_POST:
             return {
@@ -141,11 +143,10 @@ export default function postReducer(state = initialState, action) {
             return newState
 
         case DELETE_POST:
-            newState = { ...state };
-            let newArr = [...newState.list]
-            let index = newArr.indexOf(action.post)
-            newArr.splice(index, 1)
-            newState.list = newArr
+            newState = {};
+            action.post.posts.forEach(post => (
+                newState[post.id] = post
+            ))
             return newState;
 
         default:

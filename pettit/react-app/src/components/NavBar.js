@@ -1,11 +1,15 @@
 
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
+import * as sessionActions from '../store/session';
 
 const NavBar = () => {
 
+  const dispatch = useDispatch();
+  const history = useHistory(); 
   const [showMenu, setShowMenu] = useState()
 
   const openMenu = () => {
@@ -22,6 +26,11 @@ const NavBar = () => {
     return () => document.removeEventListener("click", closeMenu)
   }, [showMenu])
 
+  const handleClick = async (e) => {
+    await dispatch(sessionActions.login('demo@aa.io', 'password'))
+    history.push('/home')
+  }
+
   return (
     <div className='nav-container'>
       <nav>
@@ -34,7 +43,14 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <button onClick={openMenu}>Open Menu</button>
+                <button id='dropdown' onClick={openMenu}>
+                  <div className='dropdown-text'>
+                    Open Menu
+                  </div>
+                  <div className='dropdown-arrow'>
+                    🔽
+                  </div>
+                </button>
                 {showMenu && (
                   <ul className='profile-options'>
                     <div className='dropdown-div'>
@@ -45,6 +61,8 @@ const NavBar = () => {
                           </li>
                         </div>
                       </NavLink>
+                      <button onClick={handleClick} className='authButton'>Demo</button>
+
                       <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none', color: "black" }}>
                         <div className='dropdown-btns'>
                           <li>
@@ -65,7 +83,7 @@ const NavBar = () => {
             <div className='search'>
             </div>
             <div className='right-side'>
-              <li>
+              {/* <li>
                 <NavLink to='/login' exact={true} activeClassName='active'>
                   Login
                 </NavLink>
@@ -79,7 +97,7 @@ const NavBar = () => {
                 <NavLink to='/users' exact={true} activeClassName='active'>
                   Users
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink to='/posts/new' exact={true} activeClassName='active'>
                   New Post
