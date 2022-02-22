@@ -5,7 +5,7 @@ html {
 
 .nav-container {
     background-color: white;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     height: 30px;
     display: flex;
     justify-content: space-around;
@@ -17,7 +17,7 @@ html {
 .search {
     height: 28px;
     width: 300px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .nav-links {
@@ -31,9 +31,10 @@ html {
     display: flex;
     justify-content: flex-start;
     /* align-items: flex-start; */
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     /* float: left; */
     margin: 0px 30px;
+    align-items: center;
 }
 
 .logo-home li {
@@ -47,7 +48,8 @@ html {
 }
 
 .right-side {
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    align-items: center;
     display: flex;
     justify-content: center;
     width: 300px;
@@ -73,10 +75,74 @@ html {
     background-color: #fff;
     float: right;
     position: absolute;
-    z-index: 1;
-    /* top: 100%; */
-    right: 83%;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 6px;
-    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+    /* z-index: 1; */
+    top: 23px;
+    left: 178px;
+    /* border: 1px solid rgba(0,0,0,.2); */
+    border-top: transparent;
+    border-radius: 0px 0px 2px 2px;
+    box-shadow:  0 5px 5px rgb(0 0 0 / 20%);
+}
+
+.idk {
+    padding-right: 10px;
+}
+
+.dropdown-div {
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgb(221, 221, 221);
+    border-top: none;
+}
+
+#dropdown {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    background-color: white;
+    border: none;
+    /* border-bottom: none; */
+    width: 202px;
+    margin-left: 8px;
+    height: 24px;
+    border-radius: 2px;
+}
+
+.home-icon img{
+    height: 14px;
+    display: flex;
+    align-items: center;
+    margin-left: 6px;
+}
+
+#dropdown:hover {
+    border: .1px solid rgb(221, 221, 221);
+}
+
+#dropdown:focus-visible {
+    border-bottom: none;
+}
+
+.down-arrow img{
+    display: flex;
+    margin-left: 115px;
+    height: 14px;
+}
+
+.dropdown-text {
+    display: flex;
+    align-items: center;
+    padding-top: 2px;
+    text-align: left;
+}
+
+.home-text {
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+.dropdown-btns{
+    font-size: 14px;
+    border: 1px solid red;
+    color: rgb(206, 205, 205);
 }

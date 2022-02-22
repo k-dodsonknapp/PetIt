@@ -45,6 +45,7 @@ const deleteComment = (comment) => ({
 })
 
 export const deleteAComment = (data) => async (dispatch) => {
+    console.log("&&&&&&&", data)
     const res = await fetch('/api/comments/delete', {
         method: "DELETE",
         headers: {
@@ -77,14 +78,21 @@ export default function commentReducer(state = {}, action) {
 
         case ADD_COMMENT:
             newState = {...state}
-            console.log("@@@@@@@@@",action)
+            // console.log("@@@@@@@@@",action)
 
             newState = {
+                [action.comment.id]: action.comment,
                 ...state,
-                [action.comment.id]: action.comment
             }
             return newState
-
+        
+        case DELETE_COMMENT:
+            newState = {};
+            console.log("!!!!!!!!!!!!!",action.comment.comments)
+            action.comment.comments.forEach(comment => (
+                newState[comment.id] = comment
+            ))
+            return newState
         default:
             return state;
     }

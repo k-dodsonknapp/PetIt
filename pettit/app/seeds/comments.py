@@ -7,7 +7,6 @@ def seed_comments():
     comment1 = Comment(
         userId=2,
         postId=3,
-        comment_id=18,
         comment="LOL that got a belly laugh out of me. Cute kitty :)",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -15,7 +14,6 @@ def seed_comments():
     comment2 = Comment(
         userId=1,
         postId=2,
-        comment_id=19,
         comment="Goldens are the best.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -23,7 +21,6 @@ def seed_comments():
     comment3 = Comment(
         userId=6,
         postId=1,
-        comment_id=20,
         comment="This is my favourite comment if the day and it's just 06:00 here.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -143,6 +140,7 @@ def seed_comments():
     comment20 = Comment(
         userId=1,
         postId=1,
+        comment_id=2,
         comment="This is my favourite comment if the day and it's just 06:00 here.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -150,6 +148,7 @@ def seed_comments():
     comment21 = Comment(
         userId=1,
         postId=1,
+        comment_id=1,
         comment="The dog knows how to give respect the King of Jungle !",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -157,6 +156,7 @@ def seed_comments():
     comment22 = Comment(
         userId=2,
         postId=2,
+        comment_id=1,
         comment="That's awesome. Quality content",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -164,6 +164,7 @@ def seed_comments():
     comment23 = Comment(
         userId=3,
         postId=3,
+        comment_id=3,
         comment="This is how half the videos of my toddler end too.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -171,6 +172,7 @@ def seed_comments():
     comment24 = Comment(
         userId=4,
         postId=4,
+        comment_id=4,
         comment="Shhh, I gave him Buddy Biscuits",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -178,6 +180,7 @@ def seed_comments():
     comment25 = Comment(
         userId=5,
         postId=5,
+        comment_id=5,
         comment="this dog is a paid actor",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -185,6 +188,7 @@ def seed_comments():
     comment26 = Comment(
         userId=6,
         postId=6,
+        comment_id=6,
         comment="A bow bow to the Lion king!!!!",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -192,6 +196,7 @@ def seed_comments():
     comment27 = Comment(
         userId=1,
         postId=7,
+        comment_id=7,
         comment="Dog did a Bow Bow.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -199,6 +204,7 @@ def seed_comments():
     comment28 = Comment(
         userId=2,
         postId=8,
+        comment_id=8,
         comment="Probably I'll do the same reactions if ever I saw my dog doing this stuff. Lol",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -206,6 +212,7 @@ def seed_comments():
     comment29 = Comment(
         userId=3,
         postId=9,
+        comment_id=9,
         comment="Tell that to the guy who kicked a bear off his porch protecting his puppies",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -213,6 +220,7 @@ def seed_comments():
     comment30 = Comment(
         userId=4,
         postId=10,
+        comment_id=10,
         comment="Yeah I read that the bear had to go for rabies shots afterwards.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -220,6 +228,7 @@ def seed_comments():
     comment31 = Comment(
         userId=5,
         postId=11,
+        comment_id=11,
         comment="BONK",
         created_at=datetime.today(),
         updated_at=datetime.today(),
@@ -228,20 +237,22 @@ def seed_comments():
         userId=6,
         postId=12,
         comment="I died after the thud",
+        comment_id=12,
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment33 = Comment(
         userId=1,
         postId=13,
+        comment_id=13,
         comment="I smell bs, how did you write that comment then?",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
-
     comment34 = Comment(
         userId=2,
         postId=8,
+        comment_id=14,
         comment="RIP 🙏",
         created_at=datetime.today(),
         updated_at=datetime.today(),

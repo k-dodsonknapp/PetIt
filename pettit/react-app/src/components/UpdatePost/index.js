@@ -7,20 +7,17 @@ const UpdatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const postId = useParams();
-    console.log("postId",postId?.postId)
+    console.log("postId",postId)
     const userId = useSelector(state => state?.session?.user);
-    const post = useSelector(state => state?.post);
+    const post = useSelector(state => state?.post)[postId.postId];
+    console.log("POST", post)
 
-    const [title, setTitle] = useState();
-    const [body, setBody] = useState();
-    const [image, setImage] = useState();
+    const [title, setTitle] = useState(post.title);
+    const [body, setBody] = useState(post.body);
+    const [image, setImage] = useState(post.image);
     const [showPostForm, setShowPostForm] = useState(true)
     const [showImgForm, setShowImgForm] = useState(false)
 
-    // const handleEdit = (e) => {
-    //     e.preventDefault();
-
-    // }
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
@@ -29,8 +26,10 @@ const UpdatePost = () => {
             "userId": userId.id,
             "title": title,
             "body": body,
-            "image": image
+            "image": image,
+            "updated_at": new Date()
         }
+        console.log("!!!!!!!!!", newPost)
         dispatch(getAllPosts())
         dispatch(updateAPost(newPost));
         history.push('/posts/main')

@@ -9,7 +9,7 @@ import * as sessionActions from '../store/session';
 const NavBar = () => {
 
   const dispatch = useDispatch();
-  const history = useHistory(); 
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState()
 
   const openMenu = () => {
@@ -45,10 +45,15 @@ const NavBar = () => {
               <li>
                 <button id='dropdown' onClick={openMenu}>
                   <div className='dropdown-text'>
-                    Open Menu
-                  </div>
-                  <div className='dropdown-arrow'>
-                    🔽
+                    <div className='home-icon'>
+                      <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' />
+                    </div>
+                    <div className='home-text'>
+                      Home
+                    </div>
+                    <div className='down-arrow'>
+                      <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" />
+                    </div>
                   </div>
                 </button>
                 {showMenu && (
@@ -61,8 +66,9 @@ const NavBar = () => {
                           </li>
                         </div>
                       </NavLink>
-                      <button onClick={handleClick} className='authButton'>Demo</button>
-
+                        <li className='dropdown-btns'>
+                          <button onClick={handleClick} className='authButton'>Demo</button>
+                        </li>
                       <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none', color: "black" }}>
                         <div className='dropdown-btns'>
                           <li>
@@ -99,7 +105,7 @@ const NavBar = () => {
                 </NavLink>
               </li> */}
               <li>
-                <NavLink to='/posts/new' exact={true} activeClassName='active'>
+                <NavLink to='/posts/new' className='idk' exact={true} activeClassName='active'>
                   New Post
                 </NavLink>
               </li>

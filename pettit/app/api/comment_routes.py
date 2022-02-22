@@ -19,6 +19,16 @@ def get_all_comments(id):
     return {"comments" : [comment.to_dict() for comment in comments]}
 
 
+# @comment_routes.route()
+
+@comment_routes.route('/comment/<int:id>')
+def comment_on_comment(id):
+
+    comment_on_comment = Comment.query.filter(Comment.comment_id == id).all()
+
+    return {'comment_on_comment': [comment.to_dict() for comment in comment_on_comment]}
+
+
 @comment_routes.route('/new', methods=["POST"])
 def new_comment():
     data = request.json
@@ -42,6 +52,12 @@ def new_comment():
 @comment_routes.route('/delete', methods=["DELETE"])
 def delete_comment():
     data = request.json
-    id = data["id"]
-    comment = Comment.query.get(id)
-    return {}
+    print("^^^^^^^^^^", data['postId'])
+    comment = Comment.query.get(data['id'])
+    # print("((((((((", comment)
+    db.session.delete(comment)
+    db.session.commit()
+
+    comments = Comment.query.filter(Comment.postId == data['postId']).all()
+    return {"comments" : [comment.to_dict() for comment in comments]}
+    # return {"success":"suss"}

@@ -39,14 +39,16 @@ export const getAllPosts = () => async (dispatch) => {
 };
 
 export const getAPost = (id) => async (dispatch) => {
+    // console.log("*********", id)
     const res = await fetch(`/api/posts/${id}`);
     if (res.ok) {
         const data = await res.json();
-        if (data.errors) {
-            return;
-        };
+        // console.log("{{{{{{{{{", data)
+        // if (data.errors) {
+        //     return;
+        // };
         dispatch(getOnePost(data));
-        return data;
+        // return data;
     };
 };
 
@@ -67,7 +69,7 @@ export const addAPost = (data) => async (dispatch) => {
 };
 
 export const updateAPost = (data) => async (dispatch) => {
-    console.log("IDIDIDDD", data)
+    // console.log("IDIDIDDD", data)
     const res = await fetch(`/api/posts/${data.id}/edit`, {
         method: "PUT",
         headers: {
@@ -108,28 +110,24 @@ export default function postReducer(state = {}, action) {
     let newState;
     switch (action.type) {
         case GET_ALL_POSTS:
-            // console.log("I am really lost", action.payload.posts)
-            // console.log({
-            //     ...state,
-            //     list: [...action.payload.posts]
-            // })
             newState = {...state};
+            // console.log("@@@@@@@@@", newState)
             action.payload.posts.map(post => (
                 newState[post.id] = post
             ))
-            // console.log("##########",newState)
             return newState
 
         case GET_ONE_POST:
-            return {
-                // ...state,
-                // list : [...action.post]
+            // console.log("$$$$$$$$$$", action.post.id)
+            newState = {
+                [action.post.id]: action.post
             }
+            return newState
         
         case UPDATE_POST:
             newState = {
                 ...state,
-                [action.post.id]: action.post
+                [action.id]: action.post
             }
             return newState
 

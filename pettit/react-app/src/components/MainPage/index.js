@@ -38,6 +38,12 @@ const MainPage = () => {
                 {posts?.map(post => (
                     <div className="post" key={post.id}>
                         <div className="left-post">
+                            <button>
+                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" />
+                            </button>
+                            <button>
+                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" />
+                            </button>
                         </div>
                         <div className="right-post">
                             <div>
@@ -45,14 +51,24 @@ const MainPage = () => {
                             </div>
                             <a href={`/posts/${post.id}`}>
                                 <div>
-                                    {post.image} <br />
-                                    {post.id}kldsfajlsdkfj
+                                    <div>
+                                        <img className='img-tage' src={`${post.image}`} />
+                                    </div>
                                 </div>
                             </a>
                             {post.userId === user.user.id && (
                                 <div className="button-div">
-                                    <button id={post.id} onClick={handleEdit}>Edit</button>
-                                    <button id={post.id} onClick={handleDelete}>Delete</button>
+                                    <div className="edit-btn">
+                                        <button id={post.id} onClick={handleEdit}>Edit</button>
+                                    </div>
+                                    <div className="delete-btn">
+                                        <button id={post.id} onClick={handleDelete}>Delete</button>
+                                    </div>
+                                </div>
+                            )}
+                            {post.userId !== user.user.id && (
+                                <div>
+
                                 </div>
                             )}
                         </div>
