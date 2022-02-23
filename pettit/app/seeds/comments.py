@@ -139,120 +139,105 @@ def seed_comments():
     )
     comment20 = Comment(
         userId=1,
-        postId=1,
-        comment_id=2,
+        postId=2,
         comment="This is my favourite comment if the day and it's just 06:00 here.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment21 = Comment(
         userId=1,
-        postId=1,
-        comment_id=1,
+        postId=3,
         comment="The dog knows how to give respect the King of Jungle !",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment22 = Comment(
         userId=2,
-        postId=2,
-        comment_id=1,
+        postId=3,
         comment="That's awesome. Quality content",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment23 = Comment(
         userId=3,
-        postId=3,
-        comment_id=3,
+        postId=1,
         comment="This is how half the videos of my toddler end too.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment24 = Comment(
         userId=4,
-        postId=4,
-        comment_id=4,
+        postId=17,
         comment="Shhh, I gave him Buddy Biscuits",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment25 = Comment(
         userId=5,
-        postId=5,
-        comment_id=5,
+        postId=16,
         comment="this dog is a paid actor",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment26 = Comment(
         userId=6,
-        postId=6,
-        comment_id=6,
+        postId=15,
         comment="A bow bow to the Lion king!!!!",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment27 = Comment(
         userId=1,
-        postId=7,
-        comment_id=7,
+        postId=14,
         comment="Dog did a Bow Bow.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment28 = Comment(
         userId=2,
-        postId=8,
-        comment_id=8,
+        postId=13,
         comment="Probably I'll do the same reactions if ever I saw my dog doing this stuff. Lol",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment29 = Comment(
         userId=3,
-        postId=9,
-        comment_id=9,
+        postId=12,
         comment="Tell that to the guy who kicked a bear off his porch protecting his puppies",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment30 = Comment(
         userId=4,
-        postId=10,
-        comment_id=10,
+        postId=11,
         comment="Yeah I read that the bear had to go for rabies shots afterwards.",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment31 = Comment(
         userId=5,
-        postId=11,
-        comment_id=11,
+        postId=10,
         comment="BONK",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment32 = Comment(
         userId=6,
-        postId=12,
+        postId=9,
         comment="I died after the thud",
-        comment_id=12,
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment33 = Comment(
         userId=1,
-        postId=13,
-        comment_id=13,
+        postId=8,
         comment="I smell bs, how did you write that comment then?",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
     comment34 = Comment(
         userId=2,
-        postId=8,
-        comment_id=14,
+        postId=7,
         comment="RIP 🙏",
         created_at=datetime.today(),
         updated_at=datetime.today(),

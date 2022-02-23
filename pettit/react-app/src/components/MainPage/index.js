@@ -1,35 +1,32 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
-import { deleteAPost, getAllPosts, updateAPost } from "../../store/posts";
+import { deleteAPost, getAllPosts } from "../../store/posts";
 import './post.css'
 
 const MainPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const posts = useSelector(state => Object.values(state.post))
-    // console.log("$$$$$$$$$$$$$",posts)
     const user = useSelector(state => state.session)
-    // const comments = useSelector(state => state.comments)
-    // console.log("@@@@@@@@", user)
 
     useEffect(() => {
         dispatch(getAllPosts());
     }, [dispatch])
 
-    const handleDelete = (e) => {
+    const handleDelete = (postId) => async(e) => {
+        console.log("########", postId)
         e.preventDefault();
-        const id = { "id": +e.target.id }
+        const id = { "id": +postId}
         dispatch(deleteAPost(id))
         dispatch(getAllPosts())
         dispatch(getAllComments(id.id))
     }
 
-    const handleEdit = (e) => {
-        const id = e.target.id
-        // dispatch(getAPost(id))
-        history.push(`/posts/${id}/edit`)
+    const handleEdit = (postId) => async(e) => {
+        e.preventDefault();
+        history.push(`/posts/${postId}/edit`)
     }
 
     return (
@@ -39,10 +36,10 @@ const MainPage = () => {
                     <div className="post" key={post.id}>
                         <div className="left-post">
                             <button>
-                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" />
+                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote"/>
                             </button>
                             <button>
-                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" />
+                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote"/>
                             </button>
                         </div>
                         <div className="right-post">
@@ -52,17 +49,17 @@ const MainPage = () => {
                             <a href={`/posts/${post.id}`}>
                                 <div>
                                     <div>
-                                        <img className='img-tage' src={`${post.image}`} />
+                                        <img className='img-tage' src={`${post.image}`} alt="post"/>
                                     </div>
                                 </div>
                             </a>
                             {post.userId === user.user.id && (
                                 <div className="button-div">
                                     <div className="edit-btn">
-                                        <button id={post.id} onClick={handleEdit}>Edit</button>
+                                         <i onClick={handleEdit(post?.id)} className="fa-solid fa-pen-to-square"></i>
                                     </div>
                                     <div className="delete-btn">
-                                        <button id={post.id} onClick={handleDelete}>Delete</button>
+                                         <i onClick={handleDelete(post?.id)} className="fa-solid fa-trash"></i>
                                     </div>
                                 </div>
                             )}

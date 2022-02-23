@@ -10,6 +10,7 @@ const NavBar = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  // const user = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState()
 
   const openMenu = () => {
@@ -28,7 +29,7 @@ const NavBar = () => {
 
   const handleClick = async (e) => {
     await dispatch(sessionActions.login('demo@aa.io', 'password'))
-    history.push('/home')
+    history.push('/posts/main')
   }
 
   return (
@@ -39,20 +40,20 @@ const NavBar = () => {
             <div className='logo-home'>
               <li>
                 <NavLink to='/posts/main' exact={true} activeClassName='active'>
-                  Home
+                  <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo'/>
                 </NavLink>
               </li>
               <li>
                 <button id='dropdown' onClick={openMenu}>
                   <div className='dropdown-text'>
                     <div className='home-icon'>
-                      <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' />
+                      <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' alt='Home' />
                     </div>
                     <div className='home-text'>
                       Home
                     </div>
                     <div className='down-arrow'>
-                      <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" />
+                      <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt='add post' />
                     </div>
                   </div>
                 </button>
@@ -106,7 +107,7 @@ const NavBar = () => {
               </li> */}
               <li>
                 <NavLink to='/posts/new' className='idk' exact={true} activeClassName='active'>
-                  New Post
+                New Post<i className="fa-light fa-plus"></i>
                 </NavLink>
               </li>
               <li>

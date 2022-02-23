@@ -2,7 +2,7 @@ const GET_ALL_POSTS = '/posts/';
 const GET_ONE_POST = '/posts/:id';
 const ADD_POST = '/posts/new';
 const UPDATE_POST = '/posts/edit';
-const DELETE_POST = '/posts/delete'
+const DELETE_POST = '/posts/delete';
 
 const getPosts = (posts) => ({
     type: GET_ALL_POSTS,

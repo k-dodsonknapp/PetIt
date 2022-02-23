@@ -2,26 +2,84 @@
 .posts {
     display: flex;
     justify-content: flex-start;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     border-radius: 4px;
     margin: 100px 0px 10px;
-    width: 96%;
-    height: 35vh;
+    width: 400px;
+    height: 325px;
     background-color: white;
 }
 
+.newCommentEditForm {
+    /* border: 1px solid red; */
+    height: 65px;
+    width: 200px;
+}
+
+.deleteEditBtn {
+    display: flex;
+    justify-content: flex-end;
+    /* float: right; */
+    
+}
+
+.img-tag {
+    margin-left: 40px;
+    border-radius: 4px;
+    
+}
+
+.btnsDiv {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: flex-end;
+}
+
+.comment .btnsDiv {
+    display: flex;
+}
+
+.comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid red;
+    margin: 10px 2px;
+    font-size: 12px;
+}
+.comment_on_comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: right;
+}
+
+.comments button {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .comments {
-    height: 100px;
-    width: 24vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    width: 400px;
     background-color: white;
     border: 1px black solid;
 }
 
-.main-feed-container {
+.main-feed-containers {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     margin: 0px 0px;
     width: 25vw;
+}
+
+.post-body {
+    margin: 15px 0px 10px;
+    border: 1px solid green;
+    font-size: 11px;
 }

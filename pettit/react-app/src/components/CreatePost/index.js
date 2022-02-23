@@ -15,7 +15,8 @@ const CreatePost = () => {
     const [image, setImage] = useState('');
     const [showPostForm, setShowPostForm] = useState(true)
     const [showImgForm, setShowImgForm] = useState(false)
-
+    const [droppedImg, setDroppedImg] = useState('')
+    console.log(droppedImg)
 
     const handlePostSubmit = (e) => {
         e.preventDefault();
@@ -24,12 +25,16 @@ const CreatePost = () => {
             "title": title,
             "body": body,
             "image": image,
-            "updated_at": new Date(), 
+            "updated_at": new Date(),
         }
         dispatch(addAPost(newPost));
         dispatch(getAllPosts())
         history.push('/posts/main')
     }
+
+    useEffect(() => {
+        setDroppedImg()
+    }, [setDroppedImg])
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -49,10 +54,34 @@ const CreatePost = () => {
         setShowPostForm(true)
     }
 
+    // const handleCancel = (e) => {
+    //     e.preventDefault()
+    // }
 
-    const handleCancel = (e) => {
-        e.preventDefault()
-    }
+    // function dropHandler(ev) {
+    //     console.log('File(s) dropped');
+    //     ev.preventDefault();
+
+    //     if (ev.dataTransfer.items) {
+    //         for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+    //             if (ev.dataTransfer.items[i].kind === 'file') {
+    //                 var file = ev.dataTransfer.items[i].getAsFile();
+    //                 console.log('... file[' + i + '].name = ' + file.name);
+    //                 setDroppedImg(file.name)
+    //             }
+    //         }
+    //     } else {
+    //         for (var j = 0; j < ev.dataTransfer.files.length; j++) {
+    //             console.log('... file[' + j + '].name = ' + ev.dataTransfer.files[j].name);
+    //         }
+    //     }
+    // }
+
+    // function dragOverHandler(e) {
+    //     console.log('File(s) in drop zone');
+    //     // Prevent default behavior (Prevent file from being opened)
+    //     e.preventDefault();
+    // }
 
     return (
         <div className="edit-page">
@@ -106,17 +135,22 @@ const CreatePost = () => {
                                     value={title}
                                     onChange={e => setTitle(e.target.value)}
                                     placeholder={"Title"}
+                                    required
                                 />
                             </div>
                             <div className="image-div">
+                                {/* <div id="drop_zone" onDrop={e => dropHandler(e)} onDragOver={e => dragOverHandler(e)}>
+                                    <p>Drag one or more files to upload</p>
+                                </div> */}
                                 <div className="image-label">
                                     <label>Image:</label>
                                 </div>
                                 <input
                                     type="text"
                                     name="image"
-                                    value={image}
+                                    value={droppedImg}
                                     onChange={e => setImage(e.target.value)}
+                                    required
                                 />
                             </div>
                             <div className="btn-div">

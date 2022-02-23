@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Comment, db
+from app.models import Comment, db, Comment_on_comment
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -11,8 +11,8 @@ def get_all_comments(id):
     # id = data["postId"]
 
     comments = Comment.query.filter(Comment.postId == id).all()
-    print("%%%%%%%%%%%%%%",comments)
-    print({"comments" : [comment.to_dict() for comment in comments]})
+    # print("%%%%%%%%%%%%%%",comments)
+    # print({"comments" : [comment.to_dict() for comment in comments]})
      
     # return {"comment" : comments}
     # return {"sent":"message"}
@@ -23,8 +23,10 @@ def get_all_comments(id):
 
 @comment_routes.route('/comment/<int:id>')
 def comment_on_comment(id):
-
-    comment_on_comment = Comment.query.filter(Comment.comment_id == id).all()
+    comment = Comment.query.get(20)
+    # print("@@@@@@@@@@@@@@@@", comment.to_dict())
+    comment_on_comment = Comment_on_comment.query.filter(Comment_on_comment.commentId == id).all()
+    print("!!!!!!!!!!!!!!!!", [comment.to_dict() for comment in comment_on_comment])  
 
     return {'comment_on_comment': [comment.to_dict() for comment in comment_on_comment]}
 
@@ -52,12 +54,32 @@ def new_comment():
 @comment_routes.route('/delete', methods=["DELETE"])
 def delete_comment():
     data = request.json
-    print("^^^^^^^^^^", data['postId'])
+    # print("^^^^^^^^^^", data['postId'])
     comment = Comment.query.get(data['id'])
     # print("((((((((", comment)
     db.session.delete(comment)
     db.session.commit()
 
-    comments = Comment.query.filter(Comment.postId == data['postId']).all()
-    return {"comments" : [comment.to_dict() for comment in comments]}
-    # return {"success":"suss"}
+    # comments = Comment.query.filter(Comment.postId == data['postId']).all()
+    # return {"comments" : [comment.to_dict() for comment in comments]}
+    return {"success": comment.to_dict()}
+
+
+@comment_routes.route('/edit', methods=["PUT"])
+def edit_comment():
+    data = request.json
+
+    userId = data["userId"]
+    postId = data["postId"]
+    comment = data["comment"]
+
+    edited_comment = Comment(
+        userId=userId,
+        postId=postId,
+        comment=comment
+    )
+
+    db.session.add(edited_comment)
+    db.session.commit()
+
+    return edited_comment.to_dict()

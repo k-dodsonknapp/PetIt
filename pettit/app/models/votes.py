@@ -5,6 +5,7 @@ class Vote(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     vote = db.Column(db.Boolean, nullable=False)
+    vote_count = db.Column(db.Integer, nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
@@ -18,7 +19,6 @@ class Vote(db.Model):
         return {
             'id': self.id,
             'vote': self.vote,
+            'vote_count': self.vote_count,
             'userId': self.userId,
-            'comment_or_post_id': self.comment_or_post_id, 
-            'comment_or_post': self.comment_or_post,
         }

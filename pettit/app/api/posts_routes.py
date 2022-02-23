@@ -12,7 +12,7 @@ def get_all_posts():
     """
     This route will return all of the posts in the database. 
     """
-    posts = Post.query.order_by(Post.created_at.desc()).all()
+    posts = Post.query.order_by(Post.updated_at.desc()).all()
     print("$$$$$$$$$$", posts)
     # print({'posts': [post.to_dict() for post in posts]})
     return {'posts': [post.to_dict() for post in posts]}

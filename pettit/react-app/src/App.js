@@ -41,11 +41,11 @@ function App() {
         {/* <Route path='/posts/' exact={true}>
           <MainPage />
         </Route> */}
-        <ProtectedRoute path='/posts/new' exact={true} >
-          <CreatePost />
-        </ProtectedRoute>
         <ProtectedRoute path='/posts/main' exact={true} >
           <MainPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/new' exact={true} >
+          <CreatePost />
         </ProtectedRoute>
         <ProtectedRoute path='/posts/:postId/edit' exact={true} >
           <UpdatePost />

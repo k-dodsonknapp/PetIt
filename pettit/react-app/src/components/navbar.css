@@ -3,6 +3,11 @@ html {
     padding: 0;
 }
 
+.elephant-logo {
+    height: 30px;
+    width: 40px;
+}
+
 .nav-container {
     background-color: white;
     /* border: 2px solid black; */

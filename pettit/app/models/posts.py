@@ -16,6 +16,7 @@ class Post(db.Model):
     user = db.relationship('User', back_populates='post')
     comment = db.relationship('Comment', back_populates='post')
     vote = db.relationship('Vote', back_populates='post')
+    comment_on_comment = db.relationship('Comment_on_comment', back_populates='post')
 
 
     def to_dict(self):

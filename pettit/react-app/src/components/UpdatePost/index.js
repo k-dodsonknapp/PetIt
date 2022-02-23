@@ -107,6 +107,9 @@ const UpdatePost = () => {
                                     placeholder={"Title"}
                                 />
                             </div>
+                            <div  className="edit-image">
+                                    <img className="img-tage" src={image} alt="edited"/>
+                                </div>
                             <div className="image-div">
                                 <div className="image-label">
                                     <label>Image:</label>
