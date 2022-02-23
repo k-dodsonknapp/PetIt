@@ -9,7 +9,8 @@ const UpdatePost = () => {
     const postId = useParams();
     console.log("postId",postId)
     const userId = useSelector(state => state?.session?.user);
-    const post = useSelector(state => state?.post)[postId.postId];
+    // const post = useSelector(state => state?.post.list)[postId.postId];
+    const post = useSelector(state => state?.post.list.filter(post => post.id === +postId.postId)[0]);
     console.log("POST", post)
 
     const [title, setTitle] = useState(post.title);

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { addNewComment, deleteAComment, getAllComments, updateComment } from "../../store/comments";
-import { getAPost } from "../../store/posts";
+import { getAllPosts } from "../../store/posts";
 import './onePost.css'
 
 
@@ -10,9 +10,12 @@ const OnePost = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const id = useParams().postId;
+    const id = +useParams().postId;
     console.log("@@@@@@@@", id)
-    const posts = useSelector(state => Object.values(state.post).filter(post => post.id === +id))
+    // const posts = useSelector(state => Object.values(state.post).filter(post => post.id === +id))
+    // const posts = useSelector(state => state.post.filter(post => post.id === +id))
+    const posts = useSelector(state => state.post.list.filter(post => post.id === id));
+    console.log("@@@@@@", posts)
     const user = useSelector(state => state.session.user)
     const comment = useSelector(state => Object.values(state.comments))
 
@@ -21,6 +24,8 @@ const OnePost = () => {
     const [newComment, setNewComment] = useState('')
     const [commentToEdit, setCommentToEdit] = useState('')
     const [showBtns, setShowBts] = useState(true)
+    const [commentId, setCommentId] = useState(0)
+    console.log("(((((((((((((((", commentId)
     // const [editedComment, setEditedComment] = useState('')
 
     useEffect(() => {
@@ -28,7 +33,7 @@ const OnePost = () => {
     }, [dispatch, id])
 
     useEffect(() => {
-        dispatch(getAPost(+id))
+        dispatch(getAllPosts())
     }, [dispatch, id])
 
 
@@ -58,11 +63,12 @@ const OnePost = () => {
     const handleEditedComment = (e) => {
         e.preventDefault();
         const editComment = {
+            "id": +commentId,
             'userId': user.id,
             'postId': id,
             "comment": commentToEdit
         }
-        console.log("EEEEEEEEEEEEEE", editComment)
+        console.log("EEEEEEEEEEEEEE", +commentId)
         dispatch(updateComment(editComment))
         dispatch(getAllComments(+id))
         setShowCommentEditForm(false)
@@ -85,8 +91,9 @@ const OnePost = () => {
         history.push('/posts/main')
     }
 
-    const handleEditComment = (body) => async (e) => {
+    const handleEditComment = (body, commId) => async (e) => {
         e.preventDefault();
+        setCommentId(commId)
         if (showCommentEditForm === false || showCommentForm === true) {
             setShowCommentEditForm(true)
             setShowCommentForm(false)
@@ -159,7 +166,7 @@ const OnePost = () => {
                                     onChange={e => setCommentToEdit(e.target.value)}
                                     required
                                 />
-                                <button onClick={handleEditedComment}>Submit</button>
+                                <button id={comment.id} onClick={handleEditedComment}>Submit</button>
                             </form>
                         </div>
                     )}
@@ -174,7 +181,7 @@ const OnePost = () => {
                                         {showBtns && (
                                             <div className="btnsDiv">
                                                 <button id={comment?.id} onClick={handleCommentDelete}>Delete</button>
-                                                <button id={comment?.id} onClick={handleEditComment(comment?.comment)}>Edit</button>
+                                                <button id={comment?.id} onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button>
                                             </div>
                                         )}
                                     </div>

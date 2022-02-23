@@ -12,20 +12,20 @@ def get_all_posts():
     """
     This route will return all of the posts in the database. 
     """
-    posts = Post.query.order_by(Post.updated_at.desc()).all()
+    posts = Post.query.all()
     print("$$$$$$$$$$", posts)
-    # print({'posts': [post.to_dict() for post in posts]})
+    print({'posts': [post.to_dict() for post in posts]})
     return {'posts': [post.to_dict() for post in posts]}
 
 
-@post_routes.route('/<int:id>')
-def get_one_post(id):
-    # data = request.json
-    # print("backend id", id)
-    post = Post.query.get(id)
-    print("@@@@@@@@@@@@@", post.to_dict())
-    # return post.to_dict()
-    return post.to_dict()
+# @post_routes.route('/<int:id>')
+# def get_one_post(id):
+#     # data = request.json
+#     # print("backend id", id)
+#     post = Post.query.get(id)
+#     print("@@@@@@@@@@@@@", post.to_dict())
+#     # return post.to_dict()
+#     return post.to_dict()
 
 
 @post_routes.route('/new', methods=["POST"])
@@ -88,14 +88,15 @@ def edit_post(id):
 def delete_post():
     data = request.json
     id = data["id"]
+    print("########", id)
     post = Post.query.get((id))
-    print("########", post)
     post_comments = Comment.query.filter(Comment.postId == id).all()
     for comment in post_comments:
         db.session.delete(comment)
 
     db.session.delete(post)
     db.session.commit()
-    posts = Post.query.all()
-    # print({'posts': [post.to_dict() for post in posts]})
-    return {'posts': [post.to_dict() for post in posts]}
+    return post.to_dict()
+    # posts = Post.query.all()
+    # # print({'posts': [post.to_dict() for post in posts]})
+    # return {'posts': [post.to_dict() for post in posts]}

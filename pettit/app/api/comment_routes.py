@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Comment, db, Comment_on_comment
+from app.models import Comment, db
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -69,17 +69,24 @@ def delete_comment():
 def edit_comment():
     data = request.json
 
-    userId = data["userId"]
-    postId = data["postId"]
-    comment = data["comment"]
+    print("#########", data['id'])
 
-    edited_comment = Comment(
-        userId=userId,
-        postId=postId,
-        comment=comment
-    )
+    comment = Comment.query.get(data['id'])
 
-    db.session.add(edited_comment)
+    comment.userId = data["userId"]
+    comment.postId = data["postId"]
+    comment.comment = data["comment"]
+
+    # edited_comment = Comment(
+    #     userId=userId,
+    #     postId=postId,
+    #     comment=comment
+    # )
+
+    # db.session.add(edited_comment)
     db.session.commit()
 
-    return edited_comment.to_dict()
+    comments = Comment.query.filter(Comment.postId == data['postId']).all()
+    print("PPPPPPPPPPP", [comment.to_dict() for comment in comments])
+
+    return comment.to_dict()

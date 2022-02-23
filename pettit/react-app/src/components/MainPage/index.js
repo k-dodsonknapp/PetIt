@@ -8,7 +8,8 @@ import './post.css'
 const MainPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const posts = useSelector(state => Object.values(state.post))
+    const posts = useSelector(state => state.post.list)
+    console.log("%%%%%%%%%", posts )
     const user = useSelector(state => state.session)
 
     useEffect(() => {

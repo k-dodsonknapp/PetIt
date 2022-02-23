@@ -77,13 +77,14 @@ export const updateComment = data => async (dispatch) => {
     })
     if (res.ok) {
         const comment = await res.json();
+        console.log("@@@@@@@@@@@@@@@@", data)
         dispatch(updateAComment(comment));
         return comment;
     }
 
 }
 
-export default function commentReducer(state = {}, action) {
+export default function commentReducer(state = [], action) {
     
     let newState;
 
@@ -112,24 +113,18 @@ export default function commentReducer(state = {}, action) {
             return newState
         
         case DELETE_COMMENT:
-            // console.log("2222222", state)
-            // console.log("!!!!!!!!!", action.comment.success.id)
             newState = {...state};
-            // console.log("@@@@@@@@@@", newState)
-
-            // newState = newState.omit(newState, action.comment.success.id);
             delete newState[action.comment.success.id]
-            // action.comment.comments.forEach(comment => (
-            //     newState[comment.id] = comment
-            // ))
             return newState
 
         case UPDATE_COMMENT:
-            console.log("@@@@@@@", state)
-            newState = {
-                ...state,
-                [action.id]: action.comment
-            }
+            newState = {...state}
+            let newArr = Object.values(newState)
+            newArr.forEach(comment => {
+                if (comment.id === action.comment.id) {
+                    newState[action.comment.id] = action.comment
+                }
+            })
             return newState
         default:
             return state;

@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .posts import seed_posts, undo_posts
 from .users import seed_users, undo_users
 from .comments import seed_comments, undo_comments
-from .comment_on_comment import seed_comment_on_comments, undo_comment_on_comments
+# from .comment_on_comment import seed_comment_on_comments, undo_comment_on_comments
 from .votes import seed_votes, undo_seed_votes
 
 # Creates a seed group to hold our commands
@@ -17,7 +17,7 @@ def seed():
     # Add other seed functions here
     seed_posts()
     seed_comments()
-    seed_comment_on_comments()
+    # seed_comment_on_comments()
     seed_votes()
 
 
@@ -28,5 +28,5 @@ def undo():
     # Add other undo functions here
     undo_posts()
     undo_comments()
-    undo_comment_on_comments()
+    # undo_comment_on_comments()
     undo_seed_votes()
