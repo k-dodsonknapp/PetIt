@@ -12,6 +12,7 @@ import MainPage from './components/MainPage';
 import UpdatePost from './components/UpdatePost';
 import CreatePost from './components/CreatePost';
 import OnePost from './components/OnePost';
+import SplashPage from './components/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,15 +33,15 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+          <SplashPage />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        {/* <Route path='/posts/' exact={true}>
-          <MainPage />
-        </Route> */}
         <ProtectedRoute path='/posts/main' exact={true} >
           <MainPage />
         </ProtectedRoute>

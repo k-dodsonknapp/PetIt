@@ -1,4 +1,25 @@
+.errors{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: red;
+    width: 400px;
+    background-color: #eaedf1;
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+    margin-top:10px ;
+    margin-left: 40px;
+}
 
+.errors li {
+    text-decoration: none;
+    margin: 10px 0px;
+}
+
+form{
+    background-color: #eaedf1;
+}
 
 .edit-page {
     /* background-color: red; */
@@ -9,9 +30,9 @@
 }
 
 .form-wrapper {
-    /* border: 1px solid black; */
+    border: none;
     width: 35vw;
-    margin: 0px 10px;
+    margin: 0px 10px 1000px;
 }
 
 .title-div {
@@ -91,15 +112,23 @@ textarea:focus {
 
 }
 
+.btnsss {
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 1px rgba(0, 0, 0, 0.493) solid;
+    border: 1px solid hsl(214, 19%, 93%);
+    background-color: white;
+}
+
 .right-wrapper {
     height: 95vh;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 15vw;
 }
 
 .create-post-title {
     /* border: 1px solid purple; */
-    margin: 150px 0px 0px;
+    margin: 15px 0px 0px;
     display: flex;
     justify-content: space-around;
     background-color: hsl(214, 19%, 93%);
@@ -117,6 +146,7 @@ textarea:focus {
     height: 336px;
     box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918);
     border-radius: 6px;
+    width: 500px;
 
 }
 

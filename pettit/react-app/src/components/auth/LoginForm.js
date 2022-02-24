@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -33,6 +33,10 @@ const LoginForm = () => {
     return <Redirect to='/posts/main' />;
   }
 
+  const handleSignUp =(e) => {
+    history.push("/sign-up")
+  }
+
   const handleClick = async (e) => {
     await dispatch(sessionActions.login('demo@aa.io', 'password'))
     history.push('/posts/main')
@@ -45,7 +49,7 @@ const LoginForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div className='form-wrapper'>
+      <div className='form-wrapperss'>
 
         <div className='email'>
           <label htmlFor='email'>Email</label>
@@ -57,7 +61,7 @@ const LoginForm = () => {
             onChange={updateEmail}
           />
         </div>
-        <div>
+        <div className='email'>
           <label htmlFor='password'>Password</label>
           <input
             name='password'
@@ -66,10 +70,11 @@ const LoginForm = () => {
             value={password}
             onChange={updatePassword}
           />
-          <div>
-          <button onClick={handleClick} className='authButton'>Demo</button>
-          <button type='submit'>Login</button>
           </div>
+          <div id='buttons'>
+            <button className="btn" onClick={handleClick}>Demo</button>
+            <button className="btn" type='submit'>Login</button>
+            <button className="btn" type='submit' onClick={handleSignUp}>Sign Up</button>
         </div>
       </div>
     </form>

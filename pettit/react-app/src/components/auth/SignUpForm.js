@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './signUpForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -11,6 +12,16 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const errors = []
+    if(username.length <= 5) errors.push("Username must have a length of five or more")
+    if(username.length > 30) errors.push("Username must be less than 30")
+    if((!(email.includes("@"))))errors.push("Must be a valid email.")
+    if(password.length < 5) errors.push("You must have a longer password")
+    if(repeatPassword !== password) errors.push("Passwords don't match")
+    setErrors(errors)
+  }, [username, password, email, password, repeatPassword])
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -39,17 +50,17 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/posts/main' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form className='signupp' onSubmit={onSignUp}>
+      <div className=''>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='email'>
         <label>User Name</label>
         <input
           type='text'
@@ -57,8 +68,8 @@ const SignUpForm = () => {
           onChange={updateUsername}
           value={username}
         ></input>
-      </div>
-      <div>
+      </div >
+      <div className='email'>
         <label>Email</label>
         <input
           type='text'
@@ -67,7 +78,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className='email'>
         <label>Password</label>
         <input
           type='password'
@@ -76,7 +87,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className='email'>
         <label>Repeat Password</label>
         <input
           type='password'
@@ -86,7 +97,9 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <div id='buttons'>
+      <button className="btn" hidden={errors.length > 0 ? true : false} type='submit'>Sign Up</button>
+      </div>
     </form>
   );
 };

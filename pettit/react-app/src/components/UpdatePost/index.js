@@ -7,7 +7,7 @@ const UpdatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const postId = useParams();
-    console.log("postId",postId)
+    console.log("postId", postId)
     const userId = useSelector(state => state?.session?.user);
     // const post = useSelector(state => state?.post.list)[postId.postId];
     const post = useSelector(state => state?.post.list.filter(post => post.id === +postId.postId)[0]);
@@ -18,6 +18,30 @@ const UpdatePost = () => {
     const [image, setImage] = useState(post.image);
     const [showPostForm, setShowPostForm] = useState(true)
     const [showImgForm, setShowImgForm] = useState(false)
+    const [errors, setErrors] = useState([])
+    const [imgErrors, setImgErrors] = useState([])
+
+    useEffect(() => {
+        const err = []
+        if (body.length > 250 || body.length < 5) {
+            err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
+        }
+        if (title.length > 50 || title.length < 3) {
+            err.push("Your post must have a title and cannot be longer than 50 characters.")
+        }
+
+        setErrors(err)
+
+    }, [title, body])
+
+    useEffect(() => {
+        const err = []
+        if (image.length > 100) {
+            err.push('Please use .png, .jpg, or .jpeg file type')
+        }
+        setImgErrors(err)
+
+    }, [image])
 
 
     const handleEditSubmit = (e) => {
@@ -65,6 +89,15 @@ const UpdatePost = () => {
                     </div>
                     {showPostForm && (
                         <form onSubmit={handleEditSubmit}>
+                            <ul className="errors">
+                                {errors.length > 0 && errors.map(error => {
+                                    return <li className="li" key={error}>
+                                        <div>
+                                            {error}
+                                        </div>
+                                    </li>
+                                })}
+                            </ul>
                             <div className="title-div">
                                 <div className="title-label">
                                     {/* <label>Title:</label> */}
@@ -96,6 +129,16 @@ const UpdatePost = () => {
                     )}
                     {showImgForm && (
                         <form onSubmit={handleEditSubmit}>
+                            <ul className="errors">
+                                {imgErrors.length > 0 && imgErrors.map(error => {
+                                    return <li className="li" key={error}>
+                                        <div>
+                                            {error}
+                                        </div>
+                                    </li>
+
+                                })}
+                            </ul>
                             <div className="title-div">
                                 <div className="title-label">
                                     {/* <label>Title:</label> */}
@@ -108,12 +151,12 @@ const UpdatePost = () => {
                                     placeholder={"Title"}
                                 />
                             </div>
-                            <div  className="edit-image">
-                                    <img className="img-tage" src={image} alt="edited"/>
-                                </div>
+                            <div className="edit-image">
+                                <img className="img-tage" src={image} alt="edited" />
+                            </div>
                             <div className="image-div">
                                 <div className="image-label">
-                                    <label>Image:</label>
+                                    <label>Post an image:</label>
                                 </div>
                                 <input
                                     type="text"

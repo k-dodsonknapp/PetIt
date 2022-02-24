@@ -39,8 +39,8 @@ const NavBar = () => {
           <div className='nav-links'>
             <div className='logo-home'>
               <li>
-                <NavLink to='/posts/main' exact={true} activeClassName='active'>
-                  <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo'/>
+                <NavLink to='/posts/main' exact={true} activeClassName='active'> 
+                  <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo'/><span>Pettit </span>
                 </NavLink>
               </li>
               <li>
@@ -68,7 +68,7 @@ const NavBar = () => {
                         </div>
                       </NavLink>
                         <li className='dropdown-btns'>
-                          <button onClick={handleClick} className='authButton'>Demo</button>
+                          <button id='demo' onClick={handleClick} className='authButton'>Demo</button>
                         </li>
                       <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none', color: "black" }}>
                         <div className='dropdown-btns'>

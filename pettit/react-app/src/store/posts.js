@@ -1,5 +1,5 @@
 const GET_ALL_POSTS = '/posts/';
-const GET_ONE_POST = '/posts/:id';
+
 const ADD_POST = '/posts/new';
 const UPDATE_POST = '/posts/edit';
 const DELETE_POST = '/posts/delete';
@@ -9,10 +9,6 @@ const getPosts = (posts) => ({
     posts,
 });
 
-const getOnePost = (post) => ({
-    type: GET_ONE_POST,
-    post,
-});
 
 const addPost = (post) => ({
     type: ADD_POST,
@@ -120,7 +116,7 @@ export default function postReducer(state = initialState, action) {
             return {
 
                 ...state,
-                list:[...action.posts.posts],
+                list: [...action.posts.posts],
             }
 
         // case GET_ONE_POST:
@@ -128,14 +124,26 @@ export default function postReducer(state = initialState, action) {
         //         // ...state,
         //         // list : [...action.post]
         //     }
-        
+
         case UPDATE_POST:
-            newState = {
-                ...state,
-                [action.id]: action.post
-            }
+            console.log("############", state.list)
+            console.log("44444444444444", action.post)
+            newState = {}
+            let newwArr = [...state.list]
+            newwArr.forEach(post => {
+                if (post.id === action.post.id) {
+                    newState[action.post.id] = action.post
+                }
+            })
+            // console.log("111111111", newState)
+            // newState = {
+            //     ...state,
+            //     [action.id]: action.post
+            // }
             return newState
         case ADD_POST:
+            console.log("555555555555",state)
+            console.log("000000000000",action)
             newState = {
                 ...state,
                 [action.post.id]: {

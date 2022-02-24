@@ -4,6 +4,9 @@
     justify-content: center;
     width: 99vw;
     background-color: #dae0e6;
+    background-image: url('https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/summer-background-abstract-background-wallpaper-use-for-presentation_HDDYoJOhMg_thumb.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main-feed-container {
@@ -11,13 +14,13 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0px 0px;
+    margin: 0px 20px;
     width: 25vw;
 }
 
 .img-tage{
-    height: 200px;
-    width: 20vw;
+    height: 250px;
+    width: 350px;
 }
 
 .edit-image {
@@ -32,22 +35,49 @@
     box-shadow: 0px 0px 4px 3px rgba(216, 214, 214, 0.918);
     box-shadow: 3px;
     border-radius: 4px;
-    margin: 20px 0px 1px;
-    width: 375px;
-    height: 280px;
+    margin: 20px 100px 1px;
+    width: 420px;
+    height: 350px;
     background-color: white;
 }
 
 .right-container {
     display: flex;
     flex-direction: column;
-    border: 1px solid #dae0e6;
+    /* border: 1px solid #dae0e6; */
     border-radius: 4px;
     height: 150vh;
     width: 15vw;
     margin: 20px 10px;
-    background-color:  #dae0e6;
+    /* background-color:  #dae0e6; */
 }
+
+.comm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: ; */
+}
+
+.create a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* text-decoration: none; */
+    color: gray;
+}
+
+.links {
+    display: flex;
+    margin-top: 125px;
+    margin-right: 20px;
+    flex-direction: flex-start;
+}
+
+.links a {
+    margin-right: 20px;
+}
+
 
 .left-post {
     display: flex;
@@ -99,6 +129,7 @@
 
 .create {
     display: flex;
+    flex-direction: column;
     height: 20vh;
     width: 100%;
     box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918);
@@ -112,11 +143,23 @@
     text-decoration: none;
 }
 
+.button-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-div .edit-btn,
+.button-div .delete-btn {
+    margin-right: 10px;
+}
+
 .button-div button {
     display: flex;
+    /* justify-content: flex-end; */
     background-color: white;
     border: transparent;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .left-post img {

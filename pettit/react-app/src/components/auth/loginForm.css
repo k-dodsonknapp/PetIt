@@ -1,14 +1,60 @@
-.form-wrapper {
+
+
+
+
+
+.form-wrapperss {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+    height: 96.8vh;
+    width: 100vw;
+    background-image: url('https://happydogclipsandkennels.files.wordpress.com/2019/08/happy-dog-country-clips-and-kennels-happy-dog-photos-1.png?w=1280&h=853&crop=1');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .loginForm {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid green;
+    /* border: 1px solid green; */
+}
+
+.login-btns {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.email {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    color: white;
+    /* border: 1px solid red; */
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.email label {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.email input{
+    /* background-color: red; */
+    height: 30px;
+    border-radius: 20px;
+}
+
+.email label {
+    /* display: flex; */
+    justify-content: flex-start;
+    margin-right: 20px;
 }

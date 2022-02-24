@@ -21,4 +21,6 @@ class Vote(db.Model):
             'vote': self.vote,
             'vote_count': self.vote_count,
             'userId': self.userId,
+            'comment_id': self.comment_id,
+            'post_id': self.post_id,
         }

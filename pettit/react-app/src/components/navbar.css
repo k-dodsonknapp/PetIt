@@ -148,6 +148,23 @@ html {
 
 .dropdown-btns{
     font-size: 14px;
-    border: 1px solid red;
-    color: rgb(206, 205, 205);
+    /* border: 1px solid red; */
+    color: rgb(31, 31, 31);
+    padding: 20px 0px;
+}
+
+#demo {
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 1px rgba(0, 0, 0, 0.493) solid;
+    /* border: 1px solid hsl(214, 19%, 93%); */
+    background-color: white;
+}
+
+#logoutbutton {
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 1px rgba(0, 0, 0, 0.493) solid;
+    /* border: 1px solid hsl(214, 19%, 93%); */
+    background-color: white;
 }

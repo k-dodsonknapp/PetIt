@@ -134,8 +134,8 @@ const OnePost = () => {
                             {posts[0]?.body}
                         </div>
                         <div className="button-div">
-                            <button id={"posts.id"} onClick={handleHome}>Home</button>
-                            <button id={"posts.id"} onClick={handleShowCommentForm}>Comment</button>
+                            <button id="post-btn" onClick={handleHome}>Home</button>
+                            <button id="post-btn" onClick={handleShowCommentForm}>Comment</button>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@ const OnePost = () => {
                                     onChange={e => setNewComment(e.target.value)}
                                     required
                                 />
-                                <button onClick={handleNewComment}>Submit</button>
+                                <button id="post-btn" onClick={handleNewComment}>Submit</button>
                             </form>
                         </div>
                     )}
@@ -180,8 +180,8 @@ const OnePost = () => {
                                     <div>
                                         {showBtns && (
                                             <div className="btnsDiv">
-                                                <button id={comment?.id} onClick={handleCommentDelete}>Delete</button>
-                                                <button id={comment?.id} onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button>
+                                                <button id={comment?.id} className="btnsss" onClick={handleCommentDelete}>Delete</button>
+                                                <button id={comment?.id} className='btnsss' onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button>
                                             </div>
                                         )}
                                     </div>
