@@ -23,7 +23,7 @@ src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.s
  React | Redux | Flask | Postgres |SQLAlchemy | Alembic | CSS | Git | Node.js | NPM | HTML / JSX | Heroku
 
 ## Installation
-To install EDC Gear on your local machine please clone the project repository.
+To install Petit on your local machine please clone the project repository.
 
 1 ) `git clone https://github.com/k-dodsonknapp/PetIt.git`
 
