@@ -21,7 +21,7 @@ export default function votesReducer (state = [], action) {
         case GET_POST_VOTES:
             newState = {...state}
             action.votes.post_votes.map(vote => {
-                newState[vote.post_id] = vote
+                return newState[vote.post_id] = vote
             })
             return newState
         default:

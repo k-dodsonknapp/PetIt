@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
-import { getPostVotes } from "../../store/votes";
+// import { getPostVotes } from "../../store/votes";
 import './post.css'
 
 const MainPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const posts = useSelector(state => state.post.list)
-    const votes = useSelector(state => state.votes)
+    // const votes = useSelector(state => state.votes)
     console.log("%%%%%%%%%", posts)
     const user = useSelector(state => state.session)
     const [postId, setPostId] = useState()

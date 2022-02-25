@@ -21,7 +21,7 @@ const SignUpForm = () => {
     if(password.length < 5) errors.push("You must have a longer password")
     if(repeatPassword !== password) errors.push("Passwords don't match")
     setErrors(errors)
-  }, [username, password, email, password, repeatPassword])
+  }, [username, password, email, repeatPassword])
 
   const onSignUp = async (e) => {
     e.preventDefault();

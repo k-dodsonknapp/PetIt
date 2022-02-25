@@ -123,7 +123,7 @@ const UpdatePost = () => {
                             </div>
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
-                                <button id="post-btn">Post Edit</button>
+                                <button disabled={errors.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>
                         </form>
                     )}
@@ -167,7 +167,7 @@ const UpdatePost = () => {
                             </div>
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
-                                <button id="post-btn">Post Edit</button>
+                                <button disabled={errors.length > 0 ? true : false}id="post-btn">Post Edit</button>
                             </div>
                         </form>
                     )}
