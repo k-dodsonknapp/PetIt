@@ -29,10 +29,10 @@ form{
     background-color: #dae0e6;
 }
 
-.form-wrapper {
+.form-wrapperr {
     border: none;
-    width: 35vw;
-    margin: 0px 10px 1000px;
+    /* width: 35vw; */
+    /* margin: 0px 10px 1000px; */
 }
 
 .title-div {
@@ -109,7 +109,7 @@ textarea:focus {
     border: 1px rgba(0, 0, 0, 0.493) solid;
     border: 1px solid hsl(214, 19%, 93%);
     background-color: white;
-
+    cursor: pointer;
 }
 
 .btnsss {
@@ -147,6 +147,7 @@ textarea:focus {
     box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918);
     border-radius: 6px;
     width: 500px;
-
+    margin-right: 10px;
+    margin-top: 60px;
 }
 

@@ -13,6 +13,7 @@ import UpdatePost from './components/UpdatePost';
 import CreatePost from './components/CreatePost';
 import OnePost from './components/OnePost';
 import SplashPage from './components/SplashPage';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -62,6 +63,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute>
+          <PageNotFound />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

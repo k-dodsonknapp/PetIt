@@ -21,6 +21,11 @@ const MainPage = () => {
         // dispatch(getPostVotes(postId))
     }, [dispatch])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
+
     const handleDelete = (postId) => async (e) => {
         console.log("########", postId)
         setPostId(postId)
@@ -42,12 +47,12 @@ const MainPage = () => {
                 {posts?.map(post => (
                     <div className="post" key={post.id}>
                         <div className="left-post">
-                            <button>
+                            {/* <button>
                                 <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
                             </button>
                             <button>
                                 <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
-                            </button>
+                            </button> */}
                         </div>
                         <div className="right-post">
                             <div>
@@ -62,11 +67,11 @@ const MainPage = () => {
                             </a>
                             {post.userId === user.user.id && (
                                 <div className="button-div">
-                                    <div className="edit-btn"><span> Edit </span>
-                                        <i onClick={handleEdit(post?.id)} className="fa-solid fa-pen-to-square"> </i>
+                                    <div className="edit-btn">
+                                        <i onClick={handleEdit(post?.id)} className="fa-solid fa-pen-to-square"> <span> Edit </span> </i>
                                     </div>
-                                    <div className="delete-btn"><span>Delete </span>
-                                        <i onClick={handleDelete(post?.id)} className="fa-solid fa-trash"> </i>
+                                    <div className="delete-btn">
+                                        <i onClick={handleDelete(post?.id)} className="fa-solid fa-trash"> <span> Delete </span> </i>
                                     </div>
                                 </div>
                             )}
@@ -87,7 +92,8 @@ const MainPage = () => {
                 </div>
 
                 <div className="create">
-                    <h4>Developed by Kenneth Dodson-Knapp</h4>
+                    <h4>Developed by:</h4>
+                    <h4>Kenneth Dodson-Knapp</h4>
                     <div className="links">
                         <a href='https://github.com/k-dodsonknapp'>GitHub</a>
                         <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>

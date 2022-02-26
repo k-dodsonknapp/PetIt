@@ -21,13 +21,14 @@
 .img-tage{
     height: 250px;
     width: 350px;
+    border-radius: 4px;
 }
 
 .edit-image {
     display: flex;
     /* border: 1px solid red; */
     width: 280px;
-    margin-left: 125px;
+    margin-left: 75px;
 }
 
 .post {
@@ -71,11 +72,15 @@
     display: flex;
     margin-top: 125px;
     margin-right: 20px;
+    margin-left: 80px;
     flex-direction: flex-start;
 }
 
 .links a {
     margin-right: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
@@ -105,6 +110,12 @@
     background-color: rgba(248, 248, 248, 0.513);
 }
 
+.comm h1 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .left-post button:hover {
     cursor: pointer;
 }
@@ -125,6 +136,7 @@
     box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918);
     margin-bottom: 15px;
     background-color: white;
+    color: rgb(104, 97, 97);
 }
 
 .create {
@@ -136,7 +148,8 @@
     border-radius: 4px;
     background-color: white;   
     border: 1px solid rgba(248, 248, 248, 0.513);
-
+    text-align: center;
+    color: rgb(104, 97, 97);
 }
 
 .right-post a {
@@ -151,6 +164,7 @@
 .button-div .edit-btn,
 .button-div .delete-btn {
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .button-div button {

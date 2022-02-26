@@ -82,7 +82,7 @@ html {
     position: absolute;
     /* z-index: 1; */
     top: 23px;
-    left: 178px;
+    left: 214px;
     /* border: 1px solid rgba(0,0,0,.2); */
     border-top: transparent;
     border-radius: 0px 0px 2px 2px;
@@ -98,6 +98,10 @@ html {
     height: 200px;
     border: 1px solid rgb(221, 221, 221);
     border-top: none;
+}
+
+#dropdown:focus {
+    border-color: black;
 }
 
 #dropdown {

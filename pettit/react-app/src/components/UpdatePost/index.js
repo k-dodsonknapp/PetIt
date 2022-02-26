@@ -22,6 +22,10 @@ const UpdatePost = () => {
     const [imgErrors, setImgErrors] = useState([])
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
+    useEffect(() => {
         const err = []
         if (body.length > 250 || body.length < 5) {
             err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
@@ -36,7 +40,7 @@ const UpdatePost = () => {
 
     useEffect(() => {
         const err = []
-        if (image.length > 100) {
+        if (!(image.includes('https') && image.includes('.png') || image.includes('.jpg') || image.includes('.jpeg'))) {
             err.push('Please use .png, .jpg, or .jpeg file type')
         }
         setImgErrors(err)
@@ -78,14 +82,16 @@ const UpdatePost = () => {
         setShowPostForm(true)
     }
 
+
+
     return (
-        <div className="edit-page">
+        <div className="page">
             <div className="form-wrapper">
                 <div className="post-container">
                     <div className="create-post-title">
                         <h3>Create a post</h3>
-                        <button onClick={handleImgTab}>Images</button>
-                        <button onClick={handlePostTab}>Post</button>
+                        <button id="post-btn" onClick={handlePostTab}>Post</button>
+                        <button id="post-btn" onClick={handleImgTab}>Images</button>
                     </div>
                     {showPostForm && (
                         <form onSubmit={handleEditSubmit}>
@@ -123,7 +129,7 @@ const UpdatePost = () => {
                             </div>
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
-                                <button disabled={errors.length > 0 ? true : false} id="post-btn">Post Edit</button>
+                                <button disabled={imgErrors.length > 0 || errors.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>
                         </form>
                     )}
@@ -152,7 +158,9 @@ const UpdatePost = () => {
                                 />
                             </div>
                             <div className="edit-image">
-                                <img className="img-tage" src={image} alt="edited" />
+                                <img className="img-tage" src={image} alt="edited"
+                                    onError={(e) => { e.target.src = 'https://cdn.mamamia.com.au/wp/wp-content/uploads/2017/08/02155632/cost-of-owning-a-dog.jpg'; e.target.onError = null; }}
+                                />
                             </div>
                             <div className="image-div">
                                 <div className="image-label">
@@ -167,7 +175,7 @@ const UpdatePost = () => {
                             </div>
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
-                                <button disabled={errors.length > 0 ? true : false}id="post-btn">Post Edit</button>
+                                <button disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>
                         </form>
                     )}
@@ -175,10 +183,19 @@ const UpdatePost = () => {
             </div>
             <div className="right-container">
                 <div className="communities">
-
+                    <div className="comm">
+                        <h1>WELCOME TO PETIT!</h1>
+                    </div>
                 </div>
 
-                <div className="create"></div>
+                <div className="create">
+                    <h4>Developed by:</h4>
+                    <h4>Kenneth Dodson-Knapp</h4>
+                    <div className="links">
+                        <a href='https://github.com/k-dodsonknapp'>GitHub</a>
+                        <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
+                    </div>
+                </div>
             </div>
         </div>
     )

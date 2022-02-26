@@ -6,14 +6,32 @@
     border-radius: 4px;
     margin: 100px 0px 10px;
     width: 400px;
-    height: 325px;
+    height: auto;
     background-color: white;
 }
 
 .newCommentEditForm {
+    display: flex;
     /* border: 1px solid red; */
-    height: 65px;
+    height: 150px;
     width: 200px;
+}
+.li {
+   overflow-wrap: normal;
+   list-style: none;
+}
+
+.newCommentEditForm form {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    width: 300px;
+    margin-right: 50px;
+    /* margin-right: 500px; */
+    overflow-wrap: break-word;
+    /* border: 1px solid red; */
+    overflow-wrap: break-word;
+
 }
 
 .deleteEditBtn {
@@ -38,8 +56,20 @@
     justify-content: flex-end;
 }
 
+.comm { 
+    overflow-wrap: anywhere;
+    font-weight: 300;
+}
+
 .comment .btnsDiv {
     display: flex;
+}
+
+.comment-form textarea {
+    display: flex;
+    resize: none;
+    width: 300px;
+    border-radius: 6px;
 }
 
 .comment{
@@ -49,7 +79,23 @@
     /* border: 1px solid red; */
     margin: 10px 2px;
     font-size: 12px;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
 }
+
+.error-div {
+    display: flex;
+    width: 250px;
+    background-color: transparent;
+    overflow-wrap:break-word;
+}
+.errors {
+    display: flex;
+    background-color: transparent;
+    font-size: 12px;
+    overflow-wrap: break-word;
+}
+
 .comment_on_comment{
     display: flex;
     flex-direction: row;
@@ -85,9 +131,29 @@
     margin: 15px 0px 10px;
     /* border: 1px solid green; */
     font-size: 11px;
+    overflow-wrap: break-word;
+}
+
+#post-btnsss {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-left: 80px;
+    border: 1px rgba(0, 0, 0, 0.493) solid;
+    border: 1px solid hsl(214, 19%, 93%);
+    background-color: white;
+    cursor: pointer;
+    width: 150px;
 }
 
 .comment-form {
-    background-color: white;
-    border: 2px solid rgba(83, 83, 83, 0.308);
+    display: flex;
+    justify-content: flex-start;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-color: transparent;
+    width: 300px;
+    /* border: 2px solid rgba(83, 83, 83, 0.308); */
 }
