@@ -33,7 +33,6 @@ const CreatePost = () => {
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGZncTEG-HX2dZBenwpx9UTZp6suhNq4XWNA&usqp=CAU..png'
         ]
         const i = Math.floor(Math.random() * 6)
-        console.log(i)
         setImage(images[i])
     }, [])
 

@@ -1,6 +1,5 @@
 
 import { useHistory } from 'react-router-dom';
-// import { signUp } from '../../store/session';
 import './splashPage.css'
 
 const SplashPage = () => {

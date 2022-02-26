@@ -10,15 +10,11 @@ const MainPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const posts = useSelector(state => state.post.list)
-    // const votes = useSelector(state => state.votes)
-    console.log("%%%%%%%%%", posts)
     const user = useSelector(state => state.session)
     const [postId, setPostId] = useState()
-    console.log("%%%%%%%%%%%%%", postId)
 
     useEffect(() => {
         dispatch(getAllPosts());
-        // dispatch(getPostVotes(postId))
     }, [dispatch])
 
     useEffect(() => {
@@ -27,7 +23,6 @@ const MainPage = () => {
 
 
     const handleDelete = (postId) => async (e) => {
-        console.log("########", postId)
         setPostId(postId)
         e.preventDefault();
         const id = { "id": +postId }

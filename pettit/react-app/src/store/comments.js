@@ -1,7 +1,6 @@
 const GET_COMMENTS_FOR_POST = '/comments/:id'
 const ADD_COMMENT = '/comments/new'
 const DELETE_COMMENT = '/comments/delete'
-// const COMMENT_ON_COMMENT = '/comments/comment/:id'
 const UPDATE_COMMENT = 'comments/edit';
 
 
@@ -11,10 +10,8 @@ const getPostComments = (comments) => ({
 });
 
 export const getAllComments = (id) => async (dispatch) => {
-    console.log("^^^^^^", id)
     const res = await fetch(`/api/comments/${id}`);
     const data = await res.json();
-    // console.log("%%%%%%%", data)
     if (res.ok) {
         dispatch(getPostComments(data));
         return data;
@@ -47,7 +44,6 @@ const deleteComment = (comment) => ({
 })
 
 export const deleteAComment = (data) => async (dispatch) => {
-    console.log("&&&&&&&", data)
     const res = await fetch('/api/comments/delete', {
         method: "DELETE",
         headers: {
@@ -77,7 +73,6 @@ export const updateComment = data => async (dispatch) => {
     })
     if (res.ok) {
         const comment = await res.json();
-        console.log("@@@@@@@@@@@@@@@@", data)
         dispatch(updateAComment(comment));
         return comment;
     }
@@ -95,13 +90,6 @@ export default function commentReducer(state = [], action) {
                 newState[comment.id] = comment
             ))
             return newState
-
-        // case COMMENT_ON_COMMENT:
-        //     newState = {...state}
-        //     action.comments.comments_on_comment.map(comment =>(
-        //         newState[comment.id] = comment
-        //     ))
-        //     return newState
 
         case ADD_COMMENT:
             newState = {...state}

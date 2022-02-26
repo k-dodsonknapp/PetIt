@@ -12,11 +12,7 @@ const OnePost = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const id = +useParams().postId;
-    console.log("@@@@@@@@", id)
-    // const posts = useSelector(state => Object.values(state.post).filter(post => post.id === +id))
-    // const posts = useSelector(state => state.post.filter(post => post.id === +id))
     const posts = useSelector(state => state.post.list.filter(post => post.id === id));
-    console.log("@@@@@@", posts)
     const user = useSelector(state => state.session.user)
     const comment = useSelector(state => Object.values(state.comments))
     
@@ -28,19 +24,13 @@ const OnePost = () => {
     const [commentId, setCommentId] = useState(0)
     const [errors, setErrors] = useState([])
     const [errorsEdit, setErrorsEdit] = useState([])
-    console.log("(((((((((((((((", commentId)
     
-    // const [editedComment, setEditedComment] = useState('')
     
     useEffect(() => {
         const err = []
         if (newComment.length > 250 || newComment.length < 5) {
             err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.")
-        }
-        // if (title.length > 50 || title.length < 3) {
-            //     err.push("Your post must have a title and cannot be longer than 50 characters.")
-            // }
-            
+        }  
             setErrors(err)
             
     }, [newComment])
@@ -49,11 +39,7 @@ const OnePost = () => {
         const err = []
         if (commentToEdit.length > 250 || commentToEdit.length < 5) {
             err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.")
-        }
-        // if (title.length > 50 || title.length < 3) {
-            //     err.push("Your post must have a title and cannot be longer than 50 characters.")
-            // }
-            
+        }        
             setErrorsEdit(err)
             
         }, [commentToEdit])
@@ -98,7 +84,6 @@ const OnePost = () => {
             'postId': id,
             "comment": commentToEdit
         }
-        console.log("EEEEEEEEEEEEEE", +commentId)
         dispatch(updateComment(editComment))
         dispatch(getAllComments(+id))
         setShowCommentEditForm(false)
@@ -130,24 +115,9 @@ const OnePost = () => {
         } else {
             setShowCommentEditForm(false)
         }
-        console.log("########", body)
         setCommentToEdit(body)
         setShowBts(false)
-        // if (showCommentEditForm === true) {
-        //     setShowCommentForm(false)
-        // }else {
-        //     setShowCommentForm(true)
-        // }
-        // setShowCommentEditForm(false)
     }
-
-    // const hideEditBtns = (e) => {
-    //     if (showBtns === true){
-    //         setShowBts(false)
-    //     }else {
-    //         setShowBts(true)
-    //     }
-    // }
 
     if (!posts) {
         return (

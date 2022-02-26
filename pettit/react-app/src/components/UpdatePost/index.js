@@ -7,11 +7,8 @@ const UpdatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const postId = useParams();
-    console.log("postId", postId)
     const userId = useSelector(state => state?.session?.user);
-    // const post = useSelector(state => state?.post.list)[postId.postId];
     const post = useSelector(state => state?.post.list.filter(post => post.id === +postId.postId)[0]);
-    console.log("POST", post)
 
     const [title, setTitle] = useState(post.title);
     const [body, setBody] = useState(post.body);
@@ -58,7 +55,6 @@ const UpdatePost = () => {
             "image": image,
             "updated_at": new Date()
         }
-        console.log("!!!!!!!!!", newPost)
         dispatch(getAllPosts())
         dispatch(updateAPost(newPost));
         history.push('/posts/main')
