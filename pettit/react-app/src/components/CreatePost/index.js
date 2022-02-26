@@ -14,7 +14,7 @@ const CreatePost = () => {
     const [image, setImage] = useState('');
     const [showPostForm, setShowPostForm] = useState(true)
     const [showImgForm, setShowImgForm] = useState(false)
-    const [droppedImg, setDroppedImg] = useState('')
+    // const [droppedImg, setDroppedImg] = useState('')
     const [errors, setErrors] = useState([])
     const [imgErrors, setImgErrors] = useState([])
 
@@ -30,9 +30,16 @@ const CreatePost = () => {
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF2jgWbzJwqYqMZxccEs65tAeyRYjrTP9JEw&usqp=CAU.png',
             'https://www.treehugger.com/thmb/r9aSKZpsKqd_0FLO9fYp06GcD3k=/2344x1559/filters:fill(auto,1)/backlit-cheetah-cubs-in-ndutu-conservation-area--tanzania--east-africa-1203982703-fb64f9e943714215b031adc2f8481d60.jpg',
             'https://cdn.mamamia.com.au/wp/wp-content/uploads/2017/08/02155632/cost-of-owning-a-dog.jpg',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGZncTEG-HX2dZBenwpx9UTZp6suhNq4XWNA&usqp=CAU..png'
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGZncTEG-HX2dZBenwpx9UTZp6suhNq4XWNA&usqp=CAU..png',
+            'https://navs.org/wp-content/uploads/bb-plugin/cache/bunny-landscape.jpg',
+            'https://aldf.org/wp-content/uploads/2018/05/lamb-iStock-665494268-16x9-e1559777676675-1200x675.jpg',
+            'https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1145794687.jpg',
+            'https://cms.bbcearth.com/sites/default/files/2021-02/2g24k0k80001000.png',
+            'https://www.sciencenews.org/wp-content/uploads/2018/04/041418_reviews_animals_main.jpg',
+            'https://static01.nyt.com/images/2020/04/13/opinion/13stoneWebnew/13stoneWebnew-mediumSquareAt3X.jpg',
+            'https://images.wsj.net/im-218281?width=1280&size=1.png'
         ]
-        const i = Math.floor(Math.random() * 6)
+        const i = Math.floor(Math.random() * 13)
         setImage(images[i])
     }, [])
 
@@ -42,7 +49,7 @@ const CreatePost = () => {
             err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
         }
         if (title.length > 50 || title.length < 3) {
-            err.push("Your post must have a title and cannot be longer than 50 characters.")
+            err.push("Your post must have a title no longer than 50 characters.")
         }
 
         setErrors(err)
@@ -52,12 +59,18 @@ const CreatePost = () => {
 
     useEffect(() => {
         const err = []
+        if (title.length > 50 || title.length < 3) {
+            err.push("Your post must have a title.")
+        }
         if (!(image.includes('https') && image.includes('.png') || image.includes('.jpg') || image.includes('.jpeg'))) {
             err.push('Please use .png, .jpg, or .jpeg file type')
         }
+        if (body.length > 250 || body.length < 5) {
+            err.push("Your post must have a body.")
+        }
         setImgErrors(err)
 
-    }, [image])
+    }, [image, title, body])
 
 
     const handlePostSubmit = async (e) => {
@@ -146,9 +159,9 @@ const CreatePost = () => {
                                 />
                             </div>
                             <div className="btn-div">
-                                {/* <button onClick={handleCancel}>Cancel</button> */}
+                                {/* <button onClick={handleCancel}>Cancel</button>  disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} */}
                                 {/* {errors.length > 0 && imgErrors > 0 && ( */}
-                                <button disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post</button>
+                                <button onClick={handleImgTab}  id="post-btn">Add Image</button>
                                 {/* )}/ */}
                             </div>
 

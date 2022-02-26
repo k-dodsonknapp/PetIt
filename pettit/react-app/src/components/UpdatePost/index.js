@@ -28,7 +28,7 @@ const UpdatePost = () => {
             err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
         }
         if (title.length > 50 || title.length < 3) {
-            err.push("Your post must have a title and cannot be longer than 50 characters.")
+            err.push("Your post must have a title no longer than 50 characters.")
         }
 
         setErrors(err)
@@ -37,12 +37,18 @@ const UpdatePost = () => {
 
     useEffect(() => {
         const err = []
+        if (title.length > 50 || title.length < 3) {
+            err.push("Your post must have a title.")
+        }
         if (!(image.includes('https') && image.includes('.png') || image.includes('.jpg') || image.includes('.jpeg'))) {
             err.push('Please use .png, .jpg, or .jpeg file type')
         }
+        if (body.length > 250 || body.length < 5) {
+            err.push("Your post must have a body.")
+        }
         setImgErrors(err)
 
-    }, [image])
+    }, [image, title, body])
 
 
     const handleEditSubmit = (e) => {
@@ -125,7 +131,7 @@ const UpdatePost = () => {
                             </div>
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
-                                <button disabled={imgErrors.length > 0 || errors.length > 0 ? true : false} id="post-btn">Post Edit</button>
+                                <button onClick={handleImgTab} id="post-btn">Edit Image</button>
                             </div>
                         </form>
                     )}
@@ -171,6 +177,7 @@ const UpdatePost = () => {
                             </div>
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
+                                <button onClick={handlePostTab} id="post-btn">Edit Post</button>
                                 <button disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>
                         </form>

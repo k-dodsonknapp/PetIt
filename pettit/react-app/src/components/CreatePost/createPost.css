@@ -139,6 +139,7 @@ textarea:focus {
     font-weight: 200;
     font-size: 14px;
     /* margin-left: 20px; */
+    margin-top: 7px;
 }
 
 .post-container {
