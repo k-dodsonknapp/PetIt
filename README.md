@@ -32,6 +32,7 @@ To install Petit on your local machine please clone the project repository.
 3 ) Install dependencies
 
  `pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt`
+ 
 4 ) Create a .env file based on the example with proper settings for your development environment
 
 5 ) Setup your PostgreSQL user, password, database, and make sure it matches your .env file
