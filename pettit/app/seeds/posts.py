@@ -16,7 +16,7 @@ def seed_posts():
         userId=2,
         title="I love my crocodile he is the best",
         body="The body can be as long as the habitat that you house him in",
-        image="https://www.portseattle.org/sites/default/files/styles/detailpageimagesize/public/2020-09/IMG_8307.JPG?itok=6_7x0M6j",
+        image="https://www.portseattle.org/sites/default/files/styles/detailpageimagesize/public/2020-09/IMG_8307.JPG?itok=6_7x0M6j.png",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -24,7 +24,7 @@ def seed_posts():
         userId=3,
         title="I bought three dogs and they are driving me crazy",
         body="Here are the little shits",
-        image="https://www.nps.gov/saan/planyourvisit/images/IMG_0274_5.JPG?maxwidth=1200&maxheight=1200&autorotate=false",
+        image="https://www.nps.gov/saan/planyourvisit/images/IMG_0274_5.JPG?maxwidth=1200&maxheight=1200&autorotate=false.png",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -40,7 +40,7 @@ def seed_posts():
         userId=5,
         title="Is this a lovable creature?",
         body="A picture of a snake",
-        image="https://i.insider.com/5d9247e42e22af25a62dbd38?width=600&format=jpeg&auto=webp",
+        image="https://i.insider.com/5d9247e42e22af25a62dbd38?width=600&format=jpeg&auto=webp.png",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -56,7 +56,7 @@ def seed_posts():
         userId=1,
         title="I am getting tired of thinking",
         body="A post body",
-        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNEk6uMBCMGkXjN5N8z-xdRzB_Bk-i7PBKvg&usqp=CAU",
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNEk6uMBCMGkXjN5N8z-xdRzB_Bk-i7PBKvg&usqp=CAU.png",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -64,7 +64,7 @@ def seed_posts():
         userId=2,
         title="I really need to make sure that I sleep better and longer",
         body="What the hell am I doing here",
-        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMePncPAs43LVV6BncggLSoE3djXOq5VUvCw&usqp=CAU",
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMePncPAs43LVV6BncggLSoE3djXOq5VUvCw&usqp=CAU.png",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -72,7 +72,7 @@ def seed_posts():
         userId=3,
         title="Just one more post after this",
         body="Fust one more",
-        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKMuupCXMYuk_vIVt4FJQo3G2hzs4bZ5MBA&usqp=CAU",
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKMuupCXMYuk_vIVt4FJQo3G2hzs4bZ5MBA&usqp=CAU.png",
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -89,7 +89,7 @@ def seed_posts():
         userId=5,
         title='The Second Post',
         body='The second posts body so it is much longer than the tile section.',
-        image='https://dkt6rvnu67rqj.cloudfront.net/sites/default/files/styles/600x400/public/media/GettyImages-1140964404.jpg?h=411e6550&itok=alcdPeq3',
+        image='https://dkt6rvnu67rqj.cloudfront.net/sites/default/files/styles/600x400/public/media/GettyImages-1140964404.jpg?h=411e6550&itok=alcdPeq3.png',
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -106,7 +106,7 @@ def seed_posts():
         userId=1,
         title='Matt wins another great game',
         body='Another great shot by matthewsatterwhite. STYLES',
-        image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmmIth62vYiPVwz3sIIO2aAuIv-izxJy70Kw&usqp=CAU',
+        image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmmIth62vYiPVwz3sIIO2aAuIv-izxJy70Kw&usqp=CAU.png',
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -131,7 +131,7 @@ def seed_posts():
         userId=4,
         title='Making great seeders is important to test your routes!',
         body='Write random letters is not going to cut it kenneth. I have typing alot of information. Making it pass',
-        image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO3t1XSa6GTWL9HYaCcy0y0ECtSLI4zsGuBA&usqp=CAUAGE',
+        image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO3t1XSa6GTWL9HYaCcy0y0ECtSLI4zsGuBA&usqp=CAUAGE.png',
         created_at=datetime.today(),
         updated_at=datetime.today(),
     )
@@ -140,7 +140,7 @@ def seed_posts():
         userId=5,
         title="Wait, will it pass now?",
         body='After a long week full of upsets. Our hero kenneth finds himself in yet another challenge.',
-        image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdHVgaOVwABex-HctF9VSH-wQcyK8-acy5aA&usqp=CAU',
+        image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdHVgaOVwABex-HctF9VSH-wQcyK8-acy5aA&usqp=CAU.png',
     )
 
     db.session.add(post1)

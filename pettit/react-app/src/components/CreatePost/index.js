@@ -193,7 +193,7 @@ const CreatePost = () => {
                             </div>
                             <div className="edit-image">
                                 <img className="img-tage" src={image} alt="edited"
-                                    onError={(e) => { e.target.src = 'https://cdn.mamamia.com.au/wp/wp-content/uploads/2017/08/02155632/cost-of-owning-a-dog.jpg'; e.target.onError = null; }}
+                                    onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
 
                                 />
                             </div>

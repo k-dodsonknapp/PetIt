@@ -10,13 +10,30 @@ const UpdatePost = () => {
     const userId = useSelector(state => state?.session?.user);
     const post = useSelector(state => state?.post.list.filter(post => post.id === +postId.postId)[0]);
 
-    const [title, setTitle] = useState(post.title);
-    const [body, setBody] = useState(post.body);
-    const [image, setImage] = useState(post.image);
+    const [title, setTitle] = useState(post?.title);
+    const [body, setBody] = useState(post?.body);
+    const [image, setImage] = useState(post?.image);
     const [showPostForm, setShowPostForm] = useState(true)
     const [showImgForm, setShowImgForm] = useState(false)
     const [errors, setErrors] = useState([])
     const [imgErrors, setImgErrors] = useState([])
+
+
+
+    useEffect(() => {
+        if (title) localStorage.setItem("title", title)
+        if (body) localStorage.setItem("body", body)
+        if (image) localStorage.setItem("image", image)
+    }, [dispatch])
+
+    useEffect(() => {
+        const localStorageCaption = localStorage.getItem("title")
+        const localStorageCaptio = localStorage.getItem("body")
+        const localStorageCapti = localStorage.getItem("image")
+        setTitle(localStorageCaption)
+        setBody(localStorageCaptio)
+        setImage(localStorageCapti)
+    }, [])
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -24,10 +41,10 @@ const UpdatePost = () => {
 
     useEffect(() => {
         const err = []
-        if (body.length > 250 || body.length < 5) {
+        if (body?.length > 250 || body?.length < 5) {
             err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
         }
-        if (title.length > 50 || title.length < 3) {
+        if (title?.length > 50 || title?.length < 3) {
             err.push("Your post must have a title no longer than 50 characters.")
         }
 
@@ -37,13 +54,13 @@ const UpdatePost = () => {
 
     useEffect(() => {
         const err = []
-        if (title.length > 50 || title.length < 3) {
+        if (title?.length > 50 || title?.length < 3) {
             err.push("Your post must have a title.")
         }
-        if (!(image.includes('https') && image.includes('.png') || image.includes('.jpg') || image.includes('.jpeg'))) {
+        if (!(image?.includes('https') && image?.includes('.png') || image?.includes('.jpg') || image?.includes('.jpeg'))) {
             err.push('Please use .png, .jpg, or .jpeg file type')
         }
-        if (body.length > 250 || body.length < 5) {
+        if (body?.length > 250 || body?.length < 5) {
             err.push("Your post must have a body.")
         }
         setImgErrors(err)
@@ -91,7 +108,7 @@ const UpdatePost = () => {
             <div className="form-wrapper">
                 <div className="post-container">
                     <div className="create-post-title">
-                        <h3>Create a post</h3>
+                        <h3>Edit a post</h3>
                         <button id="post-btn" onClick={handlePostTab}>Post</button>
                         <button id="post-btn" onClick={handleImgTab}>Images</button>
                     </div>
@@ -161,7 +178,7 @@ const UpdatePost = () => {
                             </div>
                             <div className="edit-image">
                                 <img className="img-tage" src={image} alt="edited"
-                                    onError={(e) => { e.target.src = 'https://cdn.mamamia.com.au/wp/wp-content/uploads/2017/08/02155632/cost-of-owning-a-dog.jpg'; e.target.onError = null; }}
+                                    onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
                                 />
                             </div>
                             <div className="image-div">
@@ -178,7 +195,7 @@ const UpdatePost = () => {
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
                                 <button onClick={handlePostTab} id="post-btn">Edit Post</button>
-                                <button disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post Edit</button>
+                                <button disabled={errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>
                         </form>
                     )}

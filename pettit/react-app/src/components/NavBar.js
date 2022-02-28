@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
@@ -11,6 +11,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState()
+  const session = useSelector(state => state.session.user)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -38,8 +39,8 @@ const NavBar = () => {
           <div className='nav-links'>
             <div className='logo-home'>
               <li>
-                <NavLink to='/posts/main' exact={true} activeClassName='active'> 
-                  <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo'/><span>Pettit </span>
+                <NavLink to='/posts/main' exact={true} activeClassName='active'>
+                  <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo' /><span>Pettit </span>
                 </NavLink>
               </li>
               <li>
@@ -59,23 +60,29 @@ const NavBar = () => {
                 {showMenu && (
                   <ul className='profile-options'>
                     <div className='dropdown-div'>
-                      <NavLink to='/login' exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
-                        <div className='dropdown-btns'>
-                          <li>
-                            Login
-                          </li>
-                        </div>
-                      </NavLink>
+                      {!session && (
+                        <NavLink to='/login' exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
+                          <div className='dropdown-btns'>
+                            <li>
+                              Login
+                            </li>
+                          </div>
+                        </NavLink>
+                      )}
+                      {!session && (
                         <li className='dropdown-btns'>
                           <button id='demo' onClick={handleClick} className='authButton'>Demo</button>
                         </li>
-                      <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none', color: "black" }}>
-                        <div className='dropdown-btns'>
-                          <li>
-                            Sign Up
-                          </li>
-                        </div>
-                      </NavLink>
+                      )}
+                      {!session && (
+                        <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none', color: "black" }}>
+                          <div className='dropdown-btns'>
+                            <li>
+                              Sign Up
+                            </li>
+                          </div>
+                        </NavLink>
+                      )}
                       <div className='dropdown-btns'>
                         <li>
                           <LogoutButton />
@@ -106,7 +113,7 @@ const NavBar = () => {
               </li> */}
               <li>
                 <NavLink to='/posts/new' className='idk' exact={true} activeClassName='active'>
-                New Post<i className="fa-light fa-plus"></i>
+                  New Post<i className="fa-light fa-plus"></i>
                 </NavLink>
               </li>
               <li>

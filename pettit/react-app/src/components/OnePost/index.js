@@ -61,6 +61,12 @@ const OnePost = () => {
         } else {
             setShowCommentForm(false)
         }
+
+        if (showBtns === false) {
+            setShowBts(true)
+        } else {
+            setShowBts(false)
+        }
     }
 
     const handleNewComment = (e) => {
@@ -70,6 +76,9 @@ const OnePost = () => {
             "userId": user.id,
             "postId": id,
             "comment": newComment
+        }
+        if (showBtns === false) {
+            setShowBts(true)
         }
         dispatch(addNewComment(brandNewComment))
         setShowCommentForm(false)
@@ -117,6 +126,18 @@ const OnePost = () => {
         }
         setCommentToEdit(body)
         setShowBts(false)
+    }
+
+    const handleCancel = (e) => {
+        e.preventDefault();
+        setShowCommentForm(false)
+        setShowBts(true)
+    }
+
+    const handleECancel = (e) => {
+        e.preventDefault();
+        setShowCommentEditForm(false)
+        setShowBts(true)
     }
 
     if (!posts) {
@@ -173,6 +194,7 @@ const OnePost = () => {
                                     id="post-btnsss"
                                     onClick={handleNewComment}
                                 >Submit</button>
+                                <button id="post-btnsss" onClick={handleCancel}>Cancel</button>
                                 <ul className="errors">
                                     {errors.length > 0 && errors.map(error => {
                                         return <li className="li" key={error}>
@@ -200,6 +222,7 @@ const OnePost = () => {
                                     disabled={errorsEdit.length > 0 ? true : false}
                                     id="post-btnsss" onClick={handleEditedComment}
                                 >Submit</button>
+                                <button id="post-btnsss" onClick={handleECancel}>Cancel</button>
                                 <ul className="errors">
                                     {errorsEdit.length > 0 && errors.map(error => {
                                         return <li className="li" key={error}>

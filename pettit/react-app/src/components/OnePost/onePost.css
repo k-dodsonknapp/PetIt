@@ -19,6 +19,7 @@
 .li {
    overflow-wrap: normal;
    list-style: none;
+   margin-bottom: 10px;
 }
 
 .newCommentEditForm form {
@@ -114,6 +115,7 @@
     justify-content: center;
     height: auto;
     width: 400px;
+    margin-top: 20px;
     /* background-color: white; */
     /* border: 1px black solid; */
 }
@@ -155,5 +157,6 @@
     align-items: flex-start;
     background-color: transparent;
     width: 300px;
+    margin-bottom: 20px;
     /* border: 2px solid rgba(83, 83, 83, 0.308); */
 }
