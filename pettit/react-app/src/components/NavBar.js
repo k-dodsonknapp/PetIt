@@ -84,9 +84,11 @@ const NavBar = () => {
                         </NavLink>
                       )}
                       <div className='dropdown-btns'>
-                        <li>
-                          <LogoutButton />
-                        </li>
+                        {session && (
+                          <li>
+                            <LogoutButton />
+                          </li>
+                        )}
                       </div>
                     </div>
                   </ul>
@@ -111,14 +113,18 @@ const NavBar = () => {
                   Users
                 </NavLink>
               </li> */}
-              <li>
-                <NavLink to='/posts/new' className='idk' exact={true} activeClassName='active'>
-                  New Post<i className="fa-light fa-plus"></i>
-                </NavLink>
-              </li>
-              <li>
-                <LogoutButton />
-              </li>
+              {session && (
+                <li>
+                  <NavLink to='/posts/new' className='idk' exact={true} activeClassName='active'>
+                    New Post<i className="fa-light fa-plus"></i>
+                  </NavLink>
+                </li>
+              )}
+              {session && (
+                <li>
+                  <LogoutButton />
+                </li>
+              )}
             </div>
           </div>
         </ul>
