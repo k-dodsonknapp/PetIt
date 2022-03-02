@@ -42,6 +42,20 @@
     cursor: pointer;
 }
 
+.btn-div button {
+    color: #929592;
+}
+
+.image-div label {
+    color: #929596;
+}
+
+.image-div input {
+    border: 1px solid #929592;
+    padding: 10px;
+    border-radius: 6px;
+}
+
 .rulz {
     border-top: 1px solid #edeff1;
     padding: 8px;
@@ -171,6 +185,10 @@ textarea:focus {
     width: 15vw;
 }
 
+.create-post-title button {
+    color: #929592;
+}
+
 .create-post-title {
     margin: 15px 0px 0px;
     display: flex;
@@ -187,7 +205,18 @@ textarea:focus {
     padding-bottom: 10px;
 }
 
-
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #929596;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #929596;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #929596;
+  }
 
 .createe a {
     display: flex;
@@ -209,7 +238,7 @@ textarea:focus {
     border-bottom: none;
     text-align: center;
     color: rgb(104, 97, 97);
-    border-radius: ;
+    /* border-radius: ; */
 }
 
 .me {
@@ -225,6 +254,10 @@ textarea:focus {
     border-top: transparent;
     text-align: center;
     color: rgb(104, 97, 97);
+}
+
+.body-label {
+    color: #929596;
 }
 
 .post-container {
