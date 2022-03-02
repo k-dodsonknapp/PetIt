@@ -32,10 +32,18 @@
     word-wrap: break-word;
     margin-bottom: 20px;
 }
+#view-all {
+    width: 85%;
+    border-radius: 20px;
+    height: 30px;
+    color: white;
+    background-color: #0079d3;
+}
 
 .btn {
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
+    margin-right: 15px;
     background-color: transparent;
     /* background-blend-mode: blur(20px); */
     backdrop-filter: blur(5px);

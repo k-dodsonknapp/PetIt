@@ -4,7 +4,7 @@
     justify-content: center;
     width: 99vw;
     background-color: #dae0e6;
-    background-image: url('https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/summer-background-abstract-background-wallpaper-use-for-presentation_HDDYoJOhMg_thumb.jpg');
+    /* background-image: url('https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/summer-background-abstract-background-wallpaper-use-for-presentation_HDDYoJOhMg_thumb.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -37,8 +37,8 @@
     box-shadow: 3px;
     border-radius: 4px;
     margin: 20px 100px 1px;
-    width: 420px;
-    height: 350px;
+    width: 500px;
+    height: 375px;
     background-color: white;
 }
 
@@ -47,17 +47,36 @@
     flex-direction: column;
     /* border: 1px solid #dae0e6; */
     border-radius: 4px;
-    height: 150vh;
-    width: 15vw;
+    height: 1000px;
+    width: 266px;
     margin: 20px 10px;
     /* background-color:  #dae0e6; */
 }
 
 .comm {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
+    height: 1000px;
+    width: 266px;
     /* background-color: ; */
+}
+
+.create-title h2 {
+    display: flex;
+    color: #929596;
+    /* border: 1px  solid red; */
+    padding-top: 40px;
+}
+
+.post-containerr {
+    background-color: #ffffff;
+    height: 336px;
+    box-shadow: 0px 0px 4px 2px rgb(216 214 214 / 92%);
+    border-radius: 6px;
+    width: 600px;
+    margin-right: 10px;
 }
 
 .create a {
@@ -68,12 +87,20 @@
     color: gray;
 }
 
+.links a {
+    margin-bottom: 10px;
+}
+
 .links {
     display: flex;
-    margin-top: 125px;
+    
+    /* margin-top: 125px;
     margin-right: 20px;
-    margin-left: 80px;
-    flex-direction: flex-start;
+    margin-left: 80px; */
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 20px 8px;
 }
 
 .links a {
@@ -127,9 +154,28 @@
     /* background-color: red; */
 }
 
+
+.comm-header {
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+    width: 100%;
+    height: 50px;
+}
+
+.rows {
+    border: 1px solid green;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .communities {
     display: flex;
-    height: 60vh;
+    flex-direction: column;
+    height: 600px;
     width: 100%;
     /* background-color: rgba(248, 248, 248, 0.513); */
     border-radius: 4px;

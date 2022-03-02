@@ -84,7 +84,17 @@ const MainPage = () => {
             <div className="right-container">
                 <div className="communities">
                     <div className="comm">
-                        <h1>WELCOME TO PETIT!</h1>
+                        <div className="comm-header">
+                            <p>Top Communities</p>
+                        </div>
+                        <div className="rows">1</div>
+                        <div className="rows">2</div>
+                        <div className="rows">3</div>
+                        <div className="rows">4</div>
+                        <div className="rows">5</div>
+                        <div className="rows">6</div>
+                        <div className="rows">7</div>
+                        <button id="view-all">Veiw All</button>
                     </div>
                 </div>
 

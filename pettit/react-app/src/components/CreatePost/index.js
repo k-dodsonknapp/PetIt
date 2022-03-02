@@ -115,11 +115,13 @@ const CreatePost = () => {
     return (
         <div className="page">
             <div className="form-wrapperr">
-                <div className="post-container">
+                <div className="create-title">
+                    <h2>Create a Post</h2>
+                </div>
+                <div className="post-containerr">
                     <div className="create-post-title">
-                        <h3>Create a post</h3>
-                        <button id="post-btn" onClick={handlePostTab}>Post</button>
-                        <button id="post-btn" onClick={handleImgTab}>Images</button>
+                        <button id="post-bttn" onClick={handlePostTab}>Post</button>
+                        <button id="post-bttn" onClick={handleImgTab}>Images</button>
                     </div>
                     {showPostForm && (
                         <form onSubmit={handlePostSubmit}>
@@ -161,7 +163,7 @@ const CreatePost = () => {
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button>  disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} */}
                                 {/* {errors.length > 0 && imgErrors > 0 && ( */}
-                                <button onClick={handleImgTab}  id="post-btn">Add Image</button>
+                                <button onClick={handleImgTab} id="post-btn">Add Image</button>
                                 {/* )}/ */}
                             </div>
 
@@ -191,8 +193,8 @@ const CreatePost = () => {
                                     placeholder={"Title"}
                                 />
                             </div>
-                            <div className="edit-image">
-                                <img className="img-tage" src={image} alt="edited"
+                            <div className="edit-imagee">
+                                <img className="img-tagee" src={image} alt="edited"
                                     onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
 
                                 />
@@ -213,27 +215,44 @@ const CreatePost = () => {
                             </div>
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
-                                <button disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post</button>
+                                <button disabled={errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post</button>
                             </div>
                         </form>
                     )}
                 </div>
             </div>
-            <div className="right-container">
-                <div className="communities">
-                    <div className="comm">
-                        <h1>WELCOME TO PETIT!</h1>
-                    </div>
+            <div className="right-containerr">
+                <div className="communitiess">
+                    <div className="head">Posting to Pettit</div>
+                    <p className="rulz">1. Remember the animal</p>
+                    <p className="rulz">2. Behave like you would normally</p>
+                    <p className="rulz">3. Provide sources for others work</p>
+                    <p className="rulz">4. Don't duplicate others content</p>
+                    <p className="rulz">5. Read the room</p>
                 </div>
 
-                <div className="create">
-                    <h4>Developed by:</h4>
-                    <h4>Kenneth Dodson-Knapp</h4>
+                <div>
+
+                </div>
+
+                <div className="createe">
                     <div className="links">
+                        <h5>Personal Links</h5>
                         <a href='https://github.com/k-dodsonknapp'>GitHub</a>
                         <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
+                        <a href="https://angel.co/u/kenneth-dodson-knapp">AngelList</a>
+                    </div>
+                    <div className="links">
+                        <h5>Previous Projects</h5>
+                        <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
+                        <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
+                        <a href='https://carra.herokuapp.com/'>Carra</a>
+
                     </div>
                 </div>
+                    <div className="me">
+                        <p>Developed by: Kenneth Dodson-Knapp</p>
+                    </div>
             </div>
         </div>
     )
