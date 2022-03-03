@@ -15,7 +15,7 @@ const OnePost = () => {
     const posts = useSelector(state => state.post.list.filter(post => post.id === id));
     const user = useSelector(state => state.session.user)
     const comment = useSelector(state => Object.values(state.comments))
-    
+
     const [showCommentForm, setShowCommentForm] = useState(false)
     const [showCommentEditForm, setShowCommentEditForm] = useState(false)
     const [newComment, setNewComment] = useState('')
@@ -24,34 +24,34 @@ const OnePost = () => {
     const [commentId, setCommentId] = useState(0)
     const [errors, setErrors] = useState([])
     const [errorsEdit, setErrorsEdit] = useState([])
-    
-    
+
+
     useEffect(() => {
         const err = []
         if (newComment.length > 250 || newComment.length < 5) {
             err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.")
-        }  
-            setErrors(err)
-            
+        }
+        setErrors(err)
+
     }, [newComment])
-    
+
     useEffect(() => {
         const err = []
         if (commentToEdit.length > 250 || commentToEdit.length < 5) {
             err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.")
-        }        
-            setErrorsEdit(err)
-            
-        }, [commentToEdit])
-        
-        useEffect(() => {
-            dispatch(getAllComments(id))
+        }
+        setErrorsEdit(err)
+
+    }, [commentToEdit])
+
+    useEffect(() => {
+        dispatch(getAllComments(id))
     }, [dispatch, id])
-    
+
     useEffect(() => {
         dispatch(getAllPosts())
     }, [dispatch, id])
-    
+
 
     const handleShowCommentForm = (e) => {
         e.preventDefault();
@@ -142,7 +142,7 @@ const OnePost = () => {
 
     if (!posts) {
         return (
-          <PageNotFound />
+            <PageNotFound />
         )
     }
 
@@ -163,8 +163,8 @@ const OnePost = () => {
                             {posts[0]?.title}
                         </div>
                         <div className="img-tage">
-                            <img className='img-tag' src={`${posts[0]?.image}`} alt="" 
-                            onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}/>
+                            <img className='img-tag' src={`${posts[0]?.image}`} alt=""
+                                onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }} />
                         </div>
                         <div className="post-body">
                             {posts[0]?.body}
@@ -266,13 +266,22 @@ const OnePost = () => {
                     </div>
                 </div>
 
-                <div className="create">
-                    <h4>Developed by:</h4>
-                    <h4>Kenneth Dodson-Knapp</h4>
+                <div className="createe">
                     <div className="links">
+                        <h5>Personal Links</h5>
                         <a href='https://github.com/k-dodsonknapp'>GitHub</a>
                         <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
+                        <a href="https://angel.co/u/kenneth-dodson-knapp">AngelList</a>
                     </div>
+                    <div className="links">
+                        <h5>Previous Projects</h5>
+                        <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
+                        <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
+                        <a href='https://carra.herokuapp.com/'>Carra</a>
+                    </div>
+                </div>
+                <div className="me">
+                    <p>Developed by: Kenneth Dodson-Knapp</p>
                 </div>
             </div>
         </div>

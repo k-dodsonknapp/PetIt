@@ -56,8 +56,8 @@ const MainPage = () => {
                             <a href={`/posts/${post?.id}`}>
                                 <div>
                                     <div>
-                                        <img className='img-tage' src={`${post.image}`} alt="post" 
-                                        onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
+                                        <img className='img-tage' src={`${post.image}`} alt="post"
+                                            onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
                                         />
                                     </div>
                                 </div>
@@ -98,13 +98,22 @@ const MainPage = () => {
                     </div>
                 </div>
 
-                <div className="create">
-                    <h4>Developed by:</h4>
-                    <h4>Kenneth Dodson-Knapp</h4>
+                <div className="createe">
                     <div className="links">
+                        <h5>Personal Links</h5>
                         <a href='https://github.com/k-dodsonknapp'>GitHub</a>
                         <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
+                        <a href="https://angel.co/u/kenneth-dodson-knapp">AngelList</a>
                     </div>
+                    <div className="links">
+                        <h5>Previous Projects</h5>
+                        <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
+                        <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
+                        <a href='https://carra.herokuapp.com/'>Carra</a>
+                    </div>
+                </div>
+                <div className="me">
+                    <p>Developed by: Kenneth Dodson-Knapp</p>
                 </div>
             </div>
         </div >

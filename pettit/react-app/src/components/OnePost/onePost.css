@@ -5,7 +5,7 @@
     /* border: 1px solid red; */
     border-radius: 4px;
     margin: 100px 0px 10px;
-    width: 400px;
+    width: 475px;
     height: auto;
     background-color: white;
 }
@@ -43,8 +43,8 @@
 }
 
 .img-tag {
-    height: 200px;
-    width: 325px;
+    height: 250px;
+    width: 375px;
 
     margin-left: 20px;
     border-radius: 4px;

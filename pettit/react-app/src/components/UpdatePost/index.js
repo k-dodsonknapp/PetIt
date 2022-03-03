@@ -105,12 +105,15 @@ const UpdatePost = () => {
 
     return (
         <div className="page">
-            <div className="form-wrapper">
+            <div className="form-wrapperr">
+                <div className="create-title">
+                    <h2>Edit Your Post</h2>
+                </div>
                 <div className="post-container">
                     <div className="create-post-title">
-                        <h3>Edit a post</h3>
-                        <button id="post-btn" onClick={handlePostTab}>Post</button>
-                        <button id="post-btn" onClick={handleImgTab}>Images</button>
+                        {/* <h3>Edit a post</h3> */}
+                        <button id="post-bttn" onClick={handlePostTab}>Post</button>
+                        <button id="post-bttn" onClick={handleImgTab}>Images</button>
                     </div>
                     {showPostForm && (
                         <form onSubmit={handleEditSubmit}>
@@ -201,20 +204,32 @@ const UpdatePost = () => {
                     )}
                 </div>
             </div>
-            <div className="right-container">
-                <div className="communities">
-                    <div className="comm">
-                        <h1>WELCOME TO PETIT!</h1>
-                    </div>
+            <div className="right-containerr">
+                <div className="communitiess">
+                    <div className="head">Posting to Pettit</div>
+                    <p className="rulz">1. Remember the animal</p>
+                    <p className="rulz">2. Behave like you would normally</p>
+                    <p className="rulz">3. Provide sources for others work</p>
+                    <p className="rulz">4. Don't duplicate others content</p>
+                    <p className="rulz">5. Read the room</p>
                 </div>
 
-                <div className="create">
-                    <h4>Developed by:</h4>
-                    <h4>Kenneth Dodson-Knapp</h4>
+                <div className="createe">
                     <div className="links">
+                        <h5>Personal Links</h5>
                         <a href='https://github.com/k-dodsonknapp'>GitHub</a>
                         <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
+                        <a href="https://angel.co/u/kenneth-dodson-knapp">AngelList</a>
                     </div>
+                    <div className="links">
+                        <h5>Previous Projects</h5>
+                        <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
+                        <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
+                        <a href='https://carra.herokuapp.com/'>Carra</a>
+                    </div>
+                </div>
+                <div className="me">
+                    <p>Developed by: Kenneth Dodson-Knapp</p>
                 </div>
             </div>
         </div>

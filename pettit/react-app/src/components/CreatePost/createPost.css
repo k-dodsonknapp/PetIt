@@ -75,6 +75,7 @@
 
 form{
     background-color: #ffffff;
+    border-radius: 4px;
 }
 
 .btn-div button {
@@ -160,7 +161,7 @@ textarea:focus {
     justify-content: flex-end;
     margin-right: 20px;
     background-color:#ffffff;
-
+    border-radius: 4px;
 }
 
 #post-btn {
@@ -187,6 +188,10 @@ textarea:focus {
 
 .create-post-title button {
     color: #929592;
+}
+
+#post-btn:hover{
+    background-color: #e9e8e8;
 }
 
 .create-post-title {

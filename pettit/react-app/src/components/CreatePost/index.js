@@ -247,12 +247,11 @@ const CreatePost = () => {
                         <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
                         <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
                         <a href='https://carra.herokuapp.com/'>Carra</a>
-
                     </div>
                 </div>
-                    <div className="me">
-                        <p>Developed by: Kenneth Dodson-Knapp</p>
-                    </div>
+                <div className="me">
+                    <p>Developed by: Kenneth Dodson-Knapp</p>
+                </div>
             </div>
         </div>
     )

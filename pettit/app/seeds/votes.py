@@ -2,14 +2,13 @@ from app.models import db, Vote
 
 def seed_votes():
 
-    votes_on_post = Vote(
-        vote=True,
+    post_votes = Vote(
         vote_count=0,
         userId=1,
         post_id=1,
     )
 
-    db.session.add(votes_on_post)
+    db.session.add(post_votes)
     db.session.commit()
 
 def undo_seed_votes():
