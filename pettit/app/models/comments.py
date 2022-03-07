@@ -13,7 +13,7 @@ class Comment(db.Model):
 
     user = db.relationship('User', back_populates='comment')
     post = db.relationship('Post', back_populates='comment')
-    comment_vote = db.relationship('Comment_Vote', back_populates='comment')
+    vote = db.relationship('Vote', back_populates='comment')
     # comment_on_comment = db.relationship('Comment_on_comment', back_populates='comment')
     
 

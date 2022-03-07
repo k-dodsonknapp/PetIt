@@ -222,7 +222,7 @@ const CreatePost = () => {
                 </div>
             </div>
             <div className="right-containerr">
-                <div className="communitiess">
+                <div className="communities">
                     <div className="head">Posting to Pettit</div>
                     <p className="rulz">1. Remember the animal</p>
                     <p className="rulz">2. Behave like you would normally</p>

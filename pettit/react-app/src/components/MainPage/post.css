@@ -9,6 +9,18 @@
     background-size: cover;
 }
 
+.votesss {
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 100%;
+}
+
+#votes {
+    display: flex;
+    justify-content: center;
+}
+
 .main-feed-container {
     display: flex;
     justify-content: center;
@@ -175,7 +187,7 @@
 .communities {
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: auto;
     width: 100%;
     /* background-color: rgba(248, 248, 248, 0.513); */
     border-radius: 4px;

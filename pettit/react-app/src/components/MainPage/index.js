@@ -3,18 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
+import { addPostVote, deleteVotes, getCommentVotes, getPostVotes } from "../../store/votes";
 // import { getPostVotes } from "../../store/votes";
 import './post.css'
 
 const MainPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const posts = useSelector(state => state.post.list)
-    const user = useSelector(state => state.session)
+    const posts = useSelector(state => state?.post?.list)
+    const user = useSelector(state => state?.session)
+    console.log(user)
     const [postId, setPostId] = useState()
+    // const votes = useSelector(state => state?.votes?.post_votes[0]?.votes)
+    const votes = useSelector(state => state?.votes?.post_votes)
+    const [disableUpvote, setDisableUpvote] = useState(false);
+    const [disableDownvote, setDisableDownvote] = useState(false);
+    // console.log("@@@@@@@@@@", votes[0].votes)
+
 
     useEffect(() => {
         dispatch(getAllPosts());
+        dispatch(getPostVotes());
     }, [dispatch])
 
     useEffect(() => {
@@ -36,18 +45,62 @@ const MainPage = () => {
         history.push(`/posts/${postId}/edit`)
     }
 
+    const upvote = (postId) => async (e) => {
+        console.log("************", postId)
+        // const idfk = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
+        // if (!idfk && idfk.length === 0) {
+            e.preventDefault();
+            const vote = {
+                "user_id": user?.user?.id,
+                "post_id": postId,
+                "comment_id": null,
+            }
+            console.log(vote)
+            await dispatch(addPostVote(vote))
+            // console.log("@@@@@@@@@", +e.target.id + 1)
+            await dispatch(getPostVotes())
+        // }
+    }
+
+    const downvote = (postId) => async (e) => {
+        e.preventDefault();
+        console.log("PPPPPPPP", postId)
+        // const idfk = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
+        // if (idfk && idfk.length === 1) {
+            const voteId = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id).id
+            const vote = {
+                'id': voteId,
+            }
+            await dispatch(deleteVotes(vote))
+            await dispatch(getPostVotes())
+        // }
+
+    }
+    // const deleteLike = (postId) => async (e) => {
+    //     e.preventDefault();
+    //     const likeId = likes.find(like => like.post_id === postId && like?.user_id === sessionUser?.id)?.id
+    //     let data = await dispatch(removeLike(likeId));
+    //     await dispatch(getAllLike())
+    //     setUnlike(false)
+    //     setLikeBtn(true)
+
+    // };
+
     return (
         <div className="page">
             <div className="main-feed-container" >
                 {posts?.map(post => (
                     <div className="post" key={post.id}>
                         <div className="left-post">
-                            {/* <button>
+                            <button id={post.id} onClick={upvote(post.id)}>
                                 <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
                             </button>
-                            <button>
+                            <div className="votesss">
+                                {votes && votes[0]?.votes?.filter(vote => vote?.post_id === post?.id)?.length}
+                            </div>
+                            <button onClick={downvote(post?.id)}>
                                 <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
-                            </button> */}
+                            </button>
                         </div>
                         <div className="right-post">
                             <div>

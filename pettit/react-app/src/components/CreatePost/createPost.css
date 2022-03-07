@@ -42,6 +42,10 @@
     cursor: pointer;
 }
 
+#post-bttn:hover {
+    background-color: #eeeaea
+}
+
 .btn-div button {
     color: #929592;
 }
