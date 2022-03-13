@@ -1,7 +1,19 @@
+.pagee {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 99vw;
+    height: 125vh;
+    background-color: #dae0e6;
+    /* background-image: url('https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/summer-background-abstract-background-wallpaper-use-for-presentation_HDDYoJOhMg_thumb.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .posts {
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
     /* border: 1px solid red; */
     border-radius: 4px;
     margin: 100px 0px 10px;
@@ -13,7 +25,7 @@
 .newCommentEditForm {
     display: flex;
     /* border: 1px solid red; */
-    height: 150px;
+    height: auto;
     width: 200px;
 }
 .li {
@@ -57,9 +69,10 @@
     justify-content: flex-end;
 }
 
-.comm { 
+.commm { 
     overflow-wrap: anywhere;
     font-weight: 300;
+    margin-left: 60px;
 }
 
 .comment .btnsDiv {
@@ -107,6 +120,11 @@
 .comments button {
     display: flex;
     justify-content: flex-end;
+}
+
+.comments > h3 {
+    margin-left: 30px;
+    text-align: center;
 }
 
 .comments {
@@ -158,5 +176,7 @@
     background-color: transparent;
     width: 300px;
     margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 110px;
     /* border: 2px solid rgba(83, 83, 83, 0.308); */
 }

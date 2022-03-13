@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { addNewComment, deleteAComment, getAllComments, updateComment } from "../../store/comments";
@@ -147,7 +147,7 @@ const OnePost = () => {
     }
 
     return (
-        <div className="page">
+        <div className="pagee">
             <div className="main-feed-containers" >
                 <div className="posts" >
                     <div className="left-post">
@@ -158,7 +158,7 @@ const OnePost = () => {
                             <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
                         </button> */}
                     </div>
-                    <div className="right-post">
+                    <div className="right-postt">
                         <div>
                             {posts[0]?.title}
                         </div>
@@ -174,8 +174,6 @@ const OnePost = () => {
                             <button id="post-btn" onClick={handleShowCommentForm}>Comment</button>
                             {/* <button id="post-btn" onClick={hideEditBtns}>Hide Edit & Delete</button> */}
                         </div>
-                    </div>
-                </div>
                 <div className="newCommentEditForm">
                     {showCommentForm && (
                         <div className="comment-form">
@@ -236,12 +234,13 @@ const OnePost = () => {
                         </div>
                     )}
                 </div>
+                    </div>
                 <div className="comments">
                     <h3>Comments:</h3>
                     {comment?.map(comment => (
                         <div key={comment?.id}>
                             <div className="comment">
-                                <div className="comm">
+                                <div className="commm">
                                     {comment?.comment}
                                 </div>
                                 {user?.id === comment?.userId && (
@@ -258,11 +257,22 @@ const OnePost = () => {
                         </div>
                     ))?.reverse()}
                 </div>
+                </div>
             </div>
             <div className="right-container">
-                <div className="communities">
+            <div className="communities">
                     <div className="comm">
-                        <h1>WELCOME TO PETIT!</h1>
+                        <div className="comm-header">
+                            <p>Top Communities</p>
+                        </div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Crabs</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Armidillos</div>
+                        <div className="rows"><i style={{color: "red"}} class="fa-solid fa-angle-down"></i>p/Sugar_gliders</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Dogs</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Cats</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Giraffe</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Squirrel</div>
+                        <button id="view-all">Veiw All</button>
                     </div>
                 </div>
 

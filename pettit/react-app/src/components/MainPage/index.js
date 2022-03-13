@@ -140,13 +140,13 @@ const MainPage = () => {
                         <div className="comm-header">
                             <p>Top Communities</p>
                         </div>
-                        <div className="rows">1</div>
-                        <div className="rows">2</div>
-                        <div className="rows">3</div>
-                        <div className="rows">4</div>
-                        <div className="rows">5</div>
-                        <div className="rows">6</div>
-                        <div className="rows">7</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Crabs</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Armidillos</div>
+                        <div className="rows"><i style={{color: "red"}} class="fa-solid fa-angle-down"></i>p/Sugar_gliders</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Dogs</div>
+                        <div className="rows"><i style={{color: "red"}} class="fa-solid fa-angle-down"></i>p/Cats</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Giraffe</div>
+                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Squirrel</div>
                         <button id="view-all">Veiw All</button>
                     </div>
                 </div>
