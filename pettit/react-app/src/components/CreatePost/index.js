@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addAPost, getAllPosts } from "../../store/posts";
+import UploadPicture from "../UploadPicture";
 import "./createPost.css"
 
 const CreatePost = () => {
@@ -17,6 +18,7 @@ const CreatePost = () => {
     // const [droppedImg, setDroppedImg] = useState('')
     const [errors, setErrors] = useState([])
     const [imgErrors, setImgErrors] = useState([])
+    console.log("I am not sure",image)
 
 
     useEffect(() => {
@@ -62,9 +64,9 @@ const CreatePost = () => {
         if (title.length > 50 || title.length < 3) {
             err.push("Your post must have a title.")
         }
-        if (!(image.includes('https') && image.includes('.png') || image.includes('.jpg') || image.includes('.jpeg'))) {
-            err.push('Please use .png, .jpg, or .jpeg file type')
-        }
+        // if (!(image.includes('https') && image.includes('.png') || image.includes('.jpg') || image.includes('.jpeg'))) {
+        //     err.push('Please use .png, .jpg, or .jpeg file type')
+        // }
         if (body.length > 250 || body.length < 5) {
             err.push("Your post must have a body.")
         }
@@ -123,6 +125,7 @@ const CreatePost = () => {
                         <button id="post-bttn" onClick={handlePostTab}>Post</button>
                         <button id="post-bttn" onClick={handleImgTab}>Images</button>
                     </div>
+                    {/* <UploadPicture setImagee={setImage}/> */}
                     {showPostForm && (
                         <form onSubmit={handlePostSubmit}>
                             <ul className="errors">
@@ -199,11 +202,11 @@ const CreatePost = () => {
 
                                 />
                             </div>
-                            <div className="image-div">
+                            {/* <div className="image-div"/> */}
                                 {/* <div id="drop_zone" onDrop={e => dropHandler(e)} onDragOver={e => dragOverHandler(e)}>
                                     <p>Drag one or more files to upload</p>
                                 </div> */}
-                                <div className="image-label">
+                                {/* <div className="image-label">
                                     <label>Image:</label>
                                 </div>
                                 <input
@@ -211,8 +214,9 @@ const CreatePost = () => {
                                     name="image"
                                     value={image}
                                     onChange={e => setImage(e.target.value)}
-                                />
-                            </div>
+                                /> */}
+                                <UploadPicture setImagee={setImage}/>
+                            {/* </div/> */}
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
                                 <button disabled={errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post</button>

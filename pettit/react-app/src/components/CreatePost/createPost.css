@@ -289,3 +289,10 @@ textarea:focus {
     margin: 40px 10px;
     /* background-color:  #dae0e6; */
 }
+
+.uploadPictureInput {
+    /* border: 1px solid red; */
+    /* color: red; */
+    display: flex;
+    justify-content: center;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getAllPosts, updateAPost } from "../../store/posts";
+import UploadPicture from "../UploadPicture";
 
 const UpdatePost = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const UpdatePost = () => {
         if (title) localStorage.setItem("title", title)
         if (body) localStorage.setItem("body", body)
         if (image) localStorage.setItem("image", image)
-    }, [dispatch])
+    }, [dispatch, title, body, image])
 
     useEffect(() => {
         const localStorageCaption = localStorage.getItem("title")
@@ -184,8 +185,9 @@ const UpdatePost = () => {
                                     onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
                                 />
                             </div>
-                            <div className="image-div">
-                                <div className="image-label">
+                            {/* <div className="image-div"> */}
+                                <UploadPicture setImagee={setImage} />
+                                {/* <div className="image-label">
                                     <label>Post an image:</label>
                                 </div>
                                 <input
@@ -193,8 +195,8 @@ const UpdatePost = () => {
                                     name="image"
                                     value={image}
                                     onChange={e => setImage(e.target.value)}
-                                />
-                            </div>
+                                /> */}
+                            {/* </div> */}
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
                                 <button onClick={handlePostTab} id="post-btn">Edit Post</button>
