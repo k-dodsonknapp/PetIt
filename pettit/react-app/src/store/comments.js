@@ -106,7 +106,7 @@ export default function commentReducer(state = [], action) {
             return newState
 
         case UPDATE_COMMENT:
-            newState = {...state}
+            newState = {...state};
             let newArr = Object.values(newState)
             newArr.forEach(comment => {
                 if (comment.id === action.comment.id) {

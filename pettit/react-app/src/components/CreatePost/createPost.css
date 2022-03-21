@@ -99,6 +99,13 @@ form{
 
 .title-div input {
     height: 20px;
+    text-indent: 5px;
+}
+
+.title-div input:focus {
+    border: 1px solid hsl(214, 19%, 93%);
+    outline-offset: 0px;
+    outline: none;
 }
 
 .title-div {
@@ -141,12 +148,20 @@ form{
 }
 
 .body-div textarea {
-    width: 90%;
+    width: 88%;
     height: 200px;
     border-radius: 4px;
     resize: none;
     border: 1px solid hsl(214, 19%, 93%);
+    text-justify: inter-word;
+    padding: 5px;
+    font-size: 16px;
+}
 
+.body-div textarea:focus {
+    border: 1px solid hsl(214, 19%, 93%);
+    outline-offset: 0px;
+    outline: none;
 }
 
 textarea:focus {

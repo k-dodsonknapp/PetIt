@@ -18,7 +18,7 @@ const CreatePost = () => {
     // const [droppedImg, setDroppedImg] = useState('')
     const [errors, setErrors] = useState([])
     const [imgErrors, setImgErrors] = useState([])
-    console.log("I am not sure",image)
+    console.log("I am not sure", image)
 
 
     useEffect(() => {
@@ -130,14 +130,11 @@ const CreatePost = () => {
                         <form onSubmit={handlePostSubmit}>
                             <ul className="errors">
                                 {errors.length > 0 && errors.map(error => {
-
-
                                     return <li className="li" key={error}>
                                         <div>
                                             {error}
                                         </div>
                                     </li>
-
                                 })}
                             </ul>
                             <div className="title-div">
@@ -203,10 +200,10 @@ const CreatePost = () => {
                                 />
                             </div>
                             {/* <div className="image-div"/> */}
-                                {/* <div id="drop_zone" onDrop={e => dropHandler(e)} onDragOver={e => dragOverHandler(e)}>
+                            {/* <div id="drop_zone" onDrop={e => dropHandler(e)} onDragOver={e => dragOverHandler(e)}>
                                     <p>Drag one or more files to upload</p>
                                 </div> */}
-                                {/* <div className="image-label">
+                            {/* <div className="image-label">
                                     <label>Image:</label>
                                 </div>
                                 <input
@@ -215,7 +212,7 @@ const CreatePost = () => {
                                     value={image}
                                     onChange={e => setImage(e.target.value)}
                                 /> */}
-                                <UploadPicture setImagee={setImage}/>
+                            <UploadPicture setImagee={setImage} />
                             {/* </div/> */}
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
