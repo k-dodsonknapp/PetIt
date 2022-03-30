@@ -12,14 +12,10 @@ const MainPage = () => {
     const history = useHistory();
     const posts = useSelector(state => state?.post?.list)
     const user = useSelector(state => state?.session)
-    console.log(user)
     const [postId, setPostId] = useState()
-    // const votes = useSelector(state => state?.votes?.post_votes[0]?.votes)
     const votes = useSelector(state => state?.votes?.post_votes)
-    const [disableUpvote, setDisableUpvote] = useState(false);
-    const [disableDownvote, setDisableDownvote] = useState(false);
-    // console.log("@@@@@@@@@@", votes[0].votes)
-
+    // const [disableUpvote, setDisableUpvote] = useState(false);
+    // const [disableDownvote, setDisableDownvote] = useState(false);
 
     useEffect(() => {
         dispatch(getAllPosts());
@@ -46,45 +42,30 @@ const MainPage = () => {
     }
 
     const upvote = (postId) => async (e) => {
-        console.log("************", postId)
-        // const idfk = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
-        // if (!idfk && idfk.length === 0) {
+        const voteObj = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
+        if (!voteObj || voteObj.user_id !== user.user.id) {
             e.preventDefault();
             const vote = {
                 "user_id": user?.user?.id,
                 "post_id": postId,
                 "comment_id": null,
             }
-            console.log(vote)
             await dispatch(addPostVote(vote))
-            // console.log("@@@@@@@@@", +e.target.id + 1)
             await dispatch(getPostVotes())
-        // }
+        } 
     }
 
     const downvote = (postId) => async (e) => {
         e.preventDefault();
-        console.log("PPPPPPPP", postId)
-        // const idfk = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
-        // if (idfk && idfk.length === 1) {
-            const voteId = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id).id
+        const voteObj = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
+        if (voteObj) {
             const vote = {
-                'id': voteId,
+                'id': voteObj.id,
             }
             await dispatch(deleteVotes(vote))
             await dispatch(getPostVotes())
-        // }
-
+        }
     }
-    // const deleteLike = (postId) => async (e) => {
-    //     e.preventDefault();
-    //     const likeId = likes.find(like => like.post_id === postId && like?.user_id === sessionUser?.id)?.id
-    //     let data = await dispatch(removeLike(likeId));
-    //     await dispatch(getAllLike())
-    //     setUnlike(false)
-    //     setLikeBtn(true)
-
-    // };
 
     return (
         <div className="page">
@@ -140,13 +121,13 @@ const MainPage = () => {
                         <div className="comm-header">
                             <p>Top Communities</p>
                         </div>
-                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Crabs</div>
-                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Armidillos</div>
-                        <div className="rows"><i style={{color: "red"}} class="fa-solid fa-angle-down"></i>p/Sugar_gliders</div>
-                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Dogs</div>
-                        <div className="rows"><i style={{color: "red"}} class="fa-solid fa-angle-down"></i>p/Cats</div>
-                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Giraffe</div>
-                        <div className="rows"><i style={{color: "#04eb04"}} class="fa-solid fa-angle-up"></i>p/Squirrel</div>
+                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Crabs</div>
+                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Armidillos</div>
+                        <div className="rows"><i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>p/Sugar_gliders</div>
+                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Dogs</div>
+                        <div className="rows"><i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>p/Cats</div>
+                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Giraffe</div>
+                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Squirrel</div>
                         <button id="view-all">Veiw All</button>
                     </div>
                 </div>

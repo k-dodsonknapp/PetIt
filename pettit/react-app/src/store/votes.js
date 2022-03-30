@@ -10,7 +10,6 @@ export const getPostVotes = () => async (dispatch) => {
     const data = await res.json();
     if (res.ok) {
         dispatch(getVotesForPosts(data));
-        console.log("########",data)
         return data;
     }
 }
@@ -38,6 +37,7 @@ export const addPostVote = (data) => async (dispatch) => {
     }
 }
 
+// Delete a vote
 const DELETE_VOTE = '/votes/delete';
 
 const deleteVote = (vote) => ({
@@ -65,12 +65,6 @@ export default function votesReducer (state = [], action) {
 
     switch(action.type) {
         case GET_POST_VOTES:
-            // newState = {...state}
-            
-            // action.votes.post_votes.map(vote => {
-            //     return newState[vote.post_id] = vote
-            // })
-            // console.log("$$$$$$$$$$", newState)
             return {
                 ...state,
                "post_votes": [action.votes]
@@ -82,7 +76,9 @@ export default function votesReducer (state = [], action) {
             }
 
         case DELETE_VOTE:
-        
+            newState = { ...state }
+            delete newState[action.vote]
+            return newState
 
         default:
             return state;

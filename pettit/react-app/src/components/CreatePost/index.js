@@ -8,22 +8,20 @@ import "./createPost.css"
 const CreatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = useSelector(state => state?.session?.user)
+    const user = useSelector(state => state?.session?.user);
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [image, setImage] = useState('');
-    const [showPostForm, setShowPostForm] = useState(true)
-    const [showImgForm, setShowImgForm] = useState(false)
-    // const [droppedImg, setDroppedImg] = useState('')
-    const [errors, setErrors] = useState([])
-    const [imgErrors, setImgErrors] = useState([])
-    console.log("I am not sure", image)
+    const [showPostForm, setShowPostForm] = useState(true);
+    const [showImgForm, setShowImgForm] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [imgErrors, setImgErrors] = useState([]);
 
 
     useEffect(() => {
-        dispatch(getAllPosts())
-    }, [dispatch])
+        dispatch(getAllPosts());
+    }, [dispatch]);
 
     useEffect(() => {
         const images = [
@@ -40,48 +38,40 @@ const CreatePost = () => {
             'https://www.sciencenews.org/wp-content/uploads/2018/04/041418_reviews_animals_main.jpg',
             'https://static01.nyt.com/images/2020/04/13/opinion/13stoneWebnew/13stoneWebnew-mediumSquareAt3X.jpg',
             'https://images.wsj.net/im-218281?width=1280&size=1.png'
-        ]
-        const i = Math.floor(Math.random() * 13)
-        setImage(images[i])
-    }, [])
+        ];
+        const i = Math.floor(Math.random() * 13);
+        setImage(images[i]);
+    }, []);
 
     useEffect(() => {
         const err = []
         if (body.length > 250 || body.length < 5) {
             err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
-        }
+        };
         if (title.length > 50 || title.length < 3) {
             err.push("Your post must have a title no longer than 50 characters.")
-        }
+        };
 
-        setErrors(err)
+        setErrors(err);
 
-    }, [title, body])
+    }, [title, body]);
 
 
     useEffect(() => {
-        const err = []
+        const err = [];
         if (title.length > 50 || title.length < 3) {
-            err.push("Your post must have a title.")
-        }
-        // if (!(image.includes('https') && image.includes('.png') || image.includes('.jpg') || image.includes('.jpeg'))) {
-        //     err.push('Please use .png, .jpg, or .jpeg file type')
-        // }
+            err.push("Your post must have a title.");
+        };
         if (body.length > 250 || body.length < 5) {
-            err.push("Your post must have a body.")
-        }
-        setImgErrors(err)
+            err.push("Your post must have a body.");
+        };
+        setImgErrors(err);
 
-    }, [image, title, body])
+    }, [image, title, body]);
 
 
     const handlePostSubmit = async (e) => {
         e.preventDefault();
-
-        // if (!droppedImg) {
-        //     setShowImgForm(true)
-        // }
-        // } else if (droppedImg.length > 0){
 
         const newPost = {
             "userId": user.id,
@@ -89,29 +79,25 @@ const CreatePost = () => {
             "body": body,
             "image": image,
             "updated_at": new Date(),
-        }
+        };
         await dispatch(addAPost(newPost));
-        await dispatch(getAllPosts())
-        history.push("/posts/main")
-    }
-
-    // useEffect(() => {
-    //     setDroppedImg()
-    // }, [setDroppedImg])
+        await dispatch(getAllPosts());
+        history.push("/posts/main");
+    };
 
     const handleImgTab = (e) => {
         e.preventDefault();
         setShowPostForm(false);
         setShowImgForm(true);
-    }
+    };
 
     const handlePostTab = (e) => {
         e.preventDefault();
         if (showImgForm === true) {
             setShowImgForm(false);
-        }
-        setShowPostForm(true)
-    }
+        };
+        setShowPostForm(true);
+    };
 
 
     return (
