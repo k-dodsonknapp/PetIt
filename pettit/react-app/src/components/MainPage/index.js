@@ -3,69 +3,79 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
-import { addPostVote, deleteVotes, getCommentVotes, getPostVotes } from "../../store/votes";
-// import { getPostVotes } from "../../store/votes";
-import './post.css'
+import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
+import './post.css';
 
 const MainPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const posts = useSelector(state => state?.post?.list)
-    const user = useSelector(state => state?.session)
-    const [postId, setPostId] = useState()
-    const votes = useSelector(state => state?.votes?.post_votes)
-    // const [disableUpvote, setDisableUpvote] = useState(false);
-    // const [disableDownvote, setDisableDownvote] = useState(false);
-
+    const posts = useSelector(state => state?.post?.list);
+    const user = useSelector(state => state?.session);
+    const [postId, setPostId] = useState();
+    const votes = useSelector(state => state?.votes?.post_votes);
+    // const comment = useSelector(state => Object.values(state?.comments));
+    const session = useSelector(state => state.session)
+    // console.log("HHHHHH", comment)
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
-    }, [dispatch])
+        // dispatch(getAllComments());
+    }, [dispatch]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
 
 
     const handleDelete = (postId) => async (e) => {
-        setPostId(postId)
+        setPostId(postId);
         e.preventDefault();
-        const id = { "id": +postId }
-        dispatch(deleteAPost(id))
-        dispatch(getAllPosts())
-        dispatch(getAllComments(id.id))
-    }
+        const id = { "id": +postId };
+        dispatch(deleteAPost(id));
+        dispatch(getAllPosts());
+        dispatch(getAllComments(id.id));
+    };
 
     const handleEdit = (postId) => async (e) => {
         e.preventDefault();
-        history.push(`/posts/${postId}/edit`)
-    }
+        history.push(`/posts/${postId}/edit`);
+    };
 
     const upvote = (postId) => async (e) => {
-        const voteObj = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
+        const voteObj =
+            votes[0].votes.find(vote =>
+                vote.post_id === postId &&
+                vote?.user_id === user.user.id
+            );
+
         if (!voteObj || voteObj.user_id !== user.user.id) {
             e.preventDefault();
             const vote = {
                 "user_id": user?.user?.id,
                 "post_id": postId,
                 "comment_id": null,
-            }
-            await dispatch(addPostVote(vote))
-            await dispatch(getPostVotes())
-        } 
-    }
+            };
+            await dispatch(addPostVote(vote));
+            await dispatch(getPostVotes());
+        };
+    };
 
     const downvote = (postId) => async (e) => {
         e.preventDefault();
-        const voteObj = votes[0].votes.find(vote => vote.post_id === postId && vote?.user_id === user.user.id)
+        const voteObj =
+            votes[0].votes.find(vote =>
+                vote.post_id === postId &&
+                vote?.user_id === user.user.id
+            );
+
         if (voteObj) {
             const vote = {
                 'id': voteObj.id,
-            }
-            await dispatch(deleteVotes(vote))
-            await dispatch(getPostVotes())
-        }
-    }
+            };
+            await dispatch(deleteVotes(vote));
+            await dispatch(getPostVotes());
+        };
+    };
 
     return (
         <div className="page">
@@ -73,19 +83,19 @@ const MainPage = () => {
                 {posts?.map(post => (
                     <div className="post" key={post.id}>
                         <div className="left-post">
-                            <button id={post.id} onClick={upvote(post.id)}>
-                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
+                            <button className="votess" id={post.id} onClick={upvote(post.id)}>
+                                <img id="upvotee" style={{backgroundColor: "white"}} src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
                             </button>
                             <div className="votesss">
                                 {votes && votes[0]?.votes?.filter(vote => vote?.post_id === post?.id)?.length}
                             </div>
-                            <button onClick={downvote(post?.id)}>
+                            <button className="votess" onClick={downvote(post?.id)}>
                                 <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
                             </button>
                         </div>
                         <div className="right-post">
                             <div>
-                                {post.title}
+                                {post?.title}
                             </div>
                             <a href={`/posts/${post?.id}`}>
                                 <div>
@@ -96,7 +106,7 @@ const MainPage = () => {
                                     </div>
                                 </div>
                             </a>
-                            {post.userId === user.user.id && (
+                            {post?.userId === user?.user?.id && (
                                 <div className="button-div">
                                     <div className="edit-btn">
                                         <i onClick={handleEdit(post?.id)} className="fa-solid fa-pen-to-square"> <span> Edit </span> </i>

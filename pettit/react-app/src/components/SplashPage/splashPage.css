@@ -55,6 +55,7 @@
     font-size: 20px;
     border: 1px solid rgba(216, 214, 214, 0.918);
     box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918);
+    cursor: pointer;
 }
 
 .btn:hover {

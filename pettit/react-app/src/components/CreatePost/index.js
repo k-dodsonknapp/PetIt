@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addAPost, getAllPosts } from "../../store/posts";
 import UploadPicture from "../UploadPicture";
-import "./createPost.css"
+import "./createPost.css";
 
 const CreatePost = () => {
     const dispatch = useDispatch();
@@ -53,7 +53,6 @@ const CreatePost = () => {
         };
 
         setErrors(err);
-
     }, [title, body]);
 
 
@@ -111,7 +110,6 @@ const CreatePost = () => {
                         <button id="post-bttn" onClick={handlePostTab}>Post</button>
                         <button id="post-bttn" onClick={handleImgTab}>Images</button>
                     </div>
-                    {/* <UploadPicture setImagee={setImage}/> */}
                     {showPostForm && (
                         <form onSubmit={handlePostSubmit}>
                             <ul className="errors">
@@ -125,7 +123,6 @@ const CreatePost = () => {
                             </ul>
                             <div className="title-div">
                                 <div className="title-label">
-                                    {/* <label>Title:</label> */}
                                 </div>
                                 <input
                                     type="text"
@@ -147,12 +144,8 @@ const CreatePost = () => {
                                 />
                             </div>
                             <div className="btn-div">
-                                {/* <button onClick={handleCancel}>Cancel</button>  disabled={ errors.length > 0 || imgErrors.length > 0 ? true : false} */}
-                                {/* {errors.length > 0 && imgErrors > 0 && ( */}
                                 <button onClick={handleImgTab} id="post-btn">Add Image</button>
-                                {/* )}/ */}
                             </div>
-
                         </form>
                     )}
                     {showImgForm && (
@@ -169,7 +162,6 @@ const CreatePost = () => {
                             </ul>
                             <div className="title-div">
                                 <div className="title-label">
-                                    {/* <label>Title:</label> */}
                                 </div>
                                 <input
                                     type="text"
@@ -182,26 +174,10 @@ const CreatePost = () => {
                             <div className="edit-imagee">
                                 <img className="img-tagee" src={image} alt="edited"
                                     onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
-
                                 />
                             </div>
-                            {/* <div className="image-div"/> */}
-                            {/* <div id="drop_zone" onDrop={e => dropHandler(e)} onDragOver={e => dragOverHandler(e)}>
-                                    <p>Drag one or more files to upload</p>
-                                </div> */}
-                            {/* <div className="image-label">
-                                    <label>Image:</label>
-                                </div>
-                                <input
-                                    type="text"
-                                    name="image"
-                                    value={image}
-                                    onChange={e => setImage(e.target.value)}
-                                /> */}
                             <UploadPicture setImagee={setImage} />
-                            {/* </div/> */}
                             <div className="btn-div">
-                                {/* <button onClick={handleCancel}>Cancel</button> */}
                                 <button disabled={errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post</button>
                             </div>
                         </form>
@@ -217,11 +193,6 @@ const CreatePost = () => {
                     <p className="rulz">4. Don't duplicate others content</p>
                     <p className="rulz">5. Read the room</p>
                 </div>
-
-                <div>
-
-                </div>
-
                 <div className="createe">
                     <div className="links">
                         <h5>Personal Links</h5>

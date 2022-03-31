@@ -1,6 +1,6 @@
 
 import { useHistory } from 'react-router-dom';
-import './splashPage.css'
+import './splashPage.css';
 
 const SplashPage = () => {
 
@@ -8,13 +8,13 @@ const SplashPage = () => {
 
     const signUp = (e) => {
         e.preventDefault();
-        history.push('/sign-up')
-    }
+        history.push('/sign-up');
+    };
 
     const login = (e) => {
         e.preventDefault();
-        history.push('/login')
-    }
+        history.push('/login');
+    };
 
     return (
         <div id='page'>
@@ -27,6 +27,6 @@ const SplashPage = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 export default SplashPage;
