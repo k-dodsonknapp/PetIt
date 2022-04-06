@@ -17,6 +17,8 @@ const CreatePost = () => {
     const [showImgForm, setShowImgForm] = useState(false);
     const [errors, setErrors] = useState([]);
     const [imgErrors, setImgErrors] = useState([]);
+    const [displayErrors, setDisplayErrors] = useState(true);
+
 
 
     useEffect(() => {
@@ -56,17 +58,32 @@ const CreatePost = () => {
     // }, [title, body]);
 
 
-    const validateErrors = () => {
-        const err = []
-        if (body.length > 250 || body.length < 5) {
-            err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
-        };
-        if (title.length > 50 || title.length < 3) {
-            err.push("Your post must have a title no longer than 50 characters.")
-        };
-        setImgErrors(err);
-        return err;
-    }
+    // const validateErrors = () => {
+    //     const err = []
+    //     if (body.length > 250 || body.length < 5) {
+    //         err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
+    //     };
+    //     if (title.length > 50 || title.length < 3) {
+    //         err.push("Your post must have a title no longer than 50 characters.")
+    //     };
+    //     setImgErrors(err);
+    //     return err;
+    // }
+
+    useEffect(() => {
+        const err = [];
+
+        if (!title || title === " " || title === "  ") err.push("Please provide a title.");
+        if (title?.length > 75) err.push("Please provide a title 75 characters or less.");
+        if (!body || body === " " || body === "  ") err.push(" Please provide a body to your post.");
+        if (body?.length > 255) err.push("Please provide shorter body that is 255 characters or less.");
+        if (err) setImgErrors(err)
+        if (err) setErrors(err)
+
+        // setErrors(err);
+        // setImgErrors(err);
+
+    }, [image, title, body])
 
 
     // useEffect(() => {
@@ -84,8 +101,8 @@ const CreatePost = () => {
 
     const handlePostSubmit = async (e) => {
         e.preventDefault();
-        const errsList = validateErrors();
-        if (errsList.length > 0) return;
+        // const errsList = validateErrors();
+        // if (errsList.length > 0) return;
         const newPost = {
             "userId": user.id,
             "title": title,
