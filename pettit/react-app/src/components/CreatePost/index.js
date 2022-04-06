@@ -43,7 +43,20 @@ const CreatePost = () => {
         setImage(images[i]);
     }, []);
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     const err = []
+    //     if (body.length > 250 || body.length < 5) {
+    //         err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
+    //     };
+    //     if (title.length > 50 || title.length < 3) {
+    //         err.push("Your post must have a title no longer than 50 characters.")
+    //     };
+
+    //     setErrors(err);
+    // }, [title, body]);
+
+
+    const validateErrors = () => {
         const err = []
         if (body.length > 250 || body.length < 5) {
             err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
@@ -51,27 +64,28 @@ const CreatePost = () => {
         if (title.length > 50 || title.length < 3) {
             err.push("Your post must have a title no longer than 50 characters.")
         };
-
-        setErrors(err);
-    }, [title, body]);
-
-
-    useEffect(() => {
-        const err = [];
-        if (title.length > 50 || title.length < 3) {
-            err.push("Your post must have a title.");
-        };
-        if (body.length > 250 || body.length < 5) {
-            err.push("Your post must have a body.");
-        };
         setImgErrors(err);
+        return err;
+    }
 
-    }, [image, title, body]);
+
+    // useEffect(() => {
+    //     const err = [];
+    //     if (title.length > 50 || title.length < 3) {
+    //         err.push("Your post must have a title.");
+    //     };
+    //     if (body.length > 250 || body.length < 5) {
+    //         err.push("Your post must have a body.");
+    //     };
+    //     setImgErrors(err);
+
+    // }, [image, title, body]);
 
 
     const handlePostSubmit = async (e) => {
         e.preventDefault();
-
+        const errsList = validateErrors();
+        if (errsList.length > 0) return;
         const newPost = {
             "userId": user.id,
             "title": title,
@@ -105,7 +119,7 @@ const CreatePost = () => {
                 <div className="create-title">
                     <h2>Create a Post</h2>
                 </div>
-                <div className="post-containerr">
+                <div className="post-container">
                     <div className="create-post-title">
                         <button id="post-bttn" onClick={handlePostTab}>Post</button>
                         <button id="post-bttn" onClick={handleImgTab}>Images</button>

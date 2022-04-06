@@ -49,7 +49,7 @@ const UploadPicture = ({ setImagee }) => {
                 accept="image/*"
                 onChange={updateImage}
             />
-            <button onClick={handleSubmit} type="submit">Submit</button>
+            <button onClick={handleSubmit} type="submit">Submit Photo</button>
             {(imageLoading) && <p>Loading...</p>}
         </div>
         // </form>

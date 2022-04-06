@@ -14,84 +14,95 @@ const UpdatePost = () => {
     const [title, setTitle] = useState(post?.title);
     const [body, setBody] = useState(post?.body);
     const [image, setImage] = useState(post?.image);
-    const [showPostForm, setShowPostForm] = useState(true)
-    const [showImgForm, setShowImgForm] = useState(false)
-    const [errors, setErrors] = useState([])
-    const [imgErrors, setImgErrors] = useState([])
+    const [showPostForm, setShowPostForm] = useState(true);
+    const [showImgForm, setShowImgForm] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [imgErrors, setImgErrors] = useState([]);
+    console.log("GGGGGGG", imgErrors)
+    const [displayErrors, setDisplayErrors] = useState(true);
+    console.log("FFFFFFFFFFFF", displayErrors)
 
 
 
     useEffect(() => {
-        if (title) localStorage.setItem("title", title)
-        if (body) localStorage.setItem("body", body)
-        if (image) localStorage.setItem("image", image)
-    }, [dispatch, title, body, image])
+        if (title) localStorage.setItem("title", title);
+        if (body) localStorage.setItem("body", body);
+        if (image) localStorage.setItem("image", image);
+    }, [dispatch, title, body, image]);
 
     useEffect(() => {
-        const localStorageCaption = localStorage.getItem("title")
-        const localStorageCaptio = localStorage.getItem("body")
-        const localStorageCapti = localStorage.getItem("image")
-        setTitle(localStorageCaption)
-        setBody(localStorageCaptio)
-        setImage(localStorageCapti)
-    }, [])
+        const localStorageCaption = localStorage.getItem("title");
+        const localStorageCaptio = localStorage.getItem("body");
+        const localStorageCapti = localStorage.getItem("image");
+        setTitle(localStorageCaption);
+        setBody(localStorageCaptio);
+        setImage(localStorageCapti);
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
+
+    // useEffect(() => {
+    //     const err = []
+    //     if (body?.length > 250 || body?.length < 5) {
+    //         err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
+    //     }
+    //     if (title?.length > 50 || title?.length < 3) {
+    //         err.push("Your post must have a title no longer than 50 characters.")
+    //     }
+
+    //     setErrors(err);
+
+    // }, [title, body])
 
     useEffect(() => {
-        const err = []
-        if (body?.length > 250 || body?.length < 5) {
-            err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
-        }
-        if (title?.length > 50 || title?.length < 3) {
-            err.push("Your post must have a title no longer than 50 characters.")
-        }
+        const err = [];
 
-        setErrors(err)
+        if (!title || title === " " || title === "  ") err.push("Please provide a title.");
+        if (title?.length > 75) err.push("Please provide a title 75 characters or less.");
+        if (!body || body === " " || body === "  ") err.push(" Please provide a body to your post.");
+        if (body?.length > 255) err.push("Please provide shorter body that is 255 characters or less.");
+        if (err) setImgErrors(err)
+        if (err) setErrors(err)
 
-    }, [title, body])
-
-    useEffect(() => {
-        const err = []
-        if (title?.length > 50 || title?.length < 3) {
-            err.push("Your post must have a title.")
-        }
-        if (!(image?.includes('https') && image?.includes('.png') || image?.includes('.jpg') || image?.includes('.jpeg'))) {
-            err.push('Please use .png, .jpg, or .jpeg file type')
-        }
-        if (body?.length > 250 || body?.length < 5) {
-            err.push("Your post must have a body.")
-        }
-        setImgErrors(err)
+        // setErrors(err);
+        // setImgErrors(err);
 
     }, [image, title, body])
 
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
-        const newPost = {
-            id: postId.postId,
-            "userId": userId.id,
-            "title": title,
-            "body": body,
-            "image": image,
-            "updated_at": new Date()
+
+        if (imgErrors.length) {
+            setDisplayErrors(true);
+            console.log("FFFFFFFFFFFF", displayErrors);
+        } else {
+            const newPost = {
+                id: postId.postId,
+                "userId": userId.id,
+                "title": title,
+                "body": body,
+                "image": image,
+                "updated_at": new Date(),
+            };
+
+            dispatch(getAllPosts());
+            dispatch(updateAPost(newPost));
         }
-        dispatch(getAllPosts())
-        dispatch(updateAPost(newPost));
-        history.push('/posts/main')
+
+        history.push('/posts/main');
     }
 
     useEffect(() => {
-        dispatch(getAllPosts())
-    }, [dispatch])
+        dispatch(getAllPosts());
+    }, [dispatch]);
 
     const handleImgTab = (e) => {
         e.preventDefault();
         setShowPostForm(false);
-        setShowImgForm(true)
+        setShowImgForm(true);
     }
 
     const handlePostTab = (e) => {
@@ -99,8 +110,8 @@ const UpdatePost = () => {
         if (showImgForm === true) {
             setShowImgForm(false);
         }
-        setShowPostForm(true)
-    }
+        setShowPostForm(true);
+    };
 
 
 
@@ -119,7 +130,7 @@ const UpdatePost = () => {
                     {showPostForm && (
                         <form onSubmit={handleEditSubmit}>
                             <ul className="errors">
-                                {errors.length > 0 && errors.map(error => {
+                                {displayErrors && errors?.map(error => {
                                     return <li className="li" key={error}>
                                         <div>
                                             {error}
@@ -135,7 +146,7 @@ const UpdatePost = () => {
                                     type="text"
                                     name="title"
                                     value={title}
-                                    onChange={e => setTitle(e.target.value)}
+                                    onChange={e => setTitle(e?.target?.value)}
                                     placeholder={"Title"}
                                 />
                             </div>
@@ -159,7 +170,7 @@ const UpdatePost = () => {
                     {showImgForm && (
                         <form onSubmit={handleEditSubmit}>
                             <ul className="errors">
-                                {imgErrors.length > 0 && imgErrors.map(error => {
+                                {displayErrors && imgErrors?.map(error => {
                                     return <li className="li" key={error}>
                                         <div>
                                             {error}
@@ -186,8 +197,8 @@ const UpdatePost = () => {
                                 />
                             </div>
                             {/* <div className="image-div"> */}
-                                <UploadPicture setImagee={setImage} />
-                                {/* <div className="image-label">
+                            <UploadPicture setImagee={setImage} />
+                            {/* <div className="image-label">
                                     <label>Post an image:</label>
                                 </div>
                                 <input
@@ -200,7 +211,7 @@ const UpdatePost = () => {
                             <div className="btn-div">
                                 {/* <button onClick={handleCancel}>Cancel</button> */}
                                 <button onClick={handlePostTab} id="post-btn">Edit Post</button>
-                                <button disabled={errors.length > 0 || imgErrors.length > 0 ? true : false} id="post-btn">Post Edit</button>
+                                <button disabled={errors?.length > 0 || imgErrors?.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>
                         </form>
                     )}

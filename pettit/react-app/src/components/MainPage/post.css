@@ -44,7 +44,8 @@
 .edit-image {
     display: flex;
     width: 280px;
-    margin-left: 75px;
+    margin-left: 122px;
+    margin-bottom: 10px;
 }
 
 .post {
