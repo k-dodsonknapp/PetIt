@@ -126,6 +126,7 @@ html {
     resize: none;
     width: 300px;
     border-radius: 6px;
+    padding: 5px;
 }
 
 .comment{
@@ -145,20 +146,17 @@ html {
     width: 300px;
     background-color: transparent;
     overflow-wrap:break-word;
-    /* margin-right: 50px; */
     margin: 0;
     padding-right: 20px;
     margin-top: 20px;
 }
 .errors {
     display: flex;
-    /* justify-content: center; */
     float: left;
     justify-content: center;
     background-color: transparent;
     font-size: 12px;
     overflow-wrap: break-word;
-    /* padding-right: 20px; */
     margin: 0px;
     margin-right: 50px;
 }
@@ -177,6 +175,7 @@ html {
 .comments button {
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 .comments > h3 {

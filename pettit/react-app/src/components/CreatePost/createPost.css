@@ -108,9 +108,13 @@ input[type=file]::file-selector-button {
     padding: 7px;
 }
 
+.li div {
+margin-left: 30px;
+}
+
 .errors li {
     text-decoration: none;
-    margin: 10px 0px;
+    margin: 10px -37px;
 }
 
 form{
