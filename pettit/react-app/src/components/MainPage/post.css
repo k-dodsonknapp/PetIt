@@ -12,6 +12,10 @@
     background-color: white;
 }
 
+.votes:visited {
+    background-color: red;
+}
+
 .votesss {
     display: flex;
     justify-content: center;
@@ -149,9 +153,14 @@
     text-align: center;
 }
 
+.post-title {
+    margin-top: 10px;
+}
+
 .left-post button {
     border: 1px solid rgba(248, 248, 248, 0.513);
     background-color: rgba(248, 248, 248, 0.513);
+    border-radius: 6px;
 }
 
 #upvotee {

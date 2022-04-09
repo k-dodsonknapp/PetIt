@@ -94,7 +94,7 @@ const MainPage = () => {
                             </button>
                         </div>
                         <div className="right-post">
-                            <div>
+                            <div className="post-title">
                                 {post?.title}
                             </div>
                             <a href={`/posts/${post?.id}`}>

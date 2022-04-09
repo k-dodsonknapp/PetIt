@@ -292,6 +292,8 @@ textarea:focus {
 
 .createe {
     display: flex;
+    position: sticky;
+    top: 50px;
     flex-direction: row;
     justify-content: space-between;
     height: 150px;
@@ -308,6 +310,8 @@ textarea:focus {
 
 .me {
     display: flex;
+    position: sticky;
+    top: 190px;
     flex-direction: row;
     justify-content: space-between;
     height: 50px;

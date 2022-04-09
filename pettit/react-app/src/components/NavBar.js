@@ -40,7 +40,7 @@ const NavBar = () => {
             <div className='logo-home'>
               <li>
                 <NavLink to='/posts/main' exact={true} activeClassName='active'>
-                  <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo' /><span>Pettit </span>
+                  <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo' /><span className='app-name'>pettit </span>
                 </NavLink>
               </li>
               <li>
