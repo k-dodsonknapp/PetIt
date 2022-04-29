@@ -15,10 +15,15 @@ def get_all_comments(id):
 
 @comment_routes.route('/comment/<int:id>')
 def comment_on_comment(id):
-    comment = Comment.query.get(20)
-    comment_on_comment = Comment_on_comment.query.filter(Comment_on_comment.commentId == id).all()  
+    # print("PPPPPPPP", id)
+    # comment = Comment.query.get(id)
+    comments = Comment.query.filter(Comment.parentId == id).all()
+    # print("ASDFASDF", [comment.to_dict() for comment in comments] )
+    # print("asdfasdfasdf", [comment.to_dict() for comments in comment])
+    # comment_on_comment = Comment_on_comment.query.filter(Comment_on_comment.commentId == id).all()  
 
-    return {'comment_on_comment': [comment.to_dict() for comment in comment_on_comment]}
+# 'comment_on_comment': [comment.to_dict() for comment in comment_on_comment]
+    return {}
 
 
 @comment_routes.route('/new', methods=["POST"])
@@ -28,11 +33,13 @@ def new_comment():
     userId = data["userId"]
     postId = data["postId"]
     comment = data["comment"]
+    parentId =data["parentId"]
 
     new_comment = Comment(
         userId=userId,
         postId=postId,
-        comment=comment
+        comment=comment,
+        parentId=parentId,
     )
 
     db.session.add(new_comment)

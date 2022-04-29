@@ -1,0 +1,23 @@
+.commOnComm {
+    display: flex;
+    margin: 5px 0px 5px 15px;
+
+}
+
+
+.reply-to-comment {
+    border: none;
+    background-color: white;
+    /* width: 100px; */
+    /* height: 100px; */
+}
+
+/* .fa-solid.fa-message-dots  {
+    width: 50px;
+    height: 50px;
+}
+
+.fa-message-dots{
+    width: 50px;
+    height: 50px;
+} */

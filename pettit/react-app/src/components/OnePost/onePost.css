@@ -112,6 +112,8 @@ html {
 }
 
 .commm { 
+    /* display: flex; */
+    /* flex-direction: row; */
     overflow-wrap: anywhere;
     font-weight: 300;
     margin-left: 60px;
@@ -129,10 +131,10 @@ html {
     padding: 5px;
 }
 
-.comment{
+.comment {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* border: 1px solid red; */
     margin: 10px 2px;
     font-size: 12px;
@@ -236,4 +238,23 @@ html {
     margin-top: 20px;
     margin-left: 41px;
     /* border: 2px solid rgba(83, 83, 83, 0.308); */
+}
+
+.comment-on-comment-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 300px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 41px;
+}
+
+.comment-on-comment-form textarea {
+    display: flex;
+    resize: none;
+    width: 300px;
+    border-radius: 6px;
+    padding: 5px;
 }

@@ -4,6 +4,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { addNewComment, deleteAComment, getAllComments, updateComment } from "../../store/comments";
 import { getAllPosts } from "../../store/posts";
 import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
+import Comments from "../Comments";
+import CommOnComm from "../CommOnComm";
 import PageNotFound from "../PageNotFound";
 import './onePost.css'
 
@@ -13,12 +15,17 @@ const OnePost = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const id = +useParams().postId;
+    const session = useSelector(state => state.session)
     const posts = useSelector(state => state?.post?.list?.filter(post => post?.id === id));
     const user = useSelector(state => state?.session?.user);
-    const comment = useSelector(state => Object.values(state?.comments));
+    const comments = useSelector(state => Object.values(state?.comments).filter(comment => comment.parentId === null));
+    // console.log("asdfasdf", comment)
     const votes = useSelector(state => state?.votes?.post_votes);
 
     const [showCommentForm, setShowCommentForm] = useState(false);
+    const [showCommentOnCommentForm, setShowCommentOnCommentForm] = useState(false);
+    const [newCommentOnComment, setNewCommentOnComment] = useState('');
+    // console.log(newCommentOnComment)
     const [showCommentEditForm, setShowCommentEditForm] = useState(false);
     const [newComment, setNewComment] = useState('');
     const [commentToEdit, setCommentToEdit] = useState('');
@@ -76,8 +83,10 @@ const OnePost = () => {
         const brandNewComment = {
             "userId": user.id,
             "postId": id,
-            "comment": newComment
+            "comment": newComment,
+            "parentId": null
         };
+        console.log(brandNewComment)
         if (showBtns === false) {
             setShowBts(true);
         };
@@ -86,30 +95,30 @@ const OnePost = () => {
         setNewComment("");
     };
 
-    const handleEditedComment = (e) => {
-        e.preventDefault();
-        const editComment = {
-            "id": +commentId,
-            'userId': user.id,
-            'postId': id,
-            "comment": commentToEdit
-        };
-        dispatch(updateComment(editComment));
-        dispatch(getAllComments(+id));
-        setShowCommentEditForm(false);
-        setShowBts(true);
-    };
+    // const handleEditedComment = (e) => {
+    //     e.preventDefault();
+    //     const editComment = {
+    //         "id": +commentId,
+    //         'userId': user.id,
+    //         'postId': id,
+    //         "comment": commentToEdit
+    //     };
+    //     dispatch(updateComment(editComment));
+    //     dispatch(getAllComments(+id));
+    //     setShowCommentEditForm(false);
+    //     setShowBts(true);
+    // };
 
-    const handleCommentDelete = (e) => {
-        e.preventDefault();
-        const commentId = +e.target.id;
-        const idData = {
-            "postId": id,
-            "id": commentId
-        };
-        dispatch(getAllComments(id));
-        dispatch(deleteAComment(idData));
-    };
+    // const handleCommentDelete = (e) => {
+    //     e.preventDefault();
+    //     const commentId = +e.target.id;
+    //     const idData = {
+    //         "postId": id,
+    //         "id": commentId
+    //     };
+    //     dispatch(getAllComments(id));
+    //     dispatch(deleteAComment(idData));
+    // };
 
     const handleHome = () => {
         history.push('/posts/main');
@@ -134,11 +143,11 @@ const OnePost = () => {
         setShowBts(true);
     };
 
-    const handleECancel = (e) => {
-        e.preventDefault();
-        setShowCommentEditForm(false);
-        setShowBts(true);
-    };
+    // const handleECancel = (e) => {
+    //     e.preventDefault();
+    //     setShowCommentEditForm(false);
+    //     setShowBts(true);
+    // };
 
     if (!posts) {
         return (
@@ -164,6 +173,20 @@ const OnePost = () => {
             await dispatch(getPostVotes());
         };
     };
+
+    // const handleCommentOnComment = (index, commentId) => async (e) => {
+    //     e.preventDefault();
+    //     // console.log(index)
+    //     // let commentForm = document.getElementsByClassName(`comment-on-comment-form-${commentId}`)
+    //     // console.log("sdfdfsdfsdfsdf", commentForm);
+    //     if (showCommentOnCommentForm === false) {
+    //         // commentForm[0].style.display = 'block';
+    //         setShowCommentOnCommentForm(true);
+    //     } else {
+    //         // commentForm[0].style.display = 'none';
+    //         setShowCommentOnCommentForm(false);
+    //     };
+    // };
 
     const downvote = (postId) => async (e) => {
         e.preventDefault();
@@ -257,8 +280,8 @@ const OnePost = () => {
                                     </form>
                                 </div>
                             )}
-                            {showCommentEditForm && (
-                                <div className="comment-form">
+                            {/* {showCommentEditForm && ( */}
+                            {/* <div className="comment-form">
                                     <form onSubmit={handleEditComment}>
                                         <label htmlFor="editComment">Edit Comment</label>
                                         <textarea
@@ -283,31 +306,20 @@ const OnePost = () => {
                                             })}
                                         </ul>
                                     </form>
-                                </div>
-                            )}
+                                </div> */}
+                            {/* )} */}
                         </div>
                     </div>
                     <div className="comments">
                         <h3>Comments:</h3>
-                        {comment?.map(comment => (
-                            <div key={comment?.id}>
-                                <div className="comment">
-                                    <div className="commm">
-                                        {comment?.comment}
-                                    </div>
-                                    {user?.id === comment?.userId && (
-                                        <div>
-                                            {showBtns && (
-                                                <div className="btnsDiv">
-                                                    <button id={comment?.id} className="btnsss" onClick={handleCommentDelete}>Delete</button>
-                                                    <button id={comment?.id} className='btnsss' onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button>
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
+                        {comments?.map((comment, index) => (
+                            <div>
+                                <Comments comment={comment} id={id} />
                             </div>
                         ))?.reverse()}
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div>
