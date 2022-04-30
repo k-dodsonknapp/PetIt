@@ -19,6 +19,7 @@ html {
     align-items: center;
     flex-direction: row;
     gap:  300px;
+    z-index: 1;
 }
 
 .app-name {

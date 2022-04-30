@@ -6,6 +6,8 @@ import { getAllPosts } from "../../store/posts";
 import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
 import Comments from "../Comments";
 import PageNotFound from "../PageNotFound";
+import { BiUpvote, BiDownvote } from "react-icons/bi";
+
 import './onePost.css'
 
 
@@ -141,32 +143,34 @@ const OnePost = () => {
         <div className="pagee">
             <div className="main-feed-containers" >
                 <div className="posts" >
-                    <div className="right-postt">
-                        <div>
-                            {posts[0]?.title}
+                    <div className="idk">
+                        <div className="left-postt">
+                            <button id="upvote-btn" onClick={upvote(posts[0]?.id)}>
+                                {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
+                                <BiUpvote  id="upvote"/>
+                            </button>
+                            <div className="votesss">
+                                {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
+                            </div>
+                            <button onClick={downvote(posts[0]?.id)}>
+                                {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> */}
+                                <BiDownvote id="downvote"/>
+                            </button>
                         </div>
-                        <div className="idk">
-                            <div className="left-postt">
-                                <button onClick={upvote(posts[0]?.id)}>
-                                    <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
-                                </button>
-                                <div className="votesss">
-                                    {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
-                                </div>
-                                <button onClick={downvote(posts[0]?.id)}>
-                                    <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
-                                </button>
+                        <div className="right-postt">
+                            <div className="post-title">
+                                {posts[0]?.title}
                             </div>
                             <div className="img-tage">
                                 <img className='img-tag' src={`${posts[0]?.image}`} alt=""
                                     onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }} />
                             </div>
-                        </div>
                         <div className="post-body">
                             {posts[0]?.body}
                         </div>
                         <div className="button-div">
                             <button id="post-btn" onClick={handleShowCommentForm}>Comment</button>
+                        </div>
                         </div>
                         <div className="newCommentEditForm">
                             {showCommentForm && (

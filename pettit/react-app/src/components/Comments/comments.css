@@ -18,3 +18,8 @@
 .commm {
     border-left: 1px solid red;
 }
+
+#reply-icon {
+    height: 20px;
+    width: 20px;
+}

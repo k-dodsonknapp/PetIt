@@ -1,0 +1,27 @@
+.main-modal-login-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 6px;
+    width: 500px;
+    height: 500px;
+}
+
+.main-modal-login-div h1{
+    display: flex;
+    justify-content: flex-start;
+    /* align-self: flex-start; */
+    /* flex-direction: flex-start; */
+}
+
+#modal-login-btn {
+    height: 70px;
+    width: 120px;
+}
+
+#modal-signup-btn {
+    height: 70px;
+    width: 120px;
+}
