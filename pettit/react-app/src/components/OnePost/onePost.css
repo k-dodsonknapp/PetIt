@@ -64,8 +64,9 @@ html {
 }
 
 .img-tag {
-    height: 250px;
-    width: 375px;
+    height: 425px;
+    width: 625px;
+    /* width: 600px; */
     margin-left: 20px;
     border-radius: 4px;
     

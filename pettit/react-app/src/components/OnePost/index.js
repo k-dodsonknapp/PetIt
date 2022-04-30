@@ -25,7 +25,6 @@ const OnePost = () => {
     const [newComment, setNewComment] = useState('');
     const [commentToEdit, setCommentToEdit] = useState('');
     const [showBtns, setShowBts] = useState(true);
-    const [commentId, setCommentId] = useState(0);
     const [errors, setErrors] = useState([]);
     const [errorsEdit, setErrorsEdit] = useState([]);
 
@@ -89,23 +88,6 @@ const OnePost = () => {
         setShowCommentForm(false);
         setNewComment("");
     };
-
-    const handleHome = () => {
-        history.push('/posts/main');
-    };
-
-    const handleEditComment = (body, commId) => async (e) => {
-        e.preventDefault();
-        setCommentId(commId);
-        if (showCommentEditForm === false || showCommentForm === true) {
-            setShowCommentEditForm(true);
-            setShowCommentForm(false);
-        } else {
-            setShowCommentEditForm(false);
-        }
-        setCommentToEdit(body);
-        setShowBts(false);
-    }
 
     const handleCancel = (e) => {
         e.preventDefault();

@@ -13,7 +13,7 @@ const MainPage = () => {
     const user = useSelector(state => state?.session);
     const [postId, setPostId] = useState();
     const votes = useSelector(state => state?.votes?.post_votes);
-    const session = useSelector(state => state.session)
+    // const session = useSelector(state => state.session)
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
@@ -97,7 +97,7 @@ const MainPage = () => {
                             <a href={`/posts/${post?.id}`}>
                                 <div>
                                     <div>
-                                        <img className='img-tage' src={`${post.image}`} alt="post"
+                                        <img className='main-page-image' src={`${post.image}`} alt="post"
                                             onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
                                         />
                                     </div>
@@ -111,11 +111,6 @@ const MainPage = () => {
                                     <div className="delete-btn">
                                         <i onClick={handleDelete(post?.id)} className="fa-solid fa-trash"> <span> Delete </span> </i>
                                     </div>
-                                </div>
-                            )}
-                            {post.userId !== user.user.id && (
-                                <div>
-
                                 </div>
                             )}
                         </div>

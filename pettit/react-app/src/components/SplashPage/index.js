@@ -22,7 +22,7 @@ const SplashPage = () => {
                 <h1>Welcome to PettIt</h1>
                 <p>Pettit is a place where you can see all the creatures you want to pet!</p>
                 <div id='buttons'>
-                    <button className='btn' onClick={signUp}>Sign Up</button>
+                    <button className='btn' onClick={signUp}>Sign Upppppppppp</button>
                     <button className='btn' onClick={login}>Login</button>
                 </div>
             </div>

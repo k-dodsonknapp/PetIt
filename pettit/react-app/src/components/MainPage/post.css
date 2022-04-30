@@ -40,9 +40,17 @@
 }
 
 .img-tage{
-    height: 250px;
-    width: 350px;
+    margin-top: 20px;
+    height: 400px;
+    width: 575px;
     border-radius: 4px;
+}
+.main-page-image {
+    /* margin-top: 20px; */
+    margin: 0;
+    height: 275px;
+    width: 375px;
+    border-radius: 4px; 
 }
 
 .edit-image {

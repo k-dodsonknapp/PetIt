@@ -34,27 +34,27 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/' exact={true}>
+        {/* <Route path='/' exact={true}>
           <SplashPage />
-        </Route>
+        </Route> */}
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/posts/main' exact={true} >
+        <Route path='/' exact={true} >
           <MainPage />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path='/posts/new' exact={true} >
           <CreatePost />
         </ProtectedRoute>
         <ProtectedRoute path='/posts/:postId/edit' exact={true} >
           <UpdatePost />
         </ProtectedRoute>
-        <ProtectedRoute path='/posts/:postId' exact={true} >
+        <Route path='/posts/:postId' exact={true} >
           <OnePost />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path='/post' exact={true} >
           <OnePost />
         </ProtectedRoute>

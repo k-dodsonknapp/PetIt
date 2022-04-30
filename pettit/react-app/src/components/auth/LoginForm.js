@@ -30,7 +30,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/posts/main' />;
+    return <Redirect to='/' />;
   }
 
   const handleSignUp =(e) => {
@@ -39,7 +39,7 @@ const LoginForm = () => {
 
   const handleClick = async (e) => {
     await dispatch(sessionActions.login('demo@aa.io', 'password'))
-    history.push('/posts/main')
+    history.push('/')
   }
 
   return (
