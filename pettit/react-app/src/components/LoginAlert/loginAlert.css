@@ -12,8 +12,6 @@
 .main-modal-login-div h1{
     display: flex;
     justify-content: flex-start;
-    /* align-self: flex-start; */
-    /* flex-direction: flex-start; */
 }
 
 #modal-login-btn {

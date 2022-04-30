@@ -14,7 +14,7 @@ const MainPage = () => {
     const user = useSelector(state => state?.session);
     const [postId, setPostId] = useState();
     const votes = useSelector(state => state?.votes?.post_votes);
-    // const session = useSelector(state => state.session)
+
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
@@ -81,16 +81,7 @@ const MainPage = () => {
                 {posts?.map(post => (
                     <div className="post" key={post.id}>
                         <div className="left-post">
-                            {/* <button className="votess" id={post.id} onClick={upvote(post.id)}>
-                                <img id="upvotee" style={{backgroundColor: "white"}} src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
-                            </button>
-                            <div className="votesss">
-                                {votes && votes[0]?.votes?.filter(vote => vote?.post_id === post?.id)?.length}
-                            </div>
-                            <button className="votess" onClick={downvote(post?.id)}>
-                                <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
-                            </button> */}
-                            <Votes postId={post.id}/>
+                            <Votes postId={post.id} />
                         </div>
                         <div className="right-post">
                             <div className="post-title">

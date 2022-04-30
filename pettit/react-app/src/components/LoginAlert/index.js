@@ -12,7 +12,6 @@ function LoginAlert({ showLoginModal, setShowLoginModal }) {
         history.push('/sign-up')
     }
     return (
-        // <div>Modal</div>
         <Modal onClose={() => setShowLoginModal(false)}>
             <div className='main-modal-login-div'>
                 <h1>Please Log In</h1>

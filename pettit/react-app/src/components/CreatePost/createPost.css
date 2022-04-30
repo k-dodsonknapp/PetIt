@@ -46,7 +46,6 @@ input[type=file]::file-selector-button {
     flex-direction: column;
     height: 200px;
     width: 100%;
-    /* background-color: rgba(248, 248, 248, 0.513); */
     border-radius: 4px;
     box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918);
     margin-bottom: 15px;
@@ -152,7 +151,6 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid blue; */
     padding: 10px 0px 10px 0px;
     background-color: #ffffff;
     border: 1px solid #ffffff;
@@ -181,7 +179,6 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid green; */
     border-radius: 4px;
     padding: 10px 0px;
     background-color: #ffffff;
@@ -316,7 +313,6 @@ textarea:focus {
     justify-content: space-between;
     height: 50px;
     width: 100%;
-    /* box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918); */
     border-radius: 0px 0px 4px 4px;
     background-color: white;   
     border: 1px solid rgba(248, 248, 248, 0.513);
@@ -342,17 +338,13 @@ textarea:focus {
 .right-containerr {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid #dae0e6; */
     border-radius: 4px;
     height: 1000px;
     width: 266px;
     margin: 40px 10px;
-    /* background-color:  #dae0e6; */
 }
 
 .uploadPictureInput {
-    /* border: 1px solid red; */
-    /* color: red; */
     display: flex;
     justify-content: center;
 }

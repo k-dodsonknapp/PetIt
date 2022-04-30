@@ -10,8 +10,6 @@ import './comments.css';
 const Comments = ({ comment, postId }) => {
 
     const dispatch = useDispatch();
-    // console.log("asdfasdfasdf", comment)
-
     const commentsOnComment = useSelector(state => Object.values(state?.comments).filter(commentt => commentt?.parentId === comment.id));
     const user = useSelector(state => state?.session?.user);
     const [showBtns, setShowBts] = useState(true);

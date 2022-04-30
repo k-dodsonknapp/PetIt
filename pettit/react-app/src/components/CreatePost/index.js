@@ -19,8 +19,6 @@ const CreatePost = () => {
     const [imgErrors, setImgErrors] = useState([]);
     const [displayErrors, setDisplayErrors] = useState(true);
 
-
-
     useEffect(() => {
         dispatch(getAllPosts());
     }, [dispatch]);
@@ -45,31 +43,6 @@ const CreatePost = () => {
         setImage(images[i]);
     }, []);
 
-    // useEffect(() => {
-    //     const err = []
-    //     if (body.length > 250 || body.length < 5) {
-    //         err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
-    //     };
-    //     if (title.length > 50 || title.length < 3) {
-    //         err.push("Your post must have a title no longer than 50 characters.")
-    //     };
-
-    //     setErrors(err);
-    // }, [title, body]);
-
-
-    // const validateErrors = () => {
-    //     const err = []
-    //     if (body.length > 250 || body.length < 5) {
-    //         err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
-    //     };
-    //     if (title.length > 50 || title.length < 3) {
-    //         err.push("Your post must have a title no longer than 50 characters.")
-    //     };
-    //     setImgErrors(err);
-    //     return err;
-    // }
-
     useEffect(() => {
         const err = [];
 
@@ -80,29 +53,10 @@ const CreatePost = () => {
         if (err) setImgErrors(err)
         if (err) setErrors(err)
 
-        // setErrors(err);
-        // setImgErrors(err);
-
     }, [image, title, body])
-
-
-    // useEffect(() => {
-    //     const err = [];
-    //     if (title.length > 50 || title.length < 3) {
-    //         err.push("Your post must have a title.");
-    //     };
-    //     if (body.length > 250 || body.length < 5) {
-    //         err.push("Your post must have a body.");
-    //     };
-    //     setImgErrors(err);
-
-    // }, [image, title, body]);
-
 
     const handlePostSubmit = async (e) => {
         e.preventDefault();
-        // const errsList = validateErrors();
-        // if (errsList.length > 0) return;
         const newPost = {
             "userId": user.id,
             "title": title,
@@ -128,7 +82,6 @@ const CreatePost = () => {
         };
         setShowPostForm(true);
     };
-
 
     return (
         <div className="page">
@@ -188,7 +141,6 @@ const CreatePost = () => {
                                             {error}
                                         </div>
                                     </li>
-
                                 })}
                             </ul>
                             <div className="title-div">
