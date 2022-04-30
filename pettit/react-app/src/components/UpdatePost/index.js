@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getAllPosts, updateAPost } from "../../store/posts";
 import UploadPicture from "../UploadPicture";
+import "./create-edit.css";
 
 const UpdatePost = () => {
+
     const dispatch = useDispatch();
     const history = useHistory();
     const postId = useParams();
@@ -18,11 +20,7 @@ const UpdatePost = () => {
     const [showImgForm, setShowImgForm] = useState(false);
     const [errors, setErrors] = useState([]);
     const [imgErrors, setImgErrors] = useState([]);
-    console.log("GGGGGGG", imgErrors)
     const [displayErrors, setDisplayErrors] = useState(true);
-    console.log("FFFFFFFFFFFF", displayErrors)
-
-
 
     useEffect(() => {
         if (title) localStorage.setItem("title", title);
@@ -43,19 +41,6 @@ const UpdatePost = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    // useEffect(() => {
-    //     const err = []
-    //     if (body?.length > 250 || body?.length < 5) {
-    //         err.push("Your body cannot be longer than 250 characters or shorter than 5 characters.")
-    //     }
-    //     if (title?.length > 50 || title?.length < 3) {
-    //         err.push("Your post must have a title no longer than 50 characters.")
-    //     }
-
-    //     setErrors(err);
-
-    // }, [title, body])
-
     useEffect(() => {
         const err = [];
 
@@ -65,9 +50,6 @@ const UpdatePost = () => {
         if (body?.length > 255) err.push("Please provide shorter body that is 255 characters or less.");
         if (err) setImgErrors(err)
         if (err) setErrors(err)
-
-        // setErrors(err);
-        // setImgErrors(err);
 
     }, [image, title, body])
 
@@ -123,7 +105,6 @@ const UpdatePost = () => {
                 </div>
                 <div className="post-container">
                     <div className="create-post-title">
-                        {/* <h3>Edit a post</h3> */}
                         <button id="post-bttn" onClick={handlePostTab}>Post</button>
                         <button id="post-bttn" onClick={handleImgTab}>Images</button>
                     </div>
@@ -140,7 +121,6 @@ const UpdatePost = () => {
                             </ul>
                             <div className="title-div">
                                 <div className="title-label">
-                                    {/* <label>Title:</label> */}
                                 </div>
                                 <input
                                     type="text"
@@ -162,7 +142,6 @@ const UpdatePost = () => {
                                 />
                             </div>
                             <div className="btn-div">
-                                {/* <button onClick={handleCancel}>Cancel</button> */}
                                 <button onClick={handleImgTab} id="post-btn">Edit Image</button>
                             </div>
                         </form>
@@ -181,7 +160,6 @@ const UpdatePost = () => {
                             </ul>
                             <div className="title-div">
                                 <div className="title-label">
-                                    {/* <label>Title:</label> */}
                                 </div>
                                 <input
                                     type="text"
@@ -192,24 +170,12 @@ const UpdatePost = () => {
                                 />
                             </div>
                             <div className="edit-image">
-                                <img className="img-tage" src={image} alt="edited"
+                                <img className="update-post-img" src={image} alt="edited"
                                     onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
                                 />
                             </div>
-                            {/* <div className="image-div"> */}
                             <UploadPicture setImagee={setImage} />
-                            {/* <div className="image-label">
-                                    <label>Post an image:</label>
-                                </div>
-                                <input
-                                    type="text"
-                                    name="image"
-                                    value={image}
-                                    onChange={e => setImage(e.target.value)}
-                                /> */}
-                            {/* </div> */}
                             <div className="btn-div">
-                                {/* <button onClick={handleCancel}>Cancel</button> */}
                                 <button onClick={handlePostTab} id="post-btn">Edit Post</button>
                                 <button disabled={errors?.length > 0 || imgErrors?.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>

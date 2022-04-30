@@ -32,6 +32,7 @@
     word-wrap: break-word;
     margin-bottom: 20px;
 }
+
 #view-all {
     width: 85%;
     border-radius: 20px;
@@ -47,9 +48,7 @@
     border-radius: 10px;
     margin-right: 15px;
     background-color: transparent;
-    /* background-blend-mode: blur(20px); */
     backdrop-filter: blur(5px);
-    /* opacity: .8; */
     color: white;
     font-weight: 700;
     font-size: 20px;
@@ -59,7 +58,6 @@
 }
 
 .btn:hover {
-    /* background: #000; */
     background-color: antiquewhite;
     color: black;
     backdrop-filter: blur(10px);

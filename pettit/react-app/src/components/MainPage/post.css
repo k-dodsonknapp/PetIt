@@ -54,13 +54,6 @@
     border-radius: 4px; 
 }
 
-.edit-image {
-    display: flex;
-    width: 280px;
-    margin-left: 122px;
-    margin-bottom: 10px;
-}
-
 .post {
     display: flex;
     box-shadow: 0px 0px 4px 3px rgba(216, 214, 214, 0.918);

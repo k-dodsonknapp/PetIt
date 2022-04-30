@@ -4,8 +4,6 @@ import "./PageNotFound.css"
 
 
 function PageNotFound() {
-
-
     return (
         <div id="error-404-div">
             <div id="inner-404-div">
@@ -16,5 +14,5 @@ function PageNotFound() {
             </div>
         </div>
     );
-}
+};
 export default PageNotFound;
