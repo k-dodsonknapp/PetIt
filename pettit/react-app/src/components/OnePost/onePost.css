@@ -23,7 +23,7 @@ html {
     position: relative;
     border-radius: 4px;
     margin: 75px 0px 10px;
-    width: 585px;
+    width: 800px;
     height: auto;
     background-color: white;
 }
@@ -191,7 +191,7 @@ html {
     flex-direction: column;
     justify-content: center;
     height: auto;
-    width: 400px;
+    width: 800px;
     margin-top: 20px;
     /* background-color: white; */
     /* border: 1px black solid; */
@@ -203,7 +203,7 @@ html {
     align-items: center;
     flex-direction: column;
     margin: 0px 0px;
-    width: 600px;
+    width: 800px;
     height: auto;
 }
 

@@ -78,6 +78,7 @@
     align-items: center;
     height: auto;
     width: 266px;
+    border-left: 1px solid red;
 }
 
 .create-title h2 {

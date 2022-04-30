@@ -9,7 +9,7 @@ const CommentOnComment = ({
     id,
     showCommOnCommForm,
     setShowCommOnCommForm,
- }) => {
+}) => {
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.session?.user);
@@ -33,11 +33,11 @@ const CommentOnComment = ({
         } else {
             setShowCommentOnCommentForm(false)
         }
-        if (showCommOnCommForm === false) {
-            setShowCommOnCommForm(true)
-        } else {
-            setShowCommOnCommForm(false)
-        }
+        // if (showCommOnCommForm === false) {
+        //     setShowCommOnCommForm(true)
+        // } else {
+        //     setShowCommOnCommForm(false)
+        // }
         // setShowCommentForm(false);
         setShowBts(true);
     };
@@ -88,38 +88,33 @@ const CommentOnComment = ({
 
     return (
         <>
-            {/* {showCommentOnCommentForm && ( */}
-
-                <div className={`comment-on-comment-form-${comment.id}`}>
-                    <form onSubmit={handleNewCommentOnComment}>
-                        <label htmlFor="comment">Reply</label>
-                        <textarea
-                            placeholder="What are you thoughts?"
-                            type="text"
-                            name="comment"
-                            value={newCommentOnComment}
-                            onChange={e => setNewCommentOnComment(e.target.value)}
-                            required
-                        />
-                        <button
-                            // disabled={errors.length > 0 ? true : false}
-                            // id="post-btn" 
-                            id="post-btnsss"
-                            onClick={handleNewCommentOnComment}
-                        >Submit</button>
-                        <button id="post-btnsss" onClick={handleCancel}>Cancel</button>
-                        <ul className="errors">
-                            {/* {errors.length > 0 && errors.map(error => {
+            <div className={`comment-on-comment-form-${comment.id}`}>
+                <form onSubmit={handleNewCommentOnComment}>
+                    <label htmlFor="comment">Reply</label>
+                    <textarea
+                        placeholder="What are you thoughts?"
+                        type="text"
+                        name="comment"
+                        value={newCommentOnComment}
+                        onChange={e => setNewCommentOnComment(e.target.value)}
+                        required
+                    />
+                    <button
+                        id="post-btnsss"
+                        onClick={handleNewCommentOnComment}
+                    >Submit</button>
+                    <button id="post-btnsss" onClick={handleCancel}>Cancel</button>
+                    <ul className="errors">
+                        {/* {errors.length > 0 && errors.map(error => {
                                                     return <li className="li" key={error}>
                                                         <div className="error-div">
                                                             {error}
                                                         </div>
                                                     </li>
                                                 })} */}
-                        </ul>
-                    </form>
-                </div>
-            {/* )} */}
+                    </ul>
+                </form>
+            </div>
         </>
     )
 };

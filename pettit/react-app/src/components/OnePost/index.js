@@ -5,7 +5,6 @@ import { addNewComment, deleteAComment, getAllComments, updateComment } from "..
 import { getAllPosts } from "../../store/posts";
 import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
 import Comments from "../Comments";
-import CommOnComm from "../CommOnComm";
 import PageNotFound from "../PageNotFound";
 import './onePost.css'
 
@@ -19,13 +18,11 @@ const OnePost = () => {
     const posts = useSelector(state => state?.post?.list?.filter(post => post?.id === id));
     const user = useSelector(state => state?.session?.user);
     const comments = useSelector(state => Object.values(state?.comments).filter(comment => comment.parentId === null));
-    // console.log("asdfasdf", comment)
     const votes = useSelector(state => state?.votes?.post_votes);
 
     const [showCommentForm, setShowCommentForm] = useState(false);
-    const [showCommentOnCommentForm, setShowCommentOnCommentForm] = useState(false);
-    const [newCommentOnComment, setNewCommentOnComment] = useState('');
-    // console.log(newCommentOnComment)
+    // const [showCommentOnCommentForm, setShowCommentOnCommentForm] = useState(false);
+    // const [newCommentOnComment, setNewCommentOnComment] = useState('');
     const [showCommentEditForm, setShowCommentEditForm] = useState(false);
     const [newComment, setNewComment] = useState('');
     const [commentToEdit, setCommentToEdit] = useState('');
@@ -95,31 +92,6 @@ const OnePost = () => {
         setNewComment("");
     };
 
-    // const handleEditedComment = (e) => {
-    //     e.preventDefault();
-    //     const editComment = {
-    //         "id": +commentId,
-    //         'userId': user.id,
-    //         'postId': id,
-    //         "comment": commentToEdit
-    //     };
-    //     dispatch(updateComment(editComment));
-    //     dispatch(getAllComments(+id));
-    //     setShowCommentEditForm(false);
-    //     setShowBts(true);
-    // };
-
-    // const handleCommentDelete = (e) => {
-    //     e.preventDefault();
-    //     const commentId = +e.target.id;
-    //     const idData = {
-    //         "postId": id,
-    //         "id": commentId
-    //     };
-    //     dispatch(getAllComments(id));
-    //     dispatch(deleteAComment(idData));
-    // };
-
     const handleHome = () => {
         history.push('/posts/main');
     };
@@ -142,12 +114,6 @@ const OnePost = () => {
         setShowCommentForm(false);
         setShowBts(true);
     };
-
-    // const handleECancel = (e) => {
-    //     e.preventDefault();
-    //     setShowCommentEditForm(false);
-    //     setShowBts(true);
-    // };
 
     if (!posts) {
         return (
@@ -174,20 +140,6 @@ const OnePost = () => {
         };
     };
 
-    // const handleCommentOnComment = (index, commentId) => async (e) => {
-    //     e.preventDefault();
-    //     // console.log(index)
-    //     // let commentForm = document.getElementsByClassName(`comment-on-comment-form-${commentId}`)
-    //     // console.log("sdfdfsdfsdfsdf", commentForm);
-    //     if (showCommentOnCommentForm === false) {
-    //         // commentForm[0].style.display = 'block';
-    //         setShowCommentOnCommentForm(true);
-    //     } else {
-    //         // commentForm[0].style.display = 'none';
-    //         setShowCommentOnCommentForm(false);
-    //     };
-    // };
-
     const downvote = (postId) => async (e) => {
         e.preventDefault();
         const voteObj =
@@ -209,17 +161,6 @@ const OnePost = () => {
         <div className="pagee">
             <div className="main-feed-containers" >
                 <div className="posts" >
-                    {/* <div className="left-post">
-                        <button id={posts[0]?.id} onClick={upvote(posts[0]?.id)}>
-                            <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
-                        </button>
-                        <div className="votesss">
-                            {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
-                        </div>
-                        <button onClick={downvote(posts[0]?.id)}>
-                            <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
-                        </button>
-                    </div> */}
                     <div className="right-postt">
                         <div>
                             {posts[0]?.title}
@@ -245,9 +186,7 @@ const OnePost = () => {
                             {posts[0]?.body}
                         </div>
                         <div className="button-div">
-                            {/* <button id="post-btn" onClick={handleHome}>Home</button> */}
                             <button id="post-btn" onClick={handleShowCommentForm}>Comment</button>
-                            {/* <button id="post-btn" onClick={hideEditBtns}>Hide Edit & Delete</button> */}
                         </div>
                         <div className="newCommentEditForm">
                             {showCommentForm && (
@@ -263,7 +202,6 @@ const OnePost = () => {
                                         />
                                         <button
                                             disabled={errors.length > 0 ? true : false}
-                                            // id="post-btn" 
                                             id="post-btnsss"
                                             onClick={handleNewComment}
                                         >Submit</button>
@@ -280,34 +218,6 @@ const OnePost = () => {
                                     </form>
                                 </div>
                             )}
-                            {/* {showCommentEditForm && ( */}
-                            {/* <div className="comment-form">
-                                    <form onSubmit={handleEditComment}>
-                                        <label htmlFor="editComment">Edit Comment</label>
-                                        <textarea
-                                            type="text"
-                                            name="editComment"
-                                            value={commentToEdit}
-                                            onChange={e => setCommentToEdit(e.target.value)}
-                                            required
-                                        />
-                                        <button
-                                            disabled={errorsEdit.length > 0 ? true : false}
-                                            id="post-btnsss" onClick={handleEditedComment}
-                                        >Submit</button>
-                                        <button id="post-btnsss" onClick={handleECancel}>Cancel</button>
-                                        <ul className="errors">
-                                            {errorsEdit.length > 0 && errors.map(error => {
-                                                return <li className="li" key={error}>
-                                                    <div className="error-div">
-                                                        {error}
-                                                    </div>
-                                                </li>
-                                            })}
-                                        </ul>
-                                    </form>
-                                </div> */}
-                            {/* )} */}
                         </div>
                     </div>
                     <div className="comments">
@@ -319,7 +229,6 @@ const OnePost = () => {
                         ))?.reverse()}
                     </div>
                     <div>
-
                     </div>
                 </div>
             </div>
