@@ -21,8 +21,6 @@ const OnePost = () => {
     const votes = useSelector(state => state?.votes?.post_votes);
 
     const [showCommentForm, setShowCommentForm] = useState(false);
-    // const [showCommentOnCommentForm, setShowCommentOnCommentForm] = useState(false);
-    // const [newCommentOnComment, setNewCommentOnComment] = useState('');
     const [showCommentEditForm, setShowCommentEditForm] = useState(false);
     const [newComment, setNewComment] = useState('');
     const [commentToEdit, setCommentToEdit] = useState('');

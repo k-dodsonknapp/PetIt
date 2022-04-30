@@ -2,24 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewComment, getAllCommentOnComment, getAllComments } from "../../store/comments";
 
-const CommentOnComment = ({
-    setShowCommentOnCommentForm,
-    showCommentOnCommentForm,
-    comment,
-    id,
-    showCommOnCommForm,
-    setShowCommOnCommForm,
-}) => {
+const CommentOnComment = ({ setShowCommentOnCommentForm, showCommentOnCommentForm, comment, id }) => {
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.session?.user);
-    // const comments = useSelector(state => Object.values(state?.comments).filter(commentt => commentt?.parentId === comment.id));
-    // console.log("yuioyuioyuio", comments)
-    console.log("VBNMVBNM", comment)
     const [showBtns, setShowBts] = useState(true);
-    // const [showCommentOnCommentForm, setShowCommentOnCommentForm] = useState(false);
-    // const [newComment, setNewComment] = useState('');
-    // const [showCommentForm, setShowCommentForm] = useState(false);
     const [newCommentOnComment, setNewCommentOnComment] = useState('');
 
     useEffect(() => {
@@ -33,25 +20,8 @@ const CommentOnComment = ({
         } else {
             setShowCommentOnCommentForm(false)
         }
-        // if (showCommOnCommForm === false) {
-        //     setShowCommOnCommForm(true)
-        // } else {
-        //     setShowCommOnCommForm(false)
-        // }
-        // setShowCommentForm(false);
         setShowBts(true);
     };
-
-    // useEffect(() => {
-
-    //     const input = document.getElementById("post-btnsss");
-    //     input.addEventListener("keyup", (e) => {
-    //         if (e.key === 13) {
-    //             e.preventDefault();
-    //             document.getElementById('post-btnsss').click();
-    //         }
-    //     })
-    // },[])
 
     const handleNewCommentOnComment = (e) => {
         e.preventDefault();
@@ -70,20 +40,6 @@ const CommentOnComment = ({
         dispatch(addNewComment(brandNewComment));
         setShowCommentOnCommentForm(false);
         setNewCommentOnComment("");
-    };
-
-    const handleCommOnComm = (index, commentId) => async (e) => {
-        e.preventDefault();
-        if (showCommOnCommForm === false) {
-            setShowCommOnCommForm(true);
-        } else {
-            setShowCommOnCommForm(false);
-        };
-        if (showCommOnCommForm === true) {
-            setShowCommOnCommForm(false);
-        } else {
-            setShowCommOnCommForm(true);
-        };
     };
 
     return (

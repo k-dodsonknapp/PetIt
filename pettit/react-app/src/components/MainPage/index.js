@@ -13,13 +13,10 @@ const MainPage = () => {
     const user = useSelector(state => state?.session);
     const [postId, setPostId] = useState();
     const votes = useSelector(state => state?.votes?.post_votes);
-    // const comment = useSelector(state => Object.values(state?.comments));
     const session = useSelector(state => state.session)
-    // console.log("HHHHHH", comment)
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
-        // dispatch(getAllComments());
     }, [dispatch]);
 
     useEffect(() => {
