@@ -73,9 +73,16 @@ html {
 }
 
 #upvote{
+    /* color: red; */
     width: 35px;
     height: 35px;
 }
+
+/* #upvoted{
+    color: red;
+    width: 35px;
+    height: 35px;
+} */
 
 #downvote{
     width: 35px;
@@ -213,7 +220,7 @@ html {
     display: flex;
     justify-content: center;
     margin: 15px 0px 10px;
-    font-size: 11px;
+    font-size: 16px;
     overflow-wrap: break-word;
 }
 

@@ -16,12 +16,12 @@ const Votes = ({ postId }) => {
 
     const upvote = (postId) => async (e) => {
         const voteObj =
-            votes[0].votes.find(vote =>
-                vote.post_id === postId &&
-                vote?.user_id === user.id
+            votes[0]?.votes?.find(vote =>
+                vote?.post_id === postId &&
+                vote?.user_id === user?.id
             );
 
-        if (!voteObj || voteObj.user_id !== user.id) {
+        if (!voteObj || voteObj?.user_id !== user?.id) {
             e.preventDefault();
             const vote = {
                 "user_id": user?.id,
@@ -37,18 +37,19 @@ const Votes = ({ postId }) => {
         e.preventDefault();
         const voteObj =
             votes[0].votes.find(vote =>
-                vote.post_id === postId &&
-                vote?.user_id === user.id
+                vote?.post_id === postId &&
+                vote?.user_id === user?.id
             );
 
         if (voteObj) {
             const vote = {
-                'id': voteObj.id,
+                'id': voteObj?.id,
             };
             await dispatch(deleteVotes(vote));
             await dispatch(getPostVotes());
         };
     };
+
 
     return (
         <div>

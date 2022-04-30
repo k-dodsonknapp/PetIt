@@ -13,7 +13,6 @@ const MainPage = () => {
     const posts = useSelector(state => state?.post?.list);
     const user = useSelector(state => state?.session);
     const [postId, setPostId] = useState();
-    const votes = useSelector(state => state?.votes?.post_votes);
 
     useEffect(() => {
         dispatch(getAllPosts());
@@ -31,7 +30,6 @@ const MainPage = () => {
         const id = { "id": +postId };
         dispatch(deleteAPost(id));
         dispatch(getAllPosts());
-        dispatch(getAllComments(id.id));
     };
 
     const handleEdit = (postId) => async (e) => {
@@ -39,49 +37,13 @@ const MainPage = () => {
         history.push(`/posts/${postId}/edit`);
     };
 
-    const upvote = (postId) => async (e) => {
-        const voteObj =
-            votes[0].votes.find(vote =>
-                vote.post_id === postId &&
-                vote?.user_id === user.user.id
-            );
-
-        if (!voteObj || voteObj.user_id !== user.user.id) {
-            e.preventDefault();
-            const vote = {
-                "user_id": user?.user?.id,
-                "post_id": postId,
-                "comment_id": null,
-            };
-            await dispatch(addPostVote(vote));
-            await dispatch(getPostVotes());
-        };
-    };
-
-    const downvote = (postId) => async (e) => {
-        e.preventDefault();
-        const voteObj =
-            votes[0].votes.find(vote =>
-                vote.post_id === postId &&
-                vote?.user_id === user.user.id
-            );
-
-        if (voteObj) {
-            const vote = {
-                'id': voteObj.id,
-            };
-            await dispatch(deleteVotes(vote));
-            await dispatch(getPostVotes());
-        };
-    };
-
     return (
         <div className="page">
             <div className="main-feed-container" >
                 {posts?.map(post => (
-                    <div className="post" key={post.id}>
+                    <div className="post" key={post?.id}>
                         <div className="left-post">
-                            <Votes postId={post.id} />
+                            <Votes postId={post?.id} />
                         </div>
                         <div className="right-post">
                             <div className="post-title">
@@ -108,7 +70,7 @@ const MainPage = () => {
                             )}
                         </div>
                     </div>
-                )).reverse()}
+                ))?.reverse()}
             </div>
             <div className="right-container">
                 <div className="communities">
