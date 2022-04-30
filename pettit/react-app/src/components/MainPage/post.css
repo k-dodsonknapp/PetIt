@@ -48,7 +48,6 @@
 }
 .main-page-image {
     margin-top: 20px;
-    /* margin: 0; */
     height: 275px;
     width: 375px;
     border-radius: 4px; 
@@ -87,7 +86,6 @@
     align-items: center;
     height: auto;
     width: 266px;
-    /* border-left: 1px solid red; */
 }
 
 .create-title h2 {
@@ -147,7 +145,6 @@
 .right-post {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     height: 99%;
     width: 89%;
     text-align: center;
@@ -159,8 +156,6 @@
     justify-content: space-between;
     height: 99%;
     width: 100%;
-    /* margin-left: 30px; */
-    /* margin-top: 15px; */
     text-align: center;
 }
 
@@ -197,14 +192,12 @@
     display: flex;
     justify-content: flex-start;
     border-radius: 4px;
-    /* background-color: red; */
 }
 
 
 .comm-header {
     display: flex;
     justify-content: center;
-    /* border: 1px solid red; */
     width: 100%;
     height: 50px;
     background-image: url("https://thumbs.dreamstime.com/b/group-pets-together-15229056.jpg");
@@ -216,10 +209,8 @@
     width: 100%;
     height: 30px;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     color: green;
-    /* margin-bottom: 5px; */
 }
 
 .rows .fa-solid {
@@ -230,9 +221,7 @@
 .communities {
     display: flex;
     flex-direction: column;
-    /* height: auto; */
     width: 100%;
-    /* background-color: rgba(248, 248, 248, 0.513); */
     border-radius: 4px;
     position: static;
     box-shadow: 0px 0px 4px 1px rgba(216, 214, 214, 0.918);
@@ -276,7 +265,6 @@
 
 .button-div button {
     display: flex;
-    /* justify-content: flex-end; */
     background-color: white;
     border: transparent;
     border-radius: 4px;
@@ -287,6 +275,5 @@
     border-radius: 4px;
     height: 30px;
     width: 30px;
-    /* background-color: ; */
     background-color: rgba(248, 248, 248, 0.513);
 }
