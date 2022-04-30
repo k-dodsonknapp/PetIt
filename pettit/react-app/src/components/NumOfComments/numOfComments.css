@@ -1,0 +1,27 @@
+.main-feed-comment-btn {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    border: none;
+    background-color: white;
+    padding-left: 10px;
+}
+
+.main-feed-comment-btn:hover {
+    cursor: pointer;
+}
+
+.main-comment-btn-label {
+    align-self: center;
+    padding-bottom: 5px;
+    font-size: 12px;
+}
+
+.comment-count {
+    margin-left: 5px;
+}
+
+#comment-count-icon {
+    width: 22px;
+    height: 22px;
+}

@@ -4,7 +4,7 @@ import { addNewComment, deleteAComment, getAllCommentOnComment, getAllComments }
 import CommentOnComment from "../CommentOnComment";
 import EditComment from "../EditComment";
 import LoginAlert from "../LoginAlert";
-import { FaAlignJustify, BiMessage } from "react-icons/bi";
+import { BiMessage } from "react-icons/bi";
 import './comments.css';
 
 const Comments = ({ comment, postId }) => {

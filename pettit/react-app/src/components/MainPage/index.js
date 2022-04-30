@@ -1,31 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getAllComments } from "../../store/comments";
+// import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
-import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
+import { getPostVotes } from "../../store/votes";
 import Votes from "../Votes";
+// import { BiMessage } from "react-icons/bi";
 import './post.css';
+import NumOfComments from "../NumOfComments";
 
 const MainPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const posts = useSelector(state => state?.post?.list);
     const user = useSelector(state => state?.session);
-    const [postId, setPostId] = useState();
+    const comments = useSelector(state => state?.comments);
+    // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
+
 
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
+        // dispatch(getAllComments(postId))
     }, [dispatch]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-
     const handleDelete = (postId) => async (e) => {
-        setPostId(postId);
         e.preventDefault();
         const id = { "id": +postId };
         dispatch(deleteAPost(id));
@@ -47,27 +50,27 @@ const MainPage = () => {
                         </div>
                         <div className="right-post">
                             <div className="post-title">
+                                {post?.username}
                                 {post?.title}
                             </div>
                             <a href={`/posts/${post?.id}`}>
-                                <div>
-                                    <div>
-                                        <img className='main-page-image' src={`${post.image}`} alt="post"
-                                            onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
-                                        />
-                                    </div>
-                                </div>
+                                <img className='main-page-image' src={`${post.image}`} alt="post"
+                                    onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }}
+                                />
                             </a>
-                            {post?.userId === user?.user?.id && (
-                                <div className="button-div">
-                                    <div className="edit-btn">
-                                        <i onClick={handleEdit(post?.id)} className="fa-solid fa-pen-to-square"> <span> Edit </span> </i>
+                            <div className="right-bottom-post">
+                                <NumOfComments comments={comments} postId={post?.id}/>
+                                {post?.userId === user?.user?.id && (
+                                    <div className="button-div">
+                                        <div className="edit-btn">
+                                            <i onClick={handleEdit(post?.id)} className="fa-solid fa-pen-to-square"> <span> Edit </span> </i>
+                                        </div>
+                                        <div className="delete-btn">
+                                            <i onClick={handleDelete(post?.id)} className="fa-solid fa-trash"> <span> Delete </span> </i>
+                                        </div>
                                     </div>
-                                    <div className="delete-btn">
-                                        <i onClick={handleDelete(post?.id)} className="fa-solid fa-trash"> <span> Delete </span> </i>
-                                    </div>
-                                </div>
-                            )}
+                                )}
+                            </div>
                         </div>
                     </div>
                 ))?.reverse()}

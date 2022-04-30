@@ -12,6 +12,7 @@ class Post(db.Model):
     image = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    username = db.Column(db.Text)
 
     user = db.relationship('User', back_populates='post')
     comment = db.relationship('Comment', back_populates='post')
@@ -28,4 +29,5 @@ class Post(db.Model):
             'image': self.image,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'username': self.username,
         }

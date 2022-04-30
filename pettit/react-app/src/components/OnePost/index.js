@@ -18,8 +18,9 @@ const OnePost = () => {
     const postId = +useParams().postId;
     const posts = useSelector(state => state?.post?.list?.filter(post => post?.id === postId));
     const user = useSelector(state => state?.session?.user);
-    const comments = useSelector(state => Object.values(state?.comments).filter(comment => comment.parentId === null));
-    const votes = useSelector(state => state?.votes?.post_votes);
+    const comments = useSelector(state => Object.values(state?.comments).filter(comment => comment.parentId === null && comment.postId === postId));
+    console.log("MMMMMMM", comments)
+    // const votes = useSelector(state => state?.votes?.post_votes);
 
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [showCommentEditForm, setShowCommentEditForm] = useState(false);
@@ -48,11 +49,11 @@ const OnePost = () => {
 
     useEffect(() => {
         dispatch(getAllComments(postId));
-    }, [dispatch, postId]);
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(getAllPosts());
-    }, [dispatch, postId]);
+    }, [dispatch]);
 
     const handleShowCommentForm = (e) => {
         e.preventDefault();
@@ -158,7 +159,7 @@ const OnePost = () => {
                     <div className="comments">
                         <h3>Comments:</h3>
                         {comments?.map((comment, index) => (
-                            <div>
+                            <div key={comment.id}>
                                 <Comments comment={comment} postId={postId} />
                             </div>
                         ))?.reverse()}

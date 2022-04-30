@@ -7,6 +7,7 @@ class Vote(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+    upvote = db.Column(db.String(10))
 
     user = db.relationship('User', back_populates='vote')
     post = db.relationship('Post', back_populates='vote')
@@ -18,4 +19,5 @@ class Vote(db.Model):
             'user_id': self.user_id,
             'comment_id': self.comment_id,
             'post_id': self.post_id,
+            'upvote': self.upvote,
         }

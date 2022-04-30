@@ -5,11 +5,13 @@ def seed_votes():
     post_votes = Vote(
         user_id=1,
         post_id=17,
+        upvote="upvote",
     )
 
     post_votes1 = Vote(
         comment_id=1,
         user_id=2,
+        upvote="upvote",
     )
     # post_votes2 = Vote(
     #     comment_id=
