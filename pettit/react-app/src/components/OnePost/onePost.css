@@ -103,6 +103,7 @@ html {
 
 .left-postt {
     display: flex;
+    align-items: center;
     flex-direction: column;
     float: left;
     /* height: 100%; */
@@ -222,8 +223,6 @@ html {
     height: auto;
     width: 800px;
     margin-top: 20px;
-    /* background-color: white; */
-    /* border: 1px black solid; */
 }
 
 .main-feed-containers {
@@ -240,7 +239,6 @@ html {
     display: flex;
     justify-content: center;
     margin: 15px 0px 10px;
-    /* border: 1px solid green; */
     font-size: 11px;
     overflow-wrap: break-word;
 }
@@ -268,7 +266,6 @@ html {
     margin-bottom: 20px;
     margin-top: 20px;
     margin-left: 41px;
-    /* border: 2px solid rgba(83, 83, 83, 0.308); */
 }
 
 .comment-on-comment-form {

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
 import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
+import Votes from "../Votes";
 import './post.css';
 
 const MainPage = () => {
@@ -80,7 +81,7 @@ const MainPage = () => {
                 {posts?.map(post => (
                     <div className="post" key={post.id}>
                         <div className="left-post">
-                            <button className="votess" id={post.id} onClick={upvote(post.id)}>
+                            {/* <button className="votess" id={post.id} onClick={upvote(post.id)}>
                                 <img id="upvotee" style={{backgroundColor: "white"}} src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" />
                             </button>
                             <div className="votesss">
@@ -88,7 +89,8 @@ const MainPage = () => {
                             </div>
                             <button className="votess" onClick={downvote(post?.id)}>
                                 <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" />
-                            </button>
+                            </button> */}
+                            <Votes postId={post.id}/>
                         </div>
                         <div className="right-post">
                             <div className="post-title">

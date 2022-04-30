@@ -7,10 +7,10 @@ import LoginAlert from "../LoginAlert";
 import { FaAlignJustify, BiMessage } from "react-icons/bi";
 import './comments.css';
 
-const Comments = ({ comment, id }) => {
+const Comments = ({ comment, postId }) => {
 
     const dispatch = useDispatch();
-    console.log("asdfasdfasdf", comment)
+    // console.log("asdfasdfasdf", comment)
 
     const commentsOnComment = useSelector(state => Object.values(state?.comments).filter(commentt => commentt?.parentId === comment.id));
     const user = useSelector(state => state?.session?.user);
@@ -42,15 +42,15 @@ const Comments = ({ comment, id }) => {
     const handleCommentDelete = (e) => {
         e.preventDefault();
         const idData = {
-            "postId": id,
+            "postId": postId,
             "id": comment.id
         };
         console.log("LLLLLLL", idData)
-        dispatch(getAllComments(id));
+        dispatch(getAllComments(postId));
         dispatch(deleteAComment(idData));
     };
 
-    const handleCommentOnComment = (index, commentId) => async (e) => {
+    const handleCommentOnComment = () => async (e) => {
         e.preventDefault();
         if (!user) {
             setShowLoginModal(true)
@@ -82,7 +82,7 @@ const Comments = ({ comment, id }) => {
                             <>
                                 <CommentOnComment
                                     comment={comment}
-                                    id={id}
+                                    id={postId}
                                     setShowCommentOnCommentForm={setShowCommentOnCommentForm}
                                     showCommentOnCommentForm={showCommentOnCommentForm}
                                 />
@@ -90,7 +90,7 @@ const Comments = ({ comment, id }) => {
                         )}
                         <button id={comment?.id} className='reply-to-comment' onClick={handleCommentOnComment(comment?.id)} >Reply <BiMessage id="reply-icon"/></button>
                         {commentsOnComment.map(comment => (
-                            <Comments comment={comment} id={id} />
+                            <Comments comment={comment} postId={postId} />
                         ))}
                     </div>
                     {user?.id === comment?.userId && (
@@ -110,7 +110,7 @@ const Comments = ({ comment, id }) => {
                             commentToEdit={commentToEdit}
                             setCommentToEdit={setCommentToEdit}
                             commentId={comment.id}
-                            id={id} />
+                            id={postId} />
                     )}
                 </>
                 {showLoginModal && (

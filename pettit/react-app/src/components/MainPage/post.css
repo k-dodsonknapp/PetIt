@@ -135,6 +135,7 @@
 .left-post {
     display: flex;
     flex-direction: column;
+    align-items: center;
     float: left;
     height: 100%;
     width: 10%; 
