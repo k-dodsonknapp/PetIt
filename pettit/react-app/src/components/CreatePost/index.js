@@ -9,6 +9,7 @@ const CreatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state?.session?.user);
+    console.log("BBBBBBBBBBBBBB",user.username)
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
@@ -63,6 +64,7 @@ const CreatePost = () => {
             "body": body,
             "image": image,
             "updated_at": new Date(),
+            "username": user.username,
         };
         await dispatch(addAPost(newPost));
         await dispatch(getAllPosts());

@@ -26,6 +26,7 @@ def create_post():
     title = data["title"]
     body = data["body"]
     image = data["image"]
+    username = data["username"]
 
     """
         This route passes in userId, title, body, image for posts
@@ -36,6 +37,7 @@ def create_post():
         title=title,
         body=body,
         image=image,  
+        username=username,
     )
     db.session.add(new_post)
     db.session.commit()

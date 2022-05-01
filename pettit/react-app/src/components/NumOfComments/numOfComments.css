@@ -5,10 +5,14 @@
     border: none;
     background-color: white;
     padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    height: 38px;
 }
 
 .main-feed-comment-btn:hover {
     cursor: pointer;
+    background-color: rgb(228, 228, 228);
 }
 
 .main-comment-btn-label {
@@ -22,6 +26,6 @@
 }
 
 #comment-count-icon {
-    width: 22px;
+    width: 27px;
     height: 22px;
 }

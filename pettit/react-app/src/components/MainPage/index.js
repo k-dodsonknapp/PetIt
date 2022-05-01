@@ -67,14 +67,16 @@ const MainPage = () => {
                             <div className="right-bottom-post">
                                 <NumOfComments comments={comments} postId={post?.id}/>
                                 {post?.userId === user?.user?.id && (
-                                    <div className="button-div">
+                                    // <div className="button-div">
+                                    <>
                                         <div className="edit-btn">
                                             <button  onClick={handleEdit(post?.id)}><FiEdit id="main-edit-btn-icon"/>Edit</button>
                                         </div>
                                         <div className="delete-btn">
                                             <button onClick={handleDelete(post?.id)}><RiDeleteBin2Line id="main-delete-btn-icon"/>Delete</button>
                                         </div>
-                                    </div>
+                                    </>
+                                    // </div>
                                 )}
                             </div>
                         </div>

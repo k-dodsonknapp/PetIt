@@ -10,9 +10,10 @@
 
 .right-bottom-post {
     display: flex;
-    height: 25px;
+    height: 38px;
     align-items: center;
     margin-top: 2px;
+    width: 562px;
 }
 
 .votess {
@@ -258,6 +259,7 @@
 .right-post a {
     text-decoration: none;
     width: max-content;
+    height: 376px;
 }
 
 .button-div {
@@ -267,13 +269,13 @@
 }
 
 #main-edit-btn-icon {
-    height: 22px;
+    height: 27px;
     width: 22px;
     margin-right: 6px;
 }
 
 #main-delete-btn-icon {
-    height: 22px;
+    height: 27px;
     width: 22px;
     margin-right: 6px;
 }
@@ -282,30 +284,53 @@
     font-size: 20px;
 }
 
-.button-div .edit-btn,
-.button-div .delete-btn {
+.edit-btn,
+.delete-btn {
     height: 22px;
-    width: 75px;
+    width: 77px;
     margin-right: -10px;
     cursor: pointer;
     margin-bottom: 7px;
     font-weight: 200;
     font-size: 10px;
     /* font-style: nomal !important; */
+    margin-bottom: 17px;
+
 }
 
-.fa-solid, .fas {
-    font-weight: 550;
-}
-
-.button-div button {
+.edit-btn button{
     display: flex;
-    background-color: white;
     align-items: center;
-    border: transparent;
-    border-radius: 4px;
-    margin-left: 10px;
+    font-size: 12px;
+    letter-spacing: .3px;
+    border: none;
+    background-color: white;
+    padding-left: 9px;
+    /* padding-right: 10px; */
+    /* padding-top: 4px; */
+    /* margin-bottom: 4px; */
+    height: 38px;
+    width: 84px;
+}
+.delete-btn button {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: .3px;
+    border: none;
+    background-color: white;
+    padding-left: 10px;
+    /* padding-right: 10px; */
+    /* padding-top: 4px; */
+    /* margin-bottom: 4px; */
+    height: 38px;
+    width: 84px;
+}
+
+.edit-btn button:hover,
+.delete-btn button:hover {
     cursor: pointer;
+    background-color: rgb(228, 228, 228);
 }
 
 .left-post img {
