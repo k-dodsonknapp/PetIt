@@ -68,25 +68,43 @@ html {
 }
 
 .post-title {
-    font-size: 24px;
-    margin-top: 20px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 550;
+    margin-top: 10px;
+    margin-left: 5px;
+    letter-spacing: .3px;
+}
+
+.username-span {
+    margin-left: 3px;
+    font-weight: bold;
+}
+
+.post-username {
+    display: flex;
+    font-size: 12px;
+    font-weight: 200;
+    margin-top: 10px;
+    margin-left: 5px;
+    letter-spacing: .3px;
 }
 
 #upvote{
     /* color: red; */
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
 }
 
 /* #upvoted{
     color: red;
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
 } */
 
 #downvote{
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
 }
 
 #upvote-btn {

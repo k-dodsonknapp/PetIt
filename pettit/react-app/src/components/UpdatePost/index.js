@@ -74,7 +74,7 @@ const UpdatePost = () => {
             dispatch(updateAPost(newPost));
         }
 
-        history.push('/posts/main');
+        history.push('/');
     }
 
     useEffect(() => {

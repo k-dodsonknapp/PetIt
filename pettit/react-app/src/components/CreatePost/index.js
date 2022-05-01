@@ -66,7 +66,7 @@ const CreatePost = () => {
         };
         await dispatch(addAPost(newPost));
         await dispatch(getAllPosts());
-        history.push("/posts/main");
+        history.push("/");
     };
 
     const handleImgTab = (e) => {

@@ -8,6 +8,9 @@ import Votes from "../Votes";
 // import { BiMessage } from "react-icons/bi";
 import './post.css';
 import NumOfComments from "../NumOfComments";
+import { FiEdit } from "react-icons/fi";
+import { RiDeleteBin2Line } from "react-icons/ri";
+
 
 const MainPage = () => {
     const dispatch = useDispatch();
@@ -49,8 +52,11 @@ const MainPage = () => {
                             <Votes postId={post?.id} />
                         </div>
                         <div className="right-post">
+                            <h2 className="post-username">
+                                Posted by <span className="username-span">u/{post?.username}</span>                           
+                            </h2>
                             <div className="post-title">
-                                {post?.username}
+                                {/* {post?.username} */}
                                 {post?.title}
                             </div>
                             <a href={`/posts/${post?.id}`}>
@@ -63,10 +69,10 @@ const MainPage = () => {
                                 {post?.userId === user?.user?.id && (
                                     <div className="button-div">
                                         <div className="edit-btn">
-                                            <i onClick={handleEdit(post?.id)} className="fa-solid fa-pen-to-square"> <span> Edit </span> </i>
+                                            <button  onClick={handleEdit(post?.id)}><FiEdit id="main-edit-btn-icon"/>Edit</button>
                                         </div>
                                         <div className="delete-btn">
-                                            <i onClick={handleDelete(post?.id)} className="fa-solid fa-trash"> <span> Delete </span> </i>
+                                            <button onClick={handleDelete(post?.id)}><RiDeleteBin2Line id="main-delete-btn-icon"/>Delete</button>
                                         </div>
                                     </div>
                                 )}
