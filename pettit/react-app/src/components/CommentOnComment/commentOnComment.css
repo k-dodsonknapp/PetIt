@@ -1,0 +1,41 @@
+.comment-on-comment-form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    background-color: transparent;
+    width: 674px;
+    /* padding: 0px 63px 0px 63px; */
+    /* margin-bottom: 20px; */
+    /* margin-top: 20px; */
+    /* margin-left: 41px; */
+  }
+
+  .comment-on-comment-form textarea {
+    display: flex;
+    resize: none;
+    width: 649px;
+    height: 130px;
+    border-radius: 4px 4px 0px 0px;
+    padding: 7px 10px;
+    /* border: 1px solid #edeff1; */
+    border-top: 1px solid #edeff1;
+    border-right: 1px solid #edeff1;
+    border-left: 1px solid #edeff1;
+    border-bottom: none;
+    resize: vertical;
+  }
+
+  .comment-on-comment-textarea {
+      display: flex;
+      width: 100%;
+  }
+
+  .comment-on-comment-textarea-bottom{
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+    width: 669px;
+    border: 1px solid #edeff1;
+    background-color: #edeff1;
+}

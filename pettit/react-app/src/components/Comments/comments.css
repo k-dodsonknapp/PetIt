@@ -16,7 +16,8 @@
 }
 
 .commm {
-    border-left: 1px solid red;
+    /* border-left: 1px solid red; */
+    border-left: 2px solid rgba(237, 239, 241, 1);
 }
 
 #reply-icon {

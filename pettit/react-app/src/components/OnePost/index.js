@@ -7,9 +7,11 @@ import { getAllPosts } from "../../store/posts";
 import Comments from "../Comments";
 import PageNotFound from "../PageNotFound";
 // import { BiUpvote, BiDownvote } from "react-icons/bi";
+import { BiMessage } from "react-icons/bi";
 
 import './onePost.css'
 import Votes from "../Votes";
+import CommentForm from "../CommentForm";
 
 
 const OnePost = () => {
@@ -18,12 +20,15 @@ const OnePost = () => {
     const postId = +useParams().postId;
     const posts = useSelector(state => state?.post?.list?.filter(post => post?.id === postId));
     const user = useSelector(state => state?.session?.user);
+    // console.log("VVVVVV", user)
     const comments = useSelector(state => Object.values(state?.comments).filter(comment => comment.parentId === null && comment.postId === postId));
-    console.log("MMMMMMM", comments)
+    // console.log("MMMMMMM", comments)
     // const votes = useSelector(state => state?.votes?.post_votes);
+    const postComments = useSelector(state => Object.values(state?.comments).filter(comment => comment?.postId === postId))
+    console.log(postComments)
 
     const [showCommentForm, setShowCommentForm] = useState(false);
-    const [showCommentEditForm, setShowCommentEditForm] = useState(false);
+    // const [showCommentEditForm, setShowCommentEditForm] = useState(false);
     const [newComment, setNewComment] = useState('');
     const [commentToEdit, setCommentToEdit] = useState('');
     const [showBtns, setShowBts] = useState(true);
@@ -57,12 +62,12 @@ const OnePost = () => {
 
     const handleShowCommentForm = (e) => {
         e.preventDefault();
-        if (showCommentForm === false || showCommentEditForm === true) {
-            setShowCommentForm(true);
-            setShowCommentEditForm(false);
-        } else {
-            setShowCommentForm(false);
-        };
+    //     if (showCommentForm === false || showCommentEditForm === true) {
+    //         setShowCommentForm(true);
+    //         setShowCommentEditForm(false);
+    //     } else {
+    //         setShowCommentForm(false);
+    //     };
 
         if (showBtns === false) {
             setShowBts(true);
@@ -109,62 +114,73 @@ const OnePost = () => {
                         <div className="left-postt">
                             <Votes postId={postId} />
                         </div>
-                        <div className="right-postt">
+                        <div className="one-post-main-content">
+                            <div className="one-post-username">
+                                <p>Posted by u/{posts[0]?.username}</p>
+                            </div>
                             <div className="post-title">
                                 {posts[0]?.title}
                             </div>
-                            <div className="img-tage">
+                            <div className="post-body">
+                                <p className="post-body-text">{posts[0]?.body}</p>
+                            </div>
+                            <div className="one-post-image">
                                 <img className='img-tag' src={`${posts[0]?.image}`} alt=""
                                     onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }} />
                             </div>
-                            <div className="post-body">
-                                {posts[0]?.body}
-                            </div>
-                            <div className="button-div">
-                                <button id="post-btn" onClick={handleShowCommentForm}>Comment</button>
-                            </div>
-                        </div>
-                        <div className="newCommentEditForm">
-                            {showCommentForm && (
-                                <div className="comment-form">
-                                    <form onSubmit={handleNewComment}>
-                                        <label htmlFor="comment">New Comment</label>
-                                        <textarea
-                                            type="text"
-                                            name="comment"
-                                            value={newComment}
-                                            onChange={e => setNewComment(e.target.value)}
-                                            required
-                                        />
-                                        <button
-                                            disabled={errors.length > 0 ? true : false}
-                                            id="post-btnsss"
-                                            onClick={handleNewComment}
-                                        >Submit</button>
-                                        <button id="post-btnsss" onClick={handleCancel}>Cancel</button>
-                                        <ul className="errors">
-                                            {errors.length > 0 && errors.map(error => {
-                                                return <li className="li" key={error}>
-                                                    <div className="error-div">
-                                                        {error}
-                                                    </div>
-                                                </li>
-                                            })}
-                                        </ul>
-                                    </form>
+                            <div className="one-post-comment-count">
+                                <div className="comment-count">
+                                    <BiMessage id="comment-count-icon" /><span id="count">{postComments.length}</span> Comments
                                 </div>
-                            )}
+                            </div>
                         </div>
                     </div>
-                    <div className="comments">
-                        <h3>Comments:</h3>
-                        {comments?.map((comment, index) => (
-                            <div key={comment.id}>
-                                <Comments comment={comment} postId={postId} />
-                            </div>
-                        ))?.reverse()}
-                    </div>
-                    <div>
+                    <div className="newCommentEditForm">
+                        <CommentForm postId={postId} showBtns={showBtns} setShowBts={setShowBts}/>
+                        {/* {showCommentForm && ( */}
+                        {/* <div className="comment-form"> */}
+                            {/* <h5>Comment as <span className="comment-form-username">{user.username}</span></h5> */}
+                            {/* <form onSubmit={handleNewComment}> */}
+                                {/* <label htmlFor="comment">New Comment</label> */}
+                                {/* <textarea
+                                    placeholder="What are you thoughts?"
+                                    type="text"
+                                    name="comment"
+                                    value={newComment}
+                                    onChange={e => setNewComment(e.target.value)}
+                                    required
+                                > */}
+                                {/* </textarea> */}
+                                    {/* <div className="comment-textarea-bottom">
+                                <button id="one-post-comment-btn" onClick={handleNewComment}>Comment</button> */}
+
+                                    {/* </div> */}
+                                {/* <button
+                                disabled={errors.length > 0 ? true : false}
+                                id="post-btnsss"
+                                onClick={handleNewComment}
+                            >Submit</button>
+                            <button id="post-btnsss" onClick={handleCancel}>Cancel</button> */}
+                                {/* <ul className="errors"> */}
+                                    {/* {errors.length > 0 && errors.map(error => {
+                                    return <li className="li" key={error}>
+                                        <div className="error-div">
+                                            {error}
+                                        </div>
+                                    </li>
+                                })} */}
+                                {/* </ul> */}
+                            {/* </form> */}
+                        {/* </div> */}
+                        {/* )} */}
+                        <div className="comments">
+                            {/* <h3>Comments:</h3> */}
+                            {comments?.map((comment) => (
+                                <div key={comment.id}>
+                                    <Comments comment={comment} postId={postId} />
+                                </div>
+                            ))?.reverse()}
+                        </div>
                     </div>
                 </div>
             </div>

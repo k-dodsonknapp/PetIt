@@ -6,8 +6,10 @@ import EditComment from "../EditComment";
 import LoginAlert from "../LoginAlert";
 import { BiMessage } from "react-icons/bi";
 import './comments.css';
+import CommentOnCommentFormToggle from "../CommentOnCommentToggle";
 
 const Comments = ({ comment, postId }) => {
+    console.log(comment)
 
     const dispatch = useDispatch();
     const commentsOnComment = useSelector(state => Object.values(state?.comments).filter(commentt => commentt?.parentId === comment.id));
@@ -53,17 +55,16 @@ const Comments = ({ comment, postId }) => {
         if (!user) {
             setShowLoginModal(true)
         } else {
-
             if (showCommentOnCommentForm === false) {
                 setShowCommentOnCommentForm(true);
             } else {
                 setShowCommentOnCommentForm(false);
             };
-            if (showCommentOnCommentForm === true) {
-                setShowCommentOnCommentForm(false);
-            } else {
-                setShowCommentOnCommentForm(true);
-            }
+            // if (showCommentOnCommentForm === true) {
+            //     setShowCommentOnCommentForm(false);
+            // } else {
+            //     setShowCommentOnCommentForm(true);
+            // }
         };
     };
 
@@ -72,30 +73,33 @@ const Comments = ({ comment, postId }) => {
             <div key={comment?.id}>
                 <div className="comment">
                     <div>
-                        {comment?.username}
+                        <h5>{comment?.username}</h5>
                     </div>
                     <div className="commm">
                         {comment?.comment}
-                        {showCommentOnCommentForm && (
-                            <>
-                                <CommentOnComment
-                                    comment={comment}
-                                    id={postId}
-                                    setShowCommentOnCommentForm={setShowCommentOnCommentForm}
-                                    showCommentOnCommentForm={showCommentOnCommentForm}
-                                />
-                            </>
-                        )}
-                        <button id={comment?.id} className='reply-to-comment' onClick={handleCommentOnComment(comment?.id)} >Reply <BiMessage id="reply-icon"/></button>
-                        {commentsOnComment.map(comment => (
-                            <Comments comment={comment} postId={postId} />
-                        ))}
+                        {/* <CommentOnCommentFormToggle comment={comment} showLoginModal={showLoginModal} postId={postId} handleCommentOnComment={handleCommentOnComment} /> */}
+                        <button id={comment?.id} className='reply-to-comment' onClick={handleCommentOnComment(comment?.id)} >Reply <BiMessage id="reply-icon" /></button>
+                            {showCommentOnCommentForm && (
+                                <>
+                                    <CommentOnComment
+                                        comment={comment}
+                                        id={postId}
+                                        setShowCommentOnCommentForm={setShowCommentOnCommentForm}
+                                        showCommentOnCommentForm={showCommentOnCommentForm}
+                                    />
+                                </>
+                            )}
+                        <div>
+                            {commentsOnComment.map(comment => (
+                                <Comments comment={comment} postId={postId} />
+                            ))}
+                        </div>
                     </div>
                     {user?.id === comment?.userId && (
                         <div className="edit-comment">
                             <div className="btnsDiv">
-                                <button id={comment?.id} className="btnsss" onClick={handleCommentDelete}>Delete</button>
-                                <button id={comment?.id} className='btnsss' onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button>
+                                {/* <button id={comment?.id} className="btnsss" onClick={handleCommentDelete}>Delete</button>
+                                <button id={comment?.id} className='btnsss' onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button> */}
                             </div>
                         </div>
                     )}

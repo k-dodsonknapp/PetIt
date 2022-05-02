@@ -16,16 +16,23 @@
 }
 
 .main-comment-btn-label {
-    align-self: center;
+    display: flex;
+    text-align: center;
     padding-bottom: 5px;
     font-size: 12px;
 }
 
 .comment-count {
-    margin-left: 5px;
+    margin-left: 3px;
 }
 
 #comment-count-icon {
-    width: 27px;
-    height: 22px;
+    width: 22px;
+    height: 20px;
+}
+
+.comment-btn-text {
+    display: flex;
+    margin: 14px 0px 0px 3px;
+    height: fit-content;
 }

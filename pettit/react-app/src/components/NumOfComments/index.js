@@ -26,7 +26,7 @@ function NumOfComments({ postId, comments }) {
     return (
         <button onClick={redirectToPost} className="main-feed-comment-btn"><span><BiMessage id="comment-count-icon" />  </span>
             <span className="main-comment-btn-label"> 
-                <span className='comment-count'>{postComments?.length}</span> Comments
+                <span className='comment-count'>{postComments?.length}</span><span className='comment-btn-text'>Comments</span> 
             </span>
         </button>
     )
