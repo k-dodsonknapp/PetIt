@@ -7,7 +7,7 @@ import { getAllPosts } from "../../store/posts";
 import Comments from "../Comments";
 import PageNotFound from "../PageNotFound";
 // import { BiUpvote, BiDownvote } from "react-icons/bi";
-import { BiMessage } from "react-icons/bi";
+import { GoCommentDiscussion } from "react-icons/go";
 
 import './onePost.css'
 import Votes from "../Votes";
@@ -25,7 +25,7 @@ const OnePost = () => {
     // console.log("MMMMMMM", comments)
     // const votes = useSelector(state => state?.votes?.post_votes);
     const postComments = useSelector(state => Object.values(state?.comments).filter(comment => comment?.postId === postId))
-    console.log(postComments)
+    // console.log(postComments)
 
     const [showCommentForm, setShowCommentForm] = useState(false);
     // const [showCommentEditForm, setShowCommentEditForm] = useState(false);
@@ -62,12 +62,12 @@ const OnePost = () => {
 
     const handleShowCommentForm = (e) => {
         e.preventDefault();
-    //     if (showCommentForm === false || showCommentEditForm === true) {
-    //         setShowCommentForm(true);
-    //         setShowCommentEditForm(false);
-    //     } else {
-    //         setShowCommentForm(false);
-    //     };
+        //     if (showCommentForm === false || showCommentEditForm === true) {
+        //         setShowCommentForm(true);
+        //         setShowCommentEditForm(false);
+        //     } else {
+        //         setShowCommentForm(false);
+        //     };
 
         if (showBtns === false) {
             setShowBts(true);
@@ -76,24 +76,24 @@ const OnePost = () => {
         };
     };
 
-    const handleNewComment = (e) => {
-        e.preventDefault();
-        dispatch(getAllComments(+postId));
-        const brandNewComment = {
-            "userId": user.id,
-            "postId": postId,
-            "comment": newComment,
-            "parentId": null, 
-            "username": user.username,
-        };
-        console.log(brandNewComment)
-        if (showBtns === false) {
-            setShowBts(true);
-        };
-        dispatch(addNewComment(brandNewComment));
-        setShowCommentForm(false);
-        setNewComment("");
-    };
+    // const handleNewComment = (e) => {
+    //     e.preventDefault();
+    //     dispatch(getAllComments(+postId));
+    //     const brandNewComment = {
+    //         "userId": user.id,
+    //         "postId": postId,
+    //         "comment": newComment,
+    //         "parentId": null, 
+    //         "username": user.username,
+    //     };
+    //     console.log(brandNewComment)
+    //     if (showBtns === false) {
+    //         setShowBts(true);
+    //     };
+    //     dispatch(addNewComment(brandNewComment));
+    //     setShowCommentForm(false);
+    //     setNewComment("");
+    // };
 
     const handleCancel = (e) => {
         e.preventDefault();
@@ -101,49 +101,53 @@ const OnePost = () => {
         setShowBts(true);
     };
 
-    if (!posts) {
-        return (
-            <PageNotFound />
-        );
-    };
+    setTimeout(() => {
+        if (!posts) {
+            return (
+                <PageNotFound />
+            );
+        };
+    }, 2000)
 
     return (
         <div className="pagee">
-            <div className="main-feed-containers" >
-                <div className="posts" >
-                    <div className="idk">
-                        <div className="left-postt">
-                            <Votes postId={postId} />
-                        </div>
-                        <div className="one-post-main-content">
-                            <div className="one-post-username">
-                                <p>Posted by u/{posts[0]?.username}</p>
+                <div className="outer-page">
+                <div className="main-feed-containers" >
+                    <div className="posts" >
+                        <div className="idk">
+                            <div className="left-postt">
+                                <Votes postId={postId} />
                             </div>
-                            <div className="post-title">
-                                {posts[0]?.title}
-                            </div>
-                            <div className="post-body">
-                                <p className="post-body-text">{posts[0]?.body}</p>
-                            </div>
-                            <div className="one-post-image">
-                                <img className='img-tag' src={`${posts[0]?.image}`} alt=""
-                                    onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }} />
-                            </div>
-                            <div className="one-post-comment-count">
-                                <div className="comment-count">
-                                    <BiMessage id="comment-count-icon" /><span id="count">{postComments.length}</span> Comments
+                            <div className="one-post-main-content">
+                                <div className="one-post-username">
+                                    <p>Posted by u/{posts[0]?.username}</p>
+                                </div>
+                                <div className="post-title">
+                                    {posts[0]?.title}
+                                </div>
+                                <div className="post-body">
+                                    <p className="post-body-text">{posts[0]?.body}</p>
+                                </div>
+                                <div className="one-post-image">
+                                    <img className='img-tag' src={`${posts[0]?.image}`} alt=""
+                                        onError={(e) => { e.target.src = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png'; e.target.onError = null; }} />
+                                </div>
+                                <div className="one-post-comment-count">
+                                    <div className="comment-count">
+                                        <GoCommentDiscussion id="comment-count-icon" /><span id="count">{postComments.length}</span> Comments
+                                    </div>
                                 </div>
                             </div>
+                            {/* GoCommentDiscussion */}
                         </div>
-                    </div>
-                    <div className="newCommentEditForm">
-                        <CommentForm postId={postId} showBtns={showBtns} setShowBts={setShowBts}/>
-                        {/* {showCommentForm && ( */}
-                        {/* <div className="comment-form"> */}
+                        <div className="newCommentEditForm">
+                            <CommentForm postId={postId} showBtns={showBtns} setShowBts={setShowBts} />
+                            {/* {showCommentForm && ( */}
+                            {/* <div className="comment-form"> */}
                             {/* <h5>Comment as <span className="comment-form-username">{user.username}</span></h5> */}
                             {/* <form onSubmit={handleNewComment}> */}
-                                {/* <label htmlFor="comment">New Comment</label> */}
-                                {/* <textarea
+                            {/* <label htmlFor="comment">New Comment</label> */}
+                            {/* <textarea
                                     placeholder="What are you thoughts?"
                                     type="text"
                                     name="comment"
@@ -151,73 +155,74 @@ const OnePost = () => {
                                     onChange={e => setNewComment(e.target.value)}
                                     required
                                 > */}
-                                {/* </textarea> */}
-                                    {/* <div className="comment-textarea-bottom">
+                            {/* </textarea> */}
+                            {/* <div className="comment-textarea-bottom">
                                 <button id="one-post-comment-btn" onClick={handleNewComment}>Comment</button> */}
 
-                                    {/* </div> */}
-                                {/* <button
+                            {/* </div> */}
+                            {/* <button
                                 disabled={errors.length > 0 ? true : false}
                                 id="post-btnsss"
                                 onClick={handleNewComment}
-                            >Submit</button>
+                                >Submit</button>
                             <button id="post-btnsss" onClick={handleCancel}>Cancel</button> */}
-                                {/* <ul className="errors"> */}
-                                    {/* {errors.length > 0 && errors.map(error => {
-                                    return <li className="li" key={error}>
-                                        <div className="error-div">
-                                            {error}
-                                        </div>
+                            {/* <ul className="errors"> */}
+                            {/* {errors.length > 0 && errors.map(error => {
+                            return <li className="li" key={error}>
+                            <div className="error-div">
+                            {error}
+                            </div>
                                     </li>
                                 })} */}
-                                {/* </ul> */}
+                            {/* </ul> */}
                             {/* </form> */}
-                        {/* </div> */}
-                        {/* )} */}
-                        <div className="comments">
-                            {/* <h3>Comments:</h3> */}
-                            {comments?.map((comment) => (
-                                <div key={comment.id}>
-                                    <Comments comment={comment} postId={postId} />
-                                </div>
-                            ))?.reverse()}
+                            {/* </div> */}
+                            {/* )} */}
+                            <div className="comments">
+                                {/* <h3>Comments:</h3> */}
+                                {comments?.map((comment) => (
+                                    <div key={comment.id}>
+                                        <Comments comment={comment} postId={postId} />
+                                    </div>
+                                ))?.reverse()}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="right-container">
-                <div className="communities">
-                    <div className="comm">
-                        <div className="comm-header">
-                            <p>Top Communities</p>
+                <div className="right-container">
+                    <div className="communities">
+                        <div className="comm">
+                            <div className="comm-header">
+                                <p>Top Communities</p>
+                            </div>
+                            <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Crabs</div>
+                            <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Armidillos</div>
+                            <div className="rows"><i style={{ color: "red" }} className="fa-solid fa-angle-down"></i>p/Sugar_gliders</div>
+                            <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Dogs</div>
+                            <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Cats</div>
+                            <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Giraffe</div>
+                            <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Squirrel</div>
+                            <button id="view-all">Veiw All</button>
                         </div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Crabs</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Armidillos</div>
-                        <div className="rows"><i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>p/Sugar_gliders</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Dogs</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Cats</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Giraffe</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Squirrel</div>
-                        <button id="view-all">Veiw All</button>
                     </div>
-                </div>
 
-                <div className="createe">
-                    <div className="links">
-                        <h5>Personal Links</h5>
-                        <a href='https://github.com/k-dodsonknapp'>GitHub</a>
-                        <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
-                        <a href="https://angel.co/u/kenneth-dodson-knapp">AngelList</a>
+                    <div className="createe">
+                        <div className="links">
+                            <h5>Personal Links</h5>
+                            <a href='https://github.com/k-dodsonknapp'>GitHub</a>
+                            <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
+                            <a href="https://angel.co/u/kenneth-dodson-knapp">AngelList</a>
+                        </div>
+                        <div className="links">
+                            <h5>Previous Projects</h5>
+                            <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
+                            <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
+                            <a href='https://carra.herokuapp.com/'>Carra</a>
+                        </div>
                     </div>
-                    <div className="links">
-                        <h5>Previous Projects</h5>
-                        <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
-                        <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
-                        <a href='https://carra.herokuapp.com/'>Carra</a>
+                    <div className="me">
+                        <p>Developed by: Kenneth Dodson-Knapp</p>
                     </div>
-                </div>
-                <div className="me">
-                    <p>Developed by: Kenneth Dodson-Knapp</p>
                 </div>
             </div>
         </div>

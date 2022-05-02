@@ -82,14 +82,11 @@ const CommentOnComment = ({ setShowCommentOnCommentForm, showCommentOnCommentFor
                         </div>
                         <div className="comment-on-comment-textarea-bottom">
                             <button id="one-post-comment-btn" onClick={handleNewCommentOnComment}>Comment</button>
+                            {/* <button id="post-btnsss" onClick={handleNewCommentOnComment}>Submit</button> */}
+                            <button id="one-post-comment-btn" onClick={handleCancel}>Cancel</button>
                         </div>
-                        {/* <button
-                        id="post-btnsss"
-                        onClick={handleNewCommentOnComment}
-                    >Submit</button>
-                    <button id="post-btnsss" onClick={handleCancel}>Cancel</button>
-                    <ul className="errors"> */}
                         {/* {errors.length > 0 && errors.map(error => {
+                    <ul className="errors">
                                                     return <li className="li" key={error}>
                                                         <div className="error-div">
                                                             {error}

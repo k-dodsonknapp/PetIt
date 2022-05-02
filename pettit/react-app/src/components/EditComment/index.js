@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllComments, updateComment } from "../../store/comments";
 
-const EditComment = ({commentId, id, setShowCommentEditForm, setShowBts, setCommentToEdit, commentToEdit}) => {
+const EditComment = ({ commentId, id, setShowCommentEditForm, setShowBts, setCommentToEdit, commentToEdit }) => {
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.session?.user)
@@ -37,30 +37,36 @@ const EditComment = ({commentId, id, setShowCommentEditForm, setShowBts, setComm
 
     return (
         <>
-            <div className="comment-form">
+            <div className="comment-on-comment-form">
                 <form onSubmit={handleEditComment}>
-                    <label htmlFor="editComment">Edit Comment</label>
-                    <textarea
-                        type="text"
-                        name="editComment"
-                        value={commentToEdit}
-                        onChange={e => setCommentToEdit(e.target.value)}
-                        required
-                    />
-                    <button
-                        disabled={errorsEdit.length > 0 ? true : false}
-                        id="post-btnsss" onClick={handleEditedComment}
-                    >Submit</button>
-                    <button id="post-btnsss" onClick={handleECancel}>Cancel</button>
-                    <ul className="errors">
-                        {/* {errorsEdit.length > 0 && errors.map(error => {
+                    <h5>Edit Comment as <span className="comment-form-username">{user.username}</span></h5>
+                    {/* <label htmlFor="editComment">Edit Comment</label> */}
+                    <div className="comment-on-comment-textarea">
+                        <textarea
+                            type="text"
+                            name="editComment"
+                            value={commentToEdit}
+                            onChange={e => setCommentToEdit(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="comment-on-comment-textarea-bottom">
+
+                        <button
+                            disabled={errorsEdit.length > 0 ? true : false}
+                            id="one-post-comment-btn" onClick={handleEditedComment}
+                        >Submit</button>
+                        <button id="one-post-comment-btn" onClick={handleECancel}>Cancel</button>
+                    </div>
+                    {/* {errorsEdit.length > 0 && errors.map(error => {
+                        <ul className="errors">
                             return <li className="li" key={error}>
                                 <div className="error-div">
                                     {error}
                                 </div>
                             </li>
-                        })} */}
-                    </ul>
+                        // })} */}
+                    {/* </ul> */}
                 </form>
             </div>
         </>

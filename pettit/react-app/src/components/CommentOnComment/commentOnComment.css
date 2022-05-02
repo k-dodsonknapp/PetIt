@@ -4,7 +4,7 @@
     /* justify-content: center; */
     /* align-items: center; */
     background-color: transparent;
-    width: 674px;
+    width: -webkit-fill-available;
     /* padding: 0px 63px 0px 63px; */
     /* margin-bottom: 20px; */
     /* margin-top: 20px; */
@@ -14,7 +14,7 @@
   .comment-on-comment-form textarea {
     display: flex;
     resize: none;
-    width: 649px;
+    width: -webkit-fill-available;
     height: 130px;
     border-radius: 4px 4px 0px 0px;
     padding: 7px 10px;
@@ -29,13 +29,14 @@
   .comment-on-comment-textarea {
       display: flex;
       width: 100%;
+      /* margin-top: ; */
   }
 
   .comment-on-comment-textarea-bottom{
     display: flex;
     justify-content: flex-end;
-    height: auto;
-    width: 669px;
+    height: -webkit-fill-available;
+    /* width: 669px; */
     border: 1px solid #edeff1;
     background-color: #edeff1;
 }

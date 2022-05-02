@@ -4,8 +4,10 @@ import "./PageNotFound.css"
 
 
 function PageNotFound() {
-    return (
-        <div id="error-404-div">
+    setTimeout(() => {
+
+        return (
+            <div id="error-404-div">
             <div id="inner-404-div">
                 <h1 id="error-msg">404</h1>
                 <h2 id="page-not-found-404">Page not found.</h2>
@@ -14,5 +16,6 @@ function PageNotFound() {
             </div>
         </div>
     );
+}, 2000)
 };
 export default PageNotFound;

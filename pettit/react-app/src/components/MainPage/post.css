@@ -270,7 +270,7 @@
 
 #main-edit-btn-icon {
     height: 27px;
-    width: 22px;
+    width: 20px;
     margin-right: 6px;
 }
 
@@ -278,6 +278,15 @@
     height: 27px;
     width: 22px;
     margin-right: 6px;
+}
+
+.elephant-doodle {
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    background: rgba(216 214 214 / 0);
 }
 
 .edit-btn {

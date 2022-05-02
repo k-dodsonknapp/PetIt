@@ -4,9 +4,17 @@
     justify-content: center;
     width: 99vw;
     height: auto;
-    background-color: #dae0e6;
+    background-color: rgb(47, 47, 47);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.outer-page {
+    display: flex;
+    background-color: #dae0e6;
+    justify-content: center;
+    width: 73%;
+    /* border: 1px solid red; */
 }
 
 html {
@@ -24,6 +32,7 @@ html {
     width: 800px;
     height: auto;
     background-color: white;
+    padding-bottom: 30px;
 }
 
 .newCommentEditForm {
@@ -158,24 +167,63 @@ html {
     width: auto;
 }
 
+.comment-reply-div {
+    margin-left: 10px;
+}
+
 .commm { 
     overflow-wrap: anywhere;
     font-weight: 300;
-    margin-left: 20px;
+    margin-left: 31px;
     height: fit-content;
+    padding-left: 5px;
+    margin-top: 5px;
+    font-size: 16px;
 }
 
 .comment .btnsDiv {
     display: flex;
 }
 
-.comment {
+.username-profile-pic {
     display: flex;
     flex-direction: row;
-    margin: 10px 2px;
+    margin-left: 21px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+}
+
+.username-profile-pic h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.profile-pic {
+    display: flex;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 2px;
     font-size: 12px;
     background-color: transparent;
     backdrop-filter: blur(5px);
+}
+
+.on-comment-username {
+    display: flex;
+    /* margin-left: 22px; */
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    /* margin-bottom: 5px; */
 }
 
 .error-div {
@@ -210,11 +258,45 @@ html {
     display: flex;
 }
 
+#one-post-edit-btn-icon {
+    height: 27px;
+    width: 20px;
+    /* margin-right: 6px; */
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+#one-post-delete-btn-icon {
+    height: 23px;
+    width: 22px;
+    /* margin-right: 6px; */
+    margin-left: 1px;
+    margin-bottom: 3px;
+}
+
 .comments button {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;align-items: center;
     cursor: pointer;
-    margin-top: 20px;
+    /* margin-top: 10px; */
+    width: 73px;
+    height: auto;
+    /* margin-left: 2px; */
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    color: #626262;
+    /* border: 1px solid #e4e3e3; */
+}
+
+.comment-reply-div p{
+
+}
+
+.comments button:hover {
+    /* background-color: ; */
+    background-color: rgb(228, 228, 228);
+
 }
 
 .comments > h3 {
@@ -239,6 +321,7 @@ html {
     margin: 0px 7px;
     width: 800px;
     height: auto;
+    margin-bottom: 100px;
 }
 
 .post-body {
@@ -301,6 +384,20 @@ html {
 .comment-form-username {
     margin-left: 3px;
     color: #0079db;
+    font-size: 14px;
+}
+
+.one-post-btn-div {
+    display: flex;
+    margin-top: 5px;
+    height: 30px;
+}
+
+
+.one-post-btn-div button:nth-child(3) {
+    /* padding-right: 20px; */
+    /* color: white; */
+    width: 58px;
 }
 
 .newCommentEditForm form {
@@ -308,10 +405,11 @@ html {
     flex-direction: column;
     justify-content: center;
     background-color: transparent;
-    width: 674px;
+    width: -webkit-fill-available;
     /* margin-right: 50px; */
     overflow-wrap: break-word;
     overflow-wrap: break-word;
+    padding: 6px 10px;
 }
 
 /* #f6f7f8 */

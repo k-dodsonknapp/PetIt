@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
-import { BiMessage } from "react-icons/bi";
+// import { BiMessage } from "react-icons/bi";
+import { GoCommentDiscussion } from "react-icons/go";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getAllComments } from '../../store/comments';
@@ -24,7 +26,7 @@ function NumOfComments({ postId, comments }) {
     }
 
     return (
-        <button onClick={redirectToPost} className="main-feed-comment-btn"><span><BiMessage id="comment-count-icon" />  </span>
+        <button onClick={redirectToPost} className="main-feed-comment-btn"><span><GoCommentDiscussion id="comment-count-icon" />  </span>
             <span className="main-comment-btn-label"> 
                 <span className='comment-count'>{postComments?.length}</span><span className='comment-btn-text'>Comments</span> 
             </span>
