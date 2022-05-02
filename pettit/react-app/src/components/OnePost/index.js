@@ -60,6 +60,10 @@ const OnePost = () => {
         dispatch(getAllPosts());
     }, [dispatch]);
 
+    useEffect(() => {
+        window.scrollTo(0, 540);
+    }, []);
+
     const handleShowCommentForm = (e) => {
         e.preventDefault();
         //     if (showCommentForm === false || showCommentEditForm === true) {
