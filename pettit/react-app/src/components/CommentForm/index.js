@@ -28,7 +28,9 @@ const CommentForm = ({ postId, showBtns, setShowBts }) => {
 
     return (
         <div className="comment-form">
-            <h5>Comment as <span className="comment-form-username">{user.username}</span></h5>
+            {user && (
+                <h5>Comment as <span className="comment-form-username">{user.username}</span></h5>
+            )}
             <form onSubmit={handleNewComment}>
                 {/* <label htmlFor="comment">New Comment</label> */}
                 <textarea

@@ -1,6 +1,6 @@
 import { useEffect, useState, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import { addNewComment, deleteAComment, getAllComments, updateComment } from "../../store/comments";
 import { getAllPosts } from "../../store/posts";
 // import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
@@ -115,7 +115,7 @@ const OnePost = () => {
 
     return (
         <div className="pagee">
-                <div className="outer-page">
+            <div className="outer-page">
                 <div className="main-feed-containers" >
                     <div className="posts" >
                         <div className="idk">
@@ -145,7 +145,12 @@ const OnePost = () => {
                             {/* GoCommentDiscussion */}
                         </div>
                         <div className="newCommentEditForm">
-                            <CommentForm postId={postId} showBtns={showBtns} setShowBts={setShowBts} />
+                            {user ?
+                                <CommentForm postId={postId} showBtns={showBtns} setShowBts={setShowBts} />:
+                                <>
+                                <p className="not-signed-in-comment">Wanna Leave a comment? <NavLink to={'/signup'} className="sign-in-or-up"> Sign Up </NavLink>  or <NavLink to={'/login'} className="sign-in-or-up">Login</NavLink> </p>
+                                </>
+                            }
                             {/* {showCommentForm && ( */}
                             {/* <div className="comment-form"> */}
                             {/* <h5>Comment as <span className="comment-form-username">{user.username}</span></h5> */}

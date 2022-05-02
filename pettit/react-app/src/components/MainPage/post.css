@@ -141,6 +141,37 @@
     align-items: center;
 }
 
+#main-upvote-btn {
+    /* margin-top: 4px; */
+    height: 39px;
+}
+
+#main-upvote-btn:hover {
+    /* margin-top: 10px; */
+    background-color: rgb(228, 228, 228);
+}
+
+#main-downvote-btn:hover {
+    /* margin-top: 10px; */
+    background-color: rgb(228, 228, 228);
+}
+
+#main-upvote{
+    /* color: red; */
+    width: 36px;
+    height: 25px;
+}
+
+#main-downvote-btn {
+    /* margin-top: 10px; */
+    height: 39px;
+}
+
+#main-downvote{
+    margin: 0px;
+    width: 36px;
+    height: 25px;
+}
 
 .left-post {
     display: flex;
@@ -178,7 +209,7 @@
 .left-post button {
     border: 1px solid rgba(248, 248, 248, 0.513);
     background-color: rgba(248, 248, 248, 0.513);
-    border-radius: 6px;
+    /* border-radius: 6px; */
 }
 
 #upvotee {

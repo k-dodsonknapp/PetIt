@@ -15,6 +15,7 @@
     justify-content: center;
     width: 1387px;
     /* border: 1px solid red; */
+    padding-bottom: 124px;
 }
 
 html {
@@ -46,6 +47,20 @@ html {
     /* box-shadow: 0px 0px 4px 3px rgba(216, 214, 214, 0.918); */
     margin-top: 5px;
 }
+
+.sign-in-or-up {
+    margin: 0px 4px;
+    text-decoration: none;
+    color: #0079db;
+}
+
+.not-signed-in-comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
 .li {
    overflow-wrap: normal;
    list-style: none;

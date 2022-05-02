@@ -68,7 +68,9 @@ const CommentOnComment = ({ setShowCommentOnCommentForm, showCommentOnCommentFor
             {showCommentOnCommentForm && (
                 <div className="comment-on-comment-form">
                     <form onSubmit={handleNewCommentOnComment}>
+                    {user && (
                         <h5>Comment as <span className="comment-form-username">{user.username}</span></h5>
+                    )}
                         {/* <label htmlFor="comment">Reply</label> */}
                         <div className="comment-on-comment-textarea">
                             <textarea

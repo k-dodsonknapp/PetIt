@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 // import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
-import { getPostVotes } from "../../store/votes";
+import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
 import Votes from "../Votes";
 // import { BiMessage } from "react-icons/bi";
 import './post.css';
 import NumOfComments from "../NumOfComments";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { BiUpvote, BiDownvote } from "react-icons/bi";
+
 
 
 const MainPage = () => {
@@ -18,6 +20,7 @@ const MainPage = () => {
     const posts = useSelector(state => state?.post?.list);
     const user = useSelector(state => state?.session);
     const comments = useSelector(state => state?.comments);
+    const votes = useSelector(state => state?.votes?.post_votes);
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
 
 
@@ -43,17 +46,65 @@ const MainPage = () => {
         history.push(`/posts/${postId}/edit`);
     };
 
+    const upvote = (postId) => async (e) => {
+        const voteObj =
+            votes[0]?.votes?.find(vote =>
+                vote?.post_id === postId &&
+                vote?.user_id === user?.id
+            );
+
+        if (!voteObj || voteObj?.user_id !== user?.id) {
+            e.preventDefault();
+            const vote = {
+                "user_id": user?.user?.id,
+                "post_id": postId,
+                "comment_id": null,
+            };
+            await dispatch(addPostVote(vote));
+            await dispatch(getPostVotes());
+        };
+    };
+
+    const downvote = (postId) => async (e) => {
+        e.preventDefault();
+        const voteObj =
+            votes[0].votes.find(vote =>
+                vote?.post_id === postId &&
+                vote?.user_id === user?.user?.id
+            );
+
+        if (voteObj) {
+            const vote = {
+                'id': voteObj?.id,
+            };
+            await dispatch(deleteVotes(vote));
+            await dispatch(getPostVotes());
+        };
+    };
+
     return (
         <div className="page">
             <div className="main-feed-container" >
                 {posts?.map(post => (
                     <div className="post" key={post?.id}>
                         <div className="left-post">
-                            <Votes postId={post?.id} />
+                            <div>
+                                <button id="main-upvote-btn" onClick={upvote(posts[0]?.id)}>
+                                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
+                                    <BiUpvote id="main-upvote" />
+                                </button>
+                                <div className="votesss">
+                                    {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
+                                </div>
+                                <button id="main-downvote-btn" onClick={downvote(posts[0]?.id)}>
+                                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> */}
+                                    <BiDownvote id="main-downvote" />
+                                </button>
+                            </div>
                         </div>
                         <div className="right-post">
                             <h2 className="post-username">
-                                Posted by <span className="username-span">u/{post?.username}</span>                           
+                                Posted by <span className="username-span">u/{post?.username}</span>
                             </h2>
                             <div className="post-title">
                                 {/* {post?.username} */}
@@ -65,15 +116,15 @@ const MainPage = () => {
                                 />
                             </a>
                             <div className="right-bottom-post">
-                                <NumOfComments comments={comments} postId={post?.id}/>
+                                <NumOfComments comments={comments} postId={post?.id} />
                                 {post?.userId === user?.user?.id && (
                                     // <div className="button-div">
                                     <>
                                         <div className="edit-btn">
-                                            <button  onClick={handleEdit(post?.id)}><FiEdit id="main-edit-btn-icon"/>Edit</button>
+                                            <button onClick={handleEdit(post?.id)}><FiEdit id="main-edit-btn-icon" />Edit</button>
                                         </div>
                                         <div className="delete-btn">
-                                            <button onClick={handleDelete(post?.id)}><RiDeleteBin2Line id="main-delete-btn-icon"/>Delete</button>
+                                            <button onClick={handleDelete(post?.id)}><RiDeleteBin2Line id="main-delete-btn-icon" />Delete</button>
                                         </div>
                                     </>
                                     // </div>
