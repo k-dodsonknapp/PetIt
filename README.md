@@ -59,18 +59,9 @@ enter the pipenv shell, migrate your database, seed your database, and run the f
 
 • `npm start` within the frontend directory(pettit/react-app) under localhost:3000
 
-
-## Login Page
-
-![](https://github.com/k-dodsonknapp/PetIt/blob/main/Screenshot%20(175).png)
-
-## Sign Up
-
-![](https://github.com/k-dodsonknapp/PetIt/blob/main/Screenshot%20(176).png)
-
 ## Post Feed
 
-![](https://github.com/k-dodsonknapp/PetIt/blob/main/Screenshot%20(177).png)
+![Screenshot (232)](https://user-images.githubusercontent.com/85452797/166218786-294db68c-55c4-41a8-b259-0e95f50f3401.png)
 
 ## Single Post
 
