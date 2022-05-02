@@ -97,8 +97,13 @@ html {
 
 #upvote{
     /* color: red; */
-    width: 25px;
+    width: 44px;
     height: 25px;
+}
+
+#upvote-btn:hover {
+    margin-top: 10px;
+    background-color: rgb(228, 228, 228);
 }
 
 /* #upvoted{
@@ -108,12 +113,24 @@ html {
 } */
 
 #downvote{
-    width: 25px;
+    margin: 0px;
+    width: 44px;
     height: 25px;
+}
+
+#downvote-btn {
+    /* margin-top: 10px; */
+    height: 39px;
+}
+
+#downvote-btn:hover {
+    /* margin-top: 10px; */
+    background-color: rgb(228, 228, 228);
 }
 
 #upvote-btn {
     margin-top: 10px;
+    height: 39px;
 }
 
 .left-postt {
@@ -123,7 +140,7 @@ html {
     float: left;
     height: 465px;
     width: 45px;
-    border-radius: 4px;
+    border-radius: 2px;
     border-right: 1px solid white;
     background-color: white;
 }

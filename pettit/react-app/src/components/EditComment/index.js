@@ -4,6 +4,7 @@ import { getAllComments, updateComment } from "../../store/comments";
 
 const EditComment = ({ commentId, id, setShowCommentEditForm, setShowBts, setCommentToEdit, commentToEdit }) => {
 
+    console.log(id)
     const dispatch = useDispatch();
     const user = useSelector(state => state?.session?.user)
     const [errorsEdit, setErrorsEdit] = useState([]);

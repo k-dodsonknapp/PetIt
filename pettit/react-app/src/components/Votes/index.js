@@ -60,7 +60,7 @@ const Votes = ({ postId }) => {
             <div className="votesss">
                 {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
             </div>
-            <button onClick={downvote(posts[0]?.id)}>
+            <button id="downvote-btn" onClick={downvote(posts[0]?.id)}>
                 {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> */}
                 <BiDownvote id="downvote" />
             </button>

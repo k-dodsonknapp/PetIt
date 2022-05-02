@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewComment, deleteAComment, getAllCommentOnComment, getAllComments } from "../../store/comments";
+import { addNewComment, deleteAComment, getAllCommentOnComment, getAllComments, updateComment } from "../../store/comments";
 import CommentOnComment from "../CommentOnComment";
 import EditComment from "../EditComment";
 import LoginAlert from "../LoginAlert";
@@ -10,7 +10,7 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import './comments.css';
 
 const Comments = ({ comment, postId }) => {
-    // console.log(comment)
+    console.log(postId)
 
     const dispatch = useDispatch();
     const commentsOnComment = useSelector(state => Object.values(state?.comments).filter(commentt => commentt?.parentId === comment.id));
@@ -25,7 +25,8 @@ const Comments = ({ comment, postId }) => {
 
     useEffect(() => {
         dispatch(getAllCommentOnComment(comment.id))
-    }, [])
+        // dispatch(EditComment(postId))
+    }, [dispatch])
 
     const handleEditComment = (body, commId) => async (e) => {
         e.preventDefault();
@@ -42,13 +43,16 @@ const Comments = ({ comment, postId }) => {
 
     const handleCommentDelete = (e) => {
         e.preventDefault();
-        const idData = {
-            "postId": postId,
-            "id": comment.id
+        const deletedComment = {
+            "id": comment.id,
+            'userId': user.id,
+            'postId': postId,
+            "comment": "deleted",
+            "parentId": null
         };
-        console.log("LLLLLLL", idData)
+        console.log("LLLLLLL", deletedComment)
+        dispatch(updateComment(deletedComment));
         dispatch(getAllComments(postId));
-        dispatch(deleteAComment(idData));
     };
 
     const handleCommentOnComment = () => async (e) => {
@@ -75,10 +79,13 @@ const Comments = ({ comment, postId }) => {
                 <div className="comment">
                     <div className="username-profile-pic">
                         {/* <div img className="profile-pic"> */}
-                            {/* <img className="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Rrb0PRnlTW2D_oE_pbIigXUsdvHL5LLfJA&usqp=CAU"></img> */}
+                        {/* <img className="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Rrb0PRnlTW2D_oE_pbIigXUsdvHL5LLfJA&usqp=CAU"></img> */}
                         {/* </div> */}
                         <div className="on-comment-username">
-                            <h5>{comment?.username}</h5>
+                            {comment.comment === "deleted" ?
+                                <h5>Deleted</h5> :
+                                <h5>{comment?.username}</h5>
+                            }
                         </div>
                     </div>
                     <div className="commm">
@@ -88,23 +95,27 @@ const Comments = ({ comment, postId }) => {
                                 <button id={comment?.id} className='reply-to-comment' onClick={handleCommentOnComment(comment?.id)}><BiMessage id="reply-icon" />Reply</button>
                                 {user?.id === comment?.userId && (
                                     <>
-                                        <button id={comment?.id} className="reply-to-comment" onClick={handleCommentDelete}>Delete</button>
-                                        <button id={comment?.id} className='reply-to-comment' onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button>
+                                        {comment.comment !== "deleted" && (
+                                            <>
+                                                <button id={comment?.id} className="reply-to-comment" onClick={handleCommentDelete}>Delete</button>
+                                                <button id={comment?.id} className='reply-to-comment' onClick={handleEditComment(comment?.comment, comment?.id)}>Edit</button>
+                                            </>
+                                        )}
                                     </>
                                 )}
                             </div>
                         </div>
                         <>
-                    {showCommentEditForm && (
-                        <EditComment
-                            setShowCommentEditForm={setShowCommentEditForm}
-                            setShowBts={setShowBts}
-                            commentToEdit={commentToEdit}
-                            setCommentToEdit={setCommentToEdit}
-                            commentId={comment.id}
-                            id={postId} />
-                    )}
-                </>
+                            {showCommentEditForm && (
+                                <EditComment
+                                    setShowCommentEditForm={setShowCommentEditForm}
+                                    setShowBts={setShowBts}
+                                    commentToEdit={commentToEdit}
+                                    setCommentToEdit={setCommentToEdit}
+                                    commentId={comment.id}
+                                    id={postId} />
+                            )}
+                        </>
                         {showCommentOnCommentForm && (
                             <>
                                 <CommentOnComment
