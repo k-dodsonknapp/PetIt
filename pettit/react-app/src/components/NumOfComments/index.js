@@ -15,7 +15,7 @@ function NumOfComments({ postId, comments }) {
     // console.log("comments", comments)
     const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
     // const postComments = useSelector(state => Object.values(state?.comments)?.filter(comment => comment?.postId === postId))
-    console.log("GGGGGGGGG", postComments)
+    // console.log("GGGGGGGGG", postComments)
     useEffect(() => {
         dispatch(getAllComments(postId))
     }, [dispatch]);
