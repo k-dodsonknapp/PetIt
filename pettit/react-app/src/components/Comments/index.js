@@ -6,7 +6,6 @@ import EditComment from "../EditComment";
 import LoginAlert from "../LoginAlert";
 import { BiMessage } from "react-icons/bi";
 import './comments.css';
-import CommentOnCommentFormToggle from "../CommentOnCommentToggle";
 
 const Comments = ({ comment, postId }) => {
     console.log(comment)

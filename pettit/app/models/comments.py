@@ -11,6 +11,7 @@ class Comment(db.Model):
     parentId = db.Column(db.Integer)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    username = db.Column(db.Text)
 
     user = db.relationship('User', back_populates='comment')
     post = db.relationship('Post', back_populates='comment')
@@ -27,4 +28,5 @@ class Comment(db.Model):
             'parentId': self.parentId,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'username': self.username,
         }

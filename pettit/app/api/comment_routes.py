@@ -34,12 +34,14 @@ def new_comment():
     postId = data["postId"]
     comment = data["comment"]
     parentId =data["parentId"]
+    username = data["username"]
 
     new_comment = Comment(
         userId=userId,
         postId=postId,
         comment=comment,
         parentId=parentId,
+        username=username,
     )
 
     db.session.add(new_comment)

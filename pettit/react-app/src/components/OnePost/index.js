@@ -83,7 +83,8 @@ const OnePost = () => {
             "userId": user.id,
             "postId": postId,
             "comment": newComment,
-            "parentId": null
+            "parentId": null, 
+            "username": user.username,
         };
         console.log(brandNewComment)
         if (showBtns === false) {
