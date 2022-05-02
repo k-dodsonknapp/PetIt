@@ -74,7 +74,7 @@ enter the pipenv shell, migrate your database, seed your database, and run the f
 
 ## Single Post
 
-![](https://github.com/k-dodsonknapp/PetIt/blob/main/Screenshot%20(178).png)
+![Screenshot (230)](https://user-images.githubusercontent.com/85452797/166218643-1c1be73d-85d8-4603-a3a4-b7fe4e2c5d50.png)
 
 ## Future implementations
 
