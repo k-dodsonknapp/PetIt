@@ -63,6 +63,10 @@ enter the pipenv shell, migrate your database, seed your database, and run the f
 
 ![Screenshot (232)](https://user-images.githubusercontent.com/85452797/166218786-294db68c-55c4-41a8-b259-0e95f50f3401.png)
 
+## Comment Feed
+
+![Screenshot (234)](https://user-images.githubusercontent.com/85452797/166219867-06df7ba1-1c0b-4d7f-a626-cb5cb4901b47.png)
+
 ## Single Post
 
 ![Screenshot (230)](https://user-images.githubusercontent.com/85452797/166218643-1c1be73d-85d8-4603-a3a4-b7fe4e2c5d50.png)
