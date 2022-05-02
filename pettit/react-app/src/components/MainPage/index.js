@@ -21,7 +21,7 @@ const MainPage = () => {
     const user = useSelector(state => state?.session);
     const comments = useSelector(state => state?.comments);
     const votes = useSelector(state => state?.votes?.post_votes);
-    console.log("asdfasdf", votes)
+    console.log("VOTES", votes)
     console.log("USER", user)
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
 
@@ -61,6 +61,7 @@ const MainPage = () => {
                 "user_id": user?.user?.id,
                 "post_id": postId,
                 "comment_id": null,
+                "upvote": null,
             };
             console.log("yyyyyyyyyy",vote)
             await dispatch(addPostVote(vote));
@@ -75,7 +76,7 @@ const MainPage = () => {
                 vote?.post_id === postId &&
                 vote?.user_id === user?.user?.id
             );
-
+        console.log(voteObj)
         if (voteObj) {
             const vote = {
                 'id': voteObj?.id,

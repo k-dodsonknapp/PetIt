@@ -50,7 +50,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/posts/main' />;
+    return <Redirect to='/' />;
   }
 
   return (
