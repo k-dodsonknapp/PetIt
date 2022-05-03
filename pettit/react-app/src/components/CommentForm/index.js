@@ -17,7 +17,6 @@ const CommentForm = ({ postId, showBtns, setShowBts }) => {
             "parentId": null,
             'username': user.username
         };
-        console.log(brandNewComment)
         if (showBtns === false) {
             setShowBts(true);
         };

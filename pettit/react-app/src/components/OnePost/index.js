@@ -20,15 +20,10 @@ const OnePost = () => {
     const postId = +useParams().postId;
     const posts = useSelector(state => state?.post?.list?.filter(post => post?.id === postId));
     const user = useSelector(state => state?.session?.user);
-    // console.log("VVVVVV", user)
     const comments = useSelector(state => Object.values(state?.comments).filter(comment => comment.parentId === null && comment.postId === postId));
-    // console.log("MMMMMMM", comments)
-    // const votes = useSelector(state => state?.votes?.post_votes);
     const postComments = useSelector(state => Object.values(state?.comments).filter(comment => comment?.postId === postId))
-    // console.log(postComments)
 
     const [showCommentForm, setShowCommentForm] = useState(false);
-    // const [showCommentEditForm, setShowCommentEditForm] = useState(false);
     const [newComment, setNewComment] = useState('');
     const [commentToEdit, setCommentToEdit] = useState('');
     const [showBtns, setShowBts] = useState(true);
@@ -90,7 +85,6 @@ const OnePost = () => {
     //         "parentId": null, 
     //         "username": user.username,
     //     };
-    //     console.log(brandNewComment)
     //     if (showBtns === false) {
     //         setShowBts(true);
     //     };

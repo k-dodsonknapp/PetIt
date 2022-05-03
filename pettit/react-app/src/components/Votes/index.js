@@ -7,7 +7,6 @@ const Votes = ({ postId }) => {
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.session?.user);
-    console.log("rtyurtyu",user)
     const votes = useSelector(state => state?.votes?.post_votes);
     const posts = useSelector(state => state?.post?.list?.filter(post => post?.id === postId));
 

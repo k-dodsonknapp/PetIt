@@ -9,7 +9,6 @@ const CreatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state?.session?.user);
-    console.log("BBBBBBBBBBBBBB",user.username)
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');

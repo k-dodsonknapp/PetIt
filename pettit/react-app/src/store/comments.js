@@ -10,10 +10,8 @@ const getCommentOnComment = (comments) => ({
 });
 
 export const getAllCommentOnComment = (id) => async (dispatch) => {
-    console.log("rerererr", id)
     const res = await fetch(`/api/comments/comment/${id}`);
     const data = await res.json();
-    console.log("VVVVVVVVVV", data)
     if (res.ok) {
         dispatch(getCommentOnComment);
         
@@ -61,7 +59,6 @@ const deleteComment = (comment) => ({
 })
 
 export const deleteAComment = (data) => async (dispatch) => {
-    console.log("WWWWWWWW", data)
     const res = await fetch('/api/comments/delete', {
         method: "DELETE",
         headers: {

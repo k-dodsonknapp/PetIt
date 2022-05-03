@@ -7,7 +7,6 @@ const CommentOnComment = ({ setShowCommentOnCommentForm, showCommentOnCommentFor
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.session?.user);
-    console.log("asdfasdf", user)
     const [showBtns, setShowBts] = useState(true);
     const [newCommentOnComment, setNewCommentOnComment] = useState('');
 
@@ -36,7 +35,6 @@ const CommentOnComment = ({ setShowCommentOnCommentForm, showCommentOnCommentFor
             "parentId": comment.id,
             "username": user.username,
         };
-        console.log(brandNewComment)
         if (showBtns === false) {
             setShowBts(true);
         };

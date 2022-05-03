@@ -10,7 +10,6 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import './comments.css';
 
 const Comments = ({ comment, postId }) => {
-    console.log(postId)
 
     const dispatch = useDispatch();
     const commentsOnComment = useSelector(state => Object.values(state?.comments).filter(commentt => commentt?.parentId === comment.id));
@@ -50,7 +49,6 @@ const Comments = ({ comment, postId }) => {
             "comment": "deleted",
             "parentId": null
         };
-        console.log("LLLLLLL", deletedComment)
         dispatch(updateComment(deletedComment));
         dispatch(getAllComments(postId));
     };
@@ -123,6 +121,7 @@ const Comments = ({ comment, postId }) => {
                                     id={postId}
                                     setShowCommentOnCommentForm={setShowCommentOnCommentForm}
                                     showCommentOnCommentForm={showCommentOnCommentForm}
+                                    onClose={() => setShowCommentOnCommentForm(false)}
                                 />
                             </>
                         )}

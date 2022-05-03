@@ -59,7 +59,6 @@ const UpdatePost = () => {
 
         if (imgErrors.length) {
             setDisplayErrors(true);
-            console.log("FFFFFFFFFFFF", displayErrors);
         } else {
             const newPost = {
                 id: postId.postId,

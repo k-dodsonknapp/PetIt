@@ -5,7 +5,6 @@ import { logout } from '../../store/session';
 const LogoutButton = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
-  // console.log("^^^^^^^", user)
   const onLogout = async (e) => {
     await dispatch(logout());
   };

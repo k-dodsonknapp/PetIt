@@ -11,17 +11,14 @@ function NumOfComments({ postId, comments }) {
     
     const history = useHistory();
     const dispatch = useDispatch();
-    // const comments = useSelector(state => state?.comments);
-    // console.log("comments", comments)
     const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
-    // const postComments = useSelector(state => Object.values(state?.comments)?.filter(comment => comment?.postId === postId))
-    // console.log("GGGGGGGGG", postComments)
+    
     useEffect(() => {
         dispatch(getAllComments(postId))
     }, [dispatch]);
 
     const redirectToPost = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         history.push(`/posts/${postId}`)
     }
 
