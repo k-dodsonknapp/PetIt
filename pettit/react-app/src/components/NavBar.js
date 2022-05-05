@@ -43,7 +43,7 @@ const NavBar = () => {
                   <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo' /><span className='app-name'>pettit </span>
                 </NavLink>
               </li>
-              <li>
+              <li className='dropdown-li'>
                 <button id='dropdown' onClick={openMenu}>
                   <div className='dropdown-text'>
                     <div className='home-icon'>

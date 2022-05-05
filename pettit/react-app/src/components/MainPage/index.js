@@ -11,6 +11,7 @@ import NumOfComments from "../NumOfComments";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
+import Communities from "../Communities";
 
 
 
@@ -134,7 +135,8 @@ const MainPage = () => {
                     </div>
                 ))?.reverse()}
             </div>
-            <div className="right-container">
+            <Communities className="main-container-communities"/>
+            {/* <div className="right-container">
                 <div className="communities">
                     <div className="comm">
                         <div className="comm-header">
@@ -161,14 +163,14 @@ const MainPage = () => {
                     <div className="links">
                         <h5>Previous Projects</h5>
                         <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
-                        <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
+                        <a href='http://step-by-stepapp.herokuapp.com/'>Step-by-Step</a>
                         <a href='https://carra.herokuapp.com/'>Carra</a>
                     </div>
                 </div>
                 <div className="me">
                     <p>Developed by: Kenneth Dodson-Knapp</p>
                 </div>
-            </div>
+            </div> */}
         </div >
     )
 }

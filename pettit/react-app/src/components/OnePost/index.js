@@ -56,24 +56,33 @@ const OnePost = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        window.scrollTo(0, 540);
+        if(!comments){
+            window.scrollTo(0, 0);
+        }else {
+            window.scrollTo(0, 540);
+        }
     }, []);
 
-    const handleShowCommentForm = (e) => {
-        e.preventDefault();
-        //     if (showCommentForm === false || showCommentEditForm === true) {
-        //         setShowCommentForm(true);
-        //         setShowCommentEditForm(false);
-        //     } else {
-        //         setShowCommentForm(false);
-        //     };
+    const backToTop = (e) => {
+        e.preventDefault()
+        window.scrollTo(0, 0);
+    }
 
-        if (showBtns === false) {
-            setShowBts(true);
-        } else {
-            setShowBts(false);
-        };
-    };
+    // const handleShowCommentForm = (e) => {
+    //     e.preventDefault();
+    //     //     if (showCommentForm === false || showCommentEditForm === true) {
+    //     //         setShowCommentForm(true);
+    //     //         setShowCommentEditForm(false);
+    //     //     } else {
+    //     //         setShowCommentForm(false);
+    //     //     };
+
+    //     if (showBtns === false) {
+    //         setShowBts(true);
+    //     } else {
+    //         setShowBts(false);
+    //     };
+    // };
 
     // const handleNewComment = (e) => {
     //     e.preventDefault();
@@ -191,6 +200,7 @@ const OnePost = () => {
                             </div>
                         </div>
                     </div>
+                    <button className="backToTop" onClick={backToTop}>Back to Top</button>
                 </div>
                 <div className="right-container">
                     <div className="communities">
@@ -219,7 +229,7 @@ const OnePost = () => {
                         <div className="links">
                             <h5>Previous Projects</h5>
                             <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
-                            <a href='http://step-by-step-app.herokuapp.com/'>Step-by-Step</a>
+                            <a href='https://step-by-stepapp.herokuapp.com/'>Step-by-Step</a>
                             <a href='https://carra.herokuapp.com/'>Carra</a>
                         </div>
                     </div>

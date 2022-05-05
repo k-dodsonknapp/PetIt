@@ -18,7 +18,7 @@ const SplashPage = () => {
 
     return (
         <div id='page'>
-            <div id='asdf'>
+            <div id='main-card'>
                 <h1>Welcome to PettIt</h1>
                 <p>Pettit is a place where you can see all the creatures you want to pet!</p>
                 <div id='buttons'>

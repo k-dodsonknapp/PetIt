@@ -4,9 +4,15 @@ html {
 }
 
 .elephant-logo {
+    display: flex;
+    flex-direction: row;
     height: 30px;
     width: 40px;
 }
+/* .name {
+    display: flex;
+    flex-direction: row;
+} */
 
 .nav-container {
     background-color: white;
@@ -23,13 +29,21 @@ html {
 }
 
 .app-name {
+    display: flex;
     font-size: large;
     font-family:Georgia, 'Times New Roman', Times, serif;
     color: rgb(38, 38, 122);
     font-weight: 550;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-left: 3px;
+    font-size: 18px;
+    /* margin-left: 5px; */
+    /* margin-bottom: 5px; */
+    /* padding-bottom: 5px; */
+}
+
+.dropdown-li {
+    display: flex;
 }
 
 .search {
@@ -47,6 +61,7 @@ html {
 
 .logo-home{
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     /* align-items: flex-start; */
     /* border: 1px solid blue; */
@@ -57,11 +72,14 @@ html {
 
 .logo-home li {
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     padding: 0px 30px;
+    width: 60px;
 }
 
 .logo-home a {
+    display: flex;
     text-decoration: none;
 }
 
@@ -119,6 +137,10 @@ html {
     border-color: black;
 }
 
+.right-container{
+    display: none;
+}
+
 #dropdown {
     display: flex;
     flex-direction: row;
@@ -130,6 +152,7 @@ html {
     margin-left: 8px;
     height: 24px;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .home-icon img{
@@ -194,4 +217,8 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 950px){
+    
 }

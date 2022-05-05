@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 99vw;
+    width: 100%;
     background-color: #dae0e6;
     background-repeat: no-repeat;
     background-size: cover;
@@ -378,4 +378,42 @@
     height: 30px;
     width: 30px;
     background-color: rgba(248, 248, 248, 0.513);
+}
+
+
+@media screen and (max-width: 950px){
+
+    .right-container {
+        display:none;
+    }
+
+    .main-feed-container {
+
+    }
+
+    .post {
+        display: flex;
+        box-shadow: 0px 0px 4px 3px rgb(216 214 214 / 92%);
+        box-shadow: 3px;
+        border-radius: 2px;
+        margin: 0px 0px 20px;
+        width: 23em;
+        height: auto;
+        background-color: white;
+    }
+
+    .main-page-image {
+        margin-top: 8px;
+        /* margin-left: 2px; */
+        height: 15em;
+        width: 20.6em;
+        /* border-radius: 4px;*/
+    }
+
+    .right-post a {
+        text-decoration: none;
+        width: max-content;
+        height: auto;
+      }
+
 }
