@@ -183,8 +183,64 @@
     margin-right: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-    .form-wrapperss {
+@media only screen and (max-width: 850px) {
+    /* .form-wrapperss {
         display: none;
-    }
+    } */
+
+    .login-card {
+        background-color: rgba(47, 45, 45, 0.629);
+        box-shadow: 0px 0px 4px 3px rgb(41 41 41 / 91%);
+        border: 2px solid rgba(87, 86, 86, 0.29);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 489px;
+        width: 325px;
+        margin-left: 45px;
+        margin-top: 30px;
+        text-align: right;
+        /* @media (max-width: 767px) {;
+        text-align: center;
+        }: ;
+        @media (max-width: 400px) {;
+        text-align: left;
+        }: ; */
+      }
+
+      .welcome-banner {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        width: 450px;
+        /* border: 1px solid red; */
+        margin-top: 0px;
+        font-size: 28px;
+        margin-bottom: 45px;
+        color: #dae0e6;
+        /* over */
+      }
+
+      .second-banner {
+        margin-bottom: 55px;
+        color: #dae0e6;
+        /* color: #4090d1; */
+        font-size: 18px;
+      }
+
+      .email {
+        /* display: flex; */
+        /* justify-content: space-between; */
+        color: white;
+        /* border: 1px solid red; */
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 30px;
+        text-align: center;
+      }
 }

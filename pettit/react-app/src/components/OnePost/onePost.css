@@ -544,6 +544,15 @@ html {
 
 @media screen and (max-width: 850px){
 
+    .comment-count {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        width: auto;
+        font-size: 14px;
+        cursor: default;
+      }
+
     .main-feed-containers {
         display: flex;
         justify-content: flex-start;

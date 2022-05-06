@@ -1,17 +1,21 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
 import * as sessionActions from '../store/session';
+import Search from './Search';
 
 const NavBar = () => {
 
   const dispatch = useDispatch();
-  const history = useHistory();
-  const [showMenu, setShowMenu] = useState()
   const session = useSelector(state => state.session.user)
+  const history = useHistory();
+  const [showMenu, setShowMenu] = useState();
+  const [searchResult, setSearchResult] = useState([]);
+  const [search, setSearch] = useState([]);
+  console.log(searchResult)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -95,7 +99,15 @@ const NavBar = () => {
                 )}
               </li>
             </div>
-            <div className='search'>
+            <div className='headersearch'>
+              <Search search={search} setSearch={setSearch} searchResult={searchResult} setSearchResult={setSearchResult} />
+              <div className='searchresultcontainer'>
+                {searchResult.length > 0 && searchResult.map(result => (
+                  <Link className='searchLink' to={`/posts/${result.id}`}>
+                    <div className='searchresults'>{result?.title}</div>
+                    </Link>
+                ))}
+              </div>
             </div>
             <div className='right-side'>
               {/* <li>

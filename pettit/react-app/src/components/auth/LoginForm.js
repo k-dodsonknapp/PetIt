@@ -70,7 +70,7 @@ const LoginForm = () => {
       <div className='form-wrapperss'>
         <div className='login-card'>
           <div className='welcome-banner'>
-            Good to see you again!
+            Welcome to Pettit!
           </div>
           <div className='second-banner'>
             All the pets are waiting for you!

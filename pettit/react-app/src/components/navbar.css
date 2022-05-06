@@ -219,6 +219,94 @@ html {
     align-items: center;
 }
 
+.searchresultcontainer {
+    display: inline;
+    flex-direction: column;
+    position: absolute;
+    top: 25px;
+    background-color: white;
+}
+
+.searchLink {
+    text-decoration: none;
+}
+
+.searchresults {
+    padding: 5px;
+    border: 1px solid #dae0e6;
+    margin: 5px;
+    text-decoration: none;
+    color: black;
+}
+
 @media screen and (max-width: 950px){
-    
+    .headersearch {
+        display: none;
+    }
+
+    .right-side {
+        /* border: 2px solid red; */
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: auto;
+        margin-right: 7px;
+      }
+
+      #dropdown {
+        display: none;
+        /* flex-direction: row; */
+        /* text-align: center; */
+        /* background-color: white; */
+        /* border: none; */
+        /* border-bottom: none; */
+        /* width: 202px; */
+        /* margin-left: 8px; */
+        /* height: 24px; */
+        /* border-radius: 6px; */
+        /* cursor: pointer; */
+      }
+
+      .nav-container {
+        background-color: white;
+        /* border: 2px solid black; */
+        position: static;
+        top: 0px;
+        height: 40px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        grid-gap: 300px;
+        gap: 300px;
+        z-index: 1;
+      }
+
+      .right-side a {
+        display: flex;
+        width: auto;
+        margin: 0px 0px 0px 10px;
+        text-decoration: none;
+        list-style-type: none;
+        color: #929596;
+      }
+
+    .logo-home {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        /* align-items: flex-start; */
+        /* border: 1px solid blue; */
+        /* float: left; */
+        margin: 0px 0px;
+        align-items: center;
+    }
+
+    .logo-home li {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        /* padding: 0px 30px; */
+        width: 60px;
+      }
 }
