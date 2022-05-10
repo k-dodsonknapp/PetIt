@@ -421,6 +421,7 @@ html {
 
 #new-post-link {
     display: flex;
+    justify-content: center;
     align-items: center;
     border: 1px solid rgb(221, 221, 221);
     height: 40px;
@@ -428,7 +429,8 @@ html {
     border-bottom: none;
     /* border-left: none; */
     cursor: pointer;
-}
+    width: 117px;
+  }
 
 #new-post-link:hover {
     border: 1px solid rgb(221, 221, 221);
@@ -441,7 +443,7 @@ html {
     flex-direction: column;
     position: absolute;
     width: 270px;
-    top: 39px;
+    top: 40px;
     background-color: white;
     border: 1px solid rgb(221, 221, 221);
     border-top: none;
@@ -523,7 +525,7 @@ html {
         /* align-items: flex-start; */
         /* border: 1px solid blue; */
         /* float: left; */
-        margin: 0px 0px;
+        margin: 0px 10px;
         align-items: center;
     }
 

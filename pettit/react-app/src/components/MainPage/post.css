@@ -417,4 +417,13 @@
         height: auto;
       }
 
+      .main-feed-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 30px 0px 60px 12px;
+        width: fit-content;
+    }
+
 }

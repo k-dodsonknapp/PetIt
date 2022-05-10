@@ -43,15 +43,19 @@ const NavBar = () => {
   }, [showMenu])
 
   useEffect(() => {
-    // if (!showSearchResults) return;
-    // const closeMenu = () => {
-    //   setShowSearchResults(false);
-    // };
-    // document.addEventListener("click", closeMenu);
-    // return () => document.removeEventListener("click", closeMenu)
-    if (searchResult.length < 1) return;
+    if (search.length === 0) {
+      setSearchResult([])
+    }
+  }, [search])
 
-  }, [searchResult])
+  // useEffect(() => {
+  //   setLength(cart.length);
+  // }, [cart.length]);
+
+  const clear = () => {
+    // history.push('/')
+    setSearch([])
+  }
 
   const handleClick = async (e) => {
     await dispatch(sessionActions.login('demo@aa.io', 'password'))
@@ -153,7 +157,7 @@ const NavBar = () => {
               <Search search={search} setSearch={setSearch} searchResult={searchResult} setSearchResult={setSearchResult} />
               <div className='searchresultcontainer'>
                 {searchResult.length > 0 && searchResult.map(result => (
-                  <Link onClick={openSearch} className='searchLink' to={`/posts/${result.id}`}>
+                  <Link onClick={clear} className='searchLink' to={`/posts/${result.id}`}>
                     <div className='searchresults'>{result?.title}</div>
                   </Link>
                 ))}

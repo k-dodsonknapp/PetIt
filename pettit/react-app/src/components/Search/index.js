@@ -13,16 +13,17 @@ function Search( {search, setSearch, searchResult, setSearchResult} ) {
     }, [dispatch])
 
     useEffect(() => {
-        if (search.length < 1) {
-            return
+        if (search.length === 0) {
+            console.log("hit")
+            setSearchResult([])
         }
-    }, [search])
+    }, [search, setSearchResult])
 
     useEffect(() => {
         let array = [];
         for(let i = 0; i < posts.length; i++) {
             let post = posts[i].title;
-            if (post.includes(search) && array.length < 7){
+            if (post.includes(search) && array.length < 6){
                 array.push(posts[i]);
                 
             };

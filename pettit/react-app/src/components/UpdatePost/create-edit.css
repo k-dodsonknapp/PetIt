@@ -11,3 +11,20 @@
     margin-left: 29px;
     margin-bottom: 8px;
 }
+
+@media screen and (max-width: 850px){ 
+
+    .edit-image {
+        display: flex;
+        justify-content: center;
+        width: 351px;
+        margin-left: 0px;
+        margin-bottom: 8px;
+      }
+
+    .update-post-img {
+        height: 300px;
+        width: 351px;
+        border-radius: 0px;
+      }
+}

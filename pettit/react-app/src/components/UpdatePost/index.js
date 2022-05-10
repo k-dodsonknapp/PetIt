@@ -175,7 +175,7 @@ const UpdatePost = () => {
                             </div>
                             <UploadPicture setImagee={setImage} />
                             <div className="btn-div">
-                                <button onClick={handlePostTab} id="post-btn">Edit Post</button>
+                                {/* <button onClick={handlePostTab} id="post-btn">Edit Post</button> */}
                                 <button disabled={errors?.length > 0 || imgErrors?.length > 0 ? true : false} id="post-btn">Post Edit</button>
                             </div>
                         </form>
