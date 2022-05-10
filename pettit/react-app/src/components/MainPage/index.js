@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 // import { getAllComments } from "../../store/comments";
@@ -22,7 +22,9 @@ const MainPage = () => {
     const user = useSelector(state => state?.session);
     const comments = useSelector(state => state?.comments);
     const votes = useSelector(state => state?.votes?.post_votes);
+    console.log(votes)
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
+    const [voted, setVoted] = useState("black")
 
 
     useEffect(() => {
@@ -48,6 +50,8 @@ const MainPage = () => {
     };
 
     const upvote = (postId) => async (e) => {
+
+        setVoted("red")
         const voteObj =
             votes[0]?.votes?.find(vote =>
                 vote?.post_id === postId &&
@@ -92,7 +96,7 @@ const MainPage = () => {
                             <div>
                                 <button id="main-upvote-btn" onClick={upvote(post.id)}>
                                     {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
-                                    <BiUpvote id="main-upvote" />
+                                    <BiUpvote id="main-upvote" style={{color:`${voted}`}} />
                                 </button>
                                 <div className="votesss">
                                     {votes && votes[0]?.votes?.filter(vote => vote?.post_id === post.id)?.length}

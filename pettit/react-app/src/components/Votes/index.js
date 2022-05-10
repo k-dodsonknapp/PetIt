@@ -52,19 +52,40 @@ const Votes = ({ postId }) => {
 
 
     return (
-        <div>
-            <button id="upvote-btn" onClick={upvote(posts[0]?.id)}>
-                {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
-                <BiUpvote id="upvote" />
-            </button>
-            <div className="votesss">
-                {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
+        <>
+            <div className='vote-div'>
+                <button id="upvote-btn" onClick={upvote(posts[0]?.id)}>
+                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
+                    <BiUpvote id="upvote" />
+                </button>
+                <div className="votesss">
+                    {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
+                </div>
+                <button id="downvote-btn" onClick={downvote(posts[0]?.id)}>
+                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> */}
+                    <BiDownvote id="downvote" />
+                </button>
+                <div className="mobile-votes">
+                <span className='votes-label'>Votes</span> {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length} 
+                </div>
             </div>
-            <button id="downvote-btn" onClick={downvote(posts[0]?.id)}>
-                {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> */}
-                <BiDownvote id="downvote" />
-            </button>
-        </div>
+            {/* <div className='mobile-vote-div'>
+                <button id="upvote-btn" onClick={upvote(posts[0]?.id)}>
+                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> 
+                    <BiUpvote id="upvote" />
+                </button>
+                {/* <div className="votesss">
+                    {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
+                </div> */}
+                {/* <button id="downvote-btn" onClick={downvote(posts[0]?.id)}> */}
+                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> 
+                    <BiDownvote id="downvote" />
+                </button>
+                <div className="mobile-votes">
+                    {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
+                </div>
+            </div> */}
+        </>
     )
 }
 

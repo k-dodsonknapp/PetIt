@@ -6,6 +6,11 @@ import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
 import * as sessionActions from '../store/session';
 import Search from './Search';
+import { RiLogoutBoxRFill } from 'react-icons/ri';
+import { MdEmojiEmotions } from 'react-icons/md';
+import { FaWpforms } from 'react-icons/fa';
+import { AiOutlinePlus } from 'react-icons/ai';
+
 
 const NavBar = () => {
 
@@ -15,11 +20,17 @@ const NavBar = () => {
   const [showMenu, setShowMenu] = useState();
   const [searchResult, setSearchResult] = useState([]);
   const [search, setSearch] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState();
   console.log(searchResult)
 
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
+  }
+
+  const openSearch = () => {
+    if (showSearchResults) return;
+    setShowSearchResults(true);
   }
 
   useEffect(() => {
@@ -31,10 +42,25 @@ const NavBar = () => {
     return () => document.removeEventListener("click", closeMenu)
   }, [showMenu])
 
+  useEffect(() => {
+    // if (!showSearchResults) return;
+    // const closeMenu = () => {
+    //   setShowSearchResults(false);
+    // };
+    // document.addEventListener("click", closeMenu);
+    // return () => document.removeEventListener("click", closeMenu)
+    if (searchResult.length < 1) return;
+
+  }, [searchResult])
+
   const handleClick = async (e) => {
     await dispatch(sessionActions.login('demo@aa.io', 'password'))
-    history.push('/')
+    // history.push('/')
   }
+
+  const onLogout = async (e) => {
+    await dispatch(sessionActions.logout());
+  };
 
   return (
     <div className='nav-container'>
@@ -42,7 +68,7 @@ const NavBar = () => {
         <ul>
           <div className='nav-links'>
             <div className='logo-home'>
-              <li>
+              <li id='logo-name'>
                 <NavLink to='/' exact={true} activeClassName='active'>
                   <img className='elephant-logo' src='https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png' alt='logo' /><span className='app-name'>pettit </span>
                 </NavLink>
@@ -66,34 +92,58 @@ const NavBar = () => {
                     <div className='dropdown-div'>
                       {!session && (
                         <NavLink to='/login' exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
-                          <div className='dropdown-btns'>
+                          <div className='dropdown-btns' id='login-div'>
                             <li>
-                              Login
+                              <RiLogoutBoxRFill id="login-icon" />
+                              <span className='signup-span'>
+                                Login
+                              </span>
                             </li>
                           </div>
                         </NavLink>
                       )}
                       {!session && (
-                        <li className='dropdown-btns'>
-                          <button id='demo' onClick={handleClick} className='authButton'>Demo</button>
-                        </li>
+                        <NavLink to='/' onClick={handleClick} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
+                          <div className='dropdown-btns'>
+                            <li id='demo-li'>
+                              <MdEmojiEmotions id="demo-icon" />
+                              <span className='signup-span'>
+                                Demo
+                              </span>
+                            </li>
+                          </div>
+                        </NavLink>
                       )}
                       {!session && (
                         <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ textDecoration: 'none', color: "black" }}>
                           <div className='dropdown-btns'>
-                            <li>
-                              Sign Up
+                            <li id='signup-li'>
+                              <FaWpforms id="signup-icon" />
+                              <span className='signup-span'>
+                                Sign Up
+                              </span>
                             </li>
                           </div>
                         </NavLink>
                       )}
-                      <div className='dropdown-btns'>
-                        {session && (
-                          <li>
-                            <LogoutButton />
-                          </li>
-                        )}
-                      </div>
+                      {session && (
+                        // <div className='dropdown-btns'>
+                        //   <li>
+                        //     {/* <LogoutButton /> */}
+
+                        //   </li>
+                        // </div>
+                        <NavLink to='/sign-up' exact={true} onClick={onLogout} activeClassName='active' style={{ textDecoration: 'none', color: "black" }}>
+                          <div className='dropdown-btns'>
+                            <li>
+                              <FaWpforms id="logout-icon" />
+                              <span className='logout-span'>
+                                Logout
+                              </span>
+                            </li>
+                          </div>
+                        </NavLink>
+                      )}
                     </div>
                   </ul>
                 )}
@@ -103,9 +153,9 @@ const NavBar = () => {
               <Search search={search} setSearch={setSearch} searchResult={searchResult} setSearchResult={setSearchResult} />
               <div className='searchresultcontainer'>
                 {searchResult.length > 0 && searchResult.map(result => (
-                  <Link className='searchLink' to={`/posts/${result.id}`}>
+                  <Link onClick={openSearch} className='searchLink' to={`/posts/${result.id}`}>
                     <div className='searchresults'>{result?.title}</div>
-                    </Link>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -125,16 +175,33 @@ const NavBar = () => {
                   Users
                 </NavLink>
               </li> */}
-              {session && (
-                <li>
-                  <NavLink to='/posts/new' className='idk' exact={true} activeClassName='active'>
-                    New Post<i className="fa-light fa-plus"></i>
+              {!session && (
+                <li id='new-post-link'>
+                  <NavLink to='/login' className='idk' exact={true} activeClassName='active'>
+                    Login
+                    {/* <AiOutlinePlus id='new-post-icon' /> */}
                   </NavLink>
                 </li>
               )}
               {session && (
-                <li>
-                  <LogoutButton />
+                <li id='new-post-link'>
+                  <NavLink to='/posts/new' className='idk' exact={true} activeClassName='active'>
+                    New Post <AiOutlinePlus id='new-post-icon' />
+                  </NavLink>
+                </li>
+              )}
+              {session && (
+                <li id='new-post-link'>
+                  <NavLink className='idk' to='/sign-up' exact={true} onClick={onLogout} activeClassName='active' >
+                    {/* <div className='dropdown-btns'> */}
+                    {/* <li> */}
+                    Logout
+                    <FaWpforms id="new-post-icon" />
+                    {/* <span className='signup-span'> */}
+                    {/* </span> */}
+                    {/* </li> */}
+                    {/* </div> */}
+                  </NavLink>
                 </li>
               )}
             </div>

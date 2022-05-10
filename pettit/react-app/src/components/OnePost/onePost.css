@@ -120,13 +120,11 @@ html {
 }
 
 #upvote{
-    /* color: red; */
     width: 44px;
     height: 25px;
 }
 
 #upvote-btn:hover {
-    margin-top: 10px;
     background-color: rgb(228, 228, 228);
 }
 
@@ -153,7 +151,6 @@ html {
 }
 
 #upvote-btn {
-    margin-top: 10px;
     height: 39px;
 }
 
@@ -330,9 +327,9 @@ html {
     /* border: 1px solid #e4e3e3; */
 }
 
-/* .comment-reply-div p{
-
-} */
+.vote-div {
+    margin-left: 1px;
+}
 
 .comments button:hover {
     /* background-color: ; */
@@ -368,7 +365,7 @@ html {
 .post-body {
     display: flex;
     /* justify-content: center; */
-    margin: 4px 5px 0px;
+    margin: 4px 3px 0px;
     font-size: 16px;
     overflow-wrap: anywhere;
     font-weight: 550;
@@ -536,13 +533,137 @@ html {
     }
 } */
 
+.mobile-vote-div {
+    display: none;
+}
+
 @media screen and (max-width: 1125px){
     .right-container {
         display: none;
     }
 }
 
+@media screen and (min-width: 851px){
+    /* .votes {
+        display: none;
+    } */
+
+    .mobile-count {
+        display: none;
+        /* flex-direction: row; */
+        /* width: 400ox; */
+    }
+
+    .mobile-votes {
+        display: none;
+    }
+    /* .votesss {
+        display: none;
+    } */
+
+    /* .mobile-votes-div {
+        display: none;
+    } */
+}
+
 @media screen and (max-width: 850px){
+
+    .mobile-votes-div {
+        display: none;
+    }
+    .votesss {
+        display: none;
+    }
+
+    .mobile-count {
+        display: flex;
+        /* flex-direction: row; */
+        width: 400px;
+    }
+
+    #upvote {
+        /* color: red; */
+        width: 44px;
+        height: 25px;
+    }
+
+    #upvote-btn:hover {
+        margin-top: 0px;
+        background-color: rgb(228, 228, 228);
+    }
+
+    .mobile-votes {
+        display: flex;
+        flex-direction: row;
+        width: 50px;
+    }
+
+    .votes-label {
+        margin-left: 1px;
+        margin-right: 5px;
+    }
+
+    #upvote-btn {
+        display: flex;
+        align-items: center;
+        border: none;
+        background-color: transparent;
+        width: 30px;
+        /* height: 30px; */
+        color: #929596;
+        margin-top: 0px;
+        /* height: 39px; */
+    }
+
+    #upvote{
+        /* color: red; */
+        width: 44px;
+        height: 13px;
+    }
+
+    #downvote-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* margin-top: 10px; */
+        /* height: 39px; */
+        border: none;
+        background-color: transparent;
+        color: #929596;
+        width: 30px;
+        position: static;
+    }
+
+    #downvote{
+        margin: 0px;
+        width: 44px;
+        height: 13px;
+    }
+
+    .votesss {
+        display: none;
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* height: 20px; */
+        /* width: 100%; */
+        /* background-color: white; */
+        /* border: transparent; */
+      }
+
+    .vote-div {
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        width: 50px;
+        /* flex-direction: row; */
+    }
+
+    .one-post-comment-count {
+        height: 40px;
+        width: auto;
+        /* border: 1px solid red; */
+        margin-left: 5px;
+      }
 
     .comment-count {
         display: flex;
@@ -551,6 +672,7 @@ html {
         width: auto;
         font-size: 14px;
         cursor: default;
+        
       }
 
     .main-feed-containers {
@@ -561,6 +683,7 @@ html {
         /* margin: 0px 7px; */
         width: 23em;
         height: auto;
+        margin: 0px 0px 0px 4px;
         margin-bottom: 100px;
     }
 
@@ -623,14 +746,16 @@ html {
     
     .img-tag {
       display: flex;
-      height: 15em;
-      width: 19.8em;
-      border-radius: 2px;
+      height: 17em;
+      width: 23em;
+      border-radius: 0px;
     }
 
+
+
     .one-post-image {
-        margin-top: 20px;
-        margin-left: 5px;
+        margin-top: 5px;
+        margin-left: 0px;
         height: auto;
         width: 19.8em;;
         border-radius: 4px;
@@ -643,7 +768,7 @@ html {
         /* align-items: center; */
         background-color: transparent;
         width: 15em;
-        /* padding: 0px 63px 0px 63px; */
+        padding: 0px 0px 0px 0px;
         /* margin-bottom: 20px; */
         /* margin-top: 20px; */
         /* margin-left: 41px; */
@@ -654,7 +779,7 @@ html {
         flex-direction: column;
         justify-content: center;
         background-color: transparent;
-        width: auto;
+        width: fit-content(19em);
         /* margin-right: 50px; */
         overflow-wrap: break-word;
         overflow-wrap: break-word;
@@ -662,21 +787,21 @@ html {
       }
 
     .left-postt {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        float: left;
-        height: auto;
-        width: 46px;
-        border-radius: 2px;
-        border-right: 1px solid white;
-        background-color: white;
+        display: none;
+        /* align-items: center; */
+        /* flex-direction: column; */
+        /* float: left; */
+        /* height: auto; */
+        /* width: 46px; */
+        /* border-radius: 2px; */
+        /* border-right: 1px solid white; */
+        /* background-color: white; */
       }
 
     .comment-form textarea {
         display: flex;
         resize: none;
-        width: 15em;
+        width: 24.5em;
         height: 130px;
         border-radius: 4px 4px 0px 0px;
         padding: 7px 10px;
@@ -692,9 +817,10 @@ html {
         display: flex;
         justify-content: flex-end;
         height: auto;
-        width: 13.75em;
+        width: 21.65em;
         border: 1px solid #edeff1;
         background-color: #edeff1;
+        border-radius: 00px 0px 4px 4px;
     }
 
     .comment-form h5 {
@@ -723,4 +849,14 @@ html {
         margin-bottom: 2px;
         margin-top: 5px;
     }
+
+    .backToTop {
+        /* background-color: #dae0e6; */
+        /* border: none; */
+        /* text-decoration: underline; */
+        /* color: #0079db; */
+        /* cursor: pointer; */
+        /* padding-bottom: 109px; */
+        display: none;
+      }
 }

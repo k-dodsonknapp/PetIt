@@ -56,9 +56,9 @@ const OnePost = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        if(!comments){
+        if (!comments) {
             window.scrollTo(0, 0);
-        }else {
+        } else {
             window.scrollTo(0, 540);
         }
     }, []);
@@ -142,16 +142,23 @@ const OnePost = () => {
                                 <div className="one-post-comment-count">
                                     <div className="comment-count">
                                         <GoCommentDiscussion id="comment-count-icon" /><span id="count">{postComments.length}</span> Comments
+                                        <div className="mobile-count">
+                                            <Votes postId={postId} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            {/* <div className="votes">
+                                <Votes postId={postId} />
+                            </div> */}
                             {/* GoCommentDiscussion */}
                         </div>
                         <div className="newCommentEditForm">
+
                             {user ?
-                                <CommentForm postId={postId} showBtns={showBtns} setShowBts={setShowBts} />:
+                                <CommentForm postId={postId} showBtns={showBtns} setShowBts={setShowBts} /> :
                                 <>
-                                <p className="not-signed-in-comment">Wanna Leave a comment? <NavLink to={'/signup'} className="sign-in-or-up"> Sign Up </NavLink>  or <NavLink to={'/login'} className="sign-in-or-up">Login</NavLink> </p>
+                                    <p className="not-signed-in-comment">Wanna Leave a comment? <NavLink to={'/signup'} className="sign-in-or-up"> Sign Up </NavLink>  or <NavLink to={'/login'} className="sign-in-or-up">Login</NavLink> </p>
                                 </>
                             }
                             {/* {showCommentForm && ( */}

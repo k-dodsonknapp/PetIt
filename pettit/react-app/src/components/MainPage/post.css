@@ -338,7 +338,22 @@
 
 }
 
-.edit-btn button{
+.edit-btn button {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: .3px;
+    border: none;
+    background-color: white;
+    padding-left: 9px;
+    margin-top: 1px;
+    /* padding-right: 10px; */
+    /* padding-top: 4px; */
+    /* margin-bottom: 4px; */
+    height: 38px;
+    width: 84px;
+  }
+.delete-btn button {
     display: flex;
     align-items: center;
     font-size: 12px;
@@ -348,24 +363,10 @@
     padding-left: 9px;
     /* padding-right: 10px; */
     /* padding-top: 4px; */
-    /* margin-bottom: 4px; */
-    height: 38px;
+    margin-top: 1px;
+    height: 37px;
     width: 84px;
-}
-.delete-btn button {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    letter-spacing: .3px;
-    border: none;
-    background-color: white;
-    padding-left: 10px;
-    /* padding-right: 10px; */
-    /* padding-top: 4px; */
-    /* margin-bottom: 4px; */
-    height: 38px;
-    width: 84px;
-}
+  }
 
 .edit-btn button:hover,
 .delete-btn button:hover {

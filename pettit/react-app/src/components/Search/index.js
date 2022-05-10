@@ -31,9 +31,9 @@ function Search( {search, setSearch, searchResult, setSearchResult} ) {
     }, [search])
 
   return (
-    <div>
+    <div className='search-div'>
         <input
-        placeholder='Search by Title'
+        placeholder='Search'
         value={search}
         type="text"
         onChange={e => setSearch(e.target.value)}
