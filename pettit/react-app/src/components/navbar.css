@@ -443,10 +443,11 @@ html {
     flex-direction: column;
     position: absolute;
     width: 270px;
-    top: 40px;
+    top: 39.5px;
     background-color: white;
     border: 1px solid rgb(221, 221, 221);
     border-top: none;
+    border-bottom: none;
 }
 
 .searchLink {
