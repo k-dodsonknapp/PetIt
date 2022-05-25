@@ -14,6 +14,15 @@ export const getAllCommunities = () => async (dispatch) => {
     };
 };
 
-export default function communitiesReducer(stat = [], action) {
-    
+export default function communitiesReducer(state = [], action) {
+    let newState;
+    switch (action.type) {
+        case GET_ALL_COMMUNITIES:
+            // newState = {...state}
+            // action.
+            return {
+                ...state,
+                "communities": [...action.communities],
+            }
+    }
 }
