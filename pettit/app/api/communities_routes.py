@@ -28,7 +28,14 @@ def create_community():
     return new_community.to_dict()
 
 @community_routes.route('/edit/<int:id>', methods=["PUT"])
-def update_community():
+def update_community(id):
     data = request.json
 
     community = Communities.query.get(id)
+
+    community.community_name = data["community_name"]
+    community.community_description = data["community_description"]
+
+    db.session.commit()
+
+    return community.to_dict()
