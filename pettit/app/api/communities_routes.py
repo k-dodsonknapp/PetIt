@@ -39,3 +39,15 @@ def update_community(id):
     db.session.commit()
 
     return community.to_dict()
+
+
+@community_routes.route('/delete', methods=['DELETE'])
+def delete_community():
+    data = request.json
+    id = data['id']
+
+    community = Communities.query.get(id)
+    db.session.delete(community)
+    db.session.commit()
+
+    return {'Deletion': "Successful"}
