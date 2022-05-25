@@ -70,6 +70,10 @@ export default function communitiesReducer(state = [], action) {
                 newState[community.id] = community
             ))
             return newState;
+
+            case UPDATE_COMMUNITY:
+                newState = {}
+                console.log(action)
         default:
             return state 
     }
