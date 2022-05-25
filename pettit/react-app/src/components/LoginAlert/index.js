@@ -15,11 +15,12 @@ function LoginAlert({ showLoginModal, setShowLoginModal }) {
         <Modal onClose={() => setShowLoginModal(false)}>
             <div className='main-modal-login-div'>
                 <div className='message-div'>
-                    <h1>Please</h1>
-                    <button id='modal-login-btn' onClick={login}> Login</button>
-                    <h1>Or</h1>
-                    <button id='modal-signup-btn' onClick={signUp}> Sign Up</button>
-                    <h2>to leave a comment</h2>
+                    <h1>Please Login or Sign Up <br/>to leave a comment</h1>
+                    <div className='button-div'>
+                        <button id='modal-login-btn' onClick={login}> Login</button>
+                        {/* <h1>Or</h1> */}
+                        <button id='modal-signup-btn' onClick={signUp}> Sign Up</button>
+                    </div>
                 </div>
             </div>
         </Modal>
