@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addPostVote, deleteVotes, getPostVotes } from '../../store/votes';
 import { BiUpvote, BiDownvote } from "react-icons/bi";
+import LoginAlert from '../LoginAlert';
 
 const Votes = ({ postId }) => {
 
@@ -17,39 +18,47 @@ const Votes = ({ postId }) => {
     }, [dispatch]);
 
     const upvote = (postId) => async (e) => {
-        if ()
-        const voteObj =
-            votes[0]?.votes?.find(vote =>
-                vote?.post_id === postId &&
-                vote?.user_id === user?.id
-            );
+        e.preventDefault();
+        if (!user) {
+            setShowLoginModal(true)
+        } else {
+            const voteObj =
+                votes[0]?.votes?.find(vote =>
+                    vote?.post_id === postId &&
+                    vote?.user_id === user?.id
+                );
 
-        if (!voteObj || voteObj?.user_id !== user?.id) {
-            e.preventDefault();
-            const vote = {
-                "user_id": user?.id,
-                "post_id": postId,
-                "comment_id": null,
-            };
-            await dispatch(addPostVote(vote));
-            await dispatch(getPostVotes());
+            if (!voteObj || voteObj?.user_id !== user?.id) {
+                e.preventDefault();
+                const vote = {
+                    "user_id": user?.id,
+                    "post_id": postId,
+                    "comment_id": null,
+                };
+                await dispatch(addPostVote(vote));
+                await dispatch(getPostVotes());
+            }
         };
     };
 
     const downvote = (postId) => async (e) => {
         e.preventDefault();
-        const voteObj =
-            votes[0].votes.find(vote =>
-                vote?.post_id === postId &&
-                vote?.user_id === user?.id
-            );
+        if (!user) {
+            setShowLoginModal(true)
+        } else {
+            const voteObj =
+                votes[0].votes.find(vote =>
+                    vote?.post_id === postId &&
+                    vote?.user_id === user?.id
+                );
 
-        if (voteObj) {
-            const vote = {
-                'id': voteObj?.id,
+            if (voteObj) {
+                const vote = {
+                    'id': voteObj?.id,
+                };
+                await dispatch(deleteVotes(vote));
+                await dispatch(getPostVotes());
             };
-            await dispatch(deleteVotes(vote));
-            await dispatch(getPostVotes());
         };
     };
 
@@ -69,7 +78,7 @@ const Votes = ({ postId }) => {
                     <BiDownvote id="downvote" />
                 </button>
                 <div className="mobile-votes">
-                <span className='votes-label'>Votes</span> {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length} 
+                    <span className='votes-label'>Votes</span> {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
                 </div>
             </div>
             {/* <div className='mobile-vote-div'>
@@ -80,14 +89,17 @@ const Votes = ({ postId }) => {
                 {/* <div className="votesss">
                     {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
                 </div> */}
-                {/* <button id="downvote-btn" onClick={downvote(posts[0]?.id)}> */}
-                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> 
+            {/* <button id="downvote-btn" onClick={downvote(posts[0]?.id)}> */}
+            {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> 
                     <BiDownvote id="downvote" />
                 </button>
                 <div className="mobile-votes">
                     {votes && votes[0]?.votes?.filter(vote => vote?.post_id === posts[0]?.id)?.length}
                 </div>
             </div> */}
+            {showLoginModal && (
+                <LoginAlert setShowLoginModal={setShowLoginModal} showLoginModal={showLoginModal} />
+            )}
         </>
     )
 }
