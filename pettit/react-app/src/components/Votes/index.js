@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addPostVote, deleteVotes, getPostVotes } from '../../store/votes';
 import { BiUpvote, BiDownvote } from "react-icons/bi";
@@ -9,12 +9,15 @@ const Votes = ({ postId }) => {
     const user = useSelector(state => state?.session?.user);
     const votes = useSelector(state => state?.votes?.post_votes);
     const posts = useSelector(state => state?.post?.list?.filter(post => post?.id === postId));
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
 
     useEffect(() => {
         dispatch(getPostVotes())
     }, [dispatch]);
 
     const upvote = (postId) => async (e) => {
+        if ()
         const voteObj =
             votes[0]?.votes?.find(vote =>
                 vote?.post_id === postId &&
