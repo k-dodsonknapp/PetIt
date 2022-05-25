@@ -12,7 +12,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import Communities from "../Communities";
-import { getAllCommunities } from "../../store/communities";
+import { getAllCommunities, updateACommunity } from "../../store/communities";
 
 
 
@@ -27,13 +27,17 @@ const MainPage = () => {
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
     const [voted, setVoted] = useState("black")
     const communities = useSelector(state => state.communities);
-    console.log("KKKKKKK",communities);
-
 
     useEffect(() => {
+        const data = {
+            "id": 7,
+            "community_name": "PANDAS",
+            "community_description": "are stupid"
+        }
         dispatch(getAllPosts());
         dispatch(getPostVotes());
-        dispatch(getAllCommunities())
+        dispatch(getAllCommunities());
+        dispatch(updateACommunity(data))
         // dispatch(getAllComments(postId))
     }, [dispatch]);
 
@@ -100,7 +104,7 @@ const MainPage = () => {
                             <div>
                                 <button id="main-upvote-btn" onClick={upvote(post.id)}>
                                     {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
-                                    <BiUpvote id="main-upvote" style={{color:`${''}`}} />
+                                    <BiUpvote id="main-upvote" style={{ color: `${''}` }} />
                                 </button>
                                 <div className="votesss">
                                     {votes && votes[0]?.votes?.filter(vote => vote?.post_id === post.id)?.length}
@@ -143,7 +147,7 @@ const MainPage = () => {
                     </div>
                 ))?.reverse()}
             </div>
-            <Communities className="main-container-communities"/>
+            <Communities className="main-container-communities" />
             {/* <div className="right-container">
                 <div className="communities">
                     <div className="comm">
