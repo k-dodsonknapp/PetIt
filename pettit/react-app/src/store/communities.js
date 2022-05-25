@@ -60,6 +60,13 @@ export const updateACommunity = (data) => async (dispatch) => {
     }
 }
 
+const DELETE_COMMUNITY = '/communities/delete'
+
+const delete_community = (community) => ({
+    type: DELETE_COMMUNITY,
+    community
+})
+
 export default function communitiesReducer(state = [], action) {
     let newState;
     switch(action.type) {
