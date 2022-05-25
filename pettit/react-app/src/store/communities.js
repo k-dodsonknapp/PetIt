@@ -15,6 +15,13 @@ export const getAllCommunities = () => async (dispatch) => {
     };
 };
 
+const ADD_COMMUNITY = '/communities/new';
+
+const addCommunity = (community) => ({
+    type: ADD_COMMUNITY,
+    community
+})
+
 export default function communitiesReducer(state = [], action) {
     let newState;
     switch(action.type) {
@@ -25,7 +32,7 @@ export default function communitiesReducer(state = [], action) {
             action.communities.communities.map(community => (
                 newState[community.id] = community
             ))
-            return newState
+            return newState;
         default:
             return state 
     }
