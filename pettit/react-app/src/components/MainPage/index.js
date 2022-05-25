@@ -12,6 +12,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import Communities from "../Communities";
+import { getAllCommunities } from "../../store/communities";
 
 
 
@@ -22,14 +23,17 @@ const MainPage = () => {
     const user = useSelector(state => state?.session);
     const comments = useSelector(state => state?.comments);
     const votes = useSelector(state => state?.votes?.post_votes);
-    console.log(votes)
+    // console.log(votes)
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
     const [voted, setVoted] = useState("black")
+    const communities = useSelector(state => state.communities);
+    console.log("KKKKKKK",communities);
 
 
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
+        dispatch(getAllCommunities())
         // dispatch(getAllComments(postId))
     }, [dispatch]);
 

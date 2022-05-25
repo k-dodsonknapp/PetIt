@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import commentReducer from './comments';
+import communitiesReducer from './communities';
 import postReducer from './posts';
 import reducer from './session';
 import votesReducer from './votes';
@@ -9,7 +10,8 @@ const rootReducer = combineReducers({
   session: reducer,
   post: postReducer,
   comments: commentReducer,
-  votes: votesReducer
+  votes: votesReducer, 
+  communities: communitiesReducer,
 });
 
 

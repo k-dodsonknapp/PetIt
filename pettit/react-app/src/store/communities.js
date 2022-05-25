@@ -9,6 +9,7 @@ export const getAllCommunities = () => async (dispatch) => {
     const res = await fetch('/api/communities/');
     if (res.ok) {
         const data = await res.json();
+        console.log("data",data)
         dispatch(getCommunities(data));
         return data;
     };
@@ -16,13 +17,16 @@ export const getAllCommunities = () => async (dispatch) => {
 
 export default function communitiesReducer(state = [], action) {
     let newState;
-    switch (action.type) {
+    switch(action.type) {
         case GET_ALL_COMMUNITIES:
-            // newState = {...state}
-            // action.
-            return {
-                ...state,
-                "communities": [...action.communities],
-            }
+            console.log(state)
+            console.log("asdfasdfasdf",action.communities.communities)
+            newState = {...state}
+            action.communities.communities.map(community => (
+                newState[community.id] = community
+            ))
+            return newState
+        default:
+            return state 
     }
 }
