@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCommunities } from '../../store/communities';
+import CommunityCard from '../CommunityCard';
 
 function MainCommunitiesPage() {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function MainCommunitiesPage() {
         {communitiesArray.map(community => (
             <ul>
                 <li>
-                    {community.community_name}
+                    <CommunityCard community={community}/>
                 </li>
             </ul>
         ))}
