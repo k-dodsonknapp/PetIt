@@ -44,6 +44,21 @@ const updateCommunity = (community) => ({
     community,
 });
 
+export const updateACommunity = (data) = async (dispatch) => {
+    const res = await fetch(`/api/communities/${data.id}/edit`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+    if (res.ok) {
+        const community = await res.json();
+        dispatch(updateACommunity(community));
+        return community;
+    }
+}
+
 export default function communitiesReducer(state = [], action) {
     let newState;
     switch(action.type) {
