@@ -73,7 +73,7 @@ export const deleteACommunity = (data) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         }, 
-        body: JSON.stringify(data);
+        body: JSON.stringify(data)
     });
     if (res.ok) {
         const id = await res.json();
@@ -103,7 +103,14 @@ export default function communitiesReducer(state = [], action) {
                 // console.log("state", state)
                 // console.log("actionnnnn", action.community)
                 console.log("PPPPPPPPPPP",newState)
-                return newState
+                return newState;
+            
+            case ADD_COMMUNITY:
+                newState = {
+                    ...action.community, 
+                    ...state
+                };
+                return newState;
         default:
             return state 
     }
