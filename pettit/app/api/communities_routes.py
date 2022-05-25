@@ -50,4 +50,4 @@ def delete_community():
     db.session.delete(community)
     db.session.commit()
 
-    return {'Deletion': "Successful"}
+    return {'Deletion Successful': community.to_dict()}

@@ -12,7 +12,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import Communities from "../Communities";
-import { addNewCommunity, getAllCommunities, updateACommunity } from "../../store/communities";
+import { addNewCommunity, deleteACommunity, getAllCommunities, updateACommunity } from "../../store/communities";
 
 
 
@@ -31,6 +31,8 @@ const MainPage = () => {
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
+        dispatch(getAllCommunities());
+        dispatch(deleteACommunity({'id': 12}))
         // dispatch(getAllComments(postId))
     }, [dispatch]);
 
