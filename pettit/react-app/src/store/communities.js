@@ -118,6 +118,6 @@ export default function communitiesReducer(state = [], action) {
                 delete newState[action.community]
                 return newState;
         default:
-            return state 
+            return state ;
     }
 };

@@ -31,8 +31,8 @@ const MainPage = () => {
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getPostVotes());
-        dispatch(getAllCommunities());
-        dispatch(deleteACommunity({'id': 12}))
+        // dispatch(getAllCommunities());
+        // dispatch(deleteACommunity({'id': 12}))
         // dispatch(getAllComments(postId))
     }, [dispatch]);
 

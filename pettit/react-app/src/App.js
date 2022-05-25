@@ -14,6 +14,7 @@ import CreatePost from './components/CreatePost';
 import OnePost from './components/OnePost';
 import SplashPage from './components/SplashPage';
 import PageNotFound from './components/PageNotFound';
+import MainCommunitiesPage from './components/MainCommunitiesPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <MainPage />
+        </Route>
+        <Route path='/communities' exact={true} >
+          <MainCommunitiesPage />
         </Route>
         <ProtectedRoute path='/posts/new' exact={true} >
           <CreatePost />
