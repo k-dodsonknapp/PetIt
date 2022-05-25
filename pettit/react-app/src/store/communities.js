@@ -20,7 +20,22 @@ const ADD_COMMUNITY = '/communities/new';
 const addCommunity = (community) => ({
     type: ADD_COMMUNITY,
     community
-})
+});
+
+export const addNewCommunity = (data) => async (dispatch) => {
+    const res = await fetch('/api/communities/new', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+    if (res.ok) {
+        const community = await res.json();
+        dispatch(addCommunity(community));
+        return community;
+    }
+}
 
 export default function communitiesReducer(state = [], action) {
     let newState;
@@ -36,4 +51,4 @@ export default function communitiesReducer(state = [], action) {
         default:
             return state 
     }
-}
+};
