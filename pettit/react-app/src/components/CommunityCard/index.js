@@ -4,6 +4,7 @@ function CommunityCard({community}) {
   return (
     <div>
         {community.community_name}
+        <div></div>
     </div>
   )
 }
