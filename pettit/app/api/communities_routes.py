@@ -1,6 +1,5 @@
 from crypt import methods
-from urllib import request
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models import Communities, Post, db
 
 
@@ -27,3 +26,9 @@ def create_community():
     db.session.commit()
 
     return new_community.to_dict()
+
+@community_routes.route('/edit/<int:id>', methods=["PUT"])
+def update_community():
+    data = request.json
+
+    community = Communities.query.get(id)
