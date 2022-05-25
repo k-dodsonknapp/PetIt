@@ -62,10 +62,25 @@ export const updateACommunity = (data) => async (dispatch) => {
 
 const DELETE_COMMUNITY = '/communities/delete'
 
-const delete_community = (community) => ({
+const deleteCommunity = (community) => ({
     type: DELETE_COMMUNITY,
     community
-})
+});
+
+export const deleteACommunity = (data) => async (dispatch) => {
+    const res = await fetch ('/api/communities/delete', {
+        method: "DELETE", 
+        headers: {
+            'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(data);
+    });
+    if (res.ok) {
+        const id = await res.json();
+        dispatch(deleteCommunity(id));
+        return "Community Delete Successfully"
+    }
+}
 
 export default function communitiesReducer(state = [], action) {
     let newState;
