@@ -96,7 +96,7 @@ const MainPage = () => {
                             <div>
                                 <button id="main-upvote-btn" onClick={upvote(post.id)}>
                                     {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
-                                    <BiUpvote id="main-upvote" style={{color:`${voted}`}} />
+                                    <BiUpvote id="main-upvote" style={{color:`${''}`}} />
                                 </button>
                                 <div className="votesss">
                                     {votes && votes[0]?.votes?.filter(vote => vote?.post_id === post.id)?.length}

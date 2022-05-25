@@ -1,4 +1,5 @@
 from flask.cli import AppGroup
+from .communities import seed_communities, undo_communities
 from .posts import seed_posts, undo_posts
 from .users import seed_users, undo_users
 from .comments import seed_comments, undo_comments
@@ -20,6 +21,7 @@ def seed():
     # seed_comment_on_comments()
     seed_votes()
     # seed_comment_votes()
+    seed_communities()
 
 
 # Creates the `flask seed undo` command
@@ -32,3 +34,4 @@ def undo():
     # undo_comment_on_comments()
     undo_seed_votes()
     # undo_comment_votes()
+    undo_communities()

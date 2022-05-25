@@ -13,10 +13,12 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     username = db.Column(db.Text)
+    community_id = db.Column(db.Integer, db.ForeignKey('communities.id'))
 
     user = db.relationship('User', back_populates='post')
     comment = db.relationship('Comment', back_populates='post')
     vote = db.relationship('Vote', back_populates='post')
+    communities = db.relationship('Communities', back_populates='post')
     # comment_on_comment = db.relationship('Comment_on_comment', back_populates='post')
 
 
@@ -30,4 +32,5 @@ class Post(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'username': self.username,
+            'community_id': self.community_id,
         }
