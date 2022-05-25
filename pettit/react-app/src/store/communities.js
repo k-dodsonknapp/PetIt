@@ -37,6 +37,13 @@ export const addNewCommunity = (data) => async (dispatch) => {
     }
 }
 
+const UPDATE_COMMUNITY = '/communities/edit/:id'
+
+const updateCommunity = (community) => ({
+    type: UPDATE_COMMUNITY,
+    community,
+});
+
 export default function communitiesReducer(state = [], action) {
     let newState;
     switch(action.type) {
