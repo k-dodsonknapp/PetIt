@@ -27,6 +27,8 @@ const MainPage = () => {
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
     const [voted, setVoted] = useState("black")
     const communities = useSelector(state => state.communities);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
 
     useEffect(() => {
         dispatch(getAllPosts());
@@ -54,39 +56,49 @@ const MainPage = () => {
 
     const upvote = (postId) => async (e) => {
 
-        setVoted("red")
-        const voteObj =
-            votes[0]?.votes?.find(vote =>
-                vote?.post_id === postId &&
-                vote?.user_id === user?.user?.id
-            );
+        // setVoted("red")
+        if (!user) {
+            // if user is not logged in modal will show
+            setShowLoginModal(true);
+        } else {
+            const voteObj =
+                votes[0]?.votes?.find(vote =>
+                    vote?.post_id === postId &&
+                    vote?.user_id === user?.user?.id
+                );
 
-        if (!voteObj || voteObj?.user_id !== user?.user.id) {
-            e.preventDefault();
-            const vote = {
-                "user_id": user?.user?.id,
-                "post_id": postId,
-                "comment_id": null,
-                "upvote": null,
+            if (!voteObj || voteObj?.user_id !== user?.user.id) {
+                e.preventDefault();
+                const vote = {
+                    "user_id": user?.user?.id,
+                    "post_id": postId,
+                    "comment_id": null,
+                    "upvote": null,
+                };
+                await dispatch(addPostVote(vote));
+                await dispatch(getPostVotes());
             };
-            await dispatch(addPostVote(vote));
-            await dispatch(getPostVotes());
         };
     };
 
     const downvote = (postId) => async (e) => {
         e.preventDefault();
-        const voteObj =
-            votes[0].votes.find(vote =>
-                vote?.post_id === postId &&
-                vote?.user_id === user?.user?.id
-            );
-        if (voteObj) {
-            const vote = {
-                'id': voteObj?.id,
-            };
-            await dispatch(deleteVotes(vote));
-            await dispatch(getPostVotes());
+        if (!user) {
+            // if user is not logged in modal will show
+            setShowLoginModal(true);
+        } else {
+            const voteObj =
+                votes[0].votes.find(vote =>
+                    vote?.post_id === postId &&
+                    vote?.user_id === user?.user?.id
+                );
+            if (voteObj) {
+                const vote = {
+                    'id': voteObj?.id,
+                };
+                await dispatch(deleteVotes(vote));
+                await dispatch(getPostVotes());
+            }
         };
     };
 

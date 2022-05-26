@@ -27,7 +27,6 @@ function MainVotes({ postId }) {
                     vote?.post_id === postId &&
                     vote?.user_id === user?.id
                 );
-
             if (!voteObj || voteObj?.user_id !== user?.id) {
                 e.preventDefault();
                 const vote = {
@@ -51,7 +50,6 @@ function MainVotes({ postId }) {
                     vote?.post_id === postId &&
                     vote?.user_id === user?.id
                 );
-
             if (voteObj) {
                 const vote = {
                     'id': voteObj?.id,
