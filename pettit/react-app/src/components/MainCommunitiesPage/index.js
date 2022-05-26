@@ -10,7 +10,7 @@ function MainCommunitiesPage() {
     const communitiesArray = Object.values(communities)
     const numberArray = new Array();
     numberArray.fill(0)
-    console.log(numberArray.fill(0, 100))
+    console.log(numberArray.fill(1, communitiesArray.length))
     // console.log(communitiesArray)
 
     useEffect(() => {
@@ -20,19 +20,19 @@ function MainCommunitiesPage() {
     }, [dispatch])
     return (
         <div>
-            <ol className='community-ol'>
+            <ul className='community-ol'>
                 <li className='community-label-li'>
                     <p>Communities for You</p>
                 </li>
-                {communitiesArray.map(community => (
+                {communitiesArray.map((community, i) => (
                     <div key={community.id} className='main-communities-feed'>
-
+                        <span>{`${i + 1} `} </span>
                         {/* <li > */}
                             <CommunityCard community={community} />
                         {/* </li> */}
                     </div>
                 ))}
-            </ol>
+            </ul>
         </div>
     )
 }
