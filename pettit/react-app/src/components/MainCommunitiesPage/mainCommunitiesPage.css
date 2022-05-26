@@ -1,0 +1,12 @@
+.main-communities-feed {
+    display: flex;
+    justify-content: center;
+}
+
+.community-header {
+    
+}
+
+.community-li {
+    list-style: none;
+}

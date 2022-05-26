@@ -5,10 +5,6 @@ function CommunityCard({community}) {
   return (
     <div className='community-card'>
         {community.community_name}
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
     </div>
   )
 }

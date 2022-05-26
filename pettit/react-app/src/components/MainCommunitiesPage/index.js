@@ -16,9 +16,11 @@ function MainCommunitiesPage() {
     return (
         <div>
             {communitiesArray.map(community => (
-                <div>
+                <div className='main-communities-feed'>
+                    <ul className='community-li'>
+                        <li className='community-header'>
 
-                    <ul>
+                        </li>
                         <li>
                             <CommunityCard community={community} />
                         </li>
