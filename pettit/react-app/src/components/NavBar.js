@@ -11,6 +11,7 @@ import { MdEmojiEmotions } from 'react-icons/md';
 import { FaWpforms } from 'react-icons/fa';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { CgCommunity } from 'react-icons/cg';
+import CreatCommunityModal from './CreateCommunityModal';
 
 
 
@@ -23,7 +24,7 @@ const NavBar = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [search, setSearch] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState();
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -57,6 +58,11 @@ const NavBar = () => {
   const clear = () => {
     // history.push('/')
     setSearch([])
+  }
+
+  const handleCreateCommunity = (e) => {
+    e.preventDefault();
+    setShowCreateModal(true)
   }
 
   const handleClick = async (e) => {
@@ -121,9 +127,9 @@ const NavBar = () => {
                         </NavLink>
                       )}
                       {session && (
-                        <NavLink to='/communities' onClick={handleClick} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
+                        <NavLink to='/communities' onClick={handleCreateCommunity} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
                           <div className='dropdown-btns'>
-                            <li id='demo-li'>
+                            <li id='add-comm-li'>
                               <AiOutlinePlus id='add-comm-icon' />
                               <span className='add-community-span'>
                                 Add Community
@@ -238,6 +244,10 @@ const NavBar = () => {
           </div>
         </ul>
       </nav>
+      
+      {showCreateModal && (
+                    <CreatCommunityModal setShowCreateModal={setShowCreateModal} showCreateModal={showCreateModal} />
+                )}
     </div>
   );
 }

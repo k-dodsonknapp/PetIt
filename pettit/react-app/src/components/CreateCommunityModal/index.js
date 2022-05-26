@@ -1,9 +1,9 @@
 import React from 'react'
 import { Modal } from '../../Context/Modal';
 
-function CreatCommunityModal({showLoginModal, setShowLoginModal}) {
+function CreatCommunityModal({showCreateModal, setShowCreateModal}) {
   return (
-      <Modal onClose={() => setShowLoginModal(false)}>
+      <Modal onClose={() => setShowCreateModal(false)}>
           <div>CreatCommunityModal</div>
       </Modal>
   )

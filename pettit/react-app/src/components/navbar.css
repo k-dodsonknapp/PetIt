@@ -111,9 +111,17 @@ html {
     padding-left: 3px;
 }
 
+#add-comm-li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    padding-left: 1px;
+}
+
 .add-comm-icon {
-    width: 20px;
-    height: 20px;
+    /* width: 20px;
+    height: 20px; */
 }
 
 .logout-span {
@@ -143,7 +151,7 @@ html {
 
 .add-community-span {
     white-space: nowrap;
-    margin-left: 20px;
+    margin-left: 6px;
     font-size: 13px;
 }
 
