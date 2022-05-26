@@ -1,8 +1,9 @@
 import React from 'react'
+import './communityCard.css'
 
 function CommunityCard({community}) {
   return (
-    <div>
+    <div className='community-card'>
         {community.community_name}
         <div></div>
         <div></div>
