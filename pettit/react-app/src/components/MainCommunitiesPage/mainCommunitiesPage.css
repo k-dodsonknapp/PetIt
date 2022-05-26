@@ -4,9 +4,14 @@
 }
 
 .community-header {
-    
+
 }
 
-.community-li {
+.community-ul {
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     list-style: none;
 }

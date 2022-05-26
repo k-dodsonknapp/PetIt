@@ -15,18 +15,19 @@ function MainCommunitiesPage() {
     }, [dispatch])
     return (
         <div>
-            {communitiesArray.map(community => (
-                <div className='main-communities-feed'>
-                    <ul className='community-li'>
-                        <li className='community-header'>
-
-                        </li>
+            <ul className='community-ul'>
+                <li className='community-label-li'>
+                    <p>Communities</p>
+                </li>
+                {communitiesArray.map(community => (
+                    <div className='main-communities-feed'>
+                        
                         <li>
                             <CommunityCard community={community} />
                         </li>
-                    </ul>
-                </div>
-            ))}
+                    </div>
+                ))}
+            </ul>
         </div>
     )
 }
