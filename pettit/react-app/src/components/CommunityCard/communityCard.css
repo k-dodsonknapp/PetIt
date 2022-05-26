@@ -24,3 +24,11 @@
 li.community-li::marker {
     margin-right: 20px;
 }
+
+.numbered-li {
+    margin-left: 20px;
+}
+
+.community-name-btn {
+    
+}
