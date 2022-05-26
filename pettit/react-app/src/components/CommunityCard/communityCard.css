@@ -43,16 +43,21 @@
 
 .join-btn-div {
     display: flex;
-    margin-right: 100px;
-    /* justify-content: flex-end; */
-    /* align-items: flex-end; */
+    margin-right: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .join-btn{
     display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     border-radius: 20px;
-    width: 40px;
-    height: 20px;
+    width: 50px;
+    height: 25px;
+    border: none;
+    color: white;
+    background-color: #0079d3;
 }
 
