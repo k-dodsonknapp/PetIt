@@ -8,10 +8,15 @@ function MainCommunitiesPage() {
     const dispatch = useDispatch();
     const communities = useSelector(state => state.communities);
     const communitiesArray = Object.values(communities)
-    console.log(communitiesArray)
+    const numberArray = new Array();
+    numberArray.fill(0)
+    console.log(numberArray.fill(0, 100))
+    // console.log(communitiesArray)
 
     useEffect(() => {
-        dispatch(getAllCommunities())
+        dispatch(getAllCommunities());
+        console.log(numberArray)
+
     }, [dispatch])
     return (
         <div>
@@ -20,8 +25,8 @@ function MainCommunitiesPage() {
                     <p>Communities for You</p>
                 </li>
                 {communitiesArray.map(community => (
-                    <div className='main-communities-feed'>
-                        
+                    <div key={community.id} className='main-communities-feed'>
+
                         <li className='community-li'>
                             <CommunityCard community={community} />
                         </li>

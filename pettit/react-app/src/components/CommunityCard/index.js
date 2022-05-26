@@ -4,16 +4,12 @@ import './communityCard.css'
 function CommunityCard({ community }) {
   return (
     <div className='community-card'>
-      <div>
-        <div>
-          <button className='community-btn'>
-            p/{community.community_name}
-          </button>
-        </div>
-        <div>
+      {/* <li className='community-li'> */}
 
-        </div>
-      </div>
+        <button className='community-btn'>
+          p/{community.community_name}
+        </button>
+      {/* </li> */}
     </div>
   )
 }

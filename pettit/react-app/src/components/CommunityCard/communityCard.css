@@ -20,3 +20,7 @@
     border: none;
     cursor: pointer;
 }
+
+li.community-li::marker {
+    margin-right: 20px;
+}

@@ -23,4 +23,7 @@
     align-items: center;
     border-radius: 2px;
     border-bottom: none;
+    background-color: white;
+    width: 500px;
+    margin-left: 100px;
 }
