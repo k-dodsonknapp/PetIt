@@ -7,3 +7,8 @@
     height: 100%;
     width: 500px;
 }
+
+.community-li {
+    background-color: white;
+    height: 40px;
+}

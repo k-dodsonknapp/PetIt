@@ -3,8 +3,13 @@
     justify-content: center;
 }
 
-.community-header {
-
+.community-label-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 500px;
+    background-color: white;
 }
 
 .community-ul {
