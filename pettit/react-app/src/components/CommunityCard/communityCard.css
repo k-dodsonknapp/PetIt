@@ -10,19 +10,19 @@
     width: 500px;
 }
 
+.community-btn-div {
+    display: flex;
+}
+
 .community-li {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     border: 2px solid #f6f7f8;
     background-color: white;
     height: 60px;
     border-bottom: none;
     font-size: 20px;
-}
-
-.community-li .join-btn-div {
-    display: flex;
-    justify-content: flex-end;
 }
 
 .community-btn {
@@ -43,13 +43,16 @@
 
 .join-btn-div {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    margin-right: 100px;
+    /* justify-content: flex-end; */
+    /* align-items: flex-end; */
 }
 
 .join-btn{
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    text-align: center;
+    border-radius: 20px;
+    width: 40px;
+    height: 20px;
 }
 
