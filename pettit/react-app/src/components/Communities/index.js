@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 function Communities() {
     return (
@@ -6,7 +7,7 @@ function Communities() {
             <div className="communities">
                 <div className="comm">
                     <div className="comm-header">
-                        <p>Top Communities</p>
+                        <NavLink to='/communities'>Top Communities</NavLink>
                     </div>
                     <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Crabs</div>
                     <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Armidillos</div>
