@@ -1,0 +1,11 @@
+.create-comm-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: white;
+    border-radius: 2px;
+    /* padding-left: 100px; */
+    width: 600px;
+    height: 600px;
+}
