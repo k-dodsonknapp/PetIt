@@ -10,6 +10,9 @@ function CommunityCard({ community, i }) {
           <span className='numbered-li'>{`${i + 1}`}</span><span className='community-name-btn'>{` p/${community.community_name}`}</span>
         </button>
     {/* </div> */}
+        <button className=''>
+          Join
+        </button>
       </li>
   )
 }
