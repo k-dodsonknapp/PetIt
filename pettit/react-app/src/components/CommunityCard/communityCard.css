@@ -3,7 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    border: 2px solid #f6f7f8;
+    border-left: none;
+    border-right: none;
     height: 100%;
     width: 500px;
 }

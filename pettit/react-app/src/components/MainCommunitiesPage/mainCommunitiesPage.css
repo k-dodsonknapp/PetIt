@@ -9,7 +9,10 @@
     align-items: center;
     height: 40px;
     width: 500px;
-    background-color: white;
+    background-color: #f6f7f8;
+    border: none;
+    border-bottom: none;
+    border-radius: 3px 3px 0px 0px;
 }
 
 .community-ul {
@@ -19,4 +22,6 @@
     justify-content: center;
     align-items: center;
     list-style: none;
+    border-radius: 2px;
+    border-bottom: none;
 }

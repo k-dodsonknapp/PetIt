@@ -17,7 +17,7 @@ function MainCommunitiesPage() {
         <div>
             <ul className='community-ul'>
                 <li className='community-label-li'>
-                    <p>Communities</p>
+                    <p>Communities for You</p>
                 </li>
                 {communitiesArray.map(community => (
                     <div className='main-communities-feed'>
