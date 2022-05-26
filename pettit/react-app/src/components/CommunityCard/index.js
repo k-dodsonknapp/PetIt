@@ -3,14 +3,14 @@ import './communityCard.css'
 
 function CommunityCard({ community }) {
   return (
-    <div className='community-card'>
-      {/* <li className='community-li'> */}
+      <li className='community-li'>
+    {/* <div className='community-card'> */}
 
         <button className='community-btn'>
           p/{community.community_name}
         </button>
-      {/* </li> */}
-    </div>
+    {/* </div> */}
+      </li>
   )
 }
 
