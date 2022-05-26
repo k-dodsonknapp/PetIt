@@ -15,7 +15,7 @@ function MainCommunitiesPage() {
     }, [dispatch])
     return (
         <div>
-            <ul className='community-ul'>
+            <ol className='community-ol'>
                 <li className='community-label-li'>
                     <p>Communities for You</p>
                 </li>
@@ -27,7 +27,7 @@ function MainCommunitiesPage() {
                         </li>
                     </div>
                 ))}
-            </ul>
+            </ol>
         </div>
     )
 }

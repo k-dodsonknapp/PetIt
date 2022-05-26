@@ -1,7 +1,7 @@
 
 .community-card {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     border: 2px solid #f6f7f8;
     border-left: none;
@@ -13,4 +13,10 @@
 .community-li {
     background-color: white;
     height: 40px;
+}
+
+.community-btn {
+    background-color: white;
+    border: none;
+    cursor: pointer;
 }
