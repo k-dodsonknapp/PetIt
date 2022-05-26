@@ -13,10 +13,10 @@ function MainCommunitiesPage() {
         dispatch(getAllCommunities());
     }, [dispatch])
     return (
-        <div>
+        <div className='community-main-div'>
             <ul className='community-ol'>
                 <li className='community-label-li'>
-                    <p>Communities for You</p>
+                    <p>Communities For You</p>
                 </li>
                 {communitiesArray.map((community, i) => (
                     <div key={community.id} className='main-communities-feed'>

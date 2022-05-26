@@ -11,8 +11,13 @@
 }
 
 .community-li {
+    display: flex;
+    width: 100%;
+    border: 2px solid #f6f7f8;
     background-color: white;
-    height: 40px;
+    height: 60px;
+    border-bottom: none;
+    font-size: 20px;
 }
 
 .community-btn {
@@ -21,14 +26,13 @@
     cursor: pointer;
 }
 
-li.community-li::marker {
-    margin-right: 20px;
-}
-
 .numbered-li {
     margin-left: 20px;
+    font-size: 18px;
 }
 
 .community-name-btn {
-    
+    margin-left: 25px;
+    font-size: 18px;
 }
+

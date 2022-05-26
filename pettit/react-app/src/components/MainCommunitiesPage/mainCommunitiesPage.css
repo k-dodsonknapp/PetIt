@@ -5,14 +5,20 @@
 
 .community-label-li {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    height: 40px;
-    width: 500px;
+    height: 80px;
+    width: 700px;
     background-color: #f6f7f8;
     border: none;
     border-bottom: none;
     border-radius: 3px 3px 0px 0px;
+    /* padding-left: 10px; */
+}
+
+.community-label-li p {
+    display: flex;
+    padding-left: 20px;
 }
 
 .community-ol {
@@ -24,7 +30,14 @@
     border-radius: 2px;
     border-bottom: none;
     background-color: white;
-    width: 500px;
-    margin-left: 100px;
+    width: 700px;
+    /* margin-left: 100px; */
     list-style: none;
+    font-size: 20px;
+}
+
+.community-main-div{ 
+    display: flex;
+    justify-content: center;
+    margin-right: 100px;
 }
