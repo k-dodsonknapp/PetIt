@@ -20,6 +20,11 @@
     font-size: 20px;
 }
 
+.community-li .join-btn-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .community-btn {
     background-color: white;
     border: none;
@@ -34,6 +39,12 @@
 .community-name-btn {
     margin-left: 25px;
     font-size: 18px;
+}
+
+.join-btn-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .join-btn{
