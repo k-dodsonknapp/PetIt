@@ -10,6 +10,8 @@ import { RiLogoutBoxRFill } from 'react-icons/ri';
 import { MdEmojiEmotions } from 'react-icons/md';
 import { FaWpforms } from 'react-icons/fa';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { CgCommunity } from 'react-icons/cg';
+
 
 
 const NavBar = () => {
@@ -21,7 +23,7 @@ const NavBar = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [search, setSearch] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState();
-  console.log(searchResult)
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -101,6 +103,30 @@ const NavBar = () => {
                               <RiLogoutBoxRFill id="login-icon" />
                               <span className='signup-span'>
                                 Login
+                              </span>
+                            </li>
+                          </div>
+                        </NavLink>
+                      )}
+                      {session && (
+                        <NavLink to='/communities' onClick={handleClick} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
+                          <div className='dropdown-btns'>
+                            <li id='demo-li'>
+                              <CgCommunity id="demo-icon" />
+                              <span className='signup-span'>
+                                Communities
+                              </span>
+                            </li>
+                          </div>
+                        </NavLink>
+                      )}
+                      {session && (
+                        <NavLink to='/communities' onClick={handleClick} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
+                          <div className='dropdown-btns'>
+                            <li id='demo-li'>
+                              <AiOutlinePlus id='add-comm-icon' />
+                              <span className='add-community-span'>
+                                Add Community
                               </span>
                             </li>
                           </div>
