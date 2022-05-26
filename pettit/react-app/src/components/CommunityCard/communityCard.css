@@ -36,3 +36,9 @@
     font-size: 18px;
 }
 
+.join-btn{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+

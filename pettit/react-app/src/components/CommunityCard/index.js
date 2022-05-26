@@ -3,17 +3,19 @@ import './communityCard.css'
 
 function CommunityCard({ community, i }) {
   return (
-      <li className='community-li'>
-    {/* <div className='community-card'> */}
+    <li className='community-li'>
+      {/* <div className='community-card'> */}
 
-        <button className='community-btn'>
-          <span className='numbered-li'>{`${i + 1}`}</span><span className='community-name-btn'>{` p/${community.community_name}`}</span>
-        </button>
-    {/* </div> */}
-        <button className=''>
+      <button className='community-btn'>
+        <span className='numbered-li'>{`${i + 1}`}</span><span className='community-name-btn'>{` p/${community.community_name}`}</span>
+      </button>
+      {/* </div> */}
+      <div className='join-btn-div'>
+        <button className='join-btn'>
           Join
         </button>
-      </li>
+      </div>
+    </li>
   )
 }
 
