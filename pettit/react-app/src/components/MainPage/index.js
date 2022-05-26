@@ -13,6 +13,7 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import Communities from "../Communities";
 import { addNewCommunity, deleteACommunity, getAllCommunities, updateACommunity } from "../../store/communities";
+import LoginAlert from "../LoginAlert";
 
 
 
@@ -25,7 +26,7 @@ const MainPage = () => {
     const votes = useSelector(state => state?.votes?.post_votes);
     // console.log(votes)
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
-    const [voted, setVoted] = useState("black")
+    // const [voted, setVoted] = useState("black")
     const communities = useSelector(state => state.communities);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -57,7 +58,7 @@ const MainPage = () => {
     const upvote = (postId) => async (e) => {
 
         // setVoted("red")
-        if (!user) {
+        if (!user.user) {
             // if user is not logged in modal will show
             setShowLoginModal(true);
         } else {
@@ -83,7 +84,7 @@ const MainPage = () => {
 
     const downvote = (postId) => async (e) => {
         e.preventDefault();
-        if (!user) {
+        if (!user.user) {
             // if user is not logged in modal will show
             setShowLoginModal(true);
         } else {
@@ -121,6 +122,9 @@ const MainPage = () => {
                                     <BiDownvote id="main-downvote" />
                                 </button>
                             </div>
+                            {showLoginModal && (
+                                <LoginAlert setShowLoginModal={setShowLoginModal} showLoginModal={showLoginModal} />
+                            )}
                         </div>
                         <div className="right-post">
                             <h2 className="post-username">
@@ -155,41 +159,6 @@ const MainPage = () => {
                 ))?.reverse()}
             </div>
             <Communities className="main-container-communities" />
-            {/* <div className="right-container">
-                <div className="communities">
-                    <div className="comm">
-                        <div className="comm-header">
-                            <p>Top Communities</p>
-                        </div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Crabs</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Armidillos</div>
-                        <div className="rows"><i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>p/Sugar_gliders</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Dogs</div>
-                        <div className="rows"><i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>p/Cats</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Giraffe</div>
-                        <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Squirrel</div>
-                        <button id="view-all">Veiw All</button>
-                    </div>
-                </div>
-
-                <div className="createe">
-                    <div className="links">
-                        <h5>Personal Links</h5>
-                        <a href='https://github.com/k-dodsonknapp'>GitHub</a>
-                        <a href="https://www.linkedin.com/in/kenneth-dodson-knapp-97029022a/">LinkedIn</a>
-                        <a href="https://angel.co/u/kenneth-dodson-knapp">AngelList</a>
-                    </div>
-                    <div className="links">
-                        <h5>Previous Projects</h5>
-                        <a href='https://notes-takker.herokuapp.com/'>NoteTakker</a>
-                        <a href='http://step-by-stepapp.herokuapp.com/'>Step-by-Step</a>
-                        <a href='https://carra.herokuapp.com/'>Carra</a>
-                    </div>
-                </div>
-                <div className="me">
-                    <p>Developed by: Kenneth Dodson-Knapp</p>
-                </div>
-            </div> */}
         </div >
     )
 }
