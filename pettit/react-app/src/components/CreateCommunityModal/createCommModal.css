@@ -19,6 +19,7 @@
 .modal-label {
     display: flex;
     justify-content: space-between;
+    text-align: center;
     border: 1px solid #edeff1;
     border-top: none;
     padding: 10px 0px;
@@ -28,6 +29,14 @@
     width: 90%;
     font-weight: 550;
     color: #1c1c1c;
+}
+
+.modal-label p {
+    margin-top: 5px;
+}
+
+.close-btn-icon{
+    font-size: 23px;
 }
 
 .exit-comm-modal {
@@ -52,6 +61,7 @@
     margin: 5px 0px;
     font-weight: 400;
 }
+
 .comm-name-label h5 {
     margin: 5px 0px;
     font-weight: 400;

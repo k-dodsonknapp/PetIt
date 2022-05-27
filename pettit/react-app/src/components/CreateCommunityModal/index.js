@@ -12,7 +12,7 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
             <div className='create-comm-div'>
                 <div className='modal-label'>
                     <p>Create a community</p>
-                    <button className='exit-comm-modal'><AiOutlineClose/></button>
+                    <button className='exit-comm-modal'><AiOutlineClose className='close-btn-icon'/></button>
                 </div>
                 <form className='comm-form'>
                     <div className='comm-name-label'>
