@@ -68,13 +68,13 @@
 
 .comm-name-input input {
     display: flex;
-    width: 90%;
-    margin-left: 4.4%;
+    width: 89%;
+    margin-left: 4.0%;
     margin-top: 15px;
     height: 40px;
     border-radius: 4px;
     border: 1px solid #edeff1;
-    padding: 0px 10px;
+    padding-left: 10px;
     color: #989ca0;
 }
 
