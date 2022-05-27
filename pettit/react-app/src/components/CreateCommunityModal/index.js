@@ -39,21 +39,21 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                                 type='radio'
                                 value={`21 ${""} Public`}
                             />
-                            <BsFillPersonFill className='type-icon'/><span className='comm-types-label'> Public</span><span> Anyone can view, post, and comment to this community</span>
+                            <BsFillPersonFill className='type-icon'/><span className='comm-types-label'> Public</span><span className='type-description'> Anyone can view, post, and comment to this community</span>
                         </div>
                         <div className='type-of-comm'>
                             <input
                                 type='radio'
                                 value={`${""} Public`}
                             />
-                            <BsEye className='type-icon'/><span className='comm-types-label'> Restricted</span><span> Anyone can view this community, but only approved users can post</span>
+                            <BsEye className='type-icon'/><span className='comm-types-label'> Restricted</span><span className='type-description'> Anyone can view this community, but only approved users can post</span>
                         </div>
                         <div className='type-of-comm'>
                             <input
                                 type='radio'
                                 value={`${""} Public`}
                             />
-                            <IoMdLock className='type-icon'/><span className='comm-types-label'> Private</span><span> Only approved users can view and submit to this community</span>
+                            <IoMdLock className='type-icon'/><span className='comm-types-label'> Private</span><span className='type-description'> Only approved users can view and submit to this community</span>
                         </div>
                     </div>
                 </form>
