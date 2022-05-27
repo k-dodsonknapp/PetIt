@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Modal } from '../../Context/Modal';
 import { AiOutlineClose } from "react-icons/ai";
+import { BsFillPersonFill } from "react-icons/bs";
+import { BsEye } from "react-icons/bs";
+import { IoMdLock } from "react-icons/io";
 import './createCommModal.css';
 
 function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
@@ -31,26 +34,26 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                     </div>
                     <div className='community-type'>
                         <h4>Community Type</h4>
-                        <div className='public-comm-div'>
+                        <div className='type-of-comm'>
                             <input
                                 type='radio'
                                 value={`21 ${""} Public`}
                             />
-                            <span> Public</span><span> Anyone can view, post, and comment to this community</span>
+                            <BsFillPersonFill className='type-icon'/><span className='comm-types-label'> Public</span><span> Anyone can view, post, and comment to this community</span>
                         </div>
-                        <div className='restrict-comm-div'>
+                        <div className='type-of-comm'>
                             <input
                                 type='radio'
                                 value={`${""} Public`}
                             />
-                            <span> Restricted</span><span> Anyone can view this community, but only approved users can post</span>
+                            <BsEye className='type-icon'/><span className='comm-types-label'> Restricted</span><span> Anyone can view this community, but only approved users can post</span>
                         </div>
-                        <div className='private-comm-div'>
+                        <div className='type-of-comm'>
                             <input
                                 type='radio'
                                 value={`${""} Public`}
                             />
-                            <span> Private</span><span> Only approved users can view and submit to this community</span>
+                            <IoMdLock className='type-icon'/><span className='comm-types-label'> Private</span><span> Only approved users can view and submit to this community</span>
                         </div>
                     </div>
                 </form>
