@@ -63,19 +63,28 @@
     /* justify-content: center; */
     /* align-items: center; */
     flex-direction: column;
-    border: 1px solid green;
 }
 
 .comm-name-input input {
     display: flex;
     width: 89%;
-    margin-left: 4.0%;
+    margin-left: 4%;
     margin-top: 15px;
     height: 40px;
     border-radius: 4px;
     border: 1px solid #edeff1;
     padding-left: 10px;
     color: #989ca0;
+
+    
+}
+
+.comm-name-input h6 {
+    display: flex;
+    margin: 10px 0px 10px 4%;
+    font-size: 13px;
+    font-weight: 400;
+    color: #7c7c7c;
 }
 
 .community-type {

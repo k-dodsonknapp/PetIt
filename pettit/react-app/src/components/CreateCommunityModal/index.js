@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from '../../Context/Modal';
+import { AiOutlineClose } from "react-icons/ai";
 import './createCommModal.css';
 
 function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
@@ -11,7 +12,7 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
             <div className='create-comm-div'>
                 <div className='modal-label'>
                     <p>Create a community</p>
-                    <button className='exit-comm-modal'>X</button>
+                    <button className='exit-comm-modal'><AiOutlineClose/></button>
                 </div>
                 <form className='comm-form'>
                     <div className='comm-name-label'>
@@ -26,14 +27,14 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                             onChange={e => setCommunityName(e.target.value)}
                         // placeholder={"p/"}
                         ></input>
-                        <h6>{ } Characters remaining</h6>
+                        <h6>{ }21 Characters remaining</h6>
                     </div>
                     <div className='community-type'>
                         <h4>Community Type</h4>
                         <div className='public-comm-div'>
                             <input
                                 type='radio'
-                                value={`${""} Public`}
+                                value={`21 ${""} Public`}
                             />
                             <span> Public</span><span> Anyone can view, post, and comment to this community</span>
                         </div>
