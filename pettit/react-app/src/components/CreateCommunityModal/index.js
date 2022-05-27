@@ -61,8 +61,8 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                     </div>
                 </form>
                 <div className='cancel-create-btn-div'>
-                    <button>Cancel</button>
-                    <button>Create Community</button>
+                    <button className='cancel-comm-btn'>Cancel</button>
+                    <button className='create-comm-btn'>Create Community</button>
                 </div>
             </div>
         </Modal>

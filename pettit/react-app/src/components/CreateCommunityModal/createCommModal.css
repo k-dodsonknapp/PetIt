@@ -104,6 +104,7 @@
 .community-type {
     display: flex;
     margin-left: 4%;
+    margin-top: 15px;
 }
 
 .community-type input[type='radio'] {
@@ -153,4 +154,45 @@
     width: 100%;
     font-size: 11px;
     color: #7c7c7c;
+}
+
+.cancel-create-btn-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #edeff1;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 20%;
+    margin-top: 40px;
+}
+
+.cancel-comm-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 90px;
+    border-radius: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid #0079d5;
+    color: #0079d3;
+    margin-right: 10px;
+}
+
+.create-comm-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 200px;
+    padding: 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 1px solid #edeff1;
+    font-size: 18px;
+    color: white;
+    background-color: #0079d3;
 }
