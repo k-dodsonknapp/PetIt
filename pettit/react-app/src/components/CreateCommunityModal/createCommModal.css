@@ -31,6 +31,10 @@
     color: #1c1c1c;
 }
 
+.comm-form {
+    width: 100%;
+}
+
 .modal-label p {
     margin-top: 5px;
 }
@@ -125,6 +129,7 @@
     /* margin-bottom: 10px; */
     font-weight: 600;
     text-align: center;
+    color: #1c1c1c;
 }
 
 .type-icon {
@@ -136,6 +141,16 @@
     width: 20px;
 }
 
-.type-description {
-    /* font-size: 12px; */
+/* #something {
+    font-size: 10px;
+    position: relative;
+    width: 100%;
+} */
+
+.description {
+    /* display: flex; */
+    margin-left: 5px;
+    width: 100%;
+    font-size: 11px;
+    color: #7c7c7c;
 }
