@@ -51,12 +51,12 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                             />
                             <span> Private</span><span> Only approved users can view and submit to this community</span>
                         </div>
-                        <div className='cancel-create-btn-div'>
-                            <button>Cancel</button>
-                            <button>Create Community</button>
-                        </div>
                     </div>
                 </form>
+                <div className='cancel-create-btn-div'>
+                    <button>Cancel</button>
+                    <button>Create Community</button>
+                </div>
             </div>
         </Modal>
     )
