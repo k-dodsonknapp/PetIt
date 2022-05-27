@@ -29,22 +29,29 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                         ></input>
                         <h6>{ } Characters remaining</h6>
                     </div>
-                    <div>
+                    <div className='community-type'>
                         <h4>Community Type</h4>
-                        <input
-                            type='radio'
-                            value={`${""} Public`}
-                        /><span> Public</span>
-                        <h4>Community Type</h4>
-                        <input
-                            type='radio'
-                            value={`${""} Public`}
-                        /><span> Public</span>
-                        <h4>Community Type</h4>
-                        <input
-                            type='radio'
-                            value={`${""} Public`}
-                        /><span> Public</span>
+                        <div>
+                            <input
+                                type='radio'
+                                value={`${""} Public`}
+                            />
+                            <span> Public</span>
+                        </div>
+                        <div>
+                            <input
+                                type='radio'
+                                value={`${""} Public`}
+                            />
+                            <span> Restricted</span>
+                        </div>
+                        <div>
+                            <input
+                                type='radio'
+                                value={`${""} Public`}
+                            />
+                            <span> Private</span>
+                        </div>
                     </div>
                 </form>
             </div>

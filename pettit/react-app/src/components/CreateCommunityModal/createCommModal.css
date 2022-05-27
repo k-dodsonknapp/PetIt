@@ -10,3 +10,8 @@
     width: 555px;
     height: 550px;
 }
+
+.community-type {
+    display: flex;
+    flex-direction: column;
+}
