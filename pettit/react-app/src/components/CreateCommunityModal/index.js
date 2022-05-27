@@ -13,10 +13,10 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                     <p>Create a community</p>
                     <button className='exit-comm-modal'>X</button>
                 </div>
-                <form>
+                <form className='comm-form'>
                     <div className='comm-name-label'>
                         <h3>Name</h3>
-                        <h6>Community names including capitalization cannot be changed.</h6>
+                        <h5>Community names including capitalization cannot be changed.</h5>
                     </div>
                     <div className='comm-name-input'>
                         <input
