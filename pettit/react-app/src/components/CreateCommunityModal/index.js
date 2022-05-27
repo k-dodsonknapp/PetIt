@@ -10,8 +10,8 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
         <Modal onClose={() => setShowCreateModal(false)}>
             <div className='create-comm-div'>
                 <div className='modal-label'>
-                    <p>Create a Community</p>
-                    <button>X</button>
+                    <p>Create a community</p>
+                    <button className='exit-comm-modal'>X</button>
                 </div>
                 <form>
                     <div className='comm-name-label'>
