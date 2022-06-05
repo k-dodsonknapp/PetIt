@@ -180,6 +180,7 @@
     border: 1px solid #0079d5;
     color: #0079d3;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .create-comm-btn {
@@ -195,4 +196,10 @@
     font-size: 18px;
     color: white;
     background-color: #0079d3;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.radio-pick {
+    cursor: pointer;
 }

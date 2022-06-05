@@ -7,7 +7,7 @@ class Communities(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     community_name = db.Column(db.Text, nullable=False)
-    community_description = db.Column(db.Text, nullable=False)
+    community_type = db.Column(db.Text, nullable=False)
 
     post = db.relationship('Post', back_populates='communities')
 
@@ -15,5 +15,5 @@ class Communities(db.Model):
         return {
             'id': self.id,
             'community_name': self.community_name,
-            'community_description': self.community_description,
+            'community_description': self.community_type,
         }
