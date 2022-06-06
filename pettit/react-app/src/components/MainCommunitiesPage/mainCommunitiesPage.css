@@ -16,6 +16,13 @@
     /* padding-left: 10px; */
 }
 
+.top-communities {
+    /* text-decoration: none; */
+    margin-top: 14px;
+    color: black;
+    font-size: 19px;
+}
+
 .community-label-li p {
     display: flex;
     padding-left: 20px;

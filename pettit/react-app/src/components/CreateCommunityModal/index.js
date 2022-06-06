@@ -5,11 +5,25 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { BsEye } from "react-icons/bs";
 import { IoMdLock } from "react-icons/io";
 import './createCommModal.css';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [communityName, setCommunityName] = useState('p/');
     const [commType, setCommType] = useState('')
     console.log(commType)
+
+    const handleNewCommunity = (e) => {
+        e.preventDefault()
+        const newCommunity = {
+            "community_name": communityName,
+            "community_type": commType,
+        }
+        console.log(newCommunity)
+        
+    }
 
     const radioChange = (e) => {
         setCommType(e.target.value);
@@ -23,7 +37,7 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                     <p>Create a community</p>
                     <button className='exit-comm-modal' onClick={() => setShowCreateModal(false)}><AiOutlineClose className='close-btn-icon' /></button>
                 </div>
-                <form className='comm-form'>
+                <form className='comm-form' onSubmit={handleNewCommunity}>
                     <div className='comm-name-label'>
                         <h3>Name</h3>
                         <h5>Community names including capitalization cannot be changed.</h5>
@@ -74,11 +88,11 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                             <div className='description'> Only approved users can view and submit to this community</div>
                         </div>
                     </div>
-                </form>
                 <div className='cancel-create-btn-div'>
                     <button className='cancel-comm-btn' onClick={() => setShowCreateModal(false)}>Cancel</button>
                     <button className='create-comm-btn'>Create Community</button>
                 </div>
+                </form>
             </div>
         </Modal>
     )

@@ -7,7 +7,7 @@ function Communities() {
             <div className="communities">
                 <div className="comm">
                     <div className="comm-header">
-                        <NavLink to='/communities'>Top Communities</NavLink>
+                        <NavLink to='/communities' className="top-communities">Top Communities</NavLink>
                     </div>
                     <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Crabs</div>
                     <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Armidillos</div>

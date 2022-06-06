@@ -15,5 +15,5 @@ class Communities(db.Model):
         return {
             'id': self.id,
             'community_name': self.community_name,
-            'community_description': self.community_type,
+            'community_type': self.community_type,
         }

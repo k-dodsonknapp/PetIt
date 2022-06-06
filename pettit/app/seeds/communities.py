@@ -5,31 +5,31 @@ def seed_communities():
 
     community1 = Communities(
         community_name='Crabs', 
-        community_description='All about crustaceans.',
+        community_type='Public',
     )
     community2 = Communities(
         community_name='Armidillos', 
-        community_description='All about the rolly pooley ollies that are Armidillos.',
+        community_type='Public',
     )
     community3 = Communities(
         community_name='Sugar Gliders', 
-        community_description='All about the flying fur balls that are Sugar Gliders.',
+        community_type='Public',
     )
     community4 = Communities(
         community_name='Dogs', 
-        community_description='All about humans best friend.',
+        community_type='Public',
     )
     community5 = Communities(
         community_name='Cats', 
-        community_description='We think we domesticated them but in reality they have trained us! All about pooty cats.',
+        community_type='Public',
     )
     community6 = Communities(
         community_name='Giraffe', 
-        community_description='These walking trees is the topic of convo, hear all about Giraffes.',
+        community_type='Public',
     )
     community7 = Communities(
         community_name='Squirrel', 
-        community_description='These nutty guys are all the rage. All about squirrels!',
+        community_type='Public',
     )
     
     db.session.add(community1)
