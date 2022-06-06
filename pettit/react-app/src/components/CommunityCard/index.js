@@ -2,6 +2,11 @@ import React from 'react'
 import './communityCard.css'
 
 function CommunityCard({ community, i }) {
+
+  const joinCommunity = (e) => {
+    e.preventDefault()
+    console.log("HELLO")
+  }
   return (
     <li className='community-li'>
       {/* <div className='community-card'> */}
@@ -12,7 +17,7 @@ function CommunityCard({ community, i }) {
       </div>
       {/* </div> */}
       <div className='join-btn-div'>
-        <button className='join-btn'>
+        <button className='join-btn' onClick={joinCommunity}>
           Join
         </button>
       </div>
