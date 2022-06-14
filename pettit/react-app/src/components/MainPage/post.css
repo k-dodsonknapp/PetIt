@@ -126,6 +126,11 @@
     margin-bottom: 10px;
 }
 
+.links a:hover {
+    margin-bottom: 10px;
+    color: black;
+}
+
 .links {
     display: flex;
     justify-content: flex-start;

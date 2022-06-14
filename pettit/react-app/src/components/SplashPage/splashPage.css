@@ -41,6 +41,11 @@
     background-color: #0079d3;
     margin-bottom: 20px;
     margin-top: 20px;
+    cursor: pointer;
+}
+
+#view-all:hover {
+    background-color: #59aae9;
 }
 
 .btn {
