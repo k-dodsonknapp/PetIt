@@ -20,7 +20,11 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
     const suffix = "p/"
 
     useEffect(() => {
-
+        if (code === "Backspace"){
+            setMax(max += 1)
+        }else {
+            setMax(max -= 1)
+        }
     }, [max, code])
 
     const handleNewCommunity = (e) => {
