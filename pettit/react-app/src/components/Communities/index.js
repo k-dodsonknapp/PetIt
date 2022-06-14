@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Communities() {
     return (
@@ -35,7 +35,7 @@ function Communities() {
                 </div>
             </div>
             <div className="me">
-                <p>Developed by: Kenneth Dodson-Knapp</p>
+                <p>Developed by: <br/>Kenneth Dodson-Knapp</p>
             </div>
         </div>
     )

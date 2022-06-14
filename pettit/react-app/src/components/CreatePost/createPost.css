@@ -332,6 +332,12 @@ textarea:focus {
     color: rgb(104, 97, 97);
 }
 
+.me p {
+    /* display: flex; */
+    /* justify-content: center; */
+    width: 100%;
+}
+
 .body-label {
     color: #929596;
 }
