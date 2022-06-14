@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from '../../Context/Modal';
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -11,9 +11,17 @@ import { useHistory } from 'react-router-dom';
 function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [communityName, setCommunityName] = useState('p/');
+    const [communityName, setCommunityName] = useState('');
+    let [max, setMax] = useState(21)
+    let [code, setCode] = useState("")
     const [commType, setCommType] = useState('')
     console.log(commType)
+ 
+    const suffix = "p/"
+
+    useEffect(() => {
+
+    }, [max, code])
 
     const handleNewCommunity = (e) => {
         e.preventDefault()
@@ -24,9 +32,44 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
         console.log(newCommunity)
         
     }
+ 
+    const communityTitle = (e) => {
+        setCommunityName(e.target.value)
+        document.addEventListener("keydown", e => {
+            if (e.code === "Backspace"){
+                setCode("Backspace")
+            }
+        })
+            if (code === "Backspace" || e.target.value.length <= 21){
+                setMax(max += 1)
+            }else if(code !== "Backspace" || e.target.value.length === 0) {
+                setMax(max -= 1)
+            }
+            
+        console.log(e.code)
+        // let length = e.target.value.length
+        // document.addEventListener("keydown", e => {
+        //     if (e.code === "Backspace" && max < e.target.maxLength && max > 0 || max === 0){
+        //         if (max > -1){
+        //             setMax(max += 1)
+        //         }
+        //     }else if (max <= e.target.maxLength && max >= 0 && e.code !== "Backspace" || max === 1)  {
+        //         if (max > -1){
+
+        //             setMax(max -= 1)
+        //         }
+        //     }
+            
+        // })
+        // console.log(length)
+        // setCommunityName(e.target.value)
+        // if (length ) {
+        //     setMax(max -= 1)
+        // }
+    }
 
     const radioChange = (e) => {
-        setCommType(e.target.value);
+        setCommType(`${suffix}${e.target.value}`);
     }
     console.log(communityName)
 
@@ -44,13 +87,15 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                     </div>
                     <div className='comm-name-input'>
                         <input
+                            id='communityName'
                             type='text'
                             name='communityName'
                             value={communityName}
-                            onChange={e => setCommunityName(e.target.value)}
+                            onChange={communityTitle}
+                            maxLength={21}
                         // placeholder={"p/"}
                         ></input>
-                        <h6>{ }21 Characters remaining</h6>
+                        <h6>{max} Characters remaining</h6>
                     </div>
                     <div className='community-type' onChange={radioChange}>
                         <h4>Community Type</h4>
