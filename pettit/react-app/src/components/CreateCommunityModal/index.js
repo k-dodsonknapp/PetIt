@@ -40,9 +40,9 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                 setCode("Backspace")
             }
         })
-            if (code === "Backspace" || e.target.value.length <= 21){
+            if (code === "Backspace" && max < 21 && e.target.value.length >= 0){
                 setMax(max += 1)
-            }else if(code !== "Backspace" || e.target.value.length === 0) {
+            }else if(code !== "Backspace" && e.target.value.length <= 21 && e.target.value.length >=0 ) {
                 setMax(max -= 1)
             }
             
