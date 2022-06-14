@@ -19,13 +19,13 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
  
     const suffix = "p/"
 
-    useEffect(() => {
-        if (code === "Backspace"){
-            setMax(max += 1)
-        }else {
-            setMax(max -= 1)
-        }
-    }, [max, code])
+    // useEffect(() => {
+    //     if (code === "Backspace"){
+    //         setMax(max += 1)
+    //     }else {
+    //         setMax(max -= 1)
+    //     }
+    // }, [max, code])
 
     const handleNewCommunity = (e) => {
         e.preventDefault()
@@ -42,15 +42,17 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
         document.addEventListener("keydown", e => {
             if (e.code === "Backspace"){
                 setCode("Backspace")
+            } else {
+                setCode("")
             }
         })
-            if (code === "Backspace" && max < 21 && e.target.value.length >= 0){
+            if (code === "Backspace" && (e.target.value.length < 22 && e.target.value.length >= 0)){
                 setMax(max += 1)
-            }else if(code !== "Backspace" && e.target.value.length <= 21 && e.target.value.length >=0 ) {
+            }else if(code !== "Backspace" && (e.target.value.length < 22 || e.target.value.length >=0) ) {
                 setMax(max -= 1)
             }
             
-        console.log(e.code)
+        // console.log(e.code)
         // let length = e.target.value.length
         // document.addEventListener("keydown", e => {
         //     if (e.code === "Backspace" && max < e.target.maxLength && max > 0 || max === 0){
