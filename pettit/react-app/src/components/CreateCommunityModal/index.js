@@ -10,14 +10,14 @@ import { useHistory } from 'react-router-dom';
 
 function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
     const dispatch = useDispatch();
+    const suffix = "p/"
     const history = useHistory();
-    const [communityName, setCommunityName] = useState('');
+    let [communityName, setCommunityName] = useState(suffix);
     let [max, setMax] = useState(21)
     let [code, setCode] = useState("")
     const [commType, setCommType] = useState('')
     console.log(commType)
- 
-    const suffix = "p/"
+
 
     // useEffect(() => {
     //     if (code === "Backspace"){
@@ -34,24 +34,24 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
             "community_type": commType,
         }
         console.log(newCommunity)
-        
+
     }
- 
+
     const communityTitle = (e) => {
         setCommunityName(e.target.value)
         document.addEventListener("keydown", e => {
-            if (e.code === "Backspace"){
+            if (e.code === "Backspace") {
                 setCode("Backspace")
             } else {
                 setCode("")
             }
         })
-            if (code === "Backspace" && (e.target.value.length < 22 && e.target.value.length >= 0)){
-                setMax(max += 1)
-            }else if(code !== "Backspace" && (e.target.value.length < 22 || e.target.value.length >=0) ) {
-                setMax(max -= 1)
-            }
-            
+        if (code === "Backspace" && (e.target.value.length < 23 && e.target.value.length >= 0)) {
+            setMax(max += 1)
+        } else if (code !== "Backspace" && (e.target.value.length < 23 || e.target.value.length >= 0)) {
+            setMax(max -= 1)
+        }
+
         // console.log(e.code)
         // let length = e.target.value.length
         // document.addEventListener("keydown", e => {
@@ -65,7 +65,7 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
         //             setMax(max -= 1)
         //         }
         //     }
-            
+
         // })
         // console.log(length)
         // setCommunityName(e.target.value)
@@ -75,7 +75,26 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
     }
 
     const radioChange = (e) => {
-        setCommType(`${suffix}${e.target.value}`);
+        console.log(e.target.id)
+        console.log(e.target.checked)
+        if (e.target.id === "public"){
+            e.target.checked = true
+        }else {
+            e.target.checked = false
+        }
+        if (e.target.id === "restricted"){
+            e.target.checked = true
+        }else {
+            e.target.checked = false
+        }
+        if (e.target.id === "private"){
+            e.target.checked = true
+        }else {
+            e.target.checked = false
+        }
+        // console.log(e.target.checked)
+        // setCommType()
+        // setCommType(`${suffix}${e.target.value}`);
     }
     console.log(communityName)
 
@@ -98,7 +117,8 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                             name='communityName'
                             value={communityName}
                             onChange={communityTitle}
-                            maxLength={21}
+                            onBeforeInput={"/p"}
+                            maxLength={23}
                         // placeholder={"p/"}
                         ></input>
                         <h6>{max} Characters remaining</h6>
@@ -107,42 +127,46 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                         <h4>Community Type</h4>
                         <div className='type-of-comm'>
                             <input
+                            id='public'
                                 className='radio-pick'
                                 type='radio'
                                 value={`Public`}
-                                checked={commType === "Public"}
-                                defaultChange={radioChange}
+                                checked={true}
+                                onClick={radioChange}
+                                // defaultChange={radioChange}
                             />
                             <BsFillPersonFill className='type-icon' /><span className='comm-types-label'> Public</span>
                             <span className='description'> Anyone can view, post, and comment to this community</span>
                         </div>
                         <div className='type-of-comm'>
                             <input
+                                id='restricted'
                                 className='radio-pick'
                                 type='radio'
                                 value={`Restricted`}
-                                checked={commType === "Restricted"}
-                                onChange={radioChange}
+                                checked={null}
+                                onClick={radioChange}
                             />
                             <BsEye className='type-icon' /><span className='comm-types-label'> Restricted</span>
                             <div className='description'> Anyone can view this community, but only approved users can post</div>
                         </div>
                         <div className='type-of-comm'>
                             <input
+                            id='private'
                                 className='radio-pick'
                                 type='radio'
                                 value={`Private`}
-                                checked={commType === "Private"}
-                                onChange={radioChange}
+                                checked={null}
+                                onClick={radioChange}
                             />
                             <IoMdLock className='type-icon' /><span className='comm-types-label'> Private</span>
                             <div className='description'> Only approved users can view and submit to this community</div>
                         </div>
                     </div>
-                <div className='cancel-create-btn-div'>
-                    <button className='cancel-comm-btn' onClick={() => setShowCreateModal(false)}>Cancel</button>
-                    <button className='create-comm-btn'>Create Community</button>
-                </div>
+                    <div className='cancel-create-btn-div'>
+                        <button className='cancel-comm-btn' onClick={() => setShowCreateModal(false)}>Cancel</button>
+                        <button className='create-comm-btn'>Create Community</button>
+                    </div>
                 </form>
             </div>
         </Modal>
