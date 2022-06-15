@@ -29,7 +29,8 @@ const NavBar = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [homeLabel, setHomeLabel] = useState(true);
   const [communitiesLabel, setCommunitiesLabel] = useState(false);
-  const [communitiesButton, setCommunitiesButton] = useState(true)
+  const [communitiesButton, setCommunitiesButton] = useState(true);
+  const [homeButton, setHomeButton] = useState(false)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -57,7 +58,7 @@ const NavBar = () => {
   }, [search])
 
   useEffect(() => {
-    if (location.pathname === '/') {
+    if (location.pathname === '/' || location.pathname) {
       setHomeLabel(true)
     } else {
       setHomeLabel(false)
@@ -65,9 +66,11 @@ const NavBar = () => {
     if (location.pathname === '/communities') {
       setCommunitiesLabel(true)
       setCommunitiesButton(false)
+      setHomeButton(true)
     } else {
       setCommunitiesLabel(false)
       setCommunitiesButton(true)
+      setHomeButton(false)
     }
 
   }, [location])
@@ -84,6 +87,11 @@ const NavBar = () => {
   const handleCreateCommunity = (e) => {
     e.preventDefault();
     setShowCreateModal(true)
+  }
+
+  const handleHome = (e) => {
+    e.preventDefault()
+    history.push('/')
   }
 
   const handleLabelChange = () => {
@@ -132,10 +140,10 @@ const NavBar = () => {
                 {communitiesLabel && (
                   <button id='dropdown' onClick={openMenu}>
                     <div className='dropdown-text'>
-                        <div className='home-text'>
-                        <CgCommunity id="demo-icon-label" />
-                          Communities
-                        </div>
+                      <div className='comm-label-text'>
+                        <CgCommunity id="comm-icon-label" />
+                        Communities
+                      </div>
                       <div className='comm-down-arrow'>
                         <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt='add post' />
                       </div>
@@ -165,6 +173,20 @@ const NavBar = () => {
                               <span className='signup-span'>
                                 Communities
                               </span>
+                            </li>
+                          </div>
+                        </NavLink>
+                      )}
+                      {homeButton && (
+                        <NavLink to='/' onClick={handleHome} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
+                          <div className='dropdown-btns'>
+                            <li id='add-comm-li'>
+                              <div className='home-icon'>
+                                <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' alt='Home' />
+                              </div>
+                              <div className='home-text'>
+                                Home
+                              </div>
                             </li>
                           </div>
                         </NavLink>

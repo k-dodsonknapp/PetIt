@@ -13,6 +13,7 @@ html {
     height: 26px;
     width: 35px;
 }
+
 /* .name {
     display: flex;
     flex-direction: row;
@@ -28,14 +29,14 @@ html {
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    gap:  300px;
+    gap: 300px;
     z-index: 1;
 }
 
 .app-name {
     display: flex;
     font-size: large;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(38, 38, 122);
     font-weight: 550;
     padding-top: 5px;
@@ -49,7 +50,7 @@ html {
 .dropdown-li {
     display: flex;
     position: relative;
-    
+
 }
 
 .search {
@@ -65,7 +66,7 @@ html {
     width: 99vw;
 }
 
-.logo-home{
+.logo-home {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -215,7 +216,7 @@ html {
     outline: none;
 }
 
-.headersearch input{
+.headersearch input {
     display: flex;
     width: 250px;
     height: 40px;
@@ -226,7 +227,7 @@ html {
     border-bottom: none;
 }
 
-.headersearch input::placeholder{
+.headersearch input::placeholder {
     /* display: flex; */
     /* width: 200px; */
     /* height: 26px; */
@@ -237,10 +238,10 @@ html {
 
 .headersearch input:focus {
     border: 1px solid rgb(221, 221, 221);
-    
+
 }
 
-.headersearch input:focus::placeholder{
+.headersearch input:focus::placeholder {
     /* display: none; */
     color: white;
     /* border: 1px solid black; */
@@ -262,7 +263,7 @@ html {
     /* border: 1px solid rgba(0,0,0,.2); */
     border-top: transparent;
     border-radius: 0px 0px 2px 2px;
-    box-shadow:  0 5px 5px rgb(0 0 0 / 20%);
+    box-shadow: 0 5px 5px rgb(0 0 0 / 20%);
 }
 
 .idk {
@@ -286,7 +287,7 @@ html {
     border-color: black;
 } */
 
-.right-container{
+.right-container {
     display: none;
 }
 
@@ -301,6 +302,7 @@ html {
 .down-arrow {
     display: flex;
 }
+
 #login-div {
     display: flex;
     /* justify-content: center; */
@@ -349,7 +351,7 @@ html {
 
 }
 
-.home-icon img{
+.home-icon img {
     height: 12px;
     display: flex;
     align-items: center;
@@ -365,13 +367,14 @@ html {
     border: 1px solid rgb(221, 221, 221);
 }
 
-.down-arrow img{
+.down-arrow img {
     display: flex;
     margin-left: 115px;
     margin-top: 2px;
     height: 14px;
 }
-.comm-down-arrow img{
+
+.comm-down-arrow img {
     display: flex;
     margin-left: 80px;
     margin-top: 2px;
@@ -385,13 +388,27 @@ html {
     text-align: left;
 }
 
-.home-text {
-    /* padding-top: 3px; */
-    margin-top: 2px;
-    padding-left: 4px;
+#comm-icon-label {
+    /* margin-top: 5px;
+    padding-top: 5px; */
+    margin-right: 2px;
 }
 
-.dropdown-btns{
+.home-text {
+    padding-top: 3px;
+    margin-left: 3px;
+}
+
+.comm-label-text {
+    display: flex;
+    /* padding-top: 3px; */
+    margin-top: 2px;
+    /* padding-left: 4px; */
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-btns {
     /* font-size: 14px; */
     /* border: 1px solid red; */
     /* color: rgb(31, 31, 31); */
@@ -438,7 +455,7 @@ html {
     cursor: pointer;
 }
 
-.comm-header > p {
+.comm-header>p {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -455,7 +472,7 @@ html {
     /* border-left: none; */
     cursor: pointer;
     width: 117px;
-  }
+}
 
 #new-post-link:hover {
     border: 1px solid rgb(221, 221, 221);
@@ -487,7 +504,7 @@ html {
     /* color: black; */
 }
 
-@media screen and (max-width: 950px){
+@media screen and (max-width: 950px) {
     .headersearch {
         display: none;
     }
@@ -499,9 +516,9 @@ html {
         justify-content: center;
         width: auto;
         margin-right: 7px;
-      }
+    }
 
-      #dropdown {
+    #dropdown {
         display: none;
         /* flex-direction: row; */
         /* text-align: center; */
@@ -513,13 +530,13 @@ html {
         /* height: 24px; */
         /* border-radius: 6px; */
         /* cursor: pointer; */
-      }
+    }
 
-      #nav-logout-icon {
-          margin-left: 5px;
-      }
+    #nav-logout-icon {
+        margin-left: 5px;
+    }
 
-      .nav-container {
+    .nav-container {
         background-color: white;
         /* border: 2px solid black; */
         position: static;
@@ -533,16 +550,16 @@ html {
         grid-gap: 300px;
         gap: 300px;
         z-index: 1;
-      }
+    }
 
-      .right-side a {
+    .right-side a {
         display: flex;
         width: auto;
         margin: 0px 0px 0px 10px;
         text-decoration: none;
         list-style-type: none;
         color: #929596;
-      }
+    }
 
     .logo-home {
         display: flex;
@@ -561,5 +578,5 @@ html {
         justify-content: flex-start;
         /* padding: 0px 30px; */
         width: 60px;
-      }
+    }
 }
