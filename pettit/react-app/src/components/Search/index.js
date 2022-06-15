@@ -14,6 +14,7 @@ function Search( {search, setSearch, searchResult, setSearchResult} ) {
 
     useEffect(() => {
         if (search.length === 0) {
+            console.log("hit")
             setSearchResult([])
         }
     }, [search, setSearchResult])

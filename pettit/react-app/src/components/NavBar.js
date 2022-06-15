@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useHistory, useParams } from 'react-router-dom';
+import { Link, NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
 import * as sessionActions from '../store/session';
@@ -18,8 +18,8 @@ import CreatCommunityModal from './CreateCommunityModal';
 const NavBar = () => {
 
   const dispatch = useDispatch();
-  const param = useParams()
-  console.log("========>",param)
+  let location = useLocation()
+  console.log("========>", location)
   const session = useSelector(state => state.session.user)
   const history = useHistory();
   const [showMenu, setShowMenu] = useState();
@@ -27,6 +27,8 @@ const NavBar = () => {
   const [search, setSearch] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState();
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [homeLabel, setHomeLabel] = useState(true);
+  const [communitiesLabel, setCommunitiesLabel] = useState(false);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -53,6 +55,20 @@ const NavBar = () => {
     }
   }, [search])
 
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setHomeLabel(true)
+    } else {
+      setHomeLabel(false)
+    }
+    if (location.pathname === '/communities') {
+      setCommunitiesLabel(true)
+    } else {
+      setCommunitiesLabel(false)
+    }
+
+  }, [location])
+
   // useEffect(() => {
   //   setLength(cart.length);
   // }, [cart.length]);
@@ -65,6 +81,12 @@ const NavBar = () => {
   const handleCreateCommunity = (e) => {
     e.preventDefault();
     setShowCreateModal(true)
+  }
+
+  const handleLabelChange = () => {
+    if (location.pathname == '/communitites') {
+      setHomeLabel()
+    }
   }
 
   const handleClick = async (e) => {
@@ -88,24 +110,49 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li className='dropdown-li'>
-                <button id='dropdown' onClick={openMenu}>
-                  <div className='dropdown-text'>
-                    <div className='home-icon'>
-                      <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' alt='Home' />
+                {homeLabel && (
+
+                  <button id='dropdown' onClick={openMenu}>
+                    <div className='dropdown-text'>
+                      <div className='home-icon'>
+                        <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' alt='Home' />
+                      </div>
+                      <div className='home-text'>
+                        Home
+                      </div>
+                      <div className='down-arrow'>
+                        <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt='add post' />
+                      </div>
                     </div>
-                    <div className='home-text'>
-                      Home
+                  </button>
+                )}
+                {communitiesLabel && (
+
+                  <button id='dropdown' onClick={openMenu}>
+                    <div className='dropdown-text'>
+                      <div className='home-icon'>
+                        {/* <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' alt='Home' /> */}
+                          <CgCommunity id="demo-icon" />
+                      </div>
+                      <div className='dropdown-btns' id='login-div'>
+                        {/* <li> */}
+                          {/* <RiLogoutBoxRFill id="login-icon" /> */}
+                          {/* <span className='signup-span'> */}
+                            Communities
+                          {/* </span> */}
+                        {/* </li> */}
+                      </div>
+                      <div className='down-arrow'>
+                        <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt='add post' />
+                      </div>
                     </div>
-                    <div className='down-arrow'>
-                      <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt='add post' />
-                    </div>
-                  </div>
-                </button>
+                  </button>
+                )}
                 {showMenu && (
                   <ul className='profile-options'>
                     <div className='dropdown-div'>
                       {!session && (
-                        <NavLink to='/login' exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
+                        <NavLink to='/login' onClick={handleLabelChange} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
                           <div className='dropdown-btns' id='login-div'>
                             <li>
                               <RiLogoutBoxRFill id="login-icon" />
@@ -246,10 +293,10 @@ const NavBar = () => {
           </div>
         </ul>
       </nav>
-      
+
       {showCreateModal && (
-                    <CreatCommunityModal setShowCreateModal={setShowCreateModal} showCreateModal={showCreateModal} />
-                )}
+        <CreatCommunityModal setShowCreateModal={setShowCreateModal} showCreateModal={showCreateModal} />
+      )}
     </div>
   );
 }
