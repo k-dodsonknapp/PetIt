@@ -371,6 +371,12 @@ html {
     margin-top: 2px;
     height: 14px;
 }
+.comm-down-arrow img{
+    display: flex;
+    margin-left: 80px;
+    margin-top: 2px;
+    height: 14px;
+}
 
 .dropdown-text {
     display: flex;

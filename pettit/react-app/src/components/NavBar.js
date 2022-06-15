@@ -29,6 +29,7 @@ const NavBar = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [homeLabel, setHomeLabel] = useState(true);
   const [communitiesLabel, setCommunitiesLabel] = useState(false);
+  const [communitiesButton, setCommunitiesButton] = useState(true)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -63,8 +64,10 @@ const NavBar = () => {
     }
     if (location.pathname === '/communities') {
       setCommunitiesLabel(true)
+      setCommunitiesButton(false)
     } else {
       setCommunitiesLabel(false)
+      setCommunitiesButton(true)
     }
 
   }, [location])
@@ -127,22 +130,13 @@ const NavBar = () => {
                   </button>
                 )}
                 {communitiesLabel && (
-
                   <button id='dropdown' onClick={openMenu}>
                     <div className='dropdown-text'>
-                      <div className='home-icon'>
-                        {/* <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' alt='Home' /> */}
-                          <CgCommunity id="demo-icon" />
-                      </div>
-                      <div className='dropdown-btns' id='login-div'>
-                        {/* <li> */}
-                          {/* <RiLogoutBoxRFill id="login-icon" /> */}
-                          {/* <span className='signup-span'> */}
-                            Communities
-                          {/* </span> */}
-                        {/* </li> */}
-                      </div>
-                      <div className='down-arrow'>
+                        <div className='home-text'>
+                        <CgCommunity id="demo-icon-label" />
+                          Communities
+                        </div>
+                      <div className='comm-down-arrow'>
                         <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt='add post' />
                       </div>
                     </div>
@@ -163,7 +157,7 @@ const NavBar = () => {
                           </div>
                         </NavLink>
                       )}
-                      {session && (
+                      {session && communitiesButton && (
                         <NavLink to='/communities' onClick={handleClick} exact={true} id="something" activeClassName='another' style={{ textDecoration: 'none', color: "black" }}>
                           <div className='dropdown-btns'>
                             <li id='demo-li'>
