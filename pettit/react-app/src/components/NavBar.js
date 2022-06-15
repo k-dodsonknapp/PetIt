@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory, useParams } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
 import * as sessionActions from '../store/session';
@@ -18,6 +18,8 @@ import CreatCommunityModal from './CreateCommunityModal';
 const NavBar = () => {
 
   const dispatch = useDispatch();
+  const param = useParams()
+  console.log("========>",param)
   const session = useSelector(state => state.session.user)
   const history = useHistory();
   const [showMenu, setShowMenu] = useState();
