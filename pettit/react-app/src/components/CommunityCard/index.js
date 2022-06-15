@@ -12,7 +12,7 @@ function CommunityCard({ community, i }) {
       {/* <div className='community-card'> */}
       <div className='community-btn-div'>
         <button className='community-btn'>
-          <span className='numbered-li'>{`${i + 1}`}</span><span className='community-name-btn'>{` p/${community.community_name}`}</span>
+          <span className='numbered-li'>{`${i + 1}.`}</span><span className='community-name-btn'>{` p/${community.community_name}`}</span>
         </button>
       </div>
       {/* </div> */}

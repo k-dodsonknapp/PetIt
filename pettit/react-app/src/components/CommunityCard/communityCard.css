@@ -28,7 +28,6 @@
 .community-btn {
     background-color: white;
     border: none;
-    cursor: pointer;
 }
 
 .numbered-li {
@@ -39,6 +38,7 @@
 .community-name-btn {
     margin-left: 25px;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .join-btn-div {

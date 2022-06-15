@@ -47,7 +47,7 @@
     /* margin-left: 100px; */
     list-style: none;
     font-size: 20px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .community-ol:hover {
     background-color: #44a1e7;

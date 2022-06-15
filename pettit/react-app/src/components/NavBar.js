@@ -261,26 +261,10 @@ const NavBar = () => {
               </div>
             </div>
             <div className='right-side'>
-              {/* <li>
-                <NavLink to='/login' exact={true} activeClassName='active'>
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                  Sign Up
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/users' exact={true} activeClassName='active'>
-                  Users
-                </NavLink>
-              </li> */}
               {!session && (
                 <li id='new-post-link'>
                   <NavLink to='/login' className='idk' exact={true} activeClassName='active'>
                     Login
-                    {/* <AiOutlinePlus id='new-post-icon' /> */}
                   </NavLink>
                 </li>
               )}
@@ -294,14 +278,8 @@ const NavBar = () => {
               {session && (
                 <li id='new-post-link'>
                   <NavLink className='idk' to='/sign-up' exact={true} onClick={onLogout} activeClassName='active' >
-                    {/* <div className='dropdown-btns'> */}
-                    {/* <li> */}
                     Logout
                     <FaWpforms id="new-post-icon" />
-                    {/* <span className='signup-span'> */}
-                    {/* </span> */}
-                    {/* </li> */}
-                    {/* </div> */}
                   </NavLink>
                 </li>
               )}
