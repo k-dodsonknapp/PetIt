@@ -111,14 +111,12 @@ const MainPage = () => {
                         <div className="left-post">
                             <div>
                                 <button id="main-upvote-btn" onClick={upvote(post.id)}>
-                                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/up-arrow-9.png" alt="upvote" /> */}
                                     <BiUpvote id="main-upvote" style={{ color: `${''}` }} />
                                 </button>
                                 <div className="votesss">
                                     {votes && votes[0]?.votes?.filter(vote => vote?.post_id === post.id)?.length}
                                 </div>
                                 <button id="main-downvote-btn" onClick={downvote(post.id)}>
-                                    {/* <img src="https://icons.veryicon.com/png/o/miscellaneous/cloud-platform/down-arrow-10.png" alt="downvote" /> */}
                                     <BiDownvote id="main-downvote" />
                                 </button>
                             </div>
@@ -142,7 +140,6 @@ const MainPage = () => {
                             <div className="right-bottom-post">
                                 <NumOfComments comments={comments} postId={post?.id} />
                                 {post?.userId === user?.user?.id && (
-                                    // <div className="button-div">
                                     <>
                                         <div className="edit-btn">
                                             <button onClick={handleEdit(post?.id)}><FiEdit id="main-edit-btn-icon" />Edit</button>
@@ -151,7 +148,6 @@ const MainPage = () => {
                                             <button onClick={handleDelete(post?.id)}><RiDeleteBin2Line id="main-delete-btn-icon" />Delete</button>
                                         </div>
                                     </>
-                                    // </div>
                                 )}
                             </div>
                         </div>

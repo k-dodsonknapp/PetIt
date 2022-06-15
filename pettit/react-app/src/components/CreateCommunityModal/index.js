@@ -77,27 +77,11 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
         // }
     }
 
-    const radioChange = (e) => {
-        e.preventDefault()
-        // console.log(e.target.id)
-        // console.log(e.target.checked)
-        console.log(e.target.value)
-
-        // if (e.target.id === "restricted"){
-        //     e.target.checked = true
-        // }else {
-        //     e.target.checked = false
-        // }
-        // if (e.target.id === "private"){
-        //     e.target.checked = true
-        // }else {
-        //     e.target.checked = false
-        // }
-        // console.log(e.target.checked)
-        // setCommType()
-        // setCommType(`${suffix}${e.target.value}`);
-    }
-    console.log(communityName)
+    // const radioChange = (e) => {
+    //     e.preventDefault()
+    //     console.log(e.target.value)
+    // }
+    // console.log(communityName)
 
     return (
         <Modal onClose={() => setShowCreateModal(false)}>
