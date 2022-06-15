@@ -15,6 +15,9 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
     let [communityName, setCommunityName] = useState(suffix);
     let [max, setMax] = useState(21)
     let [code, setCode] = useState("")
+
+    let [selectedOption, setSelectedOption] = useState('')
+    console.log(selectedOption)
     const [commType, setCommType] = useState('')
     console.log(commType)
 
@@ -75,23 +78,21 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
     }
 
     const radioChange = (e) => {
-        console.log(e.target.id)
-        console.log(e.target.checked)
-        if (e.target.id === "public"){
-            e.target.checked = true
-        }else {
-            e.target.checked = false
-        }
-        if (e.target.id === "restricted"){
-            e.target.checked = true
-        }else {
-            e.target.checked = false
-        }
-        if (e.target.id === "private"){
-            e.target.checked = true
-        }else {
-            e.target.checked = false
-        }
+        e.preventDefault()
+        // console.log(e.target.id)
+        // console.log(e.target.checked)
+        console.log(e.target.value)
+
+        // if (e.target.id === "restricted"){
+        //     e.target.checked = true
+        // }else {
+        //     e.target.checked = false
+        // }
+        // if (e.target.id === "private"){
+        //     e.target.checked = true
+        // }else {
+        //     e.target.checked = false
+        // }
         // console.log(e.target.checked)
         // setCommType()
         // setCommType(`${suffix}${e.target.value}`);
@@ -117,23 +118,24 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                             name='communityName'
                             value={communityName}
                             onChange={communityTitle}
-                            onBeforeInput={"/p"}
                             maxLength={23}
                         // placeholder={"p/"}
                         ></input>
                         <h6>{max} Characters remaining</h6>
                     </div>
-                    <div className='community-type' onChange={radioChange}>
+                    <div className='community-type' >
                         <h4>Community Type</h4>
                         <div className='type-of-comm'>
                             <input
-                            id='public'
+                                id='public'
+                                name='comm-type'
                                 className='radio-pick'
                                 type='radio'
-                                value={`Public`}
-                                checked={true}
-                                onClick={radioChange}
-                                // defaultChange={radioChange}
+                                value='Public'
+                                // checked={true}              
+                                // checked={e => setSelectedOption(e.target.value)}
+                                // onChange={radioChange}
+                            // onChange={radioChange}
                             />
                             <BsFillPersonFill className='type-icon' /><span className='comm-types-label'> Public</span>
                             <span className='description'> Anyone can view, post, and comment to this community</span>
@@ -141,23 +143,25 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
                         <div className='type-of-comm'>
                             <input
                                 id='restricted'
+                                name='comm-type'
                                 className='radio-pick'
                                 type='radio'
-                                value={`Restricted`}
-                                checked={null}
-                                onClick={radioChange}
+                                value='Restricted'
+                            // checked={false}
+                            // onChange={radioChange}
                             />
                             <BsEye className='type-icon' /><span className='comm-types-label'> Restricted</span>
                             <div className='description'> Anyone can view this community, but only approved users can post</div>
                         </div>
                         <div className='type-of-comm'>
                             <input
-                            id='private'
+                                id='private'
+                                name='comm-type'
                                 className='radio-pick'
                                 type='radio'
-                                value={`Private`}
-                                checked={null}
-                                onClick={radioChange}
+                                value='Private'
+                            // checked={false}
+                            // onChange={radioChange}
                             />
                             <IoMdLock className='type-icon' /><span className='comm-types-label'> Private</span>
                             <div className='description'> Only approved users can view and submit to this community</div>
