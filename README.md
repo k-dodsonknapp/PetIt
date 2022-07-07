@@ -2,6 +2,8 @@
 This is a clone of reddit. Where the community is able to share photos and posts about the creatures they find pettable. 
 Users are able to leave comments on posts to give their thoughts about the post. 
 
+Check it out here => http://pettit.herokuapp.com/
+
 ## Pettit 
 
 Posts, and Comments allows users to create posts to share images of there favorite cuddly creatures. Users can also comment on posts.
