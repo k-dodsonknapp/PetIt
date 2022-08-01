@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Modal } from '../../Context/Modal';
 import './loginAlert.css';
 
-function LoginAlert({ showLoginModal, setShowLoginModal }) {
+function LoginAlert({ showLoginModal, setShowLoginModal, message }) {
     const history = useHistory();
     const login = () => {
         history.push('/login')
@@ -16,7 +16,7 @@ function LoginAlert({ showLoginModal, setShowLoginModal }) {
             <div className='main-modal-login-div'>
                 <div className='message-div'>
                     <h1>Please Login or Sign Up <br/> to proceed.</h1>
-                    <div className='button-div'>
+                    <div className='modal-button-div'>
                         <button id='modal-login-btn' onClick={login}> Login</button>
                         {/* <h1>Or</h1> */}
                         <button id='modal-signup-btn' onClick={signUp}> Sign Up</button>

@@ -19,8 +19,8 @@ const NavBar = () => {
 
   const dispatch = useDispatch();
   let location = useLocation()
-  console.log("========>", location)
   const session = useSelector(state => state.session.user)
+  // console.log("========>", session.user)
   const history = useHistory();
   const [showMenu, setShowMenu] = useState();
   const [searchResult, setSearchResult] = useState([]);
@@ -122,7 +122,6 @@ const NavBar = () => {
               </li>
               <li className='dropdown-li'>
                 {homeLabel && (
-
                   <button id='dropdown' onClick={openMenu}>
                     <div className='dropdown-text'>
                       <div className='home-icon'>
@@ -283,6 +282,11 @@ const NavBar = () => {
                   </NavLink>
                 </li>
               )}
+              {/* {session && (
+                <div className='logged-in-message'>
+                  Happy browsing {session.username}!
+                </div>
+              )} */}
             </div>
           </div>
         </ul>

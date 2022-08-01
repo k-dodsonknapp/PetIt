@@ -31,6 +31,7 @@ html {
     flex-direction: row;
     gap: 300px;
     z-index: 1;
+    border-bottom: .5px solid #a6a9a9 ;
 }
 
 .app-name {
@@ -207,6 +208,7 @@ html {
 
 .headersearch input[type="text"]:active {
     border: 1px solid rgb(221, 221, 221);
+    border-bottom: none;
 }
 
 .search-div input:focus {
@@ -214,6 +216,7 @@ html {
     box-shadow: 0 0 3px rgb(221, 221, 221);
     outline-offset: 0px;
     outline: none;
+    border-bottom: none;
 }
 
 .headersearch input {
@@ -238,7 +241,9 @@ html {
 
 .headersearch input:focus {
     border: 1px solid rgb(221, 221, 221);
-
+    border-bottom: none;
+    height: 39px;
+    box-shadow: 0 0 0px rgb(221, 221, 221);
 }
 
 .headersearch input:focus::placeholder {
