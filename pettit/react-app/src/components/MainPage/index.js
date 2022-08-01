@@ -109,7 +109,7 @@ const MainPage = () => {
                 {posts?.map(post => (
                     <div className="post" key={post?.id}>
                         <div className="left-post">
-                            <div>
+                            <div className='main-votes-div'>
                                 <button id="main-upvote-btn" onClick={upvote(post.id)}>
                                     <BiUpvote id="main-upvote" style={{ color: `${''}` }} />
                                 </button>

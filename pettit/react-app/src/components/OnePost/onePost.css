@@ -499,6 +499,10 @@ html {
     margin: 2px 8px;
 }
 
+#one-post-comment-btn:hover {
+    background-color: #f8f8f8;
+}
+
 .one-post-username {
     display: flex;
     font-size: 11px;
