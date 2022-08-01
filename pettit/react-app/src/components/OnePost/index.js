@@ -222,7 +222,7 @@ const OnePost = () => {
                             <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Cats</div>
                             <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Giraffe</div>
                             <div className="rows"><i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>p/Squirrel</div>
-                            <button id="view-all">Veiw All</button>
+                            <button id="view-all">View All</button>
                         </div>
                     </div>
 

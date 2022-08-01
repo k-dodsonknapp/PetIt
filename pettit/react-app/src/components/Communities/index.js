@@ -21,7 +21,7 @@ function Communities() {
                     <div className="rows"><i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>p/Cats</div>
                     <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Giraffe</div>
                     <div className="rows"><i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>p/Squirrel</div>
-                    <button id="view-all" onClick={handleViewAll}>Veiw All</button>
+                    <button id="view-all" onClick={handleViewAll}>View All</button>
                 </div>
             </div>
 
