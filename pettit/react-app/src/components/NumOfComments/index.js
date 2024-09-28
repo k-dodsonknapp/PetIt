@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 // import { BiMessage } from "react-icons/bi";
 import { GoCommentDiscussion } from "react-icons/go";
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getAllComments } from '../../store/comments';
-import Votes from '../Votes';
+// import Votes from '../Votes';
 import './numOfComments.css';
 
 function NumOfComments({ postId, comments }) {
@@ -16,7 +16,7 @@ function NumOfComments({ postId, comments }) {
 
     useEffect(() => {
         dispatch(getAllComments(postId))
-    }, [dispatch]);
+    }, [dispatch, postId]);
 
     const redirectToPost = (e) => {
         e.preventDefault();

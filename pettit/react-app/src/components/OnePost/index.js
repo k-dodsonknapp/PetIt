@@ -1,7 +1,7 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory, useParams } from "react-router-dom";
-import { addNewComment, deleteAComment, getAllComments, updateComment } from "../../store/comments";
+import { NavLink, useParams } from "react-router-dom";
+import { getAllComments } from "../../store/comments";
 import { getAllPosts } from "../../store/posts";
 // import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
 import Comments from "../Comments";
@@ -23,33 +23,33 @@ const OnePost = () => {
     const comments = useSelector(state => Object.values(state?.comments).filter(comment => comment.parentId === null && comment.postId === postId));
     const postComments = useSelector(state => Object.values(state?.comments).filter(comment => comment?.postId === postId))
 
-    const [showCommentForm, setShowCommentForm] = useState(false);
-    const [newComment, setNewComment] = useState('');
-    const [commentToEdit, setCommentToEdit] = useState('');
+    // const [showCommentForm, setShowCommentForm] = useState(false);
+    // const [newComment, setNewComment] = useState('');
+    // const [commentToEdit, setCommentToEdit] = useState('');
     const [showBtns, setShowBts] = useState(true);
-    const [errors, setErrors] = useState([]);
-    const [errorsEdit, setErrorsEdit] = useState([]);
+    // const [errors, setErrors] = useState([]);
+    // const [errorsEdit, setErrorsEdit] = useState([]);
 
-    useEffect(() => {
-        const err = [];
-        if (newComment.length > 250 || newComment.length < 5) {
-            err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.");
-        };
+    // useEffect(() => {
+    //     const err = [];
+    //     if (newComment.length > 250 || newComment.length < 5) {
+    //         err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.");
+    //     };
 
-        setErrors(err);
-    }, [newComment]);
+    //     setErrors(err);
+    // }, [newComment]);
 
-    useEffect(() => {
-        const err = [];
-        if (commentToEdit.length > 250 || commentToEdit.length < 5) {
-            err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.");
-        };
-        setErrorsEdit(err);
-    }, [commentToEdit]);
+    // useEffect(() => {
+    //     const err = [];
+    //     if (commentToEdit.length > 250 || commentToEdit.length < 5) {
+    //         err.push("Your comment cannot be longer than 250 characters or shorter than 5 characters.");
+    //     };
+    //     setErrorsEdit(err);
+    // }, [commentToEdit]);
 
     useEffect(() => {
         dispatch(getAllComments(postId));
-    }, [dispatch]);
+    }, [dispatch, postId]);
 
     useEffect(() => {
         dispatch(getAllPosts());
@@ -61,7 +61,7 @@ const OnePost = () => {
         } else {
             window.scrollTo(0, 540);
         }
-    }, []);
+    }, [comments]);
 
     const backToTop = (e) => {
         e.preventDefault()
@@ -102,11 +102,11 @@ const OnePost = () => {
     //     setNewComment("");
     // };
 
-    const handleCancel = (e) => {
-        e.preventDefault();
-        setShowCommentForm(false);
-        setShowBts(true);
-    };
+    // const handleCancel = (e) => {
+    //     e.preventDefault();
+    //     setShowCommentForm(false);
+    //     setShowBts(true);
+    // };
 
     setTimeout(() => {
         if (!posts) {

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 // import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
 import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
-import Votes from "../Votes";
+// import Votes from "../Votes";
 // import { BiMessage } from "react-icons/bi";
 import './post.css';
 import NumOfComments from "../NumOfComments";
@@ -12,7 +12,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import Communities from "../Communities";
-import { addNewCommunity, deleteACommunity, getAllCommunities, updateACommunity } from "../../store/communities";
+// import { addNewCommunity, deleteACommunity, getAllCommunities, updateACommunity } from "../../store/communities";
 import LoginAlert from "../LoginAlert";
 
 
@@ -27,7 +27,7 @@ const MainPage = () => {
     // console.log(votes)
     // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
     // const [voted, setVoted] = useState("black")
-    const communities = useSelector(state => state.communities);
+    // const communities = useSelector(state => state.communities);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
 

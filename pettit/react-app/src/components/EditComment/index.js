@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllComments, updateComment } from "../../store/comments";
 
@@ -6,7 +6,7 @@ const EditComment = ({ commentId, id, setShowCommentEditForm, setShowBts, setCom
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.session?.user)
-    const [errorsEdit, setErrorsEdit] = useState([]);
+    // const [errorsEdit, setErrorsEdit] = useState([]);
 
     const handleEditComment = (body, commId) => async (e) => {
         e.preventDefault();
@@ -50,9 +50,8 @@ const EditComment = ({ commentId, id, setShowCommentEditForm, setShowBts, setCom
                         />
                     </div>
                     <div className="comment-on-comment-textarea-bottom">
-
                         <button
-                            disabled={errorsEdit.length > 0 ? true : false}
+                            // disabled={errorsEdit.length > 0 ? true : false}
                             id="one-post-comment-btn" onClick={handleEditedComment}
                         >Submit</button>
                         <button id="one-post-comment-btn" onClick={handleECancel}>Cancel</button>

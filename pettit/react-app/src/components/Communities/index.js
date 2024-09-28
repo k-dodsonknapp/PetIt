@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function Communities() {
     const history = useHistory();

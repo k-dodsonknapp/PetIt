@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewComment, deleteAComment, getAllCommentOnComment, getAllComments, updateComment } from "../../store/comments";
+import { getAllCommentOnComment, getAllComments, updateComment } from "../../store/comments";
 import CommentOnComment from "../CommentOnComment";
 import EditComment from "../EditComment";
 import LoginAlert from "../LoginAlert";
 import { BiMessage } from "react-icons/bi";
-import { FiEdit } from "react-icons/fi";
-import { RiDeleteBin2Line } from "react-icons/ri";
+// import { FiEdit } from "react-icons/fi";
+// import { RiDeleteBin2Line } from "react-icons/ri";
 import './comments.css';
 
 const Comments = ({ comment, postId }) => {
@@ -14,8 +14,8 @@ const Comments = ({ comment, postId }) => {
     const dispatch = useDispatch();
     const commentsOnComment = useSelector(state => Object.values(state?.comments).filter(commentt => commentt?.parentId === comment.id));
     const user = useSelector(state => state?.session?.user);
-    const [showBtns, setShowBts] = useState(true);
-    const [commentId, setCommentId] = useState(0);
+    // const [showBtns, setShowBts] = useState(true);
+    // const [commentId, setCommentId] = useState(0);
     const [showCommentEditForm, setShowCommentEditForm] = useState(false);
     const [showCommentForm, setShowCommentForm] = useState(false);
     const [commentToEdit, setCommentToEdit] = useState('');
@@ -25,11 +25,11 @@ const Comments = ({ comment, postId }) => {
     useEffect(() => {
         dispatch(getAllCommentOnComment(comment.id))
         // dispatch(EditComment(postId))
-    }, [dispatch])
+    }, [comment.id, dispatch])
 
     const handleEditComment = (body, commId) => async (e) => {
         e.preventDefault();
-        setCommentId(commId);
+        // setCommentId(commId);
         if (showCommentEditForm === false || showCommentForm === true) {
             setShowCommentEditForm(true);
             setShowCommentForm(false);
@@ -37,7 +37,7 @@ const Comments = ({ comment, postId }) => {
             setShowCommentEditForm(false);
         }
         setCommentToEdit(body);
-        setShowBts(false);
+        // setShowBts(false);
     }
 
     const handleCommentDelete = (e) => {
@@ -107,7 +107,7 @@ const Comments = ({ comment, postId }) => {
                             {showCommentEditForm && (
                                 <EditComment
                                     setShowCommentEditForm={setShowCommentEditForm}
-                                    setShowBts={setShowBts}
+                                    // setShowBts={setShowBts}
                                     commentToEdit={commentToEdit}
                                     setCommentToEdit={setCommentToEdit}
                                     commentId={comment.id}

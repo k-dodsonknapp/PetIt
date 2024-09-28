@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Modal } from '../../Context/Modal';
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BsEye } from "react-icons/bs";
 import { IoMdLock } from "react-icons/io";
 import './createCommModal.css';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
 
 function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const suffix = "p/"
-    const history = useHistory();
+    // const history = useHistory();
     let [communityName, setCommunityName] = useState(suffix);
     let [max, setMax] = useState(21)
     let [code, setCode] = useState("")
 
-    let [selectedOption, setSelectedOption] = useState('')
-    console.log(selectedOption)
-    const [commType, setCommType] = useState('')
-    console.log(commType)
+    // let [selectedOption, setSelectedOption] = useState('')
+    // console.log(selectedOption)
+    // const [commType, setCommType] = useState('')
+    // console.log(commType)
 
 
     // useEffect(() => {
@@ -32,11 +32,11 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
 
     const handleNewCommunity = (e) => {
         e.preventDefault()
-        const newCommunity = {
-            "community_name": communityName,
-            "community_type": commType,
-        }
-        console.log(newCommunity)
+        // const newCommunity = {
+        //     "community_name": communityName,
+        //     "community_type": commType,
+        // }
+        // console.log(newCommunity)
 
     }
 

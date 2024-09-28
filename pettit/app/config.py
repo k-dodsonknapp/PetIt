@@ -3,11 +3,12 @@ import os
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    DATABASE_USER = os.environ.get('DATABASE_USER')
+    DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD')
+    DATABASE_HOST = os.environ.get('DATABASE_HOST')
+    DATABASE_NAME = os.environ.get('DATABASE_NAME')
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # SQLAlchemy 1.4 no longer supports url strings that start with 'postgres'
-    # (only 'postgresql') but heroku's postgres add-on automatically sets the
-    # url in the hidden config vars to start with postgres.
-    # so the connection uri must be updated here
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL').replace('postgres://', 'postgresql://')
+    SQLALCHEMY_DATABASE_URI = f"postgresql://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}/{DATABASE_NAME}"
+    print('URI: ', SQLALCHEMY_DATABASE_URI)
     SQLALCHEMY_ECHO = True

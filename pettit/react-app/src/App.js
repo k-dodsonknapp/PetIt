@@ -12,7 +12,8 @@ import MainPage from './components/MainPage';
 import UpdatePost from './components/UpdatePost';
 import CreatePost from './components/CreatePost';
 import OnePost from './components/OnePost';
-import SplashPage from './components/SplashPage';
+// TODO: Figure out what this was for
+// import SplashPage from './components/SplashPage';
 import PageNotFound from './components/PageNotFound';
 import MainCommunitiesPage from './components/MainCommunitiesPage';
 

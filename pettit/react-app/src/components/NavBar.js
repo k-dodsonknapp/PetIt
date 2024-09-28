@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
+// import LogoutButton from './auth/LogoutButton';
 import "./navbar.css"
 import * as sessionActions from '../store/session';
 import Search from './Search';
@@ -22,10 +22,10 @@ const NavBar = () => {
   const session = useSelector(state => state.session.user)
   // console.log("========>", session.user)
   const history = useHistory();
-  const [showMenu, setShowMenu] = useState();
+  const [showMenu, setShowMenu] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [search, setSearch] = useState([]);
-  const [showSearchResults, setShowSearchResults] = useState();
+  // const [showSearchResults, setShowSearchResults] = useState();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [homeLabel, setHomeLabel] = useState(true);
   const [communitiesLabel, setCommunitiesLabel] = useState(false);
@@ -37,10 +37,10 @@ const NavBar = () => {
     setShowMenu(true);
   }
 
-  const openSearch = () => {
-    if (showSearchResults) return;
-    setShowSearchResults(true);
-  }
+  // const openSearch = () => {
+  //   if (showSearchResults) return;
+  //   setShowSearchResults(true);
+  // }
 
   useEffect(() => {
     if (!showMenu) return;
@@ -50,6 +50,8 @@ const NavBar = () => {
     document.addEventListener("click", closeMenu);
     return () => document.removeEventListener("click", closeMenu)
   }, [showMenu])
+
+  useEffect(() => {console.log("HELLO", searchResult.includes('something'))},[searchResult])
 
   useEffect(() => {
     if (search.length === 0) {
@@ -95,7 +97,7 @@ const NavBar = () => {
   }
 
   const handleLabelChange = () => {
-    if (location.pathname == '/communitites') {
+    if (location.pathname === '/communitites') {
       setHomeLabel()
     }
   }
@@ -252,11 +254,13 @@ const NavBar = () => {
             <div className='headersearch'>
               <Search search={search} setSearch={setSearch} searchResult={searchResult} setSearchResult={setSearchResult} />
               <div className='searchresultcontainer'>
-                {searchResult.length > 0 && searchResult.map(result => (
+                {searchResult.length > 0 && !searchResult.includes('something') ? searchResult.map(result => (
                   <Link onClick={clear} className='searchLink' to={`/posts/${result.id}`}>
                     <div className='searchresults'>{result?.title}</div>
                   </Link>
-                ))}
+                )) : searchResult.includes('something') && (
+                  <Link>No results found</Link>
+                )}
               </div>
             </div>
             <div className='right-side'>
