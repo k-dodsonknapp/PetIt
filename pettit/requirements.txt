@@ -24,7 +24,6 @@ jmespath==0.10.0
 mako==1.1.4
 markupsafe==2.0.1
 python-dateutil==2.8.1
-# psycopg2>=2.7,<2.8 --no-binary psycopg2
 python-dotenv==0.14.0
 python-editor==1.0.4
 s3transfer==0.5.2
