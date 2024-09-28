@@ -6,7 +6,6 @@ function Search( {search, setSearch, searchResult, setSearchResult} ) {
 
     const dispatch = useDispatch();
     const posts = useSelector(state => state?.post?.list)
-    console.log(searchResult)
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -20,16 +19,22 @@ function Search( {search, setSearch, searchResult, setSearchResult} ) {
     }, [search, setSearchResult])
 
     useEffect(() => {
-        let array = [];
-        for(let i = 0; i < posts.length; i++) {
-            let post = posts[i].title;
-            if (post.includes(search) && array.length < 6){
-                array.push(posts[i]);
-                
+        if (search.length > 0) {
+            let array = [];
+            for(let i = 0; i < posts.length; i++) {
+                let post = posts[i].title;
+                if (post.includes(search) && array.length < 6){
+                    array.push(posts[i]);
+                    
+                };
             };
-        };
-        setSearchResult(array);
-    }, [search])
+            if (array.length === 0) {
+                setSearchResult(['something'])
+            } else {
+                setSearchResult(array);
+            }
+        }
+    }, [search, posts, setSearchResult])
 
   return (
     <div className='search-div'>

@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { logout } from '../../store/session';
 
 const LogoutButton = () => {
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user)
+  const dispatch = useDispatch();
+  // const user = useSelector(state => state.session.user)
   const onLogout = async (e) => {
     await dispatch(logout());
   };

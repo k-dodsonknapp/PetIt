@@ -105,7 +105,7 @@ const LoginForm = () => {
           ))}
           <div id='login-buttons'>
             <button className="login-btn" type='submit'>Login</button>
-            <h5></h5>
+            {/* <h5></h5> */}
             {/* <h5>continue to</h5> */}
             <div className='secondary-login-btns'>
               <button className="signup-btn" type='submit' onClick={handleSignUp}>Sign Up</button>

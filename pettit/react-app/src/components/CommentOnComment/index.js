@@ -12,7 +12,7 @@ const CommentOnComment = ({ setShowCommentOnCommentForm, showCommentOnCommentFor
 
     useEffect(() => {
         dispatch(getAllCommentOnComment(comment.id));
-    }, [])
+    }, [comment.id, dispatch])
 
     const handleCancel = (e) => {
         e.preventDefault();
@@ -43,23 +43,23 @@ const CommentOnComment = ({ setShowCommentOnCommentForm, showCommentOnCommentFor
         setNewCommentOnComment("");
     };
 
-    const handleCommentOnComment = () => async (e) => {
-        e.preventDefault();
-        if (!user) {
-            // setShowLoginModal(true)
-        } else {
-            if (showCommentOnCommentForm === false) {
-                setShowCommentOnCommentForm(true);
-            } else {
-                setShowCommentOnCommentForm(false);
-            };
-            // if (showCommentOnCommentForm === true) {
-            //     setShowCommentOnCommentForm(false);
-            // } else {
-            //     setShowCommentOnCommentForm(true);
-            // }
-        };
-    };
+    // const handleCommentOnComment = () => async (e) => {
+    //     e.preventDefault();
+    //     if (!user) {
+    //         // setShowLoginModal(true)
+    //     } else {
+    //         if (showCommentOnCommentForm === false) {
+    //             setShowCommentOnCommentForm(true);
+    //         } else {
+    //             setShowCommentOnCommentForm(false);
+    //         };
+    //         // if (showCommentOnCommentForm === true) {
+    //         //     setShowCommentOnCommentForm(false);
+    //         // } else {
+    //         //     setShowCommentOnCommentForm(true);
+    //         // }
+    //     };
+    // };
 
     return (
         <>
