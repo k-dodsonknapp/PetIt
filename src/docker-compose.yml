@@ -1,0 +1,72 @@
+# version: '3.8'
+# services:
+#   flask-app:
+#     build: .
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#       - POSTGRES_DB=your_db
+#       - SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@db:5432/your_db
+#     depends_on:
+#       - db
+
+#   db:
+#     image: postgres:13
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#       POSTGRES_DB: your_db
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+
+# volumes:
+#   pgdata:
+
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: petit_dev
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: petit_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+    networks:
+      - petit_network
+  
+  flask-app:
+    build:
+      context: ./app  # This points to the 'app' directory
+      dockerfile: Dockerfile
+    command: >
+      bash -c "flask db upgrade && flask seed all && flask run"
+    environment:
+      FLASK_APP: .
+      FLASK_ENV: development
+      DATABASE_URL: postgresql://petit_dev:password@db:5432/petit_db
+      DATABASE_USER: petit_dev
+      DATABASE_PASSWORD: password
+      DATABASE_HOST: db
+      DATABASE_NAME: petit_db
+      SECRET_KEY: lkasjdf09ajsdkfljalsiorj12n3490re9485309irefvn,u90818734902139489230
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app
+    networks:
+      - petit_network
+    # command: bash -c "flask db upgrade && flask seed all && flask run"
+
+volumes:
+  postgres_data:
+
+networks:
+  petit_network:
