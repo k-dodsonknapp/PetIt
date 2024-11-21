@@ -1,5 +1,5 @@
-from backend.models import db, User
-from backend.seeds.seed_decorator import check_data_in_session
+from app.models import db, User
+from app.seeds.seed_decorator import check_data_in_session
 from uuid import uuid4 as uuid4
 
 # Adds a demo user, you can add other users here if you want

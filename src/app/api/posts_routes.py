@@ -1,7 +1,7 @@
 from crypt import methods
 from urllib import request
 from flask import Blueprint, jsonify, request
-from backend.models import Post, Comment, db
+from app.models import Post, Comment, db
 from datetime import datetime
 
 

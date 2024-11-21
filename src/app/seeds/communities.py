@@ -1,4 +1,4 @@
-from backend.models import db, Communities
+from app.models import db, Communities
 
 
 def seed_communities():

@@ -1,4 +1,4 @@
-from backend.models import db, Vote
+from app.models import db, Vote
 
 def seed_votes():
 

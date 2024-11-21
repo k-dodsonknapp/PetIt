@@ -1,4 +1,4 @@
-#!/home/noisewater/PetIt/backend/venv/bin/python3
+#!/home/noisewater/PetIt/app/venv/bin/python3
 
 import sys
 import json

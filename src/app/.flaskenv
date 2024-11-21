@@ -1,1 +1,1 @@
-FLASK_APP="backend:create_app"
+FLASK_APP="app:create_app"

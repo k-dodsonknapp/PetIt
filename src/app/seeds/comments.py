@@ -1,4 +1,4 @@
-from backend.models import db, Comment
+from app.models import db, Comment
 from datetime import datetime
 
 

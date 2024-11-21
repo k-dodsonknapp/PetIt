@@ -1,6 +1,6 @@
 from crypt import methods
 from flask import Blueprint, request
-from backend.models import Communities, Post, db
+from app.models import Communities, Post, db
 
 
 community_routes = Blueprint('communities', __name__)

@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from backend.models import Comment, db
+from app.models import Comment, db
 
 comment_routes = Blueprint('comments', __name__)
 

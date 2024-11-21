@@ -1,7 +1,7 @@
 from .db import db
 from .user import User
-from backend.models.posts import Post
-from backend.models.comments import Comment
-from backend.models.post_votes import Vote
-from backend.models.communities import Communities
+from models.posts import Post
+from models.comments import Comment
+from models.post_votes import Vote
+from models.communities import Communities
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from backend.models import Vote, db
+from app.models import Vote, db
 
 vote_routes = Blueprint('votes', __name__)
 
