@@ -17,7 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-# @auth_routes.route('/test')
+# @auth_routes.route('/api/test', methods=['GET'])
 # def test_endpoint():
 #     print('hello')
 #     return {

@@ -21,7 +21,7 @@ MarkupSafe==2.0.1
 packaging==24.1
 pipenv==2024.0.3
 platformdirs==4.3.6
-psycopg2-binary==2.8.6
+psycopg2-binary==2.9.6
 python-dateutil==2.8.1
 python-dotenv==0.14.0
 python-editor==1.0.4

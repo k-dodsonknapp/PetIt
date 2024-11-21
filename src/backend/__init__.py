@@ -17,7 +17,16 @@ from .api.communities_routes import community_routes
 from .seeds import seed_commands
 
 from .config import Config
+
+
+# def seed_data():
+#     if not User.query.first():
+#         # Tell flask about our seed commands
+#         print('HELLO')
+#         # app.cli.add_command(seed_commands)
+
 app = Flask(__name__)
+
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'

@@ -14,17 +14,18 @@ seed_commands = AppGroup('seed')
 
 # Creates the `flask seed all` command
 @seed_commands.command('all')
+
 # @check_data_in_session
 def seed():
-    print('THIS FIRST')
-    # seed_users()
-    # # Add other seed functions here
-    # seed_posts()
-    # seed_comments()
-    # # seed_comment_on_comments()
-    # seed_votes()
-    # # seed_comment_votes()
-    # seed_communities()
+    # print('THIS FIRST')
+    seed_users()
+    # Add other seed functions here
+    seed_posts()
+    seed_comments()
+    # seed_comment_on_comments()
+    seed_votes()
+    # seed_comment_votes()
+    seed_communities()
 
 
 # Creates the `flask seed undo` command

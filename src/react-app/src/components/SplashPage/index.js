@@ -1,20 +1,13 @@
-
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './splashPage.css';
 
 const SplashPage = () => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
-    const signUp = (e) => {
-        e.preventDefault();
-        history.push('/sign-up');
-    };
+    const signUp = (e) => { navigate('/sign-up') };
 
-    const login = (e) => {
-        e.preventDefault();
-        history.push('/login');
-    };
+    const login = (e) => { navigate('/login') };
 
     return (
         <div id='page'>
@@ -30,3 +23,17 @@ const SplashPage = () => {
     );
 };
 export default SplashPage;
+
+// import { useNavigate } from 'react-router-dom';
+
+// const SplashPage = () => {
+//   const navigate = useNavigate();
+
+//   const goToNextPage = () => {
+//     navigate('/next-page'); // 'navigate' replaces 'history.push'
+//   };
+
+//   return <button onClick={goToNextPage}>Next</button>;
+// };
+
+// export default SplashPage;

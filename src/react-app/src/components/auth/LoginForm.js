@@ -6,6 +6,7 @@ import * as sessionActions from '../../store/session';
 import './loginForm.css'
 
 const LoginForm = () => {
+  console.log('somethin')
   const [emailErrors, setEmailErrors] = useState([]);
   const [passwordErrors, setPasswordErrors] = useState([]);
   console.log(emailErrors)
