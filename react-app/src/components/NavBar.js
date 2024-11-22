@@ -32,26 +32,6 @@ const NavBar = () => {
   const [communitiesButton, setCommunitiesButton] = useState(true);
   const [homeButton, setHomeButton] = useState(false)
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  }
-
-  // const openSearch = () => {
-  //   if (showSearchResults) return;
-  //   setShowSearchResults(true);
-  // }
-
-  useEffect(() => {
-    if (!showMenu) return;
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
-    document.addEventListener("click", closeMenu);
-    return () => document.removeEventListener("click", closeMenu)
-  }, [showMenu])
-
-  useEffect(() => {console.log("HELLO", searchResult.includes('something'))},[searchResult])
 
   useEffect(() => {
     if (search.length === 0) {
@@ -124,7 +104,7 @@ const NavBar = () => {
               </li>
               <li className='dropdown-li'>
                 {homeLabel && (
-                  <button id='dropdown' onClick={openMenu}>
+                  <button id='dropdown' onClick={() => setShowMenu(!showMenu)}>
                     <div className='dropdown-text'>
                       <div className='home-icon'>
                         <img src='https://cdn.pixabay.com/photo/2013/07/12/14/49/home-148856_960_720.png' alt='Home' />
@@ -139,7 +119,7 @@ const NavBar = () => {
                   </button>
                 )}
                 {communitiesLabel && (
-                  <button id='dropdown' onClick={openMenu}>
+                  <button id='dropdown' onClick={() => setShowMenu(!showMenu)}>
                     <div className='dropdown-text'>
                       <div className='comm-label-text'>
                         <CgCommunity id="comm-icon-label" />
