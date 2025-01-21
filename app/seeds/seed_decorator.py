@@ -1,6 +1,6 @@
 from functools import wraps
 from sqlalchemy.orm import object_mapper
-from app import db
+from app.extensions import db
 
 
 def check_data_in_session(seed_function):

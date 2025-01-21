@@ -1,5 +1,6 @@
-from app.models import db, Post
+from app.model import Post
 from datetime import datetime
+from app.extensions import db
 
 
 def seed_posts():

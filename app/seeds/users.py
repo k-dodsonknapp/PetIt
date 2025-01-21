@@ -1,4 +1,5 @@
-from app.models import db, User
+from app.model import User
+from app.extensions import db
 from app.seeds.seed_decorator import check_data_in_session
 from uuid import uuid4 as uuid4
 

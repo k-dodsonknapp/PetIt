@@ -1,5 +1,6 @@
-from app.models import db, Comment
+from app.model import Comment
 from datetime import datetime
+from app.extensions import db
 
 
 def seed_comments():

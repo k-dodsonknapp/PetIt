@@ -1,4 +1,5 @@
-from app.models import db, Vote
+from app.model import Vote
+from app.extensions import db
 
 def seed_votes():
 

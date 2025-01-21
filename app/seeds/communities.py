@@ -1,4 +1,5 @@
-from app.models import db, Communities
+from app.model import Communities
+from app.extensions import db
 
 
 def seed_communities():

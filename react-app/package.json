@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && rm -rf ../app/static/static && cp -r build/* ../app/static/ && rm -rf ../app/static/js && mv ../app/static/static/js/ ../app/static/ && rm -rf ../app/static/css && mv ../app/static/static/css/ ../app/static/ && rmdir ../app/static/static/",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -38,6 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://petit-backend.onrender.com/"
+  }
 }
