@@ -17,7 +17,6 @@ const CreatePost = () => {
     const [showImgForm, setShowImgForm] = useState(false);
     const [errors, setErrors] = useState([]);
     const [imgErrors, setImgErrors] = useState([]);
-    // const [displayErrors, setDisplayErrors] = useState(true);
 
     useEffect(() => {
         dispatch(getAllPosts());

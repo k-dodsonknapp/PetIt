@@ -1,7 +1,6 @@
 
 .community-card {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     border: 2px solid #f6f7f8;
     border-left: none;

@@ -21,7 +21,6 @@ input[type=file]::file-selector-button {
     border: none;
     background-color: white;
     padding: 0px 6px;
-    /* border-radius: 20px; */
     height: 40px;
     color: rgb(116, 114, 114);
     border: 1px solid hsl(214, 19%, 93%);
@@ -31,9 +30,7 @@ input[type=file]::file-selector-button {
     cursor: pointer;
     border: none;
     background-color: #e9e8e8;
-    /* padding: 6px; */
     color: rgb(116, 114, 114);
-    /* border-radius: 20px; */
     border: 1px solid hsl(214, 19%, 93%)
 }
 
@@ -122,10 +119,6 @@ form{
     border-radius: 4px;
 }
 
-/* .btn-div button {
-    margin-bottom: 10px;
-} */
-
 .edit-page {
     display: flex;
     justify-content: center;
@@ -155,7 +148,6 @@ form{
     padding: 10px 0px 10px 0px;
     background-color: #ffffff;
     border: 1px solid #ffffff;
-
 }
 
 .dropped-img {
@@ -216,19 +208,14 @@ textarea:focus {
 .btn-div {
     display: flex;
     justify-content: flex-end;
-    /* margin-right: 20px; */
     background-color:#ffffff;
-    /* border-radius: 4px; */
-    /* margin-top: 10px; */
     width: 99.6%;
     border: 1px solid hsl(214, 19%, 93%);
 }
 
 #post-btn {
-    /* border-radius: 20px; */
     height: 40px;
     padding: 5px 19px;
-    /* border: 1px rgba(0, 0, 0, 0.493) solid; */
     border: 1px solid hsl(214, 19%, 93%);
     border-right: none;
     border-top: none;
@@ -333,8 +320,6 @@ textarea:focus {
 }
 
 .me p {
-    /* display: flex; */
-    /* justify-content: center; */
     width: 100%;
 }
 
@@ -366,7 +351,6 @@ textarea:focus {
     justify-content: center;
     width: 101.5%;
 }
-
 
 @media screen and (max-width: 850px){
     .right-containerr {

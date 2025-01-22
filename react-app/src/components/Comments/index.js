@@ -9,8 +9,6 @@ import CommentOnComment from "../CommentOnComment";
 import EditComment from "../EditComment";
 import LoginAlert from "../LoginAlert";
 import { BiMessage } from "react-icons/bi";
-// import { FiEdit } from "react-icons/fi";
-// import { RiDeleteBin2Line } from "react-icons/ri";
 import "./comments.css";
 
 const Comments = ({ comment, postId }) => {
@@ -21,8 +19,6 @@ const Comments = ({ comment, postId }) => {
     )
   );
   const user = useSelector((state) => state?.session?.user);
-  // const [showBtns, setShowBts] = useState(true);
-  // const [commentId, setCommentId] = useState(0);
   const [showCommentEditForm, setShowCommentEditForm] = useState(false);
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [commentToEdit, setCommentToEdit] = useState("");
@@ -32,12 +28,10 @@ const Comments = ({ comment, postId }) => {
 
   useEffect(() => {
     dispatch(getAllCommentOnComment(comment.id));
-    // dispatch(EditComment(postId))
   }, [comment.id, dispatch]);
 
   const handleEditComment = (body, commId) => async (e) => {
     e.preventDefault();
-    // setCommentId(commId);
     if (showCommentEditForm === false || showCommentForm === true) {
       setShowCommentEditForm(true);
       setShowCommentForm(false);
@@ -45,7 +39,6 @@ const Comments = ({ comment, postId }) => {
       setShowCommentEditForm(false);
     }
     setCommentToEdit(body);
-    // setShowBts(false);
   };
 
   const handleCommentDelete = (e) => {
@@ -71,11 +64,6 @@ const Comments = ({ comment, postId }) => {
       } else {
         setShowCommentOnCommentForm(false);
       }
-      // if (showCommentOnCommentForm === true) {
-      //     setShowCommentOnCommentForm(false);
-      // } else {
-      //     setShowCommentOnCommentForm(true);
-      // }
     }
   };
 
@@ -84,9 +72,6 @@ const Comments = ({ comment, postId }) => {
       <div key={comment?.id}>
         <div className="comment">
           <div className="username-profile-pic">
-            {/* <div img className="profile-pic"> */}
-            {/* <img className="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Rrb0PRnlTW2D_oE_pbIigXUsdvHL5LLfJA&usqp=CAU"></img> */}
-            {/* </div> */}
             <div className="on-comment-username">
               {comment.comment === "deleted" ? (
                 <h5>Deleted</h5>
@@ -138,7 +123,6 @@ const Comments = ({ comment, postId }) => {
               {showCommentEditForm && (
                 <EditComment
                   setShowCommentEditForm={setShowCommentEditForm}
-                  // setShowBts={setShowBts}
                   commentToEdit={commentToEdit}
                   setCommentToEdit={setCommentToEdit}
                   commentId={comment.id}
@@ -164,7 +148,6 @@ const Comments = ({ comment, postId }) => {
             </div>
           </div>
         </div>
-
         {showLoginModal && (
           <LoginAlert
             setShowLoginModal={setShowLoginModal}

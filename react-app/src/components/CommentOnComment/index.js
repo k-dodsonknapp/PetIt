@@ -51,24 +51,6 @@ const CommentOnComment = ({
     setNewCommentOnComment("");
   };
 
-  // const handleCommentOnComment = () => async (e) => {
-  //     e.preventDefault();
-  //     if (!user) {
-  //         // setShowLoginModal(true)
-  //     } else {
-  //         if (showCommentOnCommentForm === false) {
-  //             setShowCommentOnCommentForm(true);
-  //         } else {
-  //             setShowCommentOnCommentForm(false);
-  //         };
-  //         // if (showCommentOnCommentForm === true) {
-  //         //     setShowCommentOnCommentForm(false);
-  //         // } else {
-  //         //     setShowCommentOnCommentForm(true);
-  //         // }
-  //     };
-  // };
-
   return (
     <>
       {showCommentOnCommentForm && (
@@ -80,7 +62,6 @@ const CommentOnComment = ({
                 <span className="comment-form-username">{user.username}</span>
               </h5>
             )}
-            {/* <label htmlFor="comment">Reply</label> */}
             <div className="comment-on-comment-textarea">
               <textarea
                 placeholder="What are you thoughts?"
@@ -98,20 +79,10 @@ const CommentOnComment = ({
               >
                 Comment
               </button>
-              {/* <button id="post-btnsss" onClick={handleNewCommentOnComment}>Submit</button> */}
               <button id="one-post-comment-btn" onClick={handleCancel}>
                 Cancel
               </button>
             </div>
-            {/* {errors.length > 0 && errors.map(error => {
-                    <ul className="errors">
-                                                    return <li className="li" key={error}>
-                                                        <div className="error-div">
-                                                            {error}
-                                                        </div>
-                                                    </li>
-                                                })} */}
-            {/* </ul> */}
           </form>
         </div>
       )}
