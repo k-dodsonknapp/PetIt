@@ -1,25 +1,25 @@
 .commOnComm {
-    display: flex;
-    margin: 5px 0px 5px 15px;
+  display: flex;
+  margin: 5px 0px 5px 15px;
 
 }
 
 .reply-to-comment {
-    border: none;
-    background-color: white;
+  border: none;
+  background-color: white;
 }
 
 .edit-comments {
-    border: 1px solid red;
-    height: 100px;
-    width: 100px;
+  border: 1px solid red;
+  height: 100px;
+  width: 100px;
 }
 
 .commm {
-    border-left: 2px solid rgba(237, 239, 241, 1);
+  border-left: 2px solid rgba(237, 239, 241, 1);
 }
 
 #reply-icon {
-    height: 15px;
-    width: 23px;
+  height: 15px;
+  width: 23px;
 }

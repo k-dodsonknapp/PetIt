@@ -42,7 +42,7 @@ const MainPage = () => {
 
   const handleDelete = (postId) => async (e) => {
     e.preventDefault();
-    const id = { id: + postId };
+    const id = { id: +postId };
     dispatch(deleteAPost(id));
     dispatch(getAllPosts());
   };
@@ -97,8 +97,8 @@ const MainPage = () => {
 
   const redirectToPost = (e, post) => {
     e.preventDefault();
-    navigate(`/posts/${post.id}`)
-}
+    navigate(`/posts/${post.id}`);
+  };
 
   return (
     <div className="page">
@@ -133,10 +133,7 @@ const MainPage = () => {
                   Posted by{" "}
                   <span className="username-span">u/{post?.username}</span>
                 </h2>
-                <div className="post-title">
-                  {/* {post?.username} */}
-                  {post?.title}
-                </div>
+                <div className="post-title">{post?.title}</div>
                 <a onClick={(e) => redirectToPost(e, post)}>
                   <img
                     className="main-page-image"

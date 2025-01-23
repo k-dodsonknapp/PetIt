@@ -20,10 +20,6 @@
     background-color: white;
 }
 
-/* .votes:visited {
-    background-color: red;
-} */
-
 .votesss {
     display: flex;
     justify-content: center;
@@ -57,10 +53,8 @@
 
 .main-page-image {
     margin-top: 8px;
-    /* margin-left: 2px; */
     height: 370px;
     width:562px;
-    /* border-radius: 4px;  */
 }
 
 .post {
@@ -72,11 +66,9 @@
     width: 600px;
     height: auto;
     background-color: white;
-    /* border: -1px transparent white; */
 }
 
 .post:hover {
-    /* display: inline-block; */
     border: 1px solid rgba(0, 0, 0, 0.4);
     margin: -1px -1px 19px;
     
@@ -147,29 +139,24 @@
 }
 
 #main-upvote-btn {
-    /* margin-top: 4px; */
     height: 39px;
 }
 
 #main-upvote-btn:hover {
-    /* margin-top: 10px; */
     background-color: rgb(228, 228, 228);
     border: 1px solid rgb(228, 228, 228);
 }
 
 #main-downvote-btn:hover {
-    /* margin-top: 10px; */
     background-color: rgb(228, 228, 228);
 }
 
 #main-upvote{
-    /* color: red; */
     width: 36px;
     height: 25px;
 }
 
 #main-downvote-btn {
-    /* margin-top: 10px; */
     height: 39px;
 }
 
@@ -215,7 +202,6 @@
 .left-post button {
     border: 1px solid rgba(248, 248, 248, 0.513);
     background-color: rgba(248, 248, 248, 0.513);
-    /* border-radius: 6px; */
 }
 
 #upvotee {
@@ -339,7 +325,6 @@
     margin-bottom: 7px;
     font-weight: 200;
     font-size: 10px;
-    /* font-style: nomal !important; */
     margin-bottom: 17px;
 
 }
@@ -356,9 +341,6 @@
     background-color: white;
     padding-left: 9px;
     margin-top: 1px;
-    /* padding-right: 10px; */
-    /* padding-top: 4px; */
-    /* margin-bottom: 4px; */
     height: 37px;
     width: 84px;
   }
@@ -370,8 +352,6 @@
     border: none;
     background-color: white;
     padding-left: 9px;
-    /* padding-right: 10px; */
-    /* padding-top: 4px; */
     margin-top: 1px;
     height: 37px;
     width: 84px;
@@ -414,10 +394,8 @@
 
     .main-page-image {
         margin-top: 8px;
-        /* margin-left: 2px; */
         height: 15em;
         width: 20.6em;
-        /* border-radius: 4px;*/
     }
 
     .right-post a {

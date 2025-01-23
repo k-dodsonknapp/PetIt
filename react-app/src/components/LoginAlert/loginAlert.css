@@ -1,70 +1,66 @@
 .main-modal-login-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    background-color: white;
-    border-radius: 4px;
-    /* padding-left: 100px; */
-    width: 400px;
-    height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 4px;
+  width: 400px;
+  height: 300px;
 }
 
 .message-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    /* margin-left: 50px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
 }
 
 .modal-button-div {
-    display: flex;
-    margin-top: 40px;
+  display: flex;
+  margin-top: 40px;
 }
 
-.main-modal-login-div h1{
-    display: flex;
-    justify-content: flex-start;
-    font-size: 18px;
-    font-weight: 400;
-    text-align: center;
+.main-modal-login-div h1 {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
 }
 
 .main-modal-login-div h2 {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 400;
-    width: 120px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  width: 120px;
 }
 
 #modal-login-btn {
-    color: black;
-    height: 60px;
-    width: 100px;
-    border-radius: 3px 0px 0px 3px;
-    background-color: white;
-    border: 1px solid rgb(221, 221, 221);
-    cursor: pointer;
-    margin-right: 5px;
+  color: black;
+  height: 60px;
+  width: 100px;
+  border-radius: 3px 0px 0px 3px;
+  background-color: white;
+  border: 1px solid rgb(221, 221, 221);
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 #modal-signup-btn {
-    height: 60px;
-    width: 100px;
-    border-radius: 0px 3px 3px 0px;
-    background-color: white;
-    border: 1px solid rgb(221, 221, 221);
-    /* border-left: none; */
-    cursor: pointer;
-    margin-left: 5px;
+  height: 60px;
+  width: 100px;
+  border-radius: 0px 3px 3px 0px;
+  background-color: white;
+  border: 1px solid rgb(221, 221, 221);
+  cursor: pointer;
+  margin-left: 5px;
 }
 
 #modal-signup-btn:hover,
 #modal-login-btn:hover {
-    background-color: rgb(234, 234, 234);
+  background-color: rgb(234, 234, 234);
 }
