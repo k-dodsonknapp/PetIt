@@ -1,39 +1,34 @@
-import { useNavigate } from 'react-router-dom';
-import './splashPage.css';
+import { useNavigate } from "react-router-dom";
+import "./splashPage.css";
 
 const SplashPage = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const signUp = (e) => {
+    navigate("/sign-up");
+  };
 
-    const signUp = (e) => { navigate('/sign-up') };
+  const login = (e) => {
+    navigate("/login");
+  };
 
-    const login = (e) => { navigate('/login') };
-
-    return (
-        <div id='page'>
-            <div id='main-card'>
-                <h1>Welcome to PettIt</h1>
-                <p>Pettit is a place where you can see all the creatures you want to pet!</p>
-                <div id='buttons'>
-                    <button className='btn' onClick={signUp}>Sign Upppppppppp</button>
-                    <button className='btn' onClick={login}>Login</button>
-                </div>
-            </div>
+  return (
+    <div id="page">
+      <div id="main-card">
+        <h1>Welcome to PettIt</h1>
+        <p>
+          Pettit is a place where you can see all the creatures you want to pet!
+        </p>
+        <div id="buttons">
+          <button className="btn" onClick={signUp}>
+            Sign Upppppppppp
+          </button>
+          <button className="btn" onClick={login}>
+            Login
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 export default SplashPage;
-
-// import { useNavigate } from 'react-router-dom';
-
-// const SplashPage = () => {
-//   const navigate = useNavigate();
-
-//   const goToNextPage = () => {
-//     navigate('/next-page'); // 'navigate' replaces 'history.push'
-//   };
-
-//   return <button onClick={goToNextPage}>Next</button>;
-// };
-
-// export default SplashPage;

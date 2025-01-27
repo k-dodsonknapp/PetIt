@@ -21,7 +21,6 @@ const CommentForm = ({ postId, showBtns, setShowBts }) => {
       setShowBts(true);
     }
     dispatch(addNewComment(brandNewComment));
-    // setShowCommentForm(false);
     setNewComment("");
   };
 
@@ -48,21 +47,6 @@ const CommentForm = ({ postId, showBtns, setShowBts }) => {
             Comment
           </button>
         </div>
-        {/* <button
-            disabled={errors.length > 0 ? true : false}
-            id="post-btnsss"
-            onClick={handleNewComment}
-        >Submit</button>
-        <button id="post-btnsss" onClick={handleCancel}>Cancel</button> */}
-        <ul className="errors">
-          {/* {errors.length > 0 && errors.map(error => {
-                return <li className="li" key={error}>
-                    <div className="error-div">
-                        {error}
-                    </div>
-                </li>
-            })} */}
-        </ul>
       </form>
     </div>
   );

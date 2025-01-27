@@ -1,46 +1,48 @@
 .form-wrapperss {
-    /* overflow: hidden; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    /* border: 1px solid red; */
-    margin: 0;
-    padding: 0;
-    height: 118vh;
-    width: 100vw;
-    background-image: url('https://happydogclipsandkennels.files.wordpress.com/2019/08/happy-dog-country-clips-and-kennels-happy-dog-photos-1.png?w=1280&h=853&crop=1');
-    background-size: 900px;
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* border: 1px solid red; */
+  margin: 0;
+  padding: 0;
+  height: 118vh;
+  width: 100vw;
+  background-image: url('https://happydogclipsandkennels.files.wordpress.com/2019/08/happy-dog-country-clips-and-kennels-happy-dog-photos-1.png?w=1280&h=853&crop=1');
+  background-size: 900px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .login-card {
-    background-color: rgba(47, 45, 45, 0.629);
-    box-shadow: 0px 0px 4px 3px rgba(41, 41, 41, 0.908);
-    border: 2px solid rgba(87, 86, 86, 0.29);
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 600px;
-    width: 515px;
-    margin-left: 320px;
-    margin-top: 200px;
+  background-color: rgba(47, 45, 45, 0.629);
+  box-shadow: 0px 0px 4px 3px rgba(41, 41, 41, 0.908);
+  border: 2px solid rgba(87, 86, 86, 0.29);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 515px;
+  margin-left: 320px;
+  margin-top: 200px;
 
-    text-align: right;
-    /* media queries */
-    @media (max-width: 767px) {
-      text-align: center;
-    }
-    @media (max-width: 400px) {
-      text-align: left;
-    }
+  text-align: right;
+
+  /* media queries */
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+
+  @media (max-width: 400px) {
+    text-align: left;
+  }
 }
 
 .email input[type="text"]:active {
-    background-color: rgba(47, 45, 45, 0.629);
+  background-color: rgba(47, 45, 45, 0.629);
 }
 
 
@@ -50,6 +52,167 @@
 } */
 
 .welcome-banner {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  width: 450px;
+  /* border: 1px solid red; */
+  margin-top: 0px;
+  font-size: 40px;
+  margin-bottom: 45px;
+  color: #dae0e6;
+}
+
+.second-banner {
+  margin-bottom: 55px;
+  color: #dae0e6;
+  /* color:#4090d1; */
+  font-size: 24px;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid green; */
+}
+
+#login-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  margin-top: 10px;
+  /* width: 150px; */
+}
+
+#login-buttons h5 {
+  display: flex;
+  justify-content: center;
+  /* color:#4090d1; */
+  color: #dae0e6;
+  margin-top: 12px;
+  margin: 7.5px;
+  font-size: 18px;
+}
+
+.login-btn {
+  padding: 10px 45px;
+  border-radius: 10px;
+  /* margin-right: 5px; */
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  border-radius: 4px;
+  color: #dae0e6;
+  /* margin-bottom: 15px; */
+  font-weight: 700;
+  font-size: 20px;
+  border: 1px solid rgba(216, 214, 214, 0.918);
+  box-shadow: 0px 0px 4px .2px rgba(216, 214, 214, 0.918);
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #dae0e6;
+  color: black;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 4px .6px rgba(216, 214, 214, 0.918);
+}
+
+.signup-btn {
+  padding: 10px 35px;
+  border-radius: 10px;
+  /* margin-right: 5px; */
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  border-radius: 4px;
+  color: #dae0e6;
+  /* margin-bottom: 15px; */
+  font-weight: 700;
+  font-size: 20px;
+  border: 1px solid rgba(216, 214, 214, 0.918);
+  box-shadow: 0px 0px 4px .2px rgba(216, 214, 214, 0.918);
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  background-color: #dae0e6;
+  color: black;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 4px .6px rgba(216, 214, 214, 0.918);
+}
+
+.secondary-login-btns {
+  display: flex;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.login-btns {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.email {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  color: white;
+  /* border: 1px solid red; */
+  width: 330px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.email label {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.email input {
+  /* background-color: red; */
+  height: 30px;
+  border-radius: 4px;
+  padding: 0px 5px;
+}
+
+.email label {
+  /* display: flex; */
+  justify-content: flex-start;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 850px) {
+  /* .form-wrapperss {
+        display: none;
+    } */
+
+  .login-card {
+    background-color: rgba(47, 45, 45, 0.629);
+    box-shadow: 0px 0px 4px 3px rgb(41 41 41 / 91%);
+    border: 2px solid rgba(87, 86, 86, 0.29);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 489px;
+    width: 325px;
+    margin-left: 45px;
+    margin-top: 30px;
+    text-align: right;
+    /* @media (max-width: 767px) {;
+        text-align: center;
+        }: ;
+        @media (max-width: 400px) {;
+        text-align: left;
+        }: ; */
+  }
+
+  .welcome-banner {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -58,189 +221,28 @@
     width: 450px;
     /* border: 1px solid red; */
     margin-top: 0px;
-    font-size: 40px;
+    font-size: 28px;
     margin-bottom: 45px;
     color: #dae0e6;
-}
+    /* over */
+  }
 
-.second-banner {
+  .second-banner {
     margin-bottom: 55px;
     color: #dae0e6;
-    /* color:#4090d1; */
-    font-size: 24px;
-}
-
-.loginForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid green; */
-}
-
-#login-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: auto;
-    margin-top: 10px;
-    /* width: 150px; */
-}
-
-#login-buttons h5 {
-    display: flex;
-    justify-content: center;
-    /* color:#4090d1; */
-    color: #dae0e6;
-    margin-top: 12px;
-    margin: 7.5px;
+    /* color: #4090d1; */
     font-size: 18px;
-}
+  }
 
-.login-btn {
-    padding: 10px 45px;
-    border-radius: 10px;
-    /* margin-right: 5px; */
-    background-color: transparent;
-    backdrop-filter: blur(5px);
-    border-radius: 4px;
-    color: #dae0e6;
-    /* margin-bottom: 15px; */
-    font-weight: 700;
-    font-size: 20px;
-    border: 1px solid rgba(216, 214, 214, 0.918);
-    box-shadow: 0px 0px 4px .2px rgba(216, 214, 214, 0.918);
-    cursor: pointer;
-}
-
-.login-btn:hover {
-    background-color: #dae0e6;
-    color: black;
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 0px 4px .6px rgba(216, 214, 214, 0.918);
-}
-
-.signup-btn {
-    padding: 10px 35px ;
-    border-radius: 10px;
-    /* margin-right: 5px; */
-    background-color: transparent;
-    backdrop-filter: blur(5px);
-    border-radius: 4px;
-    color: #dae0e6;
-    /* margin-bottom: 15px; */
-    font-weight: 700;
-    font-size: 20px;
-    border: 1px solid rgba(216, 214, 214, 0.918);
-    box-shadow: 0px 0px 4px .2px rgba(216, 214, 214, 0.918);
-    cursor: pointer;
-}
-
-.signup-btn:hover {
-    background-color: #dae0e6;
-    color: black;
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 0px 4px .6px rgba(216, 214, 214, 0.918);
-}
-
-.secondary-login-btns {
-    display: flex;
-    padding-top: 15px;
-    width: 100%;
-}
-
-.login-btns {
-    display: flex;
-    /* justify-content: space-between; */
-}
-
-.email {
+  .email {
     /* display: flex; */
     /* justify-content: space-between; */
     color: white;
     /* border: 1px solid red; */
-    width: 330px;
+    width: 300px;
     display: flex;
     justify-content: space-between;
     padding-bottom: 30px;
     text-align: center;
-}
-
-.email label {
-    text-align: center;
-    margin-top: 8px;
-}
-
-.email input{
-    /* background-color: red; */
-    height: 30px;
-    border-radius: 4px;
-    padding: 0px 5px;
-}
-
-.email label {
-    /* display: flex; */
-    justify-content: flex-start;
-    margin-right: 20px;
-}
-
-@media only screen and (max-width: 850px) {
-    /* .form-wrapperss {
-        display: none;
-    } */
-
-    .login-card {
-        background-color: rgba(47, 45, 45, 0.629);
-        box-shadow: 0px 0px 4px 3px rgb(41 41 41 / 91%);
-        border: 2px solid rgba(87, 86, 86, 0.29);
-        border-radius: 4px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 489px;
-        width: 325px;
-        margin-left: 45px;
-        margin-top: 30px;
-        text-align: right;
-        /* @media (max-width: 767px) {;
-        text-align: center;
-        }: ;
-        @media (max-width: 400px) {;
-        text-align: left;
-        }: ; */
-      }
-
-      .welcome-banner {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-content: center;
-        text-align: center;
-        width: 450px;
-        /* border: 1px solid red; */
-        margin-top: 0px;
-        font-size: 28px;
-        margin-bottom: 45px;
-        color: #dae0e6;
-        /* over */
-      }
-
-      .second-banner {
-        margin-bottom: 55px;
-        color: #dae0e6;
-        /* color: #4090d1; */
-        font-size: 18px;
-      }
-
-      .email {
-        /* display: flex; */
-        /* justify-content: space-between; */
-        color: white;
-        /* border: 1px solid red; */
-        width: 300px;
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 30px;
-        text-align: center;
-      }
+  }
 }
