@@ -51,12 +51,8 @@ const NavBar = () => {
     }
   }, [location]);
 
-  // useEffect(() => {
-  //   setLength(cart.length);
-  // }, [cart.length]);
 
   const clear = () => {
-    // navigate('/')
     setSearch([]);
   };
 
@@ -78,7 +74,6 @@ const NavBar = () => {
 
   const handleClick = async (e) => {
     await dispatch(sessionActions.login("demo@aa.io", "password"));
-    // navigate('/')
   };
 
   const onLogout = async (e) => {
