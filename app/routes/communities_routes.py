@@ -6,11 +6,13 @@ from app.extensions import db
 
 community_bp = Blueprint('communities', __name__)
 
+
 @community_bp.route('/')
 def get_communities():
     communities = Communities.query.all()
 
     return {'communities': [community.to_dict() for community in communities]}
+
 
 @community_bp.route('/new', methods=["POST"])
 def create_community():
@@ -27,6 +29,7 @@ def create_community():
     db.session.commit()
 
     return new_community.to_dict()
+
 
 @community_bp.route('/edit/<int:id>', methods=["PUT"])
 def update_community(id):

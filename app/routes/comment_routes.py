@@ -4,12 +4,13 @@ from app.extensions import db
 
 comment_bp = Blueprint('comments', __name__)
 
+
 @comment_bp.route('/<int:id>')
 def get_all_comments(id):
 
     comments = Comment.query.filter(Comment.postId == id).all()
-     
-    return {"comments" : [comment.to_dict() for comment in comments]}
+
+    return {"comments": [comment.to_dict() for comment in comments]}
 
 
 # @comment_bp.route()
@@ -21,7 +22,7 @@ def comment_on_comment(id):
     comments = Comment.query.filter(Comment.parentId == id).all()
     # print("ASDFASDF", [comment.to_dict() for comment in comments] )
     # print("asdfasdfasdf", [comment.to_dict() for comments in comment])
-    # comment_on_comment = Comment_on_comment.query.filter(Comment_on_comment.commentId == id).all()  
+    # comment_on_comment = Comment_on_comment.query.filter(Comment_on_comment.commentId == id).all()
 
 # 'comment_on_comment': [comment.to_dict() for comment in comment_on_comment]
     return {}
@@ -34,7 +35,7 @@ def new_comment():
     userId = data["userId"]
     postId = data["postId"]
     comment = data["comment"]
-    parentId =data["parentId"]
+    parentId = data["parentId"]
     username = data["username"]
 
     new_comment = Comment(

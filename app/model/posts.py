@@ -10,8 +10,10 @@ class Post(db.Model):
     title = db.Column(db.Text, nullable=False)
     body = db.Column(db.Text)
     image = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.now())
     username = db.Column(db.Text)
     community_id = db.Column(db.Integer, db.ForeignKey('communities.id'))
 
@@ -21,13 +23,12 @@ class Post(db.Model):
     communities = db.relationship('Communities', back_populates='post')
     # comment_on_comment = db.relationship('Comment_on_comment', back_populates='post')
 
-
     def to_dict(self):
         return {
             'id': self.id,
             'userId': self.userId,
             'title': self.title,
-            'body': self.body, 
+            'body': self.body,
             'image': self.image,
             'created_at': self.created_at,
             'updated_at': self.updated_at,

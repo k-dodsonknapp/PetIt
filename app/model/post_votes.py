@@ -1,5 +1,6 @@
 from app.extensions import db
 
+
 class Vote(db.Model):
     __tablename__ = "votes"
 

@@ -6,6 +6,7 @@ from app.extensions import db
 
 post_bp = Blueprint('posts', __name__)
 
+
 @post_bp.route('/main')
 def get_all_posts():
     """
@@ -14,7 +15,6 @@ def get_all_posts():
     posts = Post.query.all()
 
     return {'posts': [post.to_dict() for post in posts]}
-
 
 
 @post_bp.route('/new', methods=["POST"])
@@ -35,7 +35,7 @@ def create_post():
         userId=userId,
         title=title,
         body=body,
-        image=image,  
+        image=image,
         username=username,
     )
     db.session.add(new_post)
@@ -58,7 +58,7 @@ def edit_post(id):
     }
     """
 
-    post = Post.query.get(id) # need the id from one post
+    post = Post.query.get(id)  # need the id from one post
 
     post.title = data["title"]
     post.body = data["body"]
