@@ -37,7 +37,7 @@ def delete_vote():
     id = data["id"]
 
     vote = Vote.query.get(id)
-    if (vote): 
+    if (vote):
         db.session.delete(vote)
         db.session.commit()
     return {'message': "delete successful"}

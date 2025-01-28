@@ -14,7 +14,6 @@ seed_commands = AppGroup('seed')
 
 # Creates the `flask seed all` command
 @seed_commands.command('all')
-
 # @check_data_in_session
 def seed():
     # print('THIS FIRST')

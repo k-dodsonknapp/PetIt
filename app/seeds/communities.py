@@ -5,34 +5,34 @@ from app.extensions import db
 def seed_communities():
 
     community1 = Communities(
-        community_name='Crabs', 
+        community_name='Crabs',
         community_type='Public',
     )
     community2 = Communities(
-        community_name='Armidillos', 
+        community_name='Armidillos',
         community_type='Public',
     )
     community3 = Communities(
-        community_name='Sugar Gliders', 
+        community_name='Sugar Gliders',
         community_type='Public',
     )
     community4 = Communities(
-        community_name='Dogs', 
+        community_name='Dogs',
         community_type='Public',
     )
     community5 = Communities(
-        community_name='Cats', 
+        community_name='Cats',
         community_type='Public',
     )
     community6 = Communities(
-        community_name='Giraffe', 
+        community_name='Giraffe',
         community_type='Public',
     )
     community7 = Communities(
-        community_name='Squirrel', 
+        community_name='Squirrel',
         community_type='Public',
     )
-    
+
     db.session.add(community1)
     db.session.add(community2)
     db.session.add(community3)

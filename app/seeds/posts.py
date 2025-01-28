@@ -13,7 +13,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="Demo",
-        
+
     )
     post2 = Post(
         userId=2,
@@ -23,7 +23,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="marnie",
-       
+
     )
     post3 = Post(
         userId=3,
@@ -33,7 +33,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="bobbie",
-        
+
     )
     post4 = Post(
         userId=4,
@@ -43,7 +43,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="daphne",
-        
+
     )
     post5 = Post(
         userId=5,
@@ -53,7 +53,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="moose",
-       
+
     )
     post6 = Post(
         userId=6,
@@ -63,7 +63,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="barry",
-        
+
     )
     post7 = Post(
         userId=1,
@@ -73,7 +73,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="Demo",
-        
+
     )
     post8 = Post(
         userId=2,
@@ -83,7 +83,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="marnie",
-        
+
     )
     post9 = Post(
         userId=3,
@@ -93,7 +93,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="bobbie",
-        
+
     )
     post10 = Post(
         userId=4,
@@ -103,7 +103,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="daphne",
-        
+
     )
 
     post_10 = Post(
@@ -114,7 +114,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="moose",
-        
+
     )
 
     post_11 = Post(
@@ -125,7 +125,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="barry",
-        
+
     )
     post_12 = Post(
         userId=1,
@@ -135,7 +135,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="Demo",
-        
+
     )
     post_13 = Post(
         userId=2,
@@ -145,7 +145,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="marnie",
-        
+
     )
     post_14 = Post(
         userId=3,
@@ -155,7 +155,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="bobbie",
-        
+
     )
 
     post_15 = Post(
@@ -166,7 +166,7 @@ def seed_posts():
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="daphne",
-        
+
     )
 
     post_16 = Post(
@@ -175,7 +175,7 @@ def seed_posts():
         body='After a long week full of upsets. Our hero kenneth finds himself in yet another challenge.',
         image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdHVgaOVwABex-HctF9VSH-wQcyK8-acy5aA&usqp=CAU.png',
         username="moose",
-        
+
     )
 
     db.session.add(post1)

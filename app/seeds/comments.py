@@ -278,7 +278,6 @@ def seed_comments():
         username="marnie",
     )
 
-
     db.session.add(comment1)
     db.session.add(comment2)
     db.session.add(comment3)
@@ -320,4 +319,3 @@ def seed_comments():
 def undo_comments():
     db.session.execute('TRUNCATE comments RESTART IDENTITY CASCADE;')
     db.session.commit()
-    

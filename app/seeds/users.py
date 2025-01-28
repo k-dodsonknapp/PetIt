@@ -5,14 +5,19 @@ from uuid import uuid4 as uuid4
 
 # Adds a demo user, you can add other users here if you want
 # @check_data_in_session
+
+
 def seed_users():
-    
+
     demo = User(username='Demo', email='demo@aa.io', password='password')
     marnie = User(username='marnie', email='marnie@aa.io', password='password')
     bobbie = User(username='bobbie', email='bobbie@aa.io', password='password')
-    daphne = User(username='daphne', email='daphne@mail.come', password='password')
-    moose = User(username='moose', email='moose@mail.come', password='password')
-    barry = User(username='barry', email='barry@mail.come', password='password')
+    daphne = User(username='daphne', email='daphne@mail.come',
+                  password='password')
+    moose = User(username='moose', email='moose@mail.come',
+                 password='password')
+    barry = User(username='barry', email='barry@mail.come',
+                 password='password')
 
     db.session.add(demo)
     db.session.add(marnie)

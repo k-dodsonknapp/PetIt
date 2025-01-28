@@ -1,6 +1,7 @@
 from app.model import Vote
 from app.extensions import db
 
+
 def seed_votes():
 
     post_votes = Vote(
@@ -110,6 +111,7 @@ def seed_votes():
     # db.session.add(post_votes15)
     # db.session.add(post_votes16)
     db.session.commit()
+
 
 def undo_seed_votes():
     db.session.execute('TRUNCATE votes RESTART IDENTITY CASCADE;')

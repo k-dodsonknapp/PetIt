@@ -24,11 +24,13 @@ def check_data_in_session(seed_function):
             print("primary_key", primary_key)
             print("primary_value", primary_value)
 
-            existing_record = db.session.query(mapper.class_).get(primary_value)
+            existing_record = db.session.query(
+                mapper.class_).get(primary_value)
             print("Existing Record:", existing_record)
 
             if existing_record:
-                print(f"Record already exists for {mapper.class_.__name__} with {primary_key} = {primary_value}")
+                print(
+                    f"Record already exists for {mapper.class_.__name__} with {primary_key} = {primary_value}")
                 db.session.expunge(instance)
             else:
                 print(f"New record will be added for {mapper.class_.__name__}")
