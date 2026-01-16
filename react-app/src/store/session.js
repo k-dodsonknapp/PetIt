@@ -1,3 +1,5 @@
+import { csrfFetch, getCookie } from "./utils";
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -30,36 +32,31 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const login = (email, password) => async (dispatch) => {
-  const response = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-  });
+  const csrf = getCookie("csrf_token");
+  try {
+    const response = await csrfFetch("/api/auth/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrf,
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
 
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data));
+    dispatch(setUser(response));
     return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ["An error occurred. Please try again."];
+  } catch (err) {
+    return err;
   }
-};
+}
 
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json", },
   });
 
   if (response.ok) {
@@ -68,29 +65,26 @@ export const logout = () => async (dispatch) => {
 };
 
 export const signUp = (username, email, password) => async (dispatch) => {
-  const response = await fetch("/api/auth/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-    }),
-  });
+  const csrf = getCookie("csrf_token");
+  try {
+    const response = await csrfFetch("/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrf,
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+      credentials: "include",
+    });
 
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data));
-    return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ["An error occurred. Please try again."];
+    dispatch(setUser(response));
+
+  } catch (err) {
+    return err;
   }
 };
 

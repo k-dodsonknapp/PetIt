@@ -1,3 +1,5 @@
+import { csrfFetch, getCookie } from "./utils";
+
 const GET_POST_VOTES = "/votes/post/:id";
 
 const getVotesForPosts = (votes) => ({
@@ -6,7 +8,7 @@ const getVotesForPosts = (votes) => ({
 });
 
 export const getPostVotes = () => async (dispatch) => {
-  const res = await fetch(`/api/votes/`);
+  const res = await fetch(`/api/votes/`, { credentials: "include" });
   const data = await res.json();
   if (res.ok) {
     dispatch(getVotesForPosts(data));
@@ -22,18 +24,23 @@ const addVotesForPosts = (vote) => ({
 });
 
 export const addPostVote = (data) => async (dispatch) => {
-  const res = await fetch("/api/votes/add", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const csrf = getCookie("csrf_token");
+  try {
+    const response = await csrfFetch("/api/votes/add", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrf
+      },
+      body: JSON.stringify(data),
+    });
 
-  if (res.ok) {
-    const vote = await res.json();
-    dispatch(addVotesForPosts(vote));
-    return vote;
+    dispatch(addVotesForPosts(response));
+    return response;
+  }
+  catch (err) {
+    return err;
   }
 };
 
@@ -46,17 +53,21 @@ const deleteVote = (vote) => ({
 });
 
 export const deleteVotes = (id) => async (dispatch) => {
-  const res = await fetch(`/api/votes/delete`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(id),
-  });
-  if (res.ok) {
-    const vote = await res.json();
-    dispatch(deleteVote(vote));
-    return vote;
+  const csrf = getCookie();
+  try {
+    const response = await csrfFetch(`/api/votes/delete`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrf,
+      },
+      body: JSON.stringify(id),
+    });
+    dispatch(deleteVote(response));
+    return response;
+  } catch (err) {
+    return err
   }
 };
 

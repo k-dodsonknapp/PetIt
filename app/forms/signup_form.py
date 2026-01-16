@@ -21,6 +21,9 @@ def username_exists(form, field):
 
 
 class SignUpForm(FlaskForm):
+    # Disabled to handle elsewhere app/utils/csrf.py
+    class Meta:
+        csrf = False
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])

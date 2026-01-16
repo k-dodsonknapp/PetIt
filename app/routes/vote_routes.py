@@ -1,19 +1,21 @@
 from flask import Blueprint, request
 from app.model import Vote
 from app.extensions import db
+from app.utils.csrf import require_csrf
 
-votes_bp = Blueprint('votes', __name__)
+votes_bp = Blueprint("votes", __name__)
 
 
 @votes_bp.route("/")
 def get_all_votes_posts():
     votes = Vote.query.all()
-
     return {"votes": [vote.to_dict() for vote in votes]}
 
 
 @votes_bp.route("/add", methods=["POST"])
+@require_csrf
 def add_vote():
+
     data = request.json
 
     user_id = data["user_id"]
@@ -32,12 +34,13 @@ def add_vote():
 
 
 @votes_bp.route("/delete", methods=["DELETE"])
+@require_csrf
 def delete_vote():
     data = request.json
     id = data["id"]
 
     vote = Vote.query.get(id)
-    if (vote):
+    if vote:
         db.session.delete(vote)
         db.session.commit()
-    return {'message': "delete successful"}
+    return {"message": "delete successful"}

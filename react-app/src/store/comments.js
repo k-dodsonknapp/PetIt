@@ -1,3 +1,5 @@
+import { getCookie } from "./utils";
+
 const GET_COMMENTS_FOR_POST = "/comments/:id";
 const ADD_COMMENT = "/comments/new";
 const DELETE_COMMENT = "/comments/delete";
@@ -39,10 +41,12 @@ const addComment = (comment) => ({
 });
 
 export const addNewComment = (data) => async (dispatch) => {
+  const csrf = getCookie("csrf_token");
   const res = await fetch("/api/comments/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf,
     },
     body: JSON.stringify(data),
   });
@@ -59,10 +63,12 @@ const deleteComment = (comment) => ({
 });
 
 export const deleteAComment = (data) => async (dispatch) => {
+  const csrf = getCookie("csrf_token");
   const res = await fetch("/api/comments/delete", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf,
     },
     body: JSON.stringify(data),
   });
@@ -79,10 +85,12 @@ const updateAComment = (comment) => ({
 });
 
 export const updateComment = (data) => async (dispatch) => {
+  const csrf = getCookie("csrf_token");
   const res = await fetch(`/api/comments/edit`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf,
     },
     body: JSON.stringify(data),
   });

@@ -17,31 +17,31 @@ function Communities() {
             </NavLink>
           </div>
           <div className="rows">
-            <i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>
+            <i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>
             p/Crabs
           </div>
           <div className="rows">
-            <i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>
+            <i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>
             p/Armadillos
           </div>
           <div className="rows">
-            <i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>
+            <i style={{ color: "red" }} className="fa-solid fa-angle-down"></i>
             p/Sugar_gliders
           </div>
           <div className="rows">
-            <i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>
+            <i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>
             p/Dogs
           </div>
           <div className="rows">
-            <i style={{ color: "red" }} class="fa-solid fa-angle-down"></i>
+            <i style={{ color: "red" }} className="fa-solid fa-angle-down"></i>
             p/Cats
           </div>
           <div className="rows">
-            <i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>
+            <i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>
             p/Giraffe
           </div>
           <div className="rows">
-            <i style={{ color: "#04eb04" }} class="fa-solid fa-angle-up"></i>
+            <i style={{ color: "#04eb04" }} className="fa-solid fa-angle-up"></i>
             p/Squirrel
           </div>
           <button id="view-all" onClick={handleViewAll}>

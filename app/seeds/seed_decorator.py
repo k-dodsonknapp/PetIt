@@ -14,19 +14,13 @@ def check_data_in_session(seed_function):
         seed_function(*args, **kwargs)
 
         to_commit = db.session.new
-        print("to_commit", to_commit)
         for instance in to_commit:
             mapper = object_mapper(instance)
-            print("Instance:", instance.to_dict())
             primary_key = mapper.primary_key[0].name
             primary_value = getattr(instance, primary_key)
-            print("mapper", mapper)
-            print("primary_key", primary_key)
-            print("primary_value", primary_value)
 
             existing_record = db.session.query(
                 mapper.class_).get(primary_value)
-            print("Existing Record:", existing_record)
 
             if existing_record:
                 print(

@@ -5,7 +5,6 @@ function CommunityCard({ community, i }) {
 
   const joinCommunity = (e) => {
     e.preventDefault()
-    console.log("HELLO")
   }
   return (
     <li className='community-li'>

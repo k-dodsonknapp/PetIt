@@ -1,23 +1,24 @@
-from urllib import request
 from flask import Blueprint, request
 from app.model import Post, Comment
 from app.extensions import db
+from app.utils.csrf import require_csrf
 
 
-post_bp = Blueprint('posts', __name__)
+post_bp = Blueprint("posts", __name__)
 
 
-@post_bp.route('/main')
+@post_bp.route("/main")
 def get_all_posts():
     """
-    This route will return all of the posts in the database. 
+    This route will return all of the posts in the database.
     """
     posts = Post.query.all()
 
-    return {'posts': [post.to_dict() for post in posts]}
+    return {"posts": [post.to_dict() for post in posts]}
 
 
-@post_bp.route('/new', methods=["POST"])
+@post_bp.route("/new", methods=["POST"])
+@require_csrf
 def create_post():
     data = request.json
 
@@ -44,7 +45,8 @@ def create_post():
     return new_post.to_dict()
 
 
-@post_bp.route('/<int:id>/edit', methods=["PUT"])
+@post_bp.route("/<int:id>/edit", methods=["PUT"])
+@require_csrf
 def edit_post(id):
     data = request.json
 
@@ -63,13 +65,14 @@ def edit_post(id):
     post.title = data["title"]
     post.body = data["body"]
     post.image = data["image"]
-    post.updated_at = data['updated_at']
+    post.updated_at = data["updated_at"]
     db.session.commit()
 
     return post.to_dict()
 
 
 @post_bp.route("/delete", methods=["DELETE"])
+@require_csrf
 def delete_post():
     data = request.json
     id = data["id"]

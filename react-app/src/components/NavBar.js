@@ -16,7 +16,6 @@ const NavBar = () => {
   const dispatch = useDispatch();
   let location = useLocation();
   const session = useSelector((state) => state.session.user);
-  // console.log("========>", session.user)
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
@@ -72,7 +71,7 @@ const NavBar = () => {
     }
   };
 
-  const handleClick = async (e) => {
+  const handleDemoClick = async (e) => {
     await dispatch(sessionActions.login("demo@aa.io", "password"));
   };
 
@@ -87,7 +86,7 @@ const NavBar = () => {
           <div className="nav-links">
             <div className="logo-home">
               <li id="logo-name">
-                <NavLink to="/" exact={true} activeClassName="active">
+                <NavLink to="/" activeclassname="active">
                   <img
                     className="elephant-logo"
                     src="https://www.pinclipart.com/picdir/big/97-977614_elephant-guest-house-westport-centre-accommodation-elephant-logo.png"
@@ -139,9 +138,8 @@ const NavBar = () => {
                         <NavLink
                           to="/login"
                           onClick={handleLabelChange}
-                          exact={true}
                           id="something"
-                          activeClassName="another"
+                          activeclassname="another"
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="dropdown-btns" id="login-div">
@@ -155,10 +153,9 @@ const NavBar = () => {
                       {session && communitiesButton && (
                         <NavLink
                           to="/communities"
-                          onClick={handleClick}
-                          exact={true}
+                          onClick={handleDemoClick}
                           id="something"
-                          activeClassName="another"
+                          activeclassname="another"
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="dropdown-btns">
@@ -173,9 +170,8 @@ const NavBar = () => {
                         <NavLink
                           to="/"
                           onClick={handleHome}
-                          exact={true}
                           id="something"
-                          activeClassName="another"
+                          activeclassname="another"
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="dropdown-btns">
@@ -195,9 +191,8 @@ const NavBar = () => {
                         <NavLink
                           to="/communities"
                           onClick={handleCreateCommunity}
-                          exact={true}
                           id="something"
-                          activeClassName="another"
+                          activeclassname="another"
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="dropdown-btns">
@@ -213,10 +208,9 @@ const NavBar = () => {
                       {!session && (
                         <NavLink
                           to="/"
-                          onClick={handleClick}
-                          exact={true}
+                          onClick={handleDemoClick}
                           id="something"
-                          activeClassName="another"
+                          activeclassname="another"
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="dropdown-btns">
@@ -230,8 +224,7 @@ const NavBar = () => {
                       {!session && (
                         <NavLink
                           to="/sign-up"
-                          exact={true}
-                          activeClassName="active"
+                          activeclassname="active"
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="dropdown-btns">
@@ -251,9 +244,8 @@ const NavBar = () => {
                         // </div>
                         <NavLink
                           to="/sign-up"
-                          exact={true}
                           onClick={onLogout}
-                          activeClassName="active"
+                          activeclassname="active"
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="dropdown-btns">
@@ -279,17 +271,17 @@ const NavBar = () => {
               <div className="searchresultcontainer">
                 {searchResult.length > 0 && !searchResult.includes("something")
                   ? searchResult.map((result) => (
-                      <Link
-                        onClick={clear}
-                        className="searchLink"
-                        to={`/posts/${result.id}`}
-                      >
-                        <div className="searchresults">{result?.title}</div>
-                      </Link>
-                    ))
+                    <Link
+                      onClick={clear}
+                      className="searchLink"
+                      to={`/posts/${result.id}`}
+                    >
+                      <div className="searchresults">{result?.title}</div>
+                    </Link>
+                  ))
                   : searchResult.includes("something") && (
-                      <Link>No results found</Link>
-                    )}
+                    <Link>No results found</Link>
+                  )}
               </div>
             </div>
             <div className="right-side">
@@ -298,8 +290,7 @@ const NavBar = () => {
                   <NavLink
                     to="/login"
                     className="idk"
-                    exact={true}
-                    activeClassName="active"
+                    activeclassname="active"
                   >
                     Login
                   </NavLink>
@@ -310,8 +301,7 @@ const NavBar = () => {
                   <NavLink
                     to="/posts/new"
                     className="idk"
-                    exact={true}
-                    activeClassName="active"
+                    activeclassname="active"
                   >
                     New Post <AiOutlinePlus id="new-post-icon" />
                   </NavLink>
@@ -322,9 +312,8 @@ const NavBar = () => {
                   <NavLink
                     className="idk"
                     to="/sign-up"
-                    exact={true}
                     onClick={onLogout}
-                    activeClassName="active"
+                    activeclassname="active"
                   >
                     Logout
                     <FaWpforms id="new-post-icon" />

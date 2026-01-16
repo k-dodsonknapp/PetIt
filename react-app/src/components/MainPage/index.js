@@ -22,7 +22,6 @@ const MainPage = () => {
   const user = useSelector((state) => state?.session);
   const comments = useSelector((state) => state?.comments);
   const votes = useSelector((state) => state?.votes?.post_votes);
-  // console.log(votes)
   // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
   // const [voted, setVoted] = useState("black")
   // const communities = useSelector(state => state.communities);
@@ -117,7 +116,7 @@ const MainPage = () => {
                         (vote) => vote?.post_id === post.id
                       )?.length}
                   </div>
-                  <button id="main-downvote-btn" onClick={downvote(post.id)}>
+                  <button type="button" id="main-downvote-btn" onClick={downvote(post.id)}>
                     <BiDownvote id="main-downvote" />
                   </button>
                 </div>
@@ -140,9 +139,10 @@ const MainPage = () => {
                     src={`${post.image}`}
                     alt="post"
                     onError={(e) => {
-                      e.target.src =
-                        "https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png";
-                      e.target.onError = null;
+                      /** TODO: Fix this*/
+                      //   e.target.src =
+                      //     // "https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png";
+                      //   e.target.onError = null;
                     }}
                   />
                 </a>

@@ -61,7 +61,7 @@ const Votes = ({ postId }) => {
   return (
     <>
       <div className="vote-div">
-        <button id="upvote-btn" onClick={upvote(posts[0]?.id)}>
+        <button type="button" id="upvote-btn" onClick={upvote(posts[0]?.id)}>
           <BiUpvote id="upvote" />
         </button>
         <div className="votesss">

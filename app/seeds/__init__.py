@@ -16,7 +16,6 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 # @check_data_in_session
 def seed():
-    # print('THIS FIRST')
     seed_users()
     # Add other seed functions here
     seed_posts()

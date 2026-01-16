@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required
+from app.utils.csrf import require_csrf
 from app.s3_helpers import (
     upload_file_to_s3,
     allowed_file,
@@ -11,6 +12,7 @@ image_bp = Blueprint("images", __name__)
 
 @image_bp.route("", methods=["POST"])
 @login_required
+@require_csrf
 def upload_image():
     if "image" not in request.files:
         return {"errors": "image required"}, 400

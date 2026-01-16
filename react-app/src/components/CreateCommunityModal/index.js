@@ -11,6 +11,7 @@ function CreatCommunityModal({ showCreateModal, setShowCreateModal }) {
   let [communityName, setCommunityName] = useState(suffix);
   let [max, setMax] = useState(21);
   let [code, setCode] = useState("");
+  const handleNewCommunity = null
 
   const communityTitle = (e) => {
     setCommunityName(e.target.value);

@@ -1,3 +1,5 @@
+import { getCookie, csrfFetch } from "./utils";
+
 const GET_ALL_POSTS = "/posts/";
 
 const ADD_POST = "/posts/new";
@@ -25,7 +27,7 @@ const deletePost = (post) => ({
 });
 
 export const getAllPosts = () => async (dispatch) => {
-  const res = await fetch("/api/posts/main");
+  const res = await fetch("/api/posts/main", { credentials: "include" });
   if (res.ok) {
     const data = await res.json();
     dispatch(getPosts(data));
@@ -34,11 +36,14 @@ export const getAllPosts = () => async (dispatch) => {
 };
 
 export const addAPost = (data) => async (dispatch) => {
-  const res = await fetch("/api/posts/new", {
+  const csrf = getCookie("csrf_token");
+  const res = await csrfFetch("/api/posts/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf
     },
+    credentials: "include",
     body: JSON.stringify(data),
   });
 
@@ -50,10 +55,12 @@ export const addAPost = (data) => async (dispatch) => {
 };
 
 export const updateAPost = (data) => async (dispatch) => {
-  const res = await fetch(`/api/posts/${data.id}/edit`, {
+  const csrf = getCookie("csrf_token");
+  const res = await csrfFetch(`/api/posts/${data.id}/edit`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf
     },
     body: JSON.stringify(data),
   });
@@ -66,10 +73,13 @@ export const updateAPost = (data) => async (dispatch) => {
 };
 
 export const deleteAPost = (data) => async (dispatch) => {
-  const res = await fetch("/api/posts/delete", {
+  const csrf = getCookie("csrf_token");
+  const res = await csrfFetch("/api/posts/delete", {
     method: "DELETE",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf
     },
     body: JSON.stringify(data),
   });

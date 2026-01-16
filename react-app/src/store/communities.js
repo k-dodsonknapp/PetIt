@@ -1,3 +1,5 @@
+import { getCookie } from "./utils";
+
 const GET_ALL_COMMUNITIES = "/communities/";
 
 const getCommunities = (communities) => ({
@@ -9,7 +11,6 @@ export const getAllCommunities = () => async (dispatch) => {
   const res = await fetch("/api/communities/");
   if (res.ok) {
     const data = await res.json();
-    console.log("data", data);
     dispatch(getCommunities(data));
     return data;
   }
@@ -23,10 +24,12 @@ const addCommunity = (community) => ({
 });
 
 export const addNewCommunity = (data) => async (dispatch) => {
+  const csrf = getCookie("csrf_token")
   const res = await fetch("/api/communities/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf
     },
     body: JSON.stringify(data),
   });
@@ -45,11 +48,12 @@ const updateCommunity = (community) => ({
 });
 
 export const updateACommunity = (data) => async (dispatch) => {
-  console.log(data);
+  const csrf = getCookie("csrf_token")
   const res = await fetch(`/api/communities/edit/${data.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf
     },
     body: JSON.stringify(data),
   });
@@ -68,10 +72,12 @@ const deleteCommunity = (community) => ({
 });
 
 export const deleteACommunity = (data) => async (dispatch) => {
+  const csrf = getCookie("csrf_token")
   const res = await fetch("/api/communities/delete", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      "X-CSRFToken": csrf
     },
     body: JSON.stringify(data),
   });
@@ -100,9 +106,6 @@ export default function communitiesReducer(state = [], action) {
           newState[action.community.id] = action.community;
         }
       });
-      // console.log("state", state)
-      // console.log("actionnnnn", action.community)
-      console.log("PPPPPPPPPPP", newState);
       return newState;
 
     case ADD_COMMUNITY:
@@ -113,7 +116,6 @@ export default function communitiesReducer(state = [], action) {
       return newState;
 
     case DELETE_COMMUNITY:
-      console.log("DELETE", action);
       newState = { ...state };
       delete newState[action.community];
       return newState;
