@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 // import LogoutButton from './auth/LogoutButton';
 import "./navbar.css";
-import * as sessionActions from "../store/session";
-import Search from "./Search";
+import * as sessionActions from "../../store/session";
+import Search from "../Search";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { MdEmojiEmotions } from "react-icons/md";
 import { FaWpforms } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CgCommunity } from "react-icons/cg";
-import CreatCommunityModal from "./CreateCommunityModal";
+import CreatCommunityModal from "../CreateCommunityModal";
+import useOnClickOutside from "./utils";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,11 @@ const NavBar = () => {
   const [communitiesLabel, setCommunitiesLabel] = useState(false);
   const [communitiesButton, setCommunitiesButton] = useState(true);
   const [homeButton, setHomeButton] = useState(false);
-
+  
+  const ref = useOnClickOutside(() => {
+    setShowMenu(false);
+  });
+  
   useEffect(() => {
     if (search.length === 0) {
       setSearchResult([]);
@@ -95,7 +100,7 @@ const NavBar = () => {
                   <span className="app-name">pettit </span>
                 </NavLink>
               </li>
-              <li className="dropdown-li">
+              <li ref={ref} className="dropdown-li">
                 {homeLabel && (
                   <button id="dropdown" onClick={() => setShowMenu(!showMenu)}>
                     <div className="dropdown-text">
