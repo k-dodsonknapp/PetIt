@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
-import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
-// import Votes from "../Votes";
+import { getPostVotes } from "../../store/votes";
 // import { BiMessage } from "react-icons/bi";
 import "./post.css";
 import NumOfComments from "../NumOfComments";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
-import { BiUpvote, BiDownvote } from "react-icons/bi";
 import Communities from "../Communities";
 // import { addNewCommunity, deleteACommunity, getAllCommunities, updateACommunity } from "../../store/communities";
 import LoginAlert from "../LoginAlert";
+
+import Votes from "../Votes";
+
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,7 @@ const MainPage = () => {
   const posts = useSelector((state) => state?.post?.list);
   const user = useSelector((state) => state?.session);
   const comments = useSelector((state) => state?.comments);
-  const votes = useSelector((state) => state?.votes?.post_votes);
   // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
-  // const [voted, setVoted] = useState("black")
   // const communities = useSelector(state => state.communities);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -51,49 +50,6 @@ const MainPage = () => {
     navigate(`/api/posts/${postId}/edit`);
   };
 
-  const upvote = (postId) => async (e) => {
-    // setVoted("red")
-    if (!user.user) {
-      // if user is not logged in modal will show
-      setShowLoginModal(true);
-    } else {
-      const voteObj = votes[0]?.votes?.find(
-        (vote) => vote?.post_id === postId && vote?.user_id === user?.user?.id
-      );
-
-      if (!voteObj || voteObj?.user_id !== user?.user.id) {
-        e.preventDefault();
-        const vote = {
-          user_id: user?.user?.id,
-          post_id: postId,
-          comment_id: null,
-          upvote: null,
-        };
-        await dispatch(addPostVote(vote));
-        await dispatch(getPostVotes());
-      }
-    }
-  };
-
-  const downvote = (postId) => async (e) => {
-    e.preventDefault();
-    if (!user.user) {
-      // if user is not logged in modal will show
-      setShowLoginModal(true);
-    } else {
-      const voteObj = votes[0].votes.find(
-        (vote) => vote?.post_id === postId && vote?.user_id === user?.user?.id
-      );
-      if (voteObj) {
-        const vote = {
-          id: voteObj?.id,
-        };
-        await dispatch(deleteVotes(vote));
-        await dispatch(getPostVotes());
-      }
-    }
-  };
-
   const redirectToPost = (e, post) => {
     e.preventDefault();
     navigate(`/posts/${post.id}`);
@@ -106,26 +62,7 @@ const MainPage = () => {
           ?.map((post) => (
             <div className="post" key={post?.id}>
               <div className="left-post">
-                <div className="main-votes-div">
-                  <button id="main-upvote-btn" onClick={upvote(post.id)}>
-                    <BiUpvote id="main-upvote" style={{ color: `${""}` }} />
-                  </button>
-                  <div className="votesss">
-                    {votes &&
-                      votes[0]?.votes?.filter(
-                        (vote) => vote?.post_id === post.id
-                      )?.length}
-                  </div>
-                  <button type="button" id="main-downvote-btn" onClick={downvote(post.id)}>
-                    <BiDownvote id="main-downvote" />
-                  </button>
-                </div>
-                {showLoginModal && (
-                  <LoginAlert
-                    setShowLoginModal={setShowLoginModal}
-                    showLoginModal={showLoginModal}
-                  />
-                )}
+                <Votes postId={post?.id} />
               </div>
               <div className="right-post">
                 <h2 className="post-username">
@@ -133,7 +70,7 @@ const MainPage = () => {
                   <span className="username-span">u/{post?.username}</span>
                 </h2>
                 <div className="post-title">{post?.title}</div>
-                <a onClick={(e) => redirectToPost(e, post)}>
+                <a href={`/posts/${post.id}`} onClick={(e) => redirectToPost(e, post)}>
                   <img
                     className="main-page-image"
                     src={`${post.image}`}
@@ -171,6 +108,12 @@ const MainPage = () => {
           ?.reverse()}
       </div>
       <Communities className="main-container-communities" />
+      {showLoginModal && (
+        <LoginAlert
+          setShowLoginModal={setShowLoginModal}
+          showLoginModal={showLoginModal}
+        />
+      )}
     </div>
   );
 };

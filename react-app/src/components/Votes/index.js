@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import LoginAlert from "../LoginAlert";
+import "./index.css"
 
 const Votes = ({ postId }) => {
   const dispatch = useDispatch();
@@ -74,9 +75,7 @@ const Votes = ({ postId }) => {
         </button>
         <div className="mobile-votes">
           <span className="votes-label">Votes</span>{" "}
-          {votes &&
-            votes[0]?.votes?.filter((vote) => vote?.post_id === posts[0]?.id)
-              ?.length}
+          {votes && votes[0]?.votes?.filter((vote) => vote?.post_id === posts[0]?.id)?.length}
         </div>
       </div>
       {showLoginModal && (

@@ -16,24 +16,6 @@
     width: 562px;
 }
 
-.votess {
-    background-color: white;
-}
-
-.votesss {
-    display: flex;
-    justify-content: center;
-    height: 20px;
-    width: 100%;
-    background-color: white;
-    border: transparent;
-}
-
-#votes {
-    display: flex;
-    justify-content: center;
-}
-
 .main-feed-container {
     display: flex;
     justify-content: center;
@@ -138,34 +120,6 @@
     align-items: center;
 }
 
-#main-upvote-btn {
-    height: 39px;
-}
-
-#main-upvote-btn:hover {
-    background-color: rgb(228, 228, 228);
-    border: 1px solid rgb(228, 228, 228);
-}
-
-#main-downvote-btn:hover {
-    background-color: rgb(228, 228, 228);
-}
-
-#main-upvote{
-    width: 36px;
-    height: 25px;
-}
-
-#main-downvote-btn {
-    height: 39px;
-}
-
-#main-downvote{
-    margin: 0px;
-    width: 36px;
-    height: 25px;
-}
-
 .left-post {
     display: flex;
     flex-direction: column;
@@ -204,14 +158,8 @@
     background-color: rgba(248, 248, 248, 0.513);
 }
 
-#upvotee {
-    background-color: rgba(248, 248, 248, 0.513) !important;
-}
-
-.left-post .votesss {
-    border: 1px solid rgba(248, 248, 248, 0.513);
+.left-post {
     background-color: rgba(248, 248, 248, 0.513);
-    
 }
 
 .comm h1 {
@@ -327,9 +275,6 @@
     font-size: 10px;
     margin-bottom: 17px;
 
-}
-.main-votes-div {
-    padding-left: 1px;
 }
 
 .edit-btn button {

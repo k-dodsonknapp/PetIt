@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
 import { getAllPosts } from "../../store/posts";
-// import { addPostVote, deleteVotes, getPostVotes } from "../../store/votes";
 import Comments from "../Comments";
 import PageNotFound from "../PageNotFound";
-// import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { GoCommentDiscussion } from "react-icons/go";
 
 import "./onePost.css";
@@ -15,7 +13,7 @@ import CommentForm from "../CommentForm";
 
 const OnePost = () => {
   const dispatch = useDispatch();
-  const postId = +useParams().postId;
+  const postId = useParams().postId;
   const posts = useSelector((state) =>
     state?.post?.list?.filter((post) => post?.id === postId)
   );
@@ -31,6 +29,7 @@ const OnePost = () => {
     )
   );
 
+  //TODO: take care of the commented out code
   // const [showCommentForm, setShowCommentForm] = useState(false);
   // const [newComment, setNewComment] = useState('');
   // const [commentToEdit, setCommentToEdit] = useState('');

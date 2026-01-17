@@ -1,0 +1,118 @@
+.vote-div {
+    width: inherit;
+}
+
+.main-votes-div {
+    padding-left: 1px;
+}
+
+.votesss {
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 100%;
+    background-color: transparent;
+    border: transparent;
+}
+
+#upvote {
+    width: 44px;
+    height: 25px;
+}
+
+#upvote-btn {
+    height: 39px;
+}
+
+#upvote-btn,
+#downvote-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    width: inherit;
+    color: #929596;
+    margin-top: 0px;
+}
+
+#downvote {
+    margin: 0px;
+    width: 44px;
+    height: 25px;
+}
+
+#downvote-btn {
+    height: 39px;
+}
+
+.votes-label {
+    display: flex;
+    align-items: center;
+}
+
+#upvote-btn:hover {
+    background-color: rgb(228, 228, 228);
+    /* border: 1px solid rgb(228, 228, 228); */
+}
+
+#upvote-btn:hover {
+    margin-top: 0px;
+    background-color: rgb(228, 228, 228);
+}
+
+#downvote-btn:hover {
+    background-color: rgb(228, 228, 228);
+    /* border: 1px solid rgb(228, 228, 228); */
+}
+
+@media screen and (max-width: 850px) {
+    .mobile-votes-div {
+        display: none;
+    }
+
+    .votes-label {
+        margin-left: 1px;
+        margin-right: 5px;
+    }
+
+
+    .vote-div {
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        width: 50px;
+        /* flex-direction: row; */
+    }
+
+    #upvote {
+        width: 44px;
+        height: 25px;
+    }
+
+    .votesss {
+        display: none;
+    }
+
+    #downvote {
+        margin: 0px;
+        width: 44px;
+        height: 13px;
+    }
+
+    #downvote-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: transparent;
+        color: #929596;
+        width: 30px;
+        position: static;
+    }
+}
+
+@media screen and (min-width: 851px) {
+    .mobile-votes {
+        display: none;
+    }
+}

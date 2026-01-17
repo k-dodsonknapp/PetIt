@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
-// import { BiMessage } from "react-icons/bi";
+import { useEffect } from 'react'
 import { GoCommentDiscussion } from "react-icons/go";
 
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getAllComments } from '../../store/comments';
-// import Votes from '../Votes';
 import './numOfComments.css';
 
 function NumOfComments({ postId, comments }) {
