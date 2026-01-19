@@ -49,7 +49,6 @@ async function safeJson(res) {
 function isCsrfProblem(res, data) {
     if (!res || !data) return false;
 
-    // Pull messages from either {errors:[...]} or {raw:"..."} safely
     const msgs = [];
 
     if (Array.isArray(data.errors)) msgs.push(...data.errors);
@@ -57,7 +56,6 @@ function isCsrfProblem(res, data) {
 
     const blob = msgs.join(" ").toLowerCase();
 
-    // Match any CSRF failure, not just expired
     const looksLikeCsrf = blob.includes("csrf");
     const looksLikeTokenIssue =
         blob.includes("expired") ||
@@ -65,7 +63,6 @@ function isCsrfProblem(res, data) {
         blob.includes("mismatch") ||
         blob.includes("missing");
 
-    // Your backend uses 400 for CSRF issues (from earlier chat)
     return res.status === 400 && looksLikeCsrf && looksLikeTokenIssue;
 }
 

@@ -11,6 +11,9 @@ import "./onePost.css";
 import Votes from "../Votes";
 import CommentForm from "../CommentForm";
 
+import serveImageError from "../Errors/imageNotFound";
+
+
 const OnePost = () => {
   const dispatch = useDispatch();
   const postId = useParams().postId;
@@ -104,8 +107,7 @@ const OnePost = () => {
                     src={`${posts[0]?.image}`}
                     alt=""
                     onError={(e) => {
-                      e.target.src =
-                        "https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png";
+                      e.currentTarget.src = serveImageError();
                       e.target.onError = null;
                     }}
                   />

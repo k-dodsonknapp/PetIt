@@ -121,7 +121,7 @@ def seed_posts():
         userId=6,
         title='Matt really is a legend',
         body='Matt is great at backend routes its very fun to work with him -kenneth',
-        image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8v0ekbB8nNv050Zyx4JtZ5weXxmFSK_ZIVg&usqp=CAU',
+        image='https://s.yimg.com/ny/api/res/1.2/ZqCH7aB06vlnbAnYM6fEtQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04ODA-/https://media.zenfs.com/en/aol_bored_panda_979/cff36a3aada87eef8e895a3eb97610e8',
         created_at=datetime.today(),
         updated_at=datetime.today(),
         username="barry",

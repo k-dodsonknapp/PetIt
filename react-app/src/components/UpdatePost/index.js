@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getAllPosts, updateAPost } from "../../store/posts";
 import UploadPicture from "../UploadPicture";
 import "./create-edit.css";
+import serveImageError from "../Errors/imageNotFound";
 
 const UpdatePost = () => {
   const dispatch = useDispatch();
@@ -180,8 +181,7 @@ const UpdatePost = () => {
                   src={image}
                   alt="edited"
                   onError={(e) => {
-                    e.target.src =
-                      "https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png";
+                    e.currentTarget.src = serveImageError();
                     e.target.onError = null;
                   }}
                 />

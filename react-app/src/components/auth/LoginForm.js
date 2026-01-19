@@ -53,6 +53,7 @@ const LoginForm = () => {
   }
 
   const handleClick = async (e) => {
+    e.preventDefault();
     await dispatch(sessionActions.login('demo@aa.io', 'password'))
     navigate('/')
   }

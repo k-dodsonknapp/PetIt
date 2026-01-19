@@ -12,9 +12,8 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import Communities from "../Communities";
 // import { addNewCommunity, deleteACommunity, getAllCommunities, updateACommunity } from "../../store/communities";
 import LoginAlert from "../LoginAlert";
-
+import serveImageError from "../Errors/imageNotFound"
 import Votes from "../Votes";
-
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -73,13 +72,11 @@ const MainPage = () => {
                 <a href={`/posts/${post.id}`} onClick={(e) => redirectToPost(e, post)}>
                   <img
                     className="main-page-image"
-                    src={`${post.image}`}
+                    src={post.image}
                     alt="post"
                     onError={(e) => {
-                      /** TODO: Fix this*/
-                      //   e.target.src =
-                      //     // "https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png";
-                      //   e.target.onError = null;
+                      e.currentTarget.src = serveImageError();
+                      e.currentTarget.onerror = null;
                     }}
                   />
                 </a>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addAPost, getAllPosts } from "../../store/posts";
 import UploadPicture from "../UploadPicture";
+import serveImageError from "../Errors/imageNotFound";
 import "./createPost.css";
 
 const CreatePost = () => {
@@ -169,8 +170,7 @@ const CreatePost = () => {
                   src={image}
                   alt="edited"
                   onError={(e) => {
-                    e.target.src =
-                      "https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png";
+                    e.currentTarget.src = serveImageError();
                     e.target.onError = null;
                   }}
                 />

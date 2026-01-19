@@ -13,7 +13,7 @@ import UpdatePost from "./components/UpdatePost";
 import CreatePost from "./components/CreatePost";
 import OnePost from "./components/OnePost";
 // TODO: Figure out what this was for
-import SplashPage from "./components/SplashPage";
+// import SplashPage from "./components/SplashPage";
 import PageNotFound from "./components/PageNotFound";
 import MainCommunitiesPage from "./components/MainCommunitiesPage";
 
@@ -33,7 +33,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter future={{ v7_startTransition: true,  v7_relativeSplatPath: true }} >
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }} >
       <NavBar />
       <Routes>
         {/* <Route path='/' exact={true}>
