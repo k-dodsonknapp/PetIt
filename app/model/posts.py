@@ -10,12 +10,11 @@ class Post(db.Model):
     title = db.Column(db.Text, nullable=False)
     body = db.Column(db.Text)
     image = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime(timezone=True),
-                           server_default=func.now())
-    updated_at = db.Column(db.DateTime(timezone=True),
-                           server_default=func.now())
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     username = db.Column(db.Text)
     community_id = db.Column(db.Integer, db.ForeignKey('communities.id'))
+    votes = db.Column(db.Integer)
 
     user = db.relationship('User', back_populates='post')
     comment = db.relationship('Comment', back_populates='post')
@@ -34,4 +33,5 @@ class Post(db.Model):
             'updated_at': self.updated_at,
             'username': self.username,
             'community_id': self.community_id,
+            'votes': self.votes
         }

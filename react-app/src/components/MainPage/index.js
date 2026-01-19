@@ -20,14 +20,14 @@ const MainPage = () => {
   const navigate = useNavigate();
   const posts = useSelector((state) => state?.post?.list);
   const user = useSelector((state) => state?.session);
-  const comments = useSelector((state) => state?.comments);
+  // const comments = useSelector((state) => state?.comments);
   // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
   // const communities = useSelector(state => state.communities);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     dispatch(getAllPosts());
-    dispatch(getPostVotes());
+    // dispatch(getPostVotes());
     // dispatch(getAllCommunities());
     // dispatch(deleteACommunity({'id': 12}))
     // dispatch(getAllComments(postId))
@@ -41,12 +41,12 @@ const MainPage = () => {
     e.preventDefault();
     const id = { id: +postId };
     dispatch(deleteAPost(id));
-    dispatch(getAllPosts());
+    // dispatch(getAllPosts());
   };
 
   const handleEdit = (postId) => async (e) => {
     e.preventDefault();
-    navigate(`/api/posts/${postId}/edit`);
+    navigate(`/posts/${postId}/edit`);
   };
 
   const redirectToPost = (e, post) => {
@@ -61,7 +61,7 @@ const MainPage = () => {
           ?.map((post) => (
             <div className="post" key={post?.id}>
               <div className="left-post">
-                <Votes postId={post?.id} />
+                <Votes post={post} />
               </div>
               <div className="right-post">
                 <h2 className="post-username">
@@ -81,7 +81,8 @@ const MainPage = () => {
                   />
                 </a>
                 <div className="right-bottom-post">
-                  <NumOfComments comments={comments} postId={post?.id} />
+                  {/* TODO: FIX how the database is returning to many calls just for a number */}
+                  {/* <NumOfComments comments={comments} postId={post?.id} /> */}
                   {post?.userId === user?.user?.id && (
                     <>
                       <div className="edit-btn">

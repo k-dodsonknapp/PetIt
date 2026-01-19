@@ -13,15 +13,10 @@ const EditComment = ({
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user);
 
-  const handleEditComment = (body, commId) => async (e) => {
-    e.preventDefault();
-    setShowBts(false);
-  };
-
   const handleECancel = (e) => {
     e.preventDefault();
     setShowCommentEditForm(false);
-    setShowBts(true);
+    // setShowBts(true);
   };
 
   const handleEditedComment = (e) => {
@@ -36,13 +31,13 @@ const EditComment = ({
     dispatch(updateComment(editComment));
     dispatch(getAllComments(+id));
     setShowCommentEditForm(false);
-    setShowBts(true);
+    // setShowBts(true);
   };
 
   return (
     <>
       <div className="comment-on-comment-form">
-        <form onSubmit={handleEditComment}>
+        <form>
           <h5>
             Edit Comment as{" "}
             <span className="comment-form-username">{user.username}</span>

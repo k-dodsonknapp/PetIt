@@ -17,6 +17,12 @@ def get_all_posts():
     return {"posts": [post.to_dict() for post in posts]}
 
 
+@post_bp.route("/<int:id>")
+def get_one_post(id):
+    post = Post.query.get_or_404(id)
+    return {"post": post.to_dict()}
+
+
 @post_bp.route("/new", methods=["POST"])
 @require_csrf
 def create_post():
@@ -57,6 +63,8 @@ def edit_post(id):
         "title": "A post title",
         "body": "A post body",
         "image": "An image is required",
+        "username": "username",
+        "votes": "num of votes",
     }
     """
 
@@ -66,6 +74,7 @@ def edit_post(id):
     post.body = data["body"]
     post.image = data["image"]
     post.updated_at = data["updated_at"]
+    post.votes = data["votes"]
     db.session.commit()
 
     return post.to_dict()

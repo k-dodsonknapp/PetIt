@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllCommentOnComment,
@@ -13,18 +13,19 @@ import "./comments.css";
 
 const Comments = ({ comment, postId }) => {
   const dispatch = useDispatch();
-  const commentsOnComment = useSelector((state) =>
-    Object.values(state?.comments).filter(
-      (commentt) => commentt?.parentId === comment.id
-    )
-  );
   const user = useSelector((state) => state?.session?.user);
+  const getCommentsOnComment = useSelector((state) => state.comments);
   const [showCommentEditForm, setShowCommentEditForm] = useState(false);
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [commentToEdit, setCommentToEdit] = useState("");
-  const [showCommentOnCommentForm, setShowCommentOnCommentForm] =
-    useState(false);
+  const [showCommentOnCommentForm, setShowCommentOnCommentForm] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const commentsOnComment = useMemo(() => {
+    return Object.values(getCommentsOnComment).filter(
+      (comm) => comm?.parentId === comment.id
+    )
+  }, [getCommentsOnComment, comment]);
 
   useEffect(() => {
     dispatch(getAllCommentOnComment(comment.id));
@@ -122,11 +123,11 @@ const Comments = ({ comment, postId }) => {
             <>
               {showCommentEditForm && (
                 <EditComment
+                  commentId={comment.id}
+                  id={postId}
                   setShowCommentEditForm={setShowCommentEditForm}
                   commentToEdit={commentToEdit}
                   setCommentToEdit={setCommentToEdit}
-                  commentId={comment.id}
-                  id={postId}
                 />
               )}
             </>

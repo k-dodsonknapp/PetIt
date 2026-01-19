@@ -1,7 +1,7 @@
 import { getCookie, csrfFetch } from "./utils";
 
 const GET_ALL_POSTS = "/posts/";
-
+const UPDATE_ONE_POST = "/posts/:id"
 const ADD_POST = "/posts/new";
 const UPDATE_POST = "/posts/edit";
 const DELETE_POST = "/posts/delete";
@@ -26,14 +26,28 @@ const deletePost = (post) => ({
   post,
 });
 
+const updateOnePost = (post) => ({
+  type: UPDATE_ONE_POST,
+  post,
+})
+
 export const getAllPosts = () => async (dispatch) => {
   const res = await fetch("/api/posts/main", { credentials: "include" });
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(getPosts(data));
-    return data;
-  }
+  const data = await res.json();
+  const posts = data.posts;
+  const ordered = [...posts].sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  dispatch(getPosts(ordered));
+  return data;
 };
+
+export const getOnePost = (postId) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${postId}`, { credentials: "include" });
+  const data = await res.json();
+  dispatch(updateOnePost(data.post));
+  return data;
+}
 
 export const addAPost = (data) => async (dispatch) => {
   const csrf = getCookie("csrf_token");
@@ -65,11 +79,8 @@ export const updateAPost = (data) => async (dispatch) => {
     body: JSON.stringify(data),
   });
 
-  if (res.ok) {
-    const post = await res.json();
-    dispatch(updatePost(post));
-    return post;
-  }
+  dispatch(updatePost(res));
+  return res;
 };
 
 export const deleteAPost = (data) => async (dispatch) => {
@@ -84,16 +95,11 @@ export const deleteAPost = (data) => async (dispatch) => {
     body: JSON.stringify(data),
   });
 
-  if (res.ok) {
-    const id = await res.json();
-    dispatch(deletePost(id));
-    return "Post successfully delete";
-  }
+  dispatch(deletePost(res));
+  return "Post successfully delete";
 };
 
-const initialState = {
-  list: [],
-};
+const initialState = { list: [] };
 
 export default function postReducer(state = initialState, action) {
   let newState;
@@ -101,9 +107,15 @@ export default function postReducer(state = initialState, action) {
     case GET_ALL_POSTS:
       return {
         ...state,
-        list: [...action.posts.posts],
+        list: [...action.posts],
       };
-
+    case UPDATE_ONE_POST: {
+      const updated = action.post;
+      return {
+        ...state,
+        list: state.list.map((p) => (p.id === updated.id ? updated : p)),
+      };
+    }
     case UPDATE_POST:
       newState = {};
       let newwArr = [...state.list];

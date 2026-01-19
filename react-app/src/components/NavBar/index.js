@@ -294,7 +294,7 @@ const NavBar = () => {
                 <li id="new-post-link">
                   <NavLink
                     to="/login"
-                    className="idk"
+                    className="right-nav-link"
                     activeclassname="active"
                   >
                     Login
@@ -305,7 +305,7 @@ const NavBar = () => {
                 <li id="new-post-link">
                   <NavLink
                     to="/posts/new"
-                    className="idk"
+                    className="right-nav-link"
                     activeclassname="active"
                   >
                     New Post <AiOutlinePlus id="new-post-icon" />
@@ -315,7 +315,7 @@ const NavBar = () => {
               {session && (
                 <li id="new-post-link">
                   <NavLink
-                    className="idk"
+                    className="right-nav-link"
                     to="/sign-up"
                     onClick={onLogout}
                     activeclassname="active"

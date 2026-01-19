@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
@@ -16,26 +16,28 @@ import serveImageError from "../Errors/imageNotFound";
 
 const OnePost = () => {
   const dispatch = useDispatch();
-  const postId = useParams().postId;
-  const posts = useSelector((state) =>
-    state?.post?.list?.filter((post) => post?.id === postId)
-  );
+  const { postId } = useParams();
+  const postIdNum = Number(postId);
   const user = useSelector((state) => state?.session?.user);
-  const comments = useSelector((state) =>
-    Object.values(state?.comments).filter(
-      (comment) => comment.parentId === null && comment.postId === postId
-    )
-  );
-  const postComments = useSelector((state) =>
-    Object.values(state?.comments).filter(
-      (comment) => comment?.postId === postId
-    )
-  );
+  const getPosts = useSelector((state) => state.post.list);
+  const getComments = useSelector((state) => state.comments);
 
-  //TODO: take care of the commented out code
-  // const [showCommentForm, setShowCommentForm] = useState(false);
-  // const [newComment, setNewComment] = useState('');
-  // const [commentToEdit, setCommentToEdit] = useState('');
+  const posts = useMemo(() => {
+    return getPosts.filter((post) => post.id === postIdNum);
+  }, [getPosts, postIdNum]);
+
+  const comments = useMemo(() => {
+    return Object.values(getComments).filter(
+      (comment) => comment.parentId === null && comment.postId === postIdNum
+    )
+  }, [getComments, postIdNum]);
+
+  const postComments = useMemo(() => {
+    return Object.values(getComments).filter(
+      (comment) => comment.postId === postIdNum
+    )
+  }, [getComments, postIdNum]);
+
   const [showBtns, setShowBts] = useState(true);
   // const [errors, setErrors] = useState([]);
   // const [errorsEdit, setErrorsEdit] = useState([]);
@@ -58,20 +60,13 @@ const OnePost = () => {
   // }, [commentToEdit]);
 
   useEffect(() => {
+    //TODO: Fix name to getAllCommentsOnPost
     dispatch(getAllComments(postId));
   }, [dispatch, postId]);
 
   useEffect(() => {
     dispatch(getAllPosts());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (!comments) {
-      window.scrollTo(0, 0);
-    } else {
-      window.scrollTo(0, 540);
-    }
-  }, [comments]);
 
   const backToTop = (e) => {
     e.preventDefault();

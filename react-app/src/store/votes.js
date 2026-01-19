@@ -1,3 +1,4 @@
+import { getOnePost } from "./posts";
 import { csrfFetch, getCookie } from "./utils";
 
 const GET_POST_VOTES = "/votes/post/:id";
@@ -37,6 +38,8 @@ export const addPostVote = (data) => async (dispatch) => {
     });
 
     dispatch(addVotesForPosts(response));
+
+    await dispatch(getOnePost(response.post_id))
     return response;
   }
   catch (err) {
@@ -64,10 +67,12 @@ export const deleteVotes = (id) => async (dispatch) => {
       },
       body: JSON.stringify(id),
     });
+
     dispatch(deleteVote(response));
+    await dispatch(getOnePost(id.post_id));
     return response;
   } catch (err) {
-    return err
+    return err;
   }
 };
 
@@ -80,6 +85,7 @@ export default function votesReducer(state = [], action) {
         ...state,
         post_votes: [action.votes],
       };
+
     case ADD_POST_VOTES:
       return {
         ...state,

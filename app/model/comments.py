@@ -10,10 +10,8 @@ class Comment(db.Model):
     postId = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
     comment = db.Column(db.Text, nullable=False)
     parentId = db.Column(db.Integer)
-    created_at = db.Column(db.DateTime(timezone=True),
-                           server_default=func.now())
-    updated_at = db.Column(db.DateTime(timezone=True),
-                           server_default=func.now())
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     username = db.Column(db.Text)
 
     user = db.relationship('User', back_populates='comment')

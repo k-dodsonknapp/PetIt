@@ -1,4 +1,4 @@
-import { getCookie } from "./utils";
+import { csrfFetch, getCookie } from "./utils";
 
 const GET_COMMENTS_FOR_POST = "/comments/:id";
 const ADD_COMMENT = "/comments/new";
@@ -16,7 +16,6 @@ export const getAllCommentOnComment = (id) => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     dispatch(getCommentOnComment);
-
     return data;
   }
 };
@@ -42,7 +41,7 @@ const addComment = (comment) => ({
 
 export const addNewComment = (data) => async (dispatch) => {
   const csrf = getCookie("csrf_token");
-  const res = await fetch("/api/comments/new", {
+  const res = await csrfFetch("/api/comments/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,11 +49,9 @@ export const addNewComment = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data),
   });
-  if (res.ok) {
-    const comment = await res.json();
-    dispatch(addComment(comment));
-    return comment;
-  }
+
+    dispatch(addComment(res));
+    return res;
 };
 
 const deleteComment = (comment) => ({

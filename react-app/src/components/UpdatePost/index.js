@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllPosts, updateAPost } from "../../store/posts";
@@ -9,11 +9,14 @@ import serveImageError from "../Errors/imageNotFound";
 const UpdatePost = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const postId = useParams();
+  const { postId } = useParams();
+  const postIdNum = Number(postId);
   const userId = useSelector((state) => state?.session?.user);
-  const post = useSelector(
-    (state) => state?.post.list.filter((post) => post.id === +postId.postId)[0]
-  );
+  const posts = useSelector((state) => state.post.list);
+
+  const post = useMemo(() => {
+    return Object.values(posts).filter((post) => post.id === postIdNum)[0]
+  }, [posts, postIdNum]);
 
   const [title, setTitle] = useState(post?.title);
   const [body, setBody] = useState(post?.body);
@@ -65,7 +68,7 @@ const UpdatePost = () => {
       setDisplayErrors(true);
     } else {
       const newPost = {
-        id: postId.postId,
+        id: postId,
         userId: userId.id,
         title: title,
         body: body,
@@ -130,7 +133,7 @@ const UpdatePost = () => {
                 <input
                   type="text"
                   name="title"
-                  value={title}
+                  value={title ?? ""}
                   onChange={(e) => setTitle(e?.target?.value)}
                   placeholder={"Title"}
                 />

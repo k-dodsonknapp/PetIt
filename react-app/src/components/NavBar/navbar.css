@@ -169,7 +169,6 @@ html {
 
 .right-side a {
   display: flex;
-  margin: 0px 0px 0px 10px;
   text-decoration: none;
   list-style-type: none;
   color: #929596;
@@ -234,8 +233,14 @@ html {
   box-shadow: 0 5px 5px rgb(0 0 0 / 20%);
 }
 
-.idk {
+.right-nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-right: 10px;
+  width: inherit;
+  height: inherit;
+  margin: 0px;
   color: #929596;
 }
 
@@ -489,7 +494,6 @@ html {
   .right-side a {
     display: flex;
     width: auto;
-    margin: 0px 0px 0px 10px;
     text-decoration: none;
     list-style-type: none;
     color: #929596;
