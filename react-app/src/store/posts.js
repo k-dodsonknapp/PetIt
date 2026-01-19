@@ -39,7 +39,7 @@ export const getAllPosts = () => async (dispatch) => {
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
   dispatch(getPosts(ordered));
-  return data;
+  return ordered;
 };
 
 export const getOnePost = (postId) => async (dispatch) => {

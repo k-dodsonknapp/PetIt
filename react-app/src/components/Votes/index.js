@@ -42,18 +42,18 @@ const Votes = ({ post }) => {
   return (
     <>
       <div className="vote-div">
-        <button type="button" id="upvote-btn" onClick={upvote(post.id)}>
+        <button type="button" id="upvote-btn" onClick={upvote(post?.id)}>
           <BiUpvote id="upvote" />
         </button>
         <div className="votesss">
-          {post.votes}
+          {post?.votes}
         </div>
-        <button id="downvote-btn" onClick={downvote(post.id)}>
+        <button id="downvote-btn" onClick={downvote(post?.id)}>
           <BiDownvote id="downvote" />
         </button>
         <div className="mobile-votes">
           <span className="votes-label">Votes</span>{" "}
-          {post.votes}
+          {post?.votes}
         </div>
       </div>
       {showLoginModal && (

@@ -22,8 +22,14 @@ const OnePost = () => {
   const getPosts = useSelector((state) => state.post.list);
   const getComments = useSelector((state) => state.comments);
 
-  const posts = useMemo(() => {
-    return getPosts.filter((post) => post.id === postIdNum);
+  const post = useMemo(() => {
+    const singlePost = getPosts.filter((post) => post.id === postIdNum);
+    if (singlePost.length) {
+      return singlePost[0];
+    } else {
+      // TODO: handle this better - should not fail but if it does what do?
+      return []
+    }
   }, [getPosts, postIdNum]);
 
   const comments = useMemo(() => {
@@ -65,7 +71,7 @@ const OnePost = () => {
   }, [dispatch, postId]);
 
   useEffect(() => {
-    dispatch(getAllPosts());
+    dispatch(getAllPosts())
   }, [dispatch]);
 
   const backToTop = (e) => {
@@ -74,7 +80,7 @@ const OnePost = () => {
   };
 
   setTimeout(() => {
-    if (!posts) {
+    if (!post) {
       return <PageNotFound />;
     }
   }, 2000);
@@ -86,20 +92,20 @@ const OnePost = () => {
           <div className="posts">
             <div className="idk">
               <div className="left-postt">
-                <Votes postId={postId} />
+                <Votes post={post} />
               </div>
               <div className="one-post-main-content">
                 <div className="one-post-username">
-                  <p>Posted by u/{posts[0]?.username}</p>
+                  <p>Posted by u/{post?.username}</p>
                 </div>
-                <div className="post-title">{posts[0]?.title}</div>
+                <div className="post-title">{post?.title}</div>
                 <div className="post-body">
-                  <p className="post-body-text">{posts[0]?.body}</p>
+                  <p className="post-body-text">{post?.body}</p>
                 </div>
                 <div className="one-post-image">
                   <img
                     className="img-tag"
-                    src={`${posts[0]?.image}`}
+                    src={`${post?.image}`}
                     alt=""
                     onError={(e) => {
                       e.currentTarget.src = serveImageError();
