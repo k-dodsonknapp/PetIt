@@ -1,5 +1,6 @@
 from app.model import Vote
 from app.extensions import db
+from sqlalchemy import text
 
 
 def seed_votes():
@@ -114,5 +115,5 @@ def seed_votes():
 
 
 def undo_seed_votes():
-    db.session.execute('TRUNCATE votes RESTART IDENTITY CASCADE;')
+    db.session.execute(text('TRUNCATE votes RESTART IDENTITY CASCADE;'))
     db.session.commit()

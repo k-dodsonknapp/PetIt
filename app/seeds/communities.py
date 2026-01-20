@@ -1,5 +1,6 @@
 from app.model import Communities
 from app.extensions import db
+from sqlalchemy import text
 
 
 def seed_communities():
@@ -45,5 +46,5 @@ def seed_communities():
 
 
 def undo_communities():
-    db.session.execute('TRUNCATE communities RESTART IDENTITY CASCADE;')
+    db.session.execute(text('TRUNCATE communities RESTART IDENTITY CASCADE;'))
     db.session.commit()

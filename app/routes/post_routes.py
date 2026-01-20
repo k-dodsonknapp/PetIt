@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from app.model import Post, Comment
 from app.extensions import db
 from app.utils.csrf import require_csrf
+from sqlalchemy import func
 
 
 post_bp = Blueprint("posts", __name__)
@@ -12,10 +13,21 @@ def get_all_posts():
     """
     This route will return all of the posts in the database.
     """
-    posts = Post.query.all()
+    posts_with_counts = (
+        db.session.query(Post, func.count(Comment.id).label("comment_count"))
+        .outerjoin(Comment, Comment.postId == Post.id)
+        .group_by(Post.id)
+        .order_by(Post.created_at.desc())
+        .all()
+    )
 
-    return {"posts": [post.to_dict() for post in posts]}
+    result = []
+    for post, comment_count in posts_with_counts:
+        d = post.to_dict()
+        d["commentCount"] = comment_count
+        result.append(d)
 
+    return {"posts": result}
 
 @post_bp.route("/<int:id>")
 def get_one_post(id):

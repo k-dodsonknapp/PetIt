@@ -2,6 +2,8 @@ from app.model import User
 from app.extensions import db
 from app.seeds.seed_decorator import check_data_in_session
 from uuid import uuid4 as uuid4
+from sqlalchemy import text
+
 
 # Adds a demo user, you can add other users here if you want
 # @check_data_in_session
@@ -32,5 +34,5 @@ def seed_users():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_users():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute(text('TRUNCATE users RESTART IDENTITY CASCADE;'))
     db.session.commit()

@@ -1,6 +1,7 @@
 from app.model import Post
 from datetime import datetime, timedelta
 from app.extensions import db
+from sqlalchemy import text
 
 
 def seed_posts():
@@ -221,5 +222,5 @@ def seed_posts():
 
 
 def undo_posts():
-    db.session.execute("TRUNCATE posts RESTART IDENTITY CASCADE;")
+    db.session.execute(text("TRUNCATE posts RESTART IDENTITY CASCADE;"))
     db.session.commit()
