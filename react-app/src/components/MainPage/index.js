@@ -6,7 +6,7 @@ import { deleteAPost, getAllPosts } from "../../store/posts";
 // import { getPostVotes } from "../../store/votes";
 // import { BiMessage } from "react-icons/bi";
 import "./post.css";
-// import NumOfComments from "../NumOfComments";
+import NumOfComments from "../NumOfComments";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import Communities from "../Communities";
@@ -81,8 +81,7 @@ const MainPage = () => {
                   />
                 </a>
                 <div className="right-bottom-post">
-                  {/* TODO: FIX how the database is returning to many calls just for a number */}
-                  {/* <NumOfComments comments={comments} postId={post?.id} /> */}
+                  <NumOfComments post={post} />
                   {post?.userId === user?.user?.id && (
                     <>
                       <div className="edit-btn">

@@ -27,9 +27,6 @@ const Comments = ({ comment, postId }) => {
     )
   }, [getCommentsOnComment, comment]);
 
-  useEffect(() => {
-    dispatch(getAllCommentOnComment(comment.id));
-  }, [comment.id, dispatch]);
 
   const handleEditComment = (body, commId) => async (e) => {
     e.preventDefault();

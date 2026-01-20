@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addNewComment,
-  getAllCommentOnComment,
   getAllComments,
 } from "../../store/comments";
 import "./commentOnComment.css";
@@ -17,10 +16,6 @@ const CommentOnComment = ({
   const user = useSelector((state) => state?.session?.user);
   const [showBtns, setShowBts] = useState(true);
   const [newCommentOnComment, setNewCommentOnComment] = useState("");
-
-  useEffect(() => {
-    dispatch(getAllCommentOnComment(comment.id));
-  }, [comment.id, dispatch]);
 
   const handleCancel = (e) => {
     e.preventDefault();
