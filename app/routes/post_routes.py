@@ -29,10 +29,14 @@ def get_all_posts():
 
     return {"posts": result}
 
+
 @post_bp.route("/<int:id>")
 def get_one_post(id):
     post = Post.query.get_or_404(id)
-    return {"post": post.to_dict()}
+    comments = Comment.query.filter(Comment.postId == id).all()
+    post_dict = post.to_dict()
+    post_dict["commentCount"] = len(comments)
+    return {"post": post_dict}
 
 
 @post_bp.route("/new", methods=["POST"])
