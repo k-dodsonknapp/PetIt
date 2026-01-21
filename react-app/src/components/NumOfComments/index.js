@@ -1,13 +1,9 @@
-import { useEffect } from 'react'
 import { GoCommentDiscussion } from "react-icons/go";
-
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getAllComments } from '../../store/comments';
 import './numOfComments.css';
 
 function NumOfComments({ post }) {
-
+    const navigate = useNavigate();
 
     const redirectToPost = (e) => {
         e.preventDefault();

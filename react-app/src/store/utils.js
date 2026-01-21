@@ -14,7 +14,11 @@ let refreshPromise = null;
 async function refreshCsrfToken() {
     if (!refreshPromise) {
         refreshPromise = (async () => {
-            const res = await fetch("http://localhost:5000/api/auth/r", {
+            const res = await fetch(
+                `${process.env.REACT_APP_ENV === "local" ?
+                    process.env.REACT_APP_LOCALHOST_URL :
+                    "https://petit.thedodsonknapp.com"
+                }/api/auth/r`, {
                 method: "GET",
                 credentials: "include",
             });

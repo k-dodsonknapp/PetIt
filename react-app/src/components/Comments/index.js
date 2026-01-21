@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAllCommentOnComment,
   getAllComments,
   updateComment,
 } from "../../store/comments";
