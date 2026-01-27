@@ -76,16 +76,12 @@ const UpdatePost = () => {
         updated_at: new Date(),
       };
 
-      dispatch(getAllPosts());
       dispatch(updateAPost(newPost));
     }
 
     navigate("/");
   };
 
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
 
   const handleImgTab = (e) => {
     e.preventDefault();

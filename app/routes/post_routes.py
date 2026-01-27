@@ -70,6 +70,7 @@ def create_post():
     body = data["body"]
     image = data["image"]
     username = data["username"]
+    community_id = data["community_id"]
 
     """
         This route passes in userId, title, body, image for posts
@@ -81,6 +82,8 @@ def create_post():
         body=body,
         image=image,
         username=username,
+        community_id=community_id,
+        votes=0, # TODO: fix hardcoded value
     )
     db.session.add(new_post)
     db.session.commit()

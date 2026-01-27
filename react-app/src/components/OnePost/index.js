@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllComments } from "../../store/comments";
-import { getAllPosts } from "../../store/posts";
 import Comments from "../Comments";
 import PageNotFound from "../PageNotFound";
 import { GoCommentDiscussion } from "react-icons/go";
@@ -70,9 +69,6 @@ const OnePost = () => {
     dispatch(getAllComments(postId));
   }, [dispatch, postId]);
 
-  useEffect(() => {
-    dispatch(getAllPosts())
-  }, [dispatch]);
 
   const backToTop = (e) => {
     e.preventDefault();

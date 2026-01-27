@@ -36,7 +36,7 @@ export const getAllPosts = () => async (dispatch) => {
   const data = await res.json();
   const posts = data.posts;
   const ordered = [...posts].sort(
-    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    (a, b) => new Date(a.created_at) - new Date(b.created_at)
   );
   dispatch(getPosts(ordered));
   return ordered;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addAPost, getAllPosts } from "../../store/posts";
+import { addAPost } from "../../store/posts";
 import UploadPicture from "../UploadPicture";
 import serveImageError from "../Errors/imageNotFound";
 import "./createPost.css";
@@ -19,9 +19,6 @@ const CreatePost = () => {
   const [errors, setErrors] = useState([]);
   const [imgErrors, setImgErrors] = useState([]);
 
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
 
   useEffect(() => {
     const images = [
@@ -67,9 +64,9 @@ const CreatePost = () => {
       image: image,
       updated_at: new Date(),
       username: user.username,
+      community_id: 1
     };
     await dispatch(addAPost(newPost));
-    await dispatch(getAllPosts());
     navigate("/");
   };
 

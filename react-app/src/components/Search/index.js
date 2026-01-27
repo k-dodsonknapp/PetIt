@@ -1,14 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts } from "../../store/posts";
 
 function Search({ search, setSearch, searchResult, setSearchResult }) {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state?.post?.list);
-
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
 
   useEffect(() => {
     if (search.length === 0) {
