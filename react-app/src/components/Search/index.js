@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function Search({ search, setSearch, searchResult, setSearchResult }) {
-  const dispatch = useDispatch();
   const posts = useSelector((state) => state?.post?.list);
 
   useEffect(() => {

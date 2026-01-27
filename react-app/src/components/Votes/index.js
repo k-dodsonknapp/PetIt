@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPostVote, deleteVotes } from "../../store/votes";
-import { BiUpvote, BiDownvote } from "react-icons/bi";
+import { BiUpvote, BiDownvote, BiSolidUpvote, BiSolidDownvote } from "react-icons/bi";
 import LoginAlert from "../LoginAlert";
 import "./index.css"
 
@@ -48,17 +48,44 @@ const Votes = ({ post, comment = { comment_id: null } }) => {
     }
   };
 
+  const prevVoteRef = useRef(userVote);
+
+  useEffect(() => {
+    prevVoteRef.current = userVote;
+  }, [userVote]);
+
+  const prevVote = prevVoteRef.current;
+  const isCastingUpvote = prevVote !== true && userVote === true;
+  const isCastingDownvote = prevVote !== false && userVote === false;
+
+  const isUpvoted = userVote === true;
+  const isDownvoted = userVote === false;
+
   return (
     <>
       <div className="vote-div">
         <button type="button" id="upvote-btn" onClick={upvote(post?.id)}>
-          <BiUpvote id="upvote" style={user && userVote ? { color: "blue" } : { color: "#929596" }} />
+          <span className="voteIcon">
+            <BiUpvote id="upvote" />
+            {isUpvoted && (
+              <div className={`fill-wrapper ${isCastingUpvote ? "active" : "static"}`}>
+                <BiSolidUpvote className="fill" />
+              </div>
+            )}
+          </span>
         </button>
         <div className="votesss">
           {post?.votes}
         </div>
         <button id="downvote-btn" onClick={downvote(post?.id)}>
-          <BiDownvote id="downvote" style={user && userVote === false ? { color: "red" } : null} />
+          <span className="downVoteIcon">
+            <BiDownvote id="downvote" />
+            {isDownvoted && (
+              <div className={`down-fill-wrapper ${isCastingDownvote ? "active" : "static"}`}>
+                <BiSolidDownvote className="down-fill" />
+              </div>
+            )}
+          </span>
         </button>
         <div className="mobile-votes">
           <span className="votes-label">Votes</span>{" "}

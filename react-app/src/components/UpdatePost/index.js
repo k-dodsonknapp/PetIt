@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllPosts, updateAPost } from "../../store/posts";
+import { updateAPost } from "../../store/posts";
 import UploadPicture from "../UploadPicture";
 import "./create-edit.css";
 import serveImageError from "../Errors/imageNotFound";

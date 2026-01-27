@@ -15,12 +15,60 @@
     border: transparent;
 }
 
-#upvote {
+.voteIcon {
+    position: relative;
     width: 44px;
+    height: 25px;
+    display: inline-block;
+}
+
+.voteIcon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.fill-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.fill-wrapper.static {
+    color: #22C55E;
+    height: 100%;
+}
+
+.fill-wrapper.active {
+    color: #22C55E;
+    height: 0%;
+    animation: fillUp 0.25s ease-out forwards;
+}
+
+.fill {
+    color: #3B82F6;
+}
+
+@keyframes fillUp {
+    from {
+        height: 0%;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+
+#upvote {
+    width: 37px;
     height: 25px;
 }
 
 #upvote-btn {
+    position: relative;
     height: 39px;
 }
 
@@ -35,9 +83,55 @@
     margin-top: 0px;
 }
 
-#downvote {
-    margin: 0px;
+.downVoteIcon {
+    position: relative;
     width: 44px;
+    height: 25px;
+    display: inline-block;
+}
+
+.downVoteIcon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.down-fill-wrapper {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.down-fill-wrapper.static {
+    height: 100%;
+}
+
+.down-fill-wrapper.active {
+    height: 0%;
+    animation: fillDown 0.25s ease-out forwards;
+}
+
+.down-fill {
+  position: absolute;
+  inset: 0;
+  color: #EF4444;
+}
+
+@keyframes fillDown {
+    from {
+        height: 0%;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+#downvote {
+    width: 37px;
     height: 25px;
 }
 
@@ -52,7 +146,6 @@
 
 #upvote-btn:hover {
     background-color: rgb(228, 228, 228);
-    /* border: 1px solid rgb(228, 228, 228); */
 }
 
 #upvote-btn:hover {
@@ -62,7 +155,6 @@
 
 #downvote-btn:hover {
     background-color: rgb(228, 228, 228);
-    /* border: 1px solid rgb(228, 228, 228); */
 }
 
 @media screen and (max-width: 850px) {
@@ -81,7 +173,6 @@
         flex-direction: center;
         align-items: center;
         width: 50px;
-        /* flex-direction: row; */
     }
 
     #upvote {
