@@ -1,5 +1,6 @@
 from flask import Blueprint, request
-from app.model import Post, Comment
+from flask_login import current_user
+from app.model import Post, Comment, Vote
 from app.extensions import db
 from app.utils.csrf import require_csrf
 from sqlalchemy import func
@@ -10,23 +11,43 @@ post_bp = Blueprint("posts", __name__)
 
 @post_bp.route("/main")
 def get_all_posts():
-    """
-    This route will return all of the posts in the database.
-    """
-    posts_with_counts = (
-        db.session.query(Post, func.count(Comment.id).label("comment_count"))
-        .outerjoin(Comment, Comment.postId == Post.id)
-        .group_by(Post.id)
-        .order_by(Post.created_at.desc())
-        .all()
+    user_id = current_user.id if current_user.is_authenticated else None
+
+    comment_count_sq = (
+        db.session.query(
+            Comment.postId.label("post_id"),
+            func.count(Comment.id).label("comment_count"),
+        )
+        .group_by(Comment.postId)
+        .subquery()
     )
 
+    post_query = (
+        db.session.query(
+            Post,
+            func.coalesce(comment_count_sq.c.comment_count, 0).label("comment_count"),
+        )
+        .outerjoin(comment_count_sq, comment_count_sq.c.post_id == Post.id)
+        .order_by(Post.created_at.desc())
+    )
+
+    if user_id:
+        post_query = post_query.add_column(Vote).outerjoin(
+            Vote, (Vote.post_id == Post.id) & (Vote.user_id == user_id)
+        )
+
+    post_query = post_query.all()
+
     result = []
-    for post, comment_count in posts_with_counts:
+    for row in post_query:
+        post = row[0]
+        comment_count = row[1]
+        vote = row[2] if user_id else None
         d = post.to_dict()
         d["commentCount"] = comment_count
+        if vote is not None:
+            d["session_user_vote"] = vote.to_dict()
         result.append(d)
-
     return {"posts": result}
 
 
@@ -72,25 +93,12 @@ def create_post():
 def edit_post(id):
     data = request.json
 
-    """
-    data = {
-        "id": <int>, 
-        "userId": <int>,
-        "title": "A post title",
-        "body": "A post body",
-        "image": "An image is required",
-        "username": "username",
-        "votes": "num of votes",
-    }
-    """
-
-    post = Post.query.get(id)  # need the id from one post
+    post = Post.query.get(id)
 
     post.title = data["title"]
     post.body = data["body"]
     post.image = data["image"]
     post.updated_at = data["updated_at"]
-    post.votes = data["votes"]
     db.session.commit()
 
     return post.to_dict()

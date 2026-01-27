@@ -6,9 +6,7 @@ from sqlalchemy import text
 
 def seed_posts():
 
-    posts = []
-
-    posts.append(
+    posts = [
         Post(
             userId=2,
             title="I love my crocodile he is the best",
@@ -17,10 +15,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="marnie",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=3,
             title="I bought three dogs and they are driving me crazy",
@@ -29,10 +25,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="bobbie",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=4,
             title="I have this hamster name captian",
@@ -41,10 +35,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="daphne",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=5,
             title="Is this a lovable creature?",
@@ -53,10 +45,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="moose",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=6,
             title="I am not sure how to take care of puppies",
@@ -65,10 +55,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="barry",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=1,
             title="I am getting tired of thinking",
@@ -77,10 +65,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="Demo",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=2,
             title="I really need to make sure that I sleep better and longer",
@@ -89,10 +75,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="marnie",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=3,
             title="Just one more post after this",
@@ -101,10 +85,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="bobbie",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=4,
             title="A title",
@@ -113,10 +95,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="daphne",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=5,
             title="The Second Post",
@@ -125,10 +105,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="moose",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=6,
             title="Matt really is a legend",
@@ -137,10 +115,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="barry",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=1,
             title="Matt wins another great game",
@@ -149,10 +125,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="Demo",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=2,
             title="JetBrains Academy offering Flask Developer Study plan",
@@ -161,10 +135,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="marnie",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=1,
             title="This is my fur-baby",
@@ -173,10 +145,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="Demo",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=3,
             title="Making a Robinhood Clone using Flask",
@@ -185,10 +155,8 @@ def seed_posts():
             updated_at=datetime.today(),
             username="bobbie",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=4,
             title="Making great seeders is important to test your routes!",
@@ -197,19 +165,18 @@ def seed_posts():
             updated_at=datetime.today(),
             username="daphne",
             votes=0,
-        )
-    )
-
-    posts.append(
+            community_id=1,
+        ),
         Post(
             userId=5,
             title="Wait, will it pass now?",
             body="After a long week full of upsets. Our hero kenneth finds himself in yet another challenge.",
-            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdHVgaOVwABex-HctF9VSH-wQcyK8-acy5aA&usqp=CAU.png",
+            image="https://ids.si.edu/ids/deliveryService?id=NZP-20071211-117MM&max_w=550",
             username="moose",
             votes=0,
-        )
-    )
+            community_id=1,
+        ),
+    ]
 
     for index, post in enumerate(posts):
         now = datetime.today()

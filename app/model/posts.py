@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from user import User
     from comments import Comment
-    from post_votes import Vote
+    from app.model.votes import Vote
     from communities import Communities
 
 
@@ -30,7 +30,9 @@ class Post(db.Model):
         server_default=func.now(),
     )
     username: Mapped[str]
-    community_id: Mapped[int] = mapped_column(ForeignKey("communities.id"))
+    community_id: Mapped[int] = mapped_column(
+        ForeignKey("communities.id"), nullable=True
+    )
     votes: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
 
     user: Mapped["User"] = relationship("User", back_populates="post")

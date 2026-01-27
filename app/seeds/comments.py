@@ -6,9 +6,7 @@ from sqlalchemy import text
 
 def seed_comments():
 
-    comments = []
-
-    comments.append(
+    comments = [
         Comment(
             userId=2,
             postId=3,
@@ -16,10 +14,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="marnie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=1,
             postId=2,
@@ -27,10 +22,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="Demo",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=6,
             postId=1,
@@ -38,10 +30,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="barry",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=5,
             postId=17,
@@ -49,10 +38,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="moose",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=4,
             postId=16,
@@ -60,10 +46,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="daphne",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=3,
             postId=15,
@@ -71,10 +54,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="bobbie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=2,
             postId=14,
@@ -82,10 +62,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="marnie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=1,
             postId=13,
@@ -93,10 +70,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="Demo",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=6,
             postId=12,
@@ -104,10 +78,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="barry",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=5,
             postId=11,
@@ -115,10 +86,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="mosse",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=4,
             postId=10,
@@ -126,10 +94,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="daphne",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=3,
             postId=9,
@@ -137,10 +102,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="bobbie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=2,
             postId=8,
@@ -148,10 +110,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="marnie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=1,
             postId=7,
@@ -159,10 +118,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="Demo",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=6,
             postId=6,
@@ -170,10 +126,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="barry",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=5,
             postId=5,
@@ -181,10 +134,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="moose",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=4,
             postId=4,
@@ -192,10 +142,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="daphne",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=3,
             postId=3,
@@ -203,10 +150,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="bobbie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=2,
             postId=2,
@@ -214,10 +158,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="marnie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=1,
             postId=2,
@@ -225,10 +166,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="Demo",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=1,
             postId=3,
@@ -236,10 +174,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="Demo",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=2,
             postId=3,
@@ -247,10 +182,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="marnie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=3,
             postId=1,
@@ -258,10 +190,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="bobbie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=4,
             postId=17,
@@ -269,10 +198,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="daphne",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=5,
             postId=16,
@@ -280,10 +206,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="moose",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=6,
             postId=15,
@@ -291,10 +214,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="barry",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=1,
             postId=14,
@@ -302,10 +222,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="Demo",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=2,
             postId=13,
@@ -313,10 +230,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="marnie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=3,
             postId=12,
@@ -324,10 +238,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="bobbie",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=4,
             postId=11,
@@ -335,10 +246,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="daphne",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=5,
             postId=10,
@@ -346,10 +254,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="moose",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=6,
             postId=9,
@@ -357,10 +262,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="barry",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=1,
             postId=8,
@@ -368,10 +270,7 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="Demo",
-        )
-    )
-
-    comments.append(
+        ),
         Comment(
             userId=2,
             postId=7,
@@ -379,8 +278,8 @@ def seed_comments():
             created_at=datetime.today(),
             updated_at=datetime.today(),
             username="marnie",
-        )
-    )
+        ),
+    ]
 
     for comment in comments:
         db.session.add(comment)
