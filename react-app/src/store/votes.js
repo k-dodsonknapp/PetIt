@@ -1,30 +1,34 @@
-import { getOnePost } from "./posts";
+// import { getOnePost } from "./posts";
 import { csrfFetch, getCookie } from "./utils";
+import { updateOnePost } from "./posts";
 
-const GET_POST_VOTES = "/votes/post/:id";
+// const GET_POST_VOTES = "votes/GET_POST_VOTES";
+const ADD_VOTE  = "votes/ADD_VOTE";
+const DELETE_VOTE    = "votes/DELETE_VOTE";
 
-const getVotesForPosts = (votes) => ({
-  type: GET_POST_VOTES,
-  votes,
-});
-
-export const getPostVotes = () => async (dispatch) => {
-  const res = await fetch(`/api/votes/`, { credentials: "include" });
-  const data = await res.json();
-  if (res.ok) {
-    dispatch(getVotesForPosts(data));
-    return data;
-  }
-};
-
-const ADD_POST_VOTES = "/votes/post/:id";
+// const getPostVotes = (votes) => ({
+//   type: GET_POST_VOTES,
+//   votes,
+// });
 
 const addVotesForPosts = (vote) => ({
-  type: ADD_POST_VOTES,
+  type: ADD_VOTE,
   vote,
 });
 
+const deleteVote = (vote) => ({
+  type: DELETE_VOTE,
+  vote,
+});
+
+// export const getPostVotesThunk = () => async (dispatch) => {
+//   const res = await fetch("/api/votes", { credentials: "include" });
+//   const data = await res.json();              // <-- important
+//   dispatch(getPostVotes(data.votes));         // <-- pass the ARRAY
+// };
+
 export const addPostVote = (data) => async (dispatch) => {
+
   const csrf = getCookie("csrf_token");
   try {
     const response = await csrfFetch("/api/votes/add", {
@@ -37,9 +41,9 @@ export const addPostVote = (data) => async (dispatch) => {
       body: JSON.stringify(data),
     });
 
-    dispatch(addVotesForPosts(response));
+    dispatch(addVotesForPosts(response.vote));
+    dispatch(updateOnePost(response.post))
 
-    await dispatch(getOnePost(response.post_id))
     return response;
   }
   catch (err) {
@@ -47,16 +51,9 @@ export const addPostVote = (data) => async (dispatch) => {
   }
 };
 
-// Delete a vote
-const DELETE_VOTE = "/votes/delete";
 
-const deleteVote = (vote) => ({
-  type: DELETE_VOTE,
-  vote,
-});
-
-export const deleteVotes = (id) => async (dispatch) => {
-  const csrf = getCookie();
+export const deleteVotes = (payload) => async (dispatch) => {
+  const csrf = getCookie("csrf_token");
   try {
     const response = await csrfFetch(`/api/votes/delete`, {
       credentials: "include",
@@ -65,31 +62,32 @@ export const deleteVotes = (id) => async (dispatch) => {
         "Content-Type": "application/json",
         "X-CSRFToken": csrf,
       },
-      body: JSON.stringify(id),
+      body: JSON.stringify(payload),
     });
-
-    dispatch(deleteVote(response));
-    await dispatch(getOnePost(id.post_id));
+    dispatch(deleteVote(response.vote));
+    dispatch(updateOnePost(response.post));
     return response;
   } catch (err) {
     return err;
   }
 };
 
-export default function votesReducer(state = [], action) {
+export default function votesReducer(state = {}, action) {
   let newState;
 
+  // TODO: update the add vote and remove GET_POST_VOTES
   switch (action.type) {
-    case GET_POST_VOTES:
-      return {
-        ...state,
-        post_votes: [action.votes],
-      };
+    // case GET_POST_VOTES:
+    //   return {
+    //     ...state,
+    //     post_votes: [action.votes],
+    //   };
 
-    case ADD_POST_VOTES:
+    case ADD_VOTE:
+      const previousVotes = state.votes ? state.votes  : [];
       return {
         ...state,
-        post_votes: [action.vote],
+        votes: [ ...previousVotes, action.vote ],
       };
 
     case DELETE_VOTE:

@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { getAllComments } from "../../store/comments";
 import { deleteAPost, getAllPosts } from "../../store/posts";
-// import { getPostVotes } from "../../store/votes";
-// import { BiMessage } from "react-icons/bi";
-import "./post.css";
 import NumOfComments from "../NumOfComments";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin2Line } from "react-icons/ri";
@@ -14,23 +10,20 @@ import Communities from "../Communities";
 import LoginAlert from "../LoginAlert";
 import serveImageError from "../Errors/imageNotFound"
 import Votes from "../Votes";
+import "./post.css";
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const posts = useSelector((state) => state?.post?.list);
   const user = useSelector((state) => state?.session);
-  // const comments = useSelector((state) => state?.comments);
-  // const postComments = Object.values(comments).filter(comment => comment?.postId === postId)
   // const communities = useSelector(state => state.communities);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     dispatch(getAllPosts());
-    // dispatch(getPostVotes());
     // dispatch(getAllCommunities());
     // dispatch(deleteACommunity({'id': 12}))
-    // dispatch(getAllComments(postId))
   }, [dispatch]);
 
   useEffect(() => {
@@ -39,9 +32,8 @@ const MainPage = () => {
 
   const handleDelete = (postId) => async (e) => {
     e.preventDefault();
-    const id = { id: +postId };
+    const id = { id: + postId };
     dispatch(deleteAPost(id));
-    // dispatch(getAllPosts());
   };
 
   const handleEdit = (postId) => async (e) => {

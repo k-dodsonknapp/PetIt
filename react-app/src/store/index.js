@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
   session: reducer,
   post: postReducer,
   comments: commentReducer,
-  votes: votesReducer,
   communities: communitiesReducer,
+  votes: votesReducer,
 });
 
 let enhancer;

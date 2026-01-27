@@ -1,9 +1,9 @@
 import { getCookie, csrfFetch } from "./utils";
 
-const GET_ALL_POSTS = "/posts/";
-const UPDATE_ONE_POST = "/posts/:id"
-const ADD_POST = "/posts/new";
-const UPDATE_POST = "/posts/edit";
+const GET_ALL_POSTS = "/posts/GET_ALL_POSTS";
+const UPDATE_ONE_POST = "/posts/UPDATE_ONE_POST"
+const ADD_POST = "/posts/ADD_POST";
+const UPDATE_POST = "/posts/UPDATE_POST";
 const DELETE_POST = "/posts/delete";
 
 const getPosts = (posts) => ({
@@ -26,7 +26,7 @@ const deletePost = (post) => ({
   post,
 });
 
-const updateOnePost = (post) => ({
+export const updateOnePost = (post) => ({
   type: UPDATE_ONE_POST,
   post,
 })
