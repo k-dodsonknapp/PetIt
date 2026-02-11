@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.198dc1b1.css",
-    "main.js": "/static/js/main.bf326ab0.js",
+    "main.css": "/static/css/main.9ed9f98f.css",
+    "main.js": "/static/js/main.b1652fb0.js",
     "static/media/404 Error with a cute animal-pana.svg": "/static/media/404 Error with a cute animal-pana.0382712388772b0846ed7d79d531e99d.svg",
     "static/media/404 error with portals-cuate.svg": "/static/media/404 error with portals-cuate.b7c8ba50ff571c02f67aaf8690d3abb8.svg",
     "static/media/404 Error with a cute animal-rafiki.svg": "/static/media/404 Error with a cute animal-rafiki.eb6a36b93b6540bcffdd180c227f5927.svg",
     "static/media/404 Error with a cute animal-cuate.svg": "/static/media/404 Error with a cute animal-cuate.635ef35e1ab78b8f8617949d843b0bde.svg",
     "index.html": "/index.html",
-    "main.198dc1b1.css.map": "/static/css/main.198dc1b1.css.map",
-    "main.bf326ab0.js.map": "/static/js/main.bf326ab0.js.map"
+    "main.9ed9f98f.css.map": "/static/css/main.9ed9f98f.css.map",
+    "main.b1652fb0.js.map": "/static/js/main.b1652fb0.js.map"
   },
   "entrypoints": [
-    "static/css/main.198dc1b1.css",
-    "static/js/main.bf326ab0.js"
+    "static/css/main.9ed9f98f.css",
+    "static/js/main.b1652fb0.js"
   ]
 }

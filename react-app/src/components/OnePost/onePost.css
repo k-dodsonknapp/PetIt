@@ -73,8 +73,6 @@ html {
     margin-bottom: 10px;
 }
 
-
-
 .deleteEditBtn {
     display: flex;
     justify-content: flex-end;
@@ -121,7 +119,7 @@ html {
     flex-direction: column;
     float: left;
     height: 465px;
-    width: 45px;
+    width: 37px;
     border-radius: 2px;
     border-right: 1px solid white;
     background-color: white;
@@ -163,7 +161,7 @@ html {
 .left-postt {
     /* border: 1px solid white; */
     background-color: white;
-    width: auto;
+    /* width: auto; */
 }
 
 .comment-reply-div {
